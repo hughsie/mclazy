@@ -108,7 +108,6 @@ def main():
                     pid = int(pid_str)
                 if os.path.isdir("/proc/%i" % pid):
                     is_still_running = True
-            f.closed
             if is_still_running:
                 print "    INFO: ignoring as another process (PID %i) has this" % pid
                 continue
@@ -119,7 +118,6 @@ def main():
         print "    INFO: creating lockfile"
         with open(lock_filename, 'w') as f:
             f.write("%s" % os.getpid())
-        f.closed
 
         # ensure package is checked out
         newly_created = False
@@ -153,7 +151,7 @@ def main():
             for line in spec_lines:
                 if line.startswith('Version:'):
                     version = line.split()[1]
-        f.closed
+
         if version.find('%') != -1:
             print "    WARNING: Cannot autobump as version conditionals present:", version
             continue
@@ -180,7 +178,6 @@ def main():
                 rc = rpm.labelCompare((None, remote_ver, None), (None, version, None))
                 if rc > 0:
                     new_version = remote_ver
-        f.closed
 
         # nothing to do
         if new_version == None:
@@ -224,7 +221,6 @@ def main():
             new_spec_lines.append(line)
         with open(spec_filename, 'w') as f:
             f.writelines(new_spec_lines)
-        f.closed
 
         # bump the spec file
         comment = "Update to " + new_version
