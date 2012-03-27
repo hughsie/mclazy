@@ -32,7 +32,7 @@ def run_command(cwd, argv):
     if p.returncode != 0:
         print(output)
         print(error)
-    return p.returncode;
+    return p.returncode
 
 def replace_spec_value(line, replace):
     if line.find(' ') != -1:
@@ -164,7 +164,7 @@ def main():
             # find any newer version
             for remote_ver in j[2][module]:
                 if not remote_ver.startswith(args.gnome_branch):
-                    continue;
+                    continue
                 rc = rpm.labelCompare((None, remote_ver, None), (None, version, None))
                 if rc > 0:
                     new_version = remote_ver
@@ -202,7 +202,6 @@ def main():
                 run_command (pkg_cache, ['fedpkg', 'new-sources', dest_tarball])
 
         # prep the spec file for rpmdev-bumpspec
-        new_spec_lines = []
         with open(spec_filename, 'r') as f:
             with open(spec_filename+".tmp", "w") as tmp_spec:
                 for line in f:
@@ -211,7 +210,7 @@ def main():
                     elif line.startswith('Release:'):
                         line = replace_spec_value(line, '0%{?dist}\n')
                     tmp_spec.write(line)
-        os.rename(spec_filename+".tmp", spec_filename)
+        os.rename(spec_filename + ".tmp", spec_filename)
 
         # bump the spec file
         comment = "Update to " + new_version
