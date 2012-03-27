@@ -68,21 +68,19 @@ def main():
 
     # read a list of modules we care about
     modules = []
-    f = open(args.modules,'r')
-    for line in f.readlines():
-        if line.startswith('#'):
-            continue
-        modules.append(line.replace('\n',''))
-    f.close()
+    with open(args.modules,'r') as f:
+        for line in f.readlines():
+            if line.startswith('#'):
+                continue
+            modules.append(line.replace('\n',''))
 
     # read a list of module -> package names
     package_map = {}
-    f = open(args.packages,'r')
-    for line in f.readlines():
-        if line.startswith('#'):
-            continue
-        package_map[line.split()[0]] = line.split()[1]
-    f.close()
+    with open(args.packages,'r') as f:
+        for line in f.readlines():
+            if line.startswith('#'):
+                continue
+            package_map[line.split()[0]] = line.split()[1]
 
     # create the cache directory if it's not already existing
     if not os.path.isdir(args.cache):
