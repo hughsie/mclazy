@@ -45,6 +45,14 @@ def unlock_file(lock_filename):
     if os.path.exists(lock_filename):
         os.unlink(lock_filename)
 
+def get_modules(modules_file):
+    """Read a list of modules we care about."""
+    with open(modules_file,'r') as f:
+        for line in f:
+            if line.startswith('#'):
+                continue
+            yield line.strip()
+
 def main():
 
     # use the main mirror
@@ -62,14 +70,6 @@ def main():
     parser.add_argument('--modules', default="modules.txt", help='The modules to search')
     args = parser.parse_args()
 
-    # read a list of modules we care about
-    modules = []
-    with open(args.modules,'r') as f:
-        for line in f:
-            if line.startswith('#'):
-                continue
-            modules.append(line.strip())
-
     # read a list of module -> package names
     package_map = {}
     with open(args.packages,'r') as f:
@@ -84,7 +84,7 @@ def main():
         os.mkdir(args.cache)
 
     # loop these
-    for module in modules:
+    for module in get_modules(args.modules):
 
         print("%s:" % module)
         if not module in package_map:
