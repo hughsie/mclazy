@@ -149,13 +149,9 @@ def main():
 
         with open(spec_filename, 'r') as f:
             spec_lines = f.readlines()
-            for line in spec_lines:
-                if line.startswith('Version:'):
-                    version = line.split()[1]
 
-        if version.find('%') != -1:
-            print "    WARNING: Cannot autobump as version conditionals present:", version
-            continue
+        spec = rpm.spec(spec_filename)
+        version = spec.sourceHeader["version"]
         print "    INFO: current version is", version
 
         # check for newer version on GNOME.org
