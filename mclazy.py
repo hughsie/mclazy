@@ -121,22 +121,19 @@ def main():
             f.write("%s" % os.getpid())
 
         # ensure package is checked out
-        newly_created = False
-        if os.path.isdir(args.cache + "/" + pkg):
-            print("    INFO: git repo already exists")
-        else:
+        if not os.path.isdir(args.cache + "/" + pkg):
             print("    INFO: git repo does not exist")
             rc = run_command(args.cache, None, ["fedpkg", "co", pkg])
             if rc != 0:
                 print("    FAILED: to checkout %s" % pkg)
                 continue
-            newly_created = True
 
-        # switch to the correct branch and setup so it's good to use
-        if not newly_created:
+        else:
+            print("    INFO: git repo already exists")
             rc = run_command (args.cache, pkg, ['git', 'clean', '-dfx'])
             rc = run_command (args.cache, pkg, ['git', 'reset', '--hard'])
             rc = run_command (args.cache, pkg, ['git', 'pull'])
+
         rc = run_command (args.cache, pkg, ['git', 'checkout', args.fedora_branch])
 
         # get the current version
