@@ -39,6 +39,13 @@ def run_command(cache, pkg, argv):
         print p.stderr.read()
     return p.returncode;
 
+def replace_spec_value(line, replace):
+    if line.find(' ') != -1:
+        return line.rsplit(' ', 1)[0] + ' ' + replace
+    if line.find('\t') != -1:
+        return line.rsplit('\t', 1)[0] + '\t' + replace
+    return line
+
 def main():
 
     # use the main mirror
@@ -173,9 +180,9 @@ def main():
         new_spec_lines = []
         for line in spec_lines:
             if line.startswith('Version:'):
-                line = line.rsplit(' ', 1)[0] + ' ' + new_version + '\n'
+                line = replace_spec_value(line, new_version + '\n');
             elif line.startswith('Release:'):
-                line = line.rsplit(' ', 1)[0] + ' ' + '0%{?dist}\n'
+                line = replace_spec_value(line, '0%{?dist}\n');
             new_spec_lines.append(line)
         with open(spec_filename, 'w') as f:
             f.writelines(new_spec_lines)
