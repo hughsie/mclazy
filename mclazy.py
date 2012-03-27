@@ -80,7 +80,8 @@ def main():
         for line in f:
             if line.startswith('#'):
                 continue
-            package_map[line.split()[0]] = line.split()[1]
+            line = line.split()
+            package_map[line[0]] = line[1]
 
     # create the cache directory if it's not already existing
     if not os.path.isdir(args.cache):
