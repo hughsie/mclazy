@@ -69,7 +69,7 @@ def main():
     # read a list of modules we care about
     modules = []
     with open(args.modules,'r') as f:
-        for line in f.readlines():
+        for line in f:
             if line.startswith('#'):
                 continue
             modules.append(line.replace('\n',''))
@@ -77,7 +77,7 @@ def main():
     # read a list of module -> package names
     package_map = {}
     with open(args.packages,'r') as f:
-        for line in f.readlines():
+        for line in f:
             if line.startswith('#'):
                 continue
             package_map[line.split()[0]] = line.split()[1]
