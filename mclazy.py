@@ -72,7 +72,7 @@ def main():
         for line in f:
             if line.startswith('#'):
                 continue
-            modules.append(line.replace('\n',''))
+            modules.append(line.strip())
 
     # read a list of module -> package names
     package_map = {}
