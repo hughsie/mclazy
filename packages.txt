@@ -9,3 +9,11 @@ glib	glib2
 gtksourceview	gtksourceview3
 gdk-pixbuf	gdk-pixbuf2
 libwnck	libwnck3
+cantarell-fonts	abattis-cantarell-fonts
+GConf	GConf2
+glade	glade2
+gst-plugins-good	gstreamer-plugins-good
+gst-plugins-base	gstreamer-plugins-base
+libgtop	libgtop2
+librsvg	librsvg2
+pygobject	pygobject3
