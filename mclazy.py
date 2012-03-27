@@ -204,14 +204,14 @@ def main():
         # prep the spec file for rpmdev-bumpspec
         new_spec_lines = []
         with open(spec_filename, 'r') as f:
-            for line in f:
-                if line.startswith('Version:'):
-                    line = replace_spec_value(line, new_version + '\n')
-                elif line.startswith('Release:'):
-                    line = replace_spec_value(line, '0%{?dist}\n')
-                new_spec_lines.append(line)
-        with open(spec_filename, 'w') as f:
-            f.writelines(new_spec_lines)
+            with open(spec_filename+".tmp", "w") as tmp_spec:
+                for line in f:
+                    if line.startswith('Version:'):
+                        line = replace_spec_value(line, new_version + '\n')
+                    elif line.startswith('Release:'):
+                        line = replace_spec_value(line, '0%{?dist}\n')
+                    tmp_spec.write(line)
+        os.rename(spec_filename+".tmp", spec_filename)
 
         # bump the spec file
         comment = "Update to " + new_version
