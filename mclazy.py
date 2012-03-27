@@ -25,13 +25,9 @@ import json
 import rpm
 import argparse
 
-def run_command(cache, pkg, argv):
+def run_command(cwd, argv):
     print("    INFO: running %s" % " ".join(argv))
-    if not pkg:
-        directory = cache
-    else:
-        directory = cache + "/" + pkg
-    p = subprocess.Popen(argv, cwd=directory, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p = subprocess.Popen(argv, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     p.wait()
     if p.returncode != 0:
         print(p.stdout.read())
@@ -120,21 +116,23 @@ def main():
         with open(lock_filename, 'w') as f:
             f.write("%s" % os.getpid())
 
+        pkg_cache = os.path.join(args.cache, pkg)
+
         # ensure package is checked out
         if not os.path.isdir(args.cache + "/" + pkg):
             print("    INFO: git repo does not exist")
-            rc = run_command(args.cache, None, ["fedpkg", "co", pkg])
+            rc = run_command(args.cache, ["fedpkg", "co", pkg])
             if rc != 0:
                 print("    FAILED: to checkout %s" % pkg)
                 continue
 
         else:
             print("    INFO: git repo already exists")
-            rc = run_command (args.cache, pkg, ['git', 'clean', '-dfx'])
-            rc = run_command (args.cache, pkg, ['git', 'reset', '--hard'])
-            rc = run_command (args.cache, pkg, ['git', 'pull'])
+            rc = run_command (pkg_cache, ['git', 'clean', '-dfx'])
+            rc = run_command (pkg_cache, ['git', 'reset', '--hard'])
+            rc = run_command (pkg_cache, ['git', 'pull'])
 
-        rc = run_command (args.cache, pkg, ['git', 'checkout', args.fedora_branch])
+        rc = run_command (pkg_cache, ['git', 'checkout', args.fedora_branch])
 
         # get the current version
         version = 0
@@ -199,7 +197,7 @@ def main():
             if not args.simulate:
                 urllib.urlretrieve (tarball_url, args.cache + "/" + pkg + "/" + dest_tarball)
                 # add the new source
-                rc = run_command (args.cache, pkg, ['fedpkg', 'new-sources', dest_tarball])
+                rc = run_command (pkg_cache, ['fedpkg', 'new-sources', dest_tarball])
 
         # prep the spec file for rpmdev-bumpspec
         new_spec_lines = []
@@ -216,11 +214,11 @@ def main():
         # bump the spec file
         comment = "Update to " + new_version
         cmd = ['rpmdev-bumpspec', "--comment=%s" % comment, "%s.spec" % pkg]
-        rc = run_command (args.cache, pkg, cmd)
+        rc = run_command (pkg_cache, cmd)
 
         # run prep, and make sure patches still apply
         if not args.simulate:
-            rc = run_command (args.cache, pkg, ['fedpkg', 'prep'])
+            rc = run_command (pkg_cache, ['fedpkg', 'prep'])
             if rc != 0:
                 print("    FAILED: to build %s as patches did not apply" % pkg)
                 continue
@@ -229,7 +227,7 @@ def main():
         if args.simulate:
             print("    INFO: not pushing as simulating")
             continue
-        rc = run_command (args.cache, pkg, ['fedpkg', 'commit', "-m %s" % comment, '-p'])
+        rc = run_command (pkg_cache, ['fedpkg', 'commit', "-m %s" % comment, '-p'])
         if rc != 0:
             print("    FAILED: push")
             continue
@@ -237,7 +235,7 @@ def main():
         # build package
         if not args.no_build:
             print("    INFO: Building %s-%s-1.fc17" % (pkg, new_version))
-            rc = run_command (args.cache, pkg, ['fedpkg', 'build'])
+            rc = run_command (pkg_cache, ['fedpkg', 'build'])
             if rc != 0:
                 print("    FAILED: build")
                 continue
