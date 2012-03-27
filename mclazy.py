@@ -26,7 +26,7 @@ import rpm
 import argparse
 
 def run_command(cache, pkg, argv):
-    print "    INFO: running", " ".join(argv)
+    print("    INFO: running %s" % " ".join(argv))
     if not pkg:
         directory = cache
     else:
@@ -34,8 +34,8 @@ def run_command(cache, pkg, argv):
     p = subprocess.Popen(argv, cwd=directory, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     p.wait()
     if p.returncode != 0:
-        print p.stdout.read()
-        print p.stderr.read()
+        print(p.stdout.read())
+        print(p.stderr.read())
     return p.returncode;
 
 def replace_spec_value(line, replace):
@@ -90,12 +90,12 @@ def main():
     # loop these
     for module in modules:
 
-        print module, ":"
+        print("%s:" % module)
         if not module in package_map:
             pkg = module
         else:
             pkg = package_map[module]
-            print "    INFO: package name override to", pkg
+            print("    INFO: package name override to %s" % pkg)
 
         # ensure we've not locked this build in another instance
         lock_filename = args.cache + "/" + pkg + "-" + lockfile
@@ -110,25 +110,25 @@ def main():
                 if os.path.isdir("/proc/%i" % pid):
                     is_still_running = True
             if is_still_running:
-                print "    INFO: ignoring as another process (PID %i) has this" % pid
+                print("    INFO: ignoring as another process (PID %i) has this" % pid)
                 continue
             else:
-                print "    WARNING: process with PID %i locked but did not release" % pid
+                print("    WARNING: process with PID %i locked but did not release" % pid)
 
         # create lockfile
-        print "    INFO: creating lockfile"
+        print("    INFO: creating lockfile")
         with open(lock_filename, 'w') as f:
             f.write("%s" % os.getpid())
 
         # ensure package is checked out
         newly_created = False
         if os.path.isdir(args.cache + "/" + pkg):
-            print "    INFO: git repo already exists"
+            print("    INFO: git repo already exists")
         else:
-            print "    INFO: git repo does not exist"
+            print("    INFO: git repo does not exist")
             rc = run_command(args.cache, None, ["fedpkg", "co", pkg])
             if rc != 0:
-                print "    FAILED: to checkout %s", pkg
+                print("    FAILED: to checkout %s" % pkg)
                 continue
             newly_created = True
 
@@ -148,7 +148,7 @@ def main():
 
         spec = rpm.spec(spec_filename)
         version = spec.sourceHeader["version"]
-        print "    INFO: current version is", version
+        print("    INFO: current version is %s" % version)
 
         # check for newer version on GNOME.org
         urllib.urlretrieve ("%s/%s/cache.json" % (gnome_ftp, module), "%s/%s/cache.json" % (args.cache, pkg))
@@ -174,31 +174,31 @@ def main():
 
         # nothing to do
         if new_version == None:
-            print "    INFO: No updates available"
+            print("    INFO: No updates available")
             unlock_file(lock_filename)
             continue
 
         # not a gnome release number */
         if not new_version.startswith('3.4.'):
-            print "    WARNING: Not gnome release numbering"
+            print("    WARNING: Not gnome release numbering")
             continue
 
         # never update a major version number */
         if new_version.split('.')[0] != version.split('.')[0]:
-            print "    WARNING: Cannot update major version numbers"
+            print("    WARNING: Cannot update major version numbers")
             continue
 
         # we need to update the package
-        print "    INFO: Need to update from", version, "to", new_version
+        print("    INFO: Need to update from %s to %s" %(version, new_version))
 
         # download the tarball if it doesn't exist
         tarball = j[1][module][new_version]['tar.xz']
         dest_tarball = tarball.split('/')[1]
         if os.path.exists(pkg + "/" + dest_tarball):
-            print "    INFO: source", dest_tarball, "already exists"
+            print("    INFO: source %s already exists" % dest_tarball)
         else:
             tarball_url = gnome_ftp + "/" + module + "/" + tarball
-            print "    INFO: download", tarball_url
+            print("    INFO: download %s" % tarball_url)
             if not args.simulate:
                 urllib.urlretrieve (tarball_url, args.cache + "/" + pkg + "/" + dest_tarball)
                 # add the new source
@@ -225,28 +225,28 @@ def main():
         if not args.simulate:
             rc = run_command (args.cache, pkg, ['fedpkg', 'prep'])
             if rc != 0:
-                print "    FAILED: to build", pkg, "as patches did not apply"
+                print("    FAILED: to build %s as patches did not apply" % pkg)
                 continue
 
         # commit and push changelog
         if args.simulate:
-            print "    INFO: not pushing as simulating"
+            print("    INFO: not pushing as simulating")
             continue
         rc = run_command (args.cache, pkg, ['fedpkg', 'commit', "-m %s" % comment, '-p'])
         if rc != 0:
-            print "    FAILED: push"
+            print("    FAILED: push")
             continue
 
         # build package
         if not args.no_build:
-            print "    INFO: Building %s-%s-1.fc17" % (pkg, new_version)
+            print("    INFO: Building %s-%s-1.fc17" % (pkg, new_version))
             rc = run_command (args.cache, pkg, ['fedpkg', 'build'])
             if rc != 0:
-                print "    FAILED: build"
+                print("    FAILED: build")
                 continue
 
         # success!
-        print "    SUCCESS: waiting for build to complete"
+        print("    SUCCESS: waiting for build to complete")
 
         # unlock build
         unlock_file(lock_filename)
