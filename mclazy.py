@@ -61,6 +61,7 @@ def main():
     parser.add_argument('--fedora-branch', default="f17", help='The fedora release to target (default: f17)')
     parser.add_argument('--gnome-branch', default="3.4", help='The GNOME release to target (default: 3.4)')
     parser.add_argument('--simulate', action='store_true', help='Do not commit any changes')
+    parser.add_argument('--no-build', action='store_true', help='Do not actually build, e.g. for rawhide')
     parser.add_argument('--cache', default="cache", help='The cache of checked out packages')
     parser.add_argument('--packages', default="packages.txt", help='The module to package mapping filename')
     parser.add_argument('--modules', default="modules.txt", help='The modules to search')
