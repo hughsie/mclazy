@@ -141,14 +141,10 @@ def main():
 
         # get the current version
         version = 0
-        spec_lines = []
         spec_filename = "%s/%s/%s.spec" % (args.cache, pkg, pkg)
         if not os.path.exists(spec_filename):
             print "    WARNING: No spec file"
             continue
-
-        with open(spec_filename, 'r') as f:
-            spec_lines = f.readlines()
 
         spec = rpm.spec(spec_filename)
         version = spec.sourceHeader["version"]
@@ -210,12 +206,13 @@ def main():
 
         # prep the spec file for rpmdev-bumpspec
         new_spec_lines = []
-        for line in spec_lines:
-            if line.startswith('Version:'):
-                line = replace_spec_value(line, new_version + '\n');
-            elif line.startswith('Release:'):
-                line = replace_spec_value(line, '0%{?dist}\n');
-            new_spec_lines.append(line)
+        with open(spec_filename, 'r') as f:
+            for line in f:
+                if line.startswith('Version:'):
+                    line = replace_spec_value(line, new_version + '\n')
+                elif line.startswith('Release:'):
+                    line = replace_spec_value(line, '0%{?dist}\n')
+                new_spec_lines.append(line)
         with open(spec_filename, 'w') as f:
             f.writelines(new_spec_lines)
 
