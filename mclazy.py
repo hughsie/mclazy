@@ -46,6 +46,10 @@ def replace_spec_value(line, replace):
         return line.rsplit('\t', 1)[0] + '\t' + replace
     return line
 
+def unlock_file(lock_filename):
+    if os.path.exists(lock_filename):
+        os.unlink(lock_filename)
+
 def main():
 
     # use the main mirror
@@ -176,6 +180,7 @@ def main():
         # nothing to do
         if new_version == None:
             print "    INFO: No updates available"
+            unlock_file(lock_filename)
             continue
 
         # not a gnome release number */
@@ -238,18 +243,18 @@ def main():
             continue
 
         # build package
-        print "    INFO: Building %s-%s-1.fc17" % (pkg, new_version)
-        rc = run_command (args.cache, pkg, ['fedpkg', 'build'])
-        if rc != 0:
-            print "    FAILED: build"
-            continue
+        if not args.no_build:
+            print "    INFO: Building %s-%s-1.fc17" % (pkg, new_version)
+            rc = run_command (args.cache, pkg, ['fedpkg', 'build'])
+            if rc != 0:
+                print "    FAILED: build"
+                continue
 
         # success!
         print "    SUCCESS: waiting for build to complete"
 
         # unlock build
-        if os.path.exists(lock_filename):
-            os.unlink(lock_filename)
+        unlock_file(lock_filename)
 
 if __name__ == "__main__":
     main()
