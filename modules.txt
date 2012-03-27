@@ -74,6 +74,7 @@ orca
 orca
 seahorse
 simple-scan
+sound-juicer
 sushi
 totem
 totem-pl-parser
