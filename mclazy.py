@@ -28,10 +28,10 @@ import argparse
 def run_command(cwd, argv):
     print("    INFO: running %s" % " ".join(argv))
     p = subprocess.Popen(argv, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    p.wait()
+    output, error = p.communicate()
     if p.returncode != 0:
-        print(p.stdout.read())
-        print(p.stderr.read())
+        print(output)
+        print(error)
     return p.returncode;
 
 def replace_spec_value(line, replace):
