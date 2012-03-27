@@ -128,11 +128,11 @@ def main():
 
         else:
             print("    INFO: git repo already exists")
-            rc = run_command (pkg_cache, ['git', 'clean', '-dfx'])
-            rc = run_command (pkg_cache, ['git', 'reset', '--hard'])
-            rc = run_command (pkg_cache, ['git', 'pull'])
+            run_command (pkg_cache, ['git', 'clean', '-dfx'])
+            run_command (pkg_cache, ['git', 'reset', '--hard'])
+            run_command (pkg_cache, ['git', 'pull'])
 
-        rc = run_command (pkg_cache, ['git', 'checkout', args.fedora_branch])
+        run_command (pkg_cache, ['git', 'checkout', args.fedora_branch])
 
         # get the current version
         version = 0
@@ -197,7 +197,7 @@ def main():
             if not args.simulate:
                 urllib.urlretrieve (tarball_url, args.cache + "/" + pkg + "/" + dest_tarball)
                 # add the new source
-                rc = run_command (pkg_cache, ['fedpkg', 'new-sources', dest_tarball])
+                run_command (pkg_cache, ['fedpkg', 'new-sources', dest_tarball])
 
         # prep the spec file for rpmdev-bumpspec
         new_spec_lines = []
@@ -214,7 +214,7 @@ def main():
         # bump the spec file
         comment = "Update to " + new_version
         cmd = ['rpmdev-bumpspec', "--comment=%s" % comment, "%s.spec" % pkg]
-        rc = run_command (pkg_cache, cmd)
+        run_command (pkg_cache, cmd)
 
         # run prep, and make sure patches still apply
         if not args.simulate:
