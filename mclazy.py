@@ -155,7 +155,6 @@ def main():
         f.closed
         if version.find('%') != -1:
             print "    WARNING: Cannot autobump as version conditionals present:", version
-            dsfdsf
             continue
         print "    INFO: current version is", version
 
