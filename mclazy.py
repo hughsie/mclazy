@@ -143,8 +143,13 @@ def main():
             print "    WARNING: No spec file"
             continue
 
-        spec = rpm.spec(spec_filename)
-        version = spec.sourceHeader["version"]
+        # open spec file
+        try:
+            spec = rpm.spec(spec_filename)
+            version = spec.sourceHeader["version"]
+        except ValueError as e:
+            print "    WARNING: Can't parse spec file"
+            continue
         print("    INFO: current version is %s" % version)
 
         # check for newer version on GNOME.org
