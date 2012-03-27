@@ -140,13 +140,17 @@ def main():
         if not newly_created:
             rc = run_command (args.cache, pkg, ['git', 'clean', '-dfx'])
             rc = run_command (args.cache, pkg, ['git', 'reset', '--hard'])
-            rc = run_command (args.cache, pkg, ['git', 'pull'])
+            #rc = run_command (args.cache, pkg, ['git', 'pull'])
         rc = run_command (args.cache, pkg, ['git', 'checkout', args.fedora_branch])
 
         # get the current version
         version = 0
         spec_lines = []
         spec_filename = "%s/%s/%s.spec" % (args.cache, pkg, pkg)
+        if not os.path.exists(spec_filename):
+            print "    WARNING: No spec file"
+            continue
+
         with open(spec_filename, 'r') as f:
             spec_lines = f.readlines()
             for line in spec_lines:
