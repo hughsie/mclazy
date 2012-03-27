@@ -23,11 +23,10 @@ import subprocess
 import urllib
 import json
 import rpm
-import string
 import argparse
 
 def run_command(cache, pkg, argv):
-    print "    INFO: running", string.join(argv, " ")
+    print "    INFO: running", " ".join(argv)
     if not pkg:
         directory = cache
     else:
