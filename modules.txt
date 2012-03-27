@@ -9,6 +9,7 @@ anjuta
 baobab
 brasero
 cheese
+devhelp
 empathy
 eog
 eog-plugins
@@ -34,6 +35,7 @@ gnome-disk-utility
 gnome-documents
 gnome-doc-utils
 gnome-dvb-daemon
+#gnome-font-viewer
 gnome-games
 gnome-icon-theme
 gnome-icon-theme-extras
@@ -75,6 +77,8 @@ simple-scan
 sushi
 totem
 totem-pl-parser
+vinagre
+vino
 yelp
 yelp-tools
 yelp-xsl
