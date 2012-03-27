@@ -99,12 +99,14 @@ def main():
             # check this process is still running
             is_still_running = False
             with open(lock_filename, 'r') as f:
-                pid_str = f.read()
-                pid = 0
-                if len(pid_str) > 0:
-                    pid = int(pid_str)
-                if os.path.isdir("/proc/%i" % pid):
-                    is_still_running = True
+                try:
+                    pid = int(f.read())
+                    if os.path.isdir("/proc/%i" % pid):
+                        is_still_running = True
+                except ValueError as e:
+                    # pid in file was not an integer
+                    pass
+
             if is_still_running:
                 print("    INFO: ignoring as another process (PID %i) has this" % pid)
                 continue
