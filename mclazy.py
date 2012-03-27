@@ -50,6 +50,7 @@ def main():
 
     # use the main mirror
     gnome_ftp = 'http://ftp.gnome.org/pub/GNOME/sources'
+    lockfile = "mclazy.lock"
 
     # read defaults from command line arguments
     parser = argparse.ArgumentParser(description='Automatically build Fedora packages for a GNOME release')
@@ -88,6 +89,31 @@ def main():
         else:
             pkg = package_map[module]
             print "    INFO: package name override to", pkg
+
+        # ensure we've not locked this build in another instance
+        lock_filename = args.cache + "/" + pkg + "-" + lockfile
+        if os.path.exists(lock_filename):
+            # check this process is still running
+            is_still_running = False
+            with open(lock_filename, 'r') as f:
+                pid_str = f.read()
+                pid = 0
+                if len(pid_str) > 0:
+                    pid = int(pid_str)
+                if os.path.isdir("/proc/%i" % pid):
+                    is_still_running = True
+            f.closed
+            if is_still_running:
+                print "    INFO: ignoring as another process (PID %i) has this" % pid
+                continue
+            else:
+                print "    WARNING: process with PID %i locked but did not release" % pid
+
+        # create lockfile
+        print "    INFO: creating lockfile"
+        with open(lock_filename, 'w') as f:
+            f.write("%s" % os.getpid())
+        f.closed
 
         # ensure package is checked out
         newly_created = False
@@ -220,6 +246,10 @@ def main():
 
         # success!
         print "    SUCCESS: waiting for build to complete"
+
+        # unlock build
+        if os.path.exists(lock_filename):
+            os.unlink(lock_filename)
 
 if __name__ == "__main__":
     main()
