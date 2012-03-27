@@ -33,7 +33,6 @@ gst-plugins-base
 gst-plugins-good
 gstreamer
 gtk+
-gtk+
 gtk-doc
 #gtk-engines
 #gtkmm
