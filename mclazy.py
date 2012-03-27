@@ -84,6 +84,10 @@ def main():
         package_map[line.split()[0]] = line.split()[1]
     f.close()
 
+    # create the cache directory if it's not already existing
+    if not os.path.isdir(args.cache):
+        os.mkdir(args.cache)
+
     # loop these
     for module in modules:
 
