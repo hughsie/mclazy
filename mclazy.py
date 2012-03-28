@@ -138,8 +138,7 @@ def main():
         run_command (pkg_cache, ['git', 'checkout', args.fedora_branch])
 
         # get the current version
-        version = ''
-        spec_source = []
+        version = 0
         spec_filename = "%s/%s/%s.spec" % (args.cache, pkg, pkg)
         if not os.path.exists(spec_filename):
             print "    WARNING: No spec file"
@@ -149,16 +148,10 @@ def main():
         try:
             spec = rpm.spec(spec_filename)
             version = spec.sourceHeader["version"]
-            spec_source = spec.sourceHeader["source"]
         except ValueError as e:
             print "    WARNING: Can't parse spec file"
             continue
         print("    INFO: current version is %s" % version)
-
-        # check the source file doesn't rely on multiple source tarballs
-        if len(spec_source) > 1:
-            print "    WARNING: Cannot update multi-source packages"
-            continue
 
         # check for newer version on GNOME.org
         urllib.urlretrieve ("%s/%s/cache.json" % (gnome_ftp, module), "%s/%s/cache.json" % (args.cache, pkg))
