@@ -184,12 +184,14 @@ def main():
         # not a gnome release number */
         if args.relax_version_checks:
             print("    INFO: Not gnome release numbering, but ignoring")
-        elif not new_version.startswith(gnome-branch):
+        elif not new_version.startswith(args.gnome_branch):
             print("    WARNING: Not gnome release numbering")
             continue
 
         # never update a major version number */
-        if new_version.split('.')[0] != version.split('.')[0]:
+        if args.relax_version_checks:
+            print("    INFO: Updating major version number, but ignoring")
+        elif new_version.split('.')[0] != version.split('.')[0]:
             print("    WARNING: Cannot update major version numbers")
             continue
 
