@@ -64,6 +64,7 @@ def main():
     parser.add_argument('--fedora-branch', default="f17", help='The fedora release to target (default: f17)')
     parser.add_argument('--gnome-branch', default="3.4", help='The GNOME release to target (default: 3.4)')
     parser.add_argument('--simulate', action='store_true', help='Do not commit any changes')
+    parser.add_argument('--relax-version-checks', action='store_true', help='Relax checks on the GNOME version numbering')
     parser.add_argument('--no-build', action='store_true', help='Do not actually build, e.g. for rawhide')
     parser.add_argument('--cache', default="cache", help='The cache of checked out packages')
     parser.add_argument('--packages', default="packages.txt", help='The module to package mapping filename')
@@ -168,7 +169,7 @@ def main():
 
             # find any newer version
             for remote_ver in j[2][module]:
-                if not remote_ver.startswith(args.gnome_branch):
+                if not args.relax_version_checks and not remote_ver.startswith(args.gnome_branch):
                     continue
                 rc = rpm.labelCompare((None, remote_ver, None), (None, version, None))
                 if rc > 0:
@@ -181,7 +182,9 @@ def main():
             continue
 
         # not a gnome release number */
-        if not new_version.startswith('3.4.'):
+        if args.relax_version_checks:
+            print("    INFO: Not gnome release numbering, but ignoring")
+        elif not new_version.startswith(gnome-branch):
             print("    WARNING: Not gnome release numbering")
             continue
 
