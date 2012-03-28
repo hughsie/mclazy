@@ -66,5 +66,5 @@ pygobject
 rest
 rygel
 seed
-vala
+#vala
 vte
