@@ -17,3 +17,4 @@ gst-plugins-base	gstreamer-plugins-base
 libgtop	libgtop2
 librsvg	librsvg2
 pygobject	pygobject3
+vte	vte3
