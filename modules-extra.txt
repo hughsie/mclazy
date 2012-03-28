@@ -52,6 +52,7 @@ librsvg
 libsigc++
 libsoup
 libwacom
+libxklavier
 metacity
 mm-common
 nautilus-sendto
