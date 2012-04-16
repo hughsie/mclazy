@@ -14,8 +14,8 @@ empathy
 eog
 eog-plugins
 epiphany
-evolution
-evolution-data-server
+#evolution
+#evolution-data-server
 file-roller
 gcr
 gdm
