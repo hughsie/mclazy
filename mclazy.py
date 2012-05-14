@@ -154,7 +154,11 @@ def main():
         print("    INFO: current version is %s" % version)
 
         # check for newer version on GNOME.org
-        urllib.urlretrieve ("%s/%s/cache.json" % (gnome_ftp, module), "%s/%s/cache.json" % (args.cache, pkg))
+        try:
+            urllib.urlretrieve ("%s/%s/cache.json" % (gnome_ftp, module), "%s/%s/cache.json" % (args.cache, pkg))
+        except IOError as e:
+            print "    WARNING: Failed to get JSON", e
+            continue
         new_version = None
         with open("%s/%s/cache.json" % (args.cache, pkg), 'r') as f:
 
@@ -207,7 +211,11 @@ def main():
             tarball_url = gnome_ftp + "/" + module + "/" + tarball
             print("    INFO: download %s" % tarball_url)
             if not args.simulate:
-                urllib.urlretrieve (tarball_url, args.cache + "/" + pkg + "/" + dest_tarball)
+                try:
+                    urllib.urlretrieve (tarball_url, args.cache + "/" + pkg + "/" + dest_tarball)
+                except IOError as e:
+                    print "    WARNING: Failed to get tarball", e
+                    continue
                 # add the new source
                 run_command (pkg_cache, ['fedpkg', 'new-sources', dest_tarball])
 
