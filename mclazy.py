@@ -24,6 +24,8 @@ import urllib
 import json
 import rpm
 import argparse
+import fnmatch
+from xml.etree.ElementTree import ElementTree
 
 def run_command(cwd, argv):
     print("    INFO: running %s" % " ".join(argv))
@@ -62,37 +64,50 @@ def main():
     # read defaults from command line arguments
     parser = argparse.ArgumentParser(description='Automatically build Fedora packages for a GNOME release')
     parser.add_argument('--fedora-branch', default="f17", help='The fedora release to target (default: f17)')
-    parser.add_argument('--gnome-branch', default="3.4", help='The GNOME release to target (default: 3.4)')
     parser.add_argument('--simulate', action='store_true', help='Do not commit any changes')
-    parser.add_argument('--relax-version-checks', action='store_true', help='Relax checks on the GNOME version numbering')
+    parser.add_argument('--relax-version-checks', action='store_true', help='Relax checks on the version numbering')
     parser.add_argument('--no-build', action='store_true', help='Do not actually build, e.g. for rawhide')
     parser.add_argument('--cache', default="cache", help='The cache of checked out packages')
-    parser.add_argument('--packages', default="packages.txt", help='The module to package mapping filename')
-    parser.add_argument('--modules', default="modules.txt", help='The modules to search')
+    parser.add_argument('--modules', default="modules.xml", help='The modules to search')
     args = parser.parse_args()
 
-    # read a list of module -> package names
-    package_map = {}
-    with open(args.packages,'r') as f:
-        for line in f:
-            if line.startswith('#'):
-                continue
-            line = line.split()
-            package_map[line[0]] = line[1]
+    # parse the configuration file
+    modules = []
+    tree = ElementTree()
+    tree.parse("modules.xml")
+    projects = list(tree.iter("project"))
+    for project in projects:
+        release_glob = {}
+
+        # get the project name and optional tarball name
+        name = project.get('name')
+        pkgname = project.get('pkgname')
+        if not pkgname:
+            pkgname = name;
+
+        # find any gnome release number overrides
+        for release in list(project):
+            version = release.get('version')
+            release_glob[version] = release.text
+
+        # add the hardcoded gnome release numbers
+        if 'f16' not in release_glob:
+            release_glob['f16'] = "3.2.*"
+        if 'f17' not in release_glob:
+            release_glob['f17'] = "3.4.*"
+        if 'f18' not in release_glob:
+            release_glob['rawhide'] = "*"
+        modules.append((name, pkgname, release_glob))
 
     # create the cache directory if it's not already existing
     if not os.path.isdir(args.cache):
         os.mkdir(args.cache)
 
     # loop these
-    for module in get_modules(args.modules):
-
+    for module, pkg, release_version in modules:
         print("%s:" % module)
-        if not module in package_map:
-            pkg = module
-        else:
-            pkg = package_map[module]
-            print("    INFO: package name override to %s" % pkg)
+        print("    INFO: package name: %s" % pkg)
+        print("    INFO: version glob: %s" % release_version[args.fedora_branch])
 
         # ensure we've not locked this build in another instance
         lock_filename = args.cache + "/" + pkg + "-" + lockfile
@@ -133,9 +148,12 @@ def main():
             print("    INFO: git repo already exists")
             run_command (pkg_cache, ['git', 'clean', '-dfx'])
             run_command (pkg_cache, ['git', 'reset', '--hard'])
-            run_command (pkg_cache, ['git', 'pull'])
 
-        run_command (pkg_cache, ['git', 'checkout', args.fedora_branch])
+        if args.fedora_branch == 'rawhide':
+            run_command (pkg_cache, ['git', 'checkout', 'master'])
+        else:
+            run_command (pkg_cache, ['git', 'checkout', args.fedora_branch])
+        run_command (pkg_cache, ['git', 'pull'])
 
         # get the current version
         version = 0
@@ -154,12 +172,19 @@ def main():
         print("    INFO: current version is %s" % version)
 
         # check for newer version on GNOME.org
-        try:
-            urllib.urlretrieve ("%s/%s/cache.json" % (gnome_ftp, module), "%s/%s/cache.json" % (args.cache, pkg))
-        except IOError as e:
-            print "    WARNING: Failed to get JSON", e
-            continue
+        success = False
+        for i in range (1, 20):
+            try:
+                urllib.urlretrieve ("%s/%s/cache.json" % (gnome_ftp, module), "%s/%s/cache.json" % (args.cache, pkg))
+                success = True
+                break
+            except IOError as e:
+                print "    WARNING: Failed to get JSON on try", i, e
+        if not success:
+            continue;
+
         new_version = None
+        gnome_branch = release_version[args.fedora_branch]
         with open("%s/%s/cache.json" % (args.cache, pkg), 'r') as f:
 
             # the format of the json file is as follows:
@@ -173,7 +198,8 @@ def main():
 
             # find any newer version
             for remote_ver in j[2][module]:
-                if not args.relax_version_checks and not remote_ver.startswith(args.gnome_branch):
+                if not args.relax_version_checks and not fnmatch.fnmatch(remote_ver, gnome_branch):
+                #if not args.relax_version_checks and not remote_ver.startswith(gnome_branch):
                     continue
                 rc = rpm.labelCompare((None, remote_ver, None), (None, version, None))
                 if rc > 0:
@@ -183,13 +209,6 @@ def main():
         if new_version == None:
             print("    INFO: No updates available")
             unlock_file(lock_filename)
-            continue
-
-        # not a gnome release number */
-        if args.relax_version_checks:
-            print("    INFO: Not gnome release numbering, but ignoring")
-        elif not new_version.startswith(args.gnome_branch):
-            print("    WARNING: Not gnome release numbering")
             continue
 
         # never update a major version number */

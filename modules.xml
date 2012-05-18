@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  This is a list of the GNOME module names. If the GNOME standard
+  release numbering scheme is not used, then do something like:
+
+  <project name="glib">
+    <release version="f16">2.30.*</release>
+    <release version="f17">2.32.*</release>
+    <release version="rawhide">2.34.*</release>
+  </project>
+
+  By default, the following version mapping is assumed:
+    f16     = 3.2.*
+    f17     = 3.4.*
+    rawhide = * (the newest upsream version)
+
+  If the package name differs from the upstream tarball name, then do
+  something like this:
+
+  <project name="gnome-desktop" pkgname="gnome-desktop3"/>
+
+-->
+
+<projects>
+
+<!--
+  <project name="accerciser">
+    <release version="f16">3.2.*</release>
+    <release version="f17">3.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
+-->
+<!--
+  Do not build aisleriot 3.4.x -- depends on guile2 which we don't have
+  <project name="aisleriot"/>
+-->
+  <project name="anjuta"/>
+  <project name="atk">
+    <release version="f16">2.2.*</release>
+    <release version="f17">2.4.*</release>
+    <release version="rawhide">2.4.*</release>
+  </project>
+  <project name="atkmm">
+    <release version="f16">2.22.*</release>
+    <release version="f17">2.22.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="at-spi2-core">
+    <release version="f16">2.2.*</release>
+    <release version="f17">2.4.*</release>
+    <release version="rawhide">2.5.*</release>
+  </project>
+  <project name="at-spi2-atk">
+    <release version="f16">2.2.*</release>
+    <release version="f17">2.4.*</release>
+    <release version="rawhide">2.5.*</release>
+  </project>
+  <project name="baobab"/>
+  <project name="brasero"/>
+  <project name="cantarell-fonts" pkgname="abattis-cantarell-fonts">
+    <release version="f16">0.0.*</release>
+    <release version="f17">0.0.*</release>
+    <release version="rawhide">0.0.*</release>
+  </project>
+  <project name="caribou">
+    <release version="f16">0.4.*</release>
+    <release version="f17">0.4.*</release>
+    <release version="rawhide">0.4.*</release>
+  </project>
+  <project name="cheese"/>
+  <project name="clutter">
+    <release version="f16">1.8.*</release>
+    <release version="f17">1.10.*</release>
+    <release version="rawhide">1.11.*</release>
+  </project>
+  <project name="clutter-gst">
+    <release version="f16">1.4.*</release>
+    <release version="f17">1.5.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="clutter-gtk">
+    <release version="f16">1.0.*</release>
+    <release version="f17">1.2.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="cogl">
+    <release version="f16">1.8.*</release>
+    <release version="f17">1.10.*</release>
+    <release version="rawhide">1.11.*</release>
+  </project>
+  <project name="dconf">
+    <release version="f16">0.10.*</release>
+    <release version="f17">0.12.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="devhelp"/>
+  <project name="empathy"/>
+  <project name="eog"/>
+  <project name="eog-plugins"/>
+  <project name="epiphany"/>
+  <project name="evince">
+    <release version="f16">3.2.*</release>
+    <release version="f17">3.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
+<!--
+  NOTE: Milan Crha told us not to touch this.
+  <project name="evolution"/>
+  <project name="evolution-data-server"/>
+-->
+  <project name="file-roller"/>
+  <project name="folks">
+    <release version="f16">0.6.*</release>
+    <release version="f17">0.6.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="gcalctool">
+    <release version="f16">6.2.*</release>
+    <release version="f17">6.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="GConf" pkgname="GConf2">
+    <release version="f16">3.2.*</release>
+    <release version="f17">3.2.*</release>
+    <release version="rawhide">3.2.*</release>
+  </project>
+  <project name="gcr"/>
+  <project name="gdk-pixbuf" pkgname="gdk-pixbuf2">
+    <release version="f16">2.24.*</release>
+    <release version="f17">2.26.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="gdm"/>
+  <project name="gedit"/>
+<!--
+  <project name="geocode-glib">
+    <release version="f16">0.12.*</release>
+    <release version="f17">0.12.*</release>
+    <release version="rawhide">*</release>
+  </project>
+-->
+  <project name="gjs">
+    <release version="f16">1.30.*</release>
+    <release version="f17">1.32.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="glade" pkgname="glade2">
+    <release version="f16">3.10.*</release>
+    <release version="f17">3.12.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="glib" pkgname="glib2">
+    <release version="f16">2.30.*</release>
+    <release version="f17">2.32.*</release>
+    <release version="rawhide">2.34.*</release>
+  </project>
+<!--
+  <project name="glibmm" pkgname="glibmm24">
+    <release version="f16">2.30.*</release>
+    <release version="f17">2.32.*</release>
+    <release version="rawhide">*</release>
+  </project>
+-->
+  <project name="glib-networking">
+    <release version="f16">2.30.*</release>
+    <release version="f17">2.32.*</release>
+    <release version="rawhide">2.34.*</release>
+  </project>
+  <project name="gmime">
+    <release version="f16">2.5.*</release>
+    <release version="f17">2.6.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="gnome-applets"/>
+  <project name="gnome-backgrounds"/>
+  <project name="gnome-bluetooth"/>
+  <project name="gnome-boxes"/>
+  <project name="gnome-color-manager"/>
+  <project name="gnome-common"/>
+  <project name="gnome-contacts"/>
+  <project name="gnome-control-center" pkgname="control-center"/>
+  <project name="gnome-desktop" pkgname="gnome-desktop3"/>
+  <project name="gnome-devel-docs"/>
+  <project name="gnome-dictionary"/>
+  <project name="gnome-disk-utility"/>
+  <project name="gnome-documents">
+    <release version="f16">0.2.*</release>
+    <release version="f17">0.4.*</release>
+    <release version="rawhide">0.5.*</release>
+  </project>
+  <project name="gnome-doc-utils"/>
+  <project name="gnome-dvb-daemon"/>
+<!--
+  <project name="gnome-font-viewer"/>
+-->
+  <project name="gnome-games"/>
+  <project name="gnome-icon-theme"/>
+  <project name="gnome-icon-theme-extras"/>
+  <project name="gnome-icon-theme-symbolic"/>
+  <project name="gnome-js-common">
+    <release version="f16">0.1.*</release>
+    <release version="f17">0.1.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="gnome-keyring"/>
+  <project name="gnome-media"/>
+  <project name="gnome-menus"/>
+  <project name="gnome-online-accounts"/>
+  <project name="gnome-packagekit"/>
+  <project name="gnome-panel"/>
+  <project name="gnome-power-manager"/>
+  <project name="gnome-screensaver"/>
+  <project name="gnome-screenshot"/>
+  <project name="gnome-search-tool"/>
+  <project name="gnome-session"/>
+  <project name="gnome-settings-daemon"/>
+  <project name="gnome-shell"/>
+  <project name="gnome-system-log"/>
+  <project name="gnome-system-monitor"/>
+  <project name="gnome-terminal"/>
+  <project name="gnome-themes-standard"/>
+  <project name="gnome-tweak-tool"/>
+  <project name="gnome-user-docs"/>
+  <project name="gnome-user-share"/>
+  <project name="gnome-video-effects"/>
+  <project name="gobject-introspection">
+    <release version="f16">1.30.*</release>
+    <release version="f17">1.32.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="gsettings-desktop-schemas"/>
+  <project name="gst-plugins-base" pkgname="gstreamer-plugins-base">
+    <release version="f16">0.10.*</release>
+    <release version="f17">0.10.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="gst-plugins-good" pkgname="gstreamer-plugins-good">
+    <release version="f16">0.10.*</release>
+    <release version="f17">0.10.*</release>
+    <release version="rawhide">*</release>  </project>
+  <project name="gstreamer">
+    <release version="f16">0.10.*</release>
+    <release version="f17">0.10.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="gtk+" pkgname="gtk3">
+    <release version="f16">3.2.*</release>
+    <release version="f17">3.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="gtk-doc">
+    <release version="f16">1.*</release>
+    <release version="f17">1.*</release>
+    <release version="rawhide">*</release>
+  </project>
+<!--
+  <project name="gtk-engines">
+    <release version="f16">2.20.*</release>
+    <release version="f17">2.20.*</release>
+    <release version="rawhide">2.20.*</release>
+  </project>
+-->
+<!--
+  <project name="gtkmm" pkgname="gtkmm30">
+    <release version="f16">3.2.*</release>
+    <release version="f17">3.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
+-->
+  <project name="gtksourceview" pkgname="gtksourceview3">
+    <release version="f16">3.2.*</release>
+    <release version="f17">3.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="gucharmap"/>
+  <project name="gvfs">
+    <release version="f16">1.10.*</release>
+    <release version="f17">1.12.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="json-glib">
+    <release version="f16">0.14.*</release>
+    <release version="f17">0.14.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="libchamplain">
+    <release version="f16">0.12.*</release>
+    <release version="f17">0.12.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="libcroco">
+    <release version="f16">0.6.*</release>
+    <release version="f17">0.6.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="libcryptui"/>
+  <project name="libgdata">
+    <release version="f16">0.10.*</release>
+    <release version="f17">0.12.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="libgee">
+    <release version="f16">0.6.*</release>
+    <release version="f17">0.7.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="libgnomekbd"/>
+  <project name="libgnome-keyring"/>
+  <project name="libgtop" pkgname="libgtop2">
+    <release version="f16">2.28.*</release>
+    <release version="f17">2.28.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="libgweather">
+    <release version="f16">3.2.*</release>
+    <release version="f17">3.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="libgxps">
+    <release version="f16">0.2.*</release>
+    <release version="f17">0.2.*</release>
+    <release version="rawhide">0.2.*</release>
+  </project>
+  <project name="libnotify">
+    <release version="f16">0.7.*</release>
+    <release version="f17">0.7.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="libpeas">
+    <release version="f16">1.2.*</release>
+    <release version="f17">1.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="librsvg" pkgname="librsvg2">
+    <release version="f16">2.34.*</release>
+    <release version="f17">2.36.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="libsoup">
+    <release version="f16">2.36.*</release>
+    <release version="f17">2.38.*</release>
+    <release version="rawhide">2.40.*</release>
+  </project>
+  <project name="libwacom">
+    <release version="f17">*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="libwnck" pkgname="libwnck3"/>
+  <project name="libxklavier">
+    <release version="f16">5.1.*</release>
+    <release version="f17">5.2.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="metacity">
+    <release version="f16">2.34.*</release>
+    <release version="f17">2.34.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="mousetweaks"/>
+  <project name="mutter"/>
+  <project name="nautilus"/>
+  <project name="nautilus-sendto">
+    <release version="f16">3.0.*</release>
+    <release version="f17">3.0.*</release>
+    <release version="rawhide">3.0.*</release>
+  </project>
+  <project name="nemiver">
+    <release version="f17">0.9.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="NetworkManager">
+    <release version="f16">0.9.*</release>
+    <release version="f17">0.9.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="network-manager-applet">
+    <release version="f16">0.9.*</release>
+    <release version="f17">0.9.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="notification-daemon">
+    <release version="f16">0.7.*</release>
+    <release version="f17">0.7.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="orca"/>
+  <project name="orca"/>
+  <project name="pango">
+    <release version="f16">1.29.*</release>
+    <release version="f17">1.30.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="pangomm">
+    <release version="f16">2.28.*</release>
+    <release version="f17">2.28.*</release>
+    <release version="rawhide">*</release>
+  </project>
+<!--
+  We only use this in fallback mode, and there are going to be no more releases
+  <project name="polkit-gnome"/>
+-->
+  <project name="pygobject" pkgname="pygobject3">
+    <release version="f16">3.0.*</release>
+    <release version="f17">3.2.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="rest">
+    <release version="f16">0.7.*</release>
+    <release version="f17">0.7.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="rygel">
+    <release version="f16">0.12.*</release>
+    <release version="f17">0.14.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="seahorse"/>
+  <project name="seed">
+    <release version="f16">3.2.*</release>
+    <release version="f17">3.2.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="simple-scan"/>
+  <project name="sound-juicer"/>
+  <project name="sushi">
+    <release version="f16">0.2.*</release>
+    <release version="f17">0.4.*</release>
+    <release version="rawhide">0.5.*</release>
+  </project>
+  <project name="totem"/>
+  <project name="totem-pl-parser"/>
+<!--
+  <project name="vala">
+    <release version="f16">0.14.*</release>
+    <release version="f17">0.16.*</release>
+    <release version="rawhide">*</release>
+  </project>
+-->
+  <project name="vinagre"/>
+  <project name="vino"/>
+  <project name="vte" pkgname="vte3">
+    <release version="f16">0.30.*</release>
+    <release version="f17">0.32.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="yelp"/>
+  <project name="yelp-tools"/>
+  <project name="yelp-xsl"/>
+  <project name="zenity"/>
+</projects>
