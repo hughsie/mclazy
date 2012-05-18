@@ -32,7 +32,7 @@
   </project>
 -->
 <!--
-  Do not build aisleriot 3.4.x -- depends on guile2 which we don't have
+  Do not build aisleriot 3.4.x - depends on guile2 which we don't have
   <project name="aisleriot"/>
 -->
   <project name="anjuta"/>
