@@ -25,6 +25,12 @@
 <projects>
 
 <!--
+  These projects are at the top in some kind of dependency order
+-->
+  <project name="gsettings-desktop-schemas" wait_repo="1"/>
+  <project name="gnome-settings-daemon" wait_repo="1"/>
+
+<!--
   <project name="accerciser">
     <release version="f16">3.2.*</release>
     <release version="f17">3.4.*</release>
@@ -214,7 +220,6 @@
   <project name="gnome-screenshot"/>
   <project name="gnome-search-tool"/>
   <project name="gnome-session"/>
-  <project name="gnome-settings-daemon"/>
   <project name="gnome-shell"/>
   <project name="gnome-system-log"/>
   <project name="gnome-system-monitor"/>
@@ -229,7 +234,6 @@
     <release version="f17">1.32.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="gsettings-desktop-schemas"/>
   <project name="gst-plugins-base" pkgname="gstreamer-plugins-base">
     <release version="f16">0.10.*</release>
     <release version="f17">0.10.*</release>

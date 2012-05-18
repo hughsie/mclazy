@@ -84,6 +84,9 @@ def main():
         pkgname = project.get('pkgname')
         if not pkgname:
             pkgname = name;
+        wait_repo = False
+        if project.get('wait_repo') == "1":
+            wait_repo = True;
 
         # find any gnome release number overrides
         for release in list(project):
@@ -97,14 +100,14 @@ def main():
             release_glob['f17'] = "3.4.*"
         if 'f18' not in release_glob:
             release_glob['rawhide'] = "*"
-        modules.append((name, pkgname, release_glob))
+        modules.append((name, pkgname, release_glob, wait_repo))
 
     # create the cache directory if it's not already existing
     if not os.path.isdir(args.cache):
         os.mkdir(args.cache)
 
     # loop these
-    for module, pkg, release_version in modules:
+    for module, pkg, release_version, wait_repo in modules:
         print("%s:" % module)
         print("    INFO: package name: %s" % pkg)
         print("    INFO: version glob: %s" % release_version[args.fedora_branch])
@@ -270,12 +273,41 @@ def main():
             print("    FAILED: push")
             continue
 
+        # work out release tag
+        if args.fedora_branch == "f16":
+            pkg_release_tag = 'fc16'
+        elif args.fedora_branch == "f17":
+            pkg_release_tag = 'fc17'
+        elif args.fedora_branch == "rawhide":
+            pkg_release_tag = 'fc18'
+        else:
+            print "    WARNING: Failed to get release tag for", args.fedora_branch
+            continue;
+
         # build package
         if not args.no_build:
-            print("    INFO: Building %s-%s-1.fc17" % (pkg, new_version))
+            print("    INFO: Building %s-%s-1.%s" % (pkg, new_version, pkg_release_tag))
             rc = run_command (pkg_cache, ['fedpkg', 'build'])
             if rc != 0:
                 print("    FAILED: build")
+                continue
+
+        # work out repo branch
+        if args.fedora_branch == "f16":
+            pkg_branch_name = 'f16-build'
+        elif args.fedora_branch == "f17":
+            pkg_branch_name = 'f17-build'
+        elif args.fedora_branch == "rawhide":
+            pkg_branch_name = 'f18-build'
+        else:
+            print "    WARNING: Failed to get repo branch tag for", args.fedora_branch
+            continue;
+
+        # wait for repo to sync
+        if wait_repo and args.fedora_branch == "rawhide":
+            rc = run_command (pkg_cache, ['koji', 'wait-repo', pkg_branch_name, '--build', "%s-%s-1.%s" % (pkg, new_version, pkg_release_tag)])
+            if rc != 0:
+                print("    FAILED: wait for repo")
                 continue
 
         # success!
