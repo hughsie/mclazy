@@ -69,6 +69,7 @@ def main():
     parser.add_argument('--no-build', action='store_true', help='Do not actually build, e.g. for rawhide')
     parser.add_argument('--cache', default="cache", help='The cache of checked out packages')
     parser.add_argument('--modules', default="modules.xml", help='The modules to search')
+    parser.add_argument('--buildone', default=None, help='Only build one specific package')
     args = parser.parse_args()
 
     # parse the configuration file
@@ -100,7 +101,8 @@ def main():
             release_glob['f17'] = "3.4.*"
         if 'f18' not in release_glob:
             release_glob['rawhide'] = "*"
-        modules.append((name, pkgname, release_glob, wait_repo))
+        if args.buildone == None or args.buildone == pkgname:
+            modules.append((name, pkgname, release_glob, wait_repo))
 
     # create the cache directory if it's not already existing
     if not os.path.isdir(args.cache):
