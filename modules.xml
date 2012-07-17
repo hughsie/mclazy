@@ -28,7 +28,23 @@
   These projects are at the top in some kind of dependency order
 -->
   <project name="gsettings-desktop-schemas" wait_repo="1"/>
+  <project name="gnome-desktop" pkgname="gnome-desktop3" wait_repo="1"/>
   <project name="gnome-settings-daemon" wait_repo="1"/>
+  <project name="glib" pkgname="glib2" wait_repo="1">
+    <release version="f16">2.30.*</release>
+    <release version="f17">2.32.*</release>
+    <release version="rawhide">2.34.*</release>
+  </project>
+  <project name="gtk+" pkgname="gtk3" wait_repo="1">
+    <release version="f16">3.2.*</release>
+    <release version="f17">3.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="libwacom" wait_repo="1">
+    <release version="f17">*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="gnome-control-center" pkgname="control-center"/>
 
 <!--
   <project name="accerciser">
@@ -156,11 +172,6 @@
     <release version="f17">3.12.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="glib" pkgname="glib2">
-    <release version="f16">2.30.*</release>
-    <release version="f17">2.32.*</release>
-    <release version="rawhide">2.34.*</release>
-  </project>
 <!--
   <project name="glibmm" pkgname="glibmm24">
     <release version="f16">2.30.*</release>
@@ -185,7 +196,6 @@
   <project name="gnome-color-manager"/>
   <project name="gnome-common"/>
   <project name="gnome-contacts"/>
-  <project name="gnome-control-center" pkgname="control-center"/>
   <project name="gnome-desktop" pkgname="gnome-desktop3"/>
   <project name="gnome-devel-docs"/>
   <project name="gnome-dictionary"/>
@@ -246,11 +256,6 @@
   <project name="gstreamer">
     <release version="f16">0.10.*</release>
     <release version="f17">0.10.*</release>
-    <release version="rawhide">*</release>
-  </project>
-  <project name="gtk+" pkgname="gtk3">
-    <release version="f16">3.2.*</release>
-    <release version="f17">3.4.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gtk-doc">
@@ -346,10 +351,6 @@
     <release version="f17">2.38.*</release>
     <release version="rawhide">2.40.*</release>
   </project>
-  <project name="libwacom">
-    <release version="f17">*</release>
-    <release version="rawhide">*</release>
-  </project>
   <project name="libwnck" pkgname="libwnck3"/>
   <project name="libxklavier">
     <release version="f16">5.1.*</release>
@@ -373,22 +374,23 @@
     <release version="f17">0.9.*</release>
     <release version="rawhide">*</release>
   </project>
+<!--
   <project name="NetworkManager">
     <release version="f16">0.9.*</release>
     <release version="f17">0.9.*</release>
-    <release version="rawhide">*</release>
+    <release version="rawhide">0.9.*</release>
   </project>
   <project name="network-manager-applet">
     <release version="f16">0.9.*</release>
     <release version="f17">0.9.*</release>
     <release version="rawhide">*</release>
   </project>
+-->
   <project name="notification-daemon">
     <release version="f16">0.7.*</release>
     <release version="f17">0.7.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="orca"/>
   <project name="orca"/>
   <project name="pango">
     <release version="f16">1.29.*</release>
@@ -433,7 +435,9 @@
     <release version="rawhide">0.5.*</release>
   </project>
   <project name="totem"/>
-  <project name="totem-pl-parser"/>
+  <project name="totem-pl-parser">
+    <release version="f16">2.32.*</release>
+  </project>
 <!--
   <project name="vala">
     <release version="f16">0.14.*</release>
