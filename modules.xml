@@ -46,13 +46,10 @@
   </project>
   <project name="gnome-control-center" pkgname="control-center"/>
 
-<!--
   <project name="accerciser">
-    <release version="f16">3.2.*</release>
     <release version="f17">3.4.*</release>
     <release version="rawhide">*</release>
   </project>
--->
 <!--
   Do not build aisleriot 3.4.x - depends on guile2 which we don't have
   <project name="aisleriot"/>
