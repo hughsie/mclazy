@@ -99,7 +99,7 @@ def main():
             release_glob['f16'] = "3.2.*"
         if 'f17' not in release_glob:
             release_glob['f17'] = "3.4.*"
-        if 'f18' not in release_glob:
+        if 'rawhide' not in release_glob:
             release_glob['rawhide'] = "*"
         if args.buildone == None or args.buildone == pkgname:
             modules.append((name, pkgname, release_glob, wait_repo))
