@@ -167,8 +167,7 @@
     <release version="f17">1.32.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="glade" pkgname="glade2">
-    <release version="f16">3.10.*</release>
+  <project name="glade">
     <release version="f17">3.12.*</release>
     <release version="rawhide">*</release>
   </project>
