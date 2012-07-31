@@ -391,7 +391,9 @@
     <release version="f17">0.7.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="orca"/>
+  <project name="orca">
+    <release version="rawhide">3.6.*</release>
+  </project>
   <project name="pango">
     <release version="f16">1.29.*</release>
     <release version="f17">1.30.*</release>
