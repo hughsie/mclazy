@@ -178,6 +178,7 @@
     <release version="rawhide">*</release>
   </project>
 -->
+  <project name="ghex"/>
   <project name="gjs">
     <release version="f16">1.30.*</release>
     <release version="f17">1.32.*</release>
