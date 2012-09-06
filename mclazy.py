@@ -70,6 +70,7 @@ def main():
     parser.add_argument('--cache', default="cache", help='The cache of checked out packages')
     parser.add_argument('--modules', default="modules.xml", help='The modules to search')
     parser.add_argument('--buildone', default=None, help='Only build one specific package')
+    parser.add_argument('--buildroot', default=None, help='Use a custom buildroot, e.g. dist-f18-gnome3')
     args = parser.parse_args()
 
     # parse the configuration file
@@ -294,7 +295,10 @@ def main():
         # build package
         if not args.no_build:
             print("    INFO: Building %s-%s-1.%s" % (pkg, new_version, pkg_release_tag))
-            rc = run_command (pkg_cache, ['fedpkg', 'build'])
+            if args.buildroot:
+                rc = run_command (pkg_cache, ['fedpkg', 'build', '--target', args.buildroot])
+            else:
+                rc = run_command (pkg_cache, ['fedpkg', 'build'])
             if rc != 0:
                 print("    FAILED: build")
                 continue
