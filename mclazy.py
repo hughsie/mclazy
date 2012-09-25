@@ -70,13 +70,13 @@ def main():
     parser.add_argument('--cache', default="cache", help='The cache of checked out packages')
     parser.add_argument('--modules', default="modules.xml", help='The modules to search')
     parser.add_argument('--buildone', default=None, help='Only build one specific package')
-    parser.add_argument('--buildroot', default=None, help='Use a custom buildroot, e.g. dist-f18-gnome3')
+    parser.add_argument('--buildroot', default=None, help='Use a custom buildroot, e.g. f18-gnome')
     args = parser.parse_args()
 
     # parse the configuration file
     modules = []
     tree = ElementTree()
-    tree.parse("modules.xml")
+    tree.parse(args.modules)
     projects = list(tree.iter("project"))
     for project in projects:
         release_glob = {}
@@ -101,7 +101,7 @@ def main():
         if 'f17' not in release_glob:
             release_glob['f17'] = "3.4.*"
         if 'f18' not in release_glob:
-            release_glob['f18'] = "3.5.*"
+            release_glob['f18'] = "3.6.*"
         if 'rawhide' not in release_glob:
             release_glob['rawhide'] = "*"
         if args.buildone == None or args.buildone == pkgname:
