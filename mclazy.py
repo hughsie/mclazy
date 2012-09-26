@@ -25,6 +25,8 @@ import json
 import rpm
 import argparse
 import fnmatch
+from gi.repository import Zif
+from gi.repository import Gio
 from xml.etree.ElementTree import ElementTree
 
 def run_command(cwd, argv):
@@ -55,6 +57,15 @@ def get_modules(modules_file):
                 continue
             yield line.strip()
 
+# get the newest package from the store
+def get_installed_package_version(store, pkg_name):
+    state = Zif.State.new()
+    packages = store.resolve([pkg_name], state)
+    if len(packages) == 0:
+        return None
+    package = Zif.Package.array_get_newest(packages)
+    return package.get_version()
+
 def main():
 
     # use the main mirror
@@ -65,6 +76,7 @@ def main():
     parser = argparse.ArgumentParser(description='Automatically build Fedora packages for a GNOME release')
     parser.add_argument('--fedora-branch', default="f18", help='The fedora release to target (default: f18)')
     parser.add_argument('--simulate', action='store_true', help='Do not commit any changes')
+    parser.add_argument('--check-installed', action='store_true', help='Check installed version against built version')
     parser.add_argument('--relax-version-checks', action='store_true', help='Relax checks on the version numbering')
     parser.add_argument('--no-build', action='store_true', help='Do not actually build, e.g. for rawhide')
     parser.add_argument('--cache', default="cache", help='The cache of checked out packages')
@@ -72,6 +84,17 @@ def main():
     parser.add_argument('--buildone', default=None, help='Only build one specific package')
     parser.add_argument('--buildroot', default=None, help='Use a custom buildroot, e.g. f18-gnome')
     args = parser.parse_args()
+
+    # use zif to check the installed version
+    if args.check_installed:
+        config = Zif.Config.new()
+        config.set_filename('/etc/zif/zif.conf')
+        store = Zif.StoreLocal.new()
+        print("    INFO: loading rpmdb")
+        state = Zif.State.new()
+        state.set_cancellable(Gio.Cancellable.new())
+        store.load(state)
+        print("    INFO: loaded rpmdb with %i items" % store.get_size())
 
     # parse the configuration file
     modules = []
@@ -205,14 +228,39 @@ def main():
             # j[3] = the LATEST-IS files
             j = json.loads(f.read())
 
-            # find any newer version
+            # find the newest version
+            newest_remote_version = '0'
             for remote_ver in j[2][module]:
                 if not args.relax_version_checks and not fnmatch.fnmatch(remote_ver, gnome_branch):
-                #if not args.relax_version_checks and not remote_ver.startswith(gnome_branch):
                     continue
-                rc = rpm.labelCompare((None, remote_ver, None), (None, version, None))
+                rc = rpm.labelCompare((None, remote_ver, None), (None, newest_remote_version, None))
                 if rc > 0:
-                    new_version = remote_ver
+                    newest_remote_version = remote_ver
+        if newest_remote_version == '0':
+            print "    WARNING: no remote versions matching the gnome branch", gnome_branch
+            print "    WARNING: check modules.xml is looking at the correct branch"
+            continue
+
+        print "    INFO: newest remote version is", newest_remote_version
+
+        # is this newer than the rpm spec file version
+        rc = rpm.labelCompare((None, newest_remote_version, None), (None, version, None))
+        if rc > 0:
+            new_version = newest_version
+
+        # check the installed version
+        if args.check_installed:
+            installed_evr = get_installed_package_version(store, pkg)
+            if installed_evr:
+                installed_ver = installed_evr.rsplit('-')[0]
+                if installed_ver == newest_remote_version:
+                    print "    INFO: installed version is up to date"
+                else:
+                    print "    INFO: installed version is", installed_ver
+                    rc = rpm.labelCompare((None, installed_ver, None), (None, newest_remote_version, None))
+                    if rc > 0:
+                        print "    WARNING: installed version is newer than gnome branch version"
+                        print "    WARNING: check modules.xml is looking at the correct branch"
 
         # nothing to do
         if new_version == None:
