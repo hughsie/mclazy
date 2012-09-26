@@ -148,7 +148,7 @@
   <project name="folks">
     <release version="f16">0.6.*</release>
     <release version="f17">0.6.*</release>
-    <release version="f18">0.6.*</release>
+    <release version="f18">0.7.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gcalctool">
@@ -224,7 +224,7 @@
   <project name="gnome-documents">
     <release version="f16">0.2.*</release>
     <release version="f17">0.4.*</release>
-    <release version="f18">0.6.*</release>
+    <release version="f18">3.6.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-doc-utils"/>
@@ -321,7 +321,7 @@
   <project name="json-glib">
     <release version="f16">0.14.*</release>
     <release version="f17">0.14.*</release>
-    <release version="f18">0.14.*</release>
+    <release version="f18">0.15.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libchamplain">
@@ -465,7 +465,7 @@
   <project name="pygobject" pkgname="pygobject3">
     <release version="f16">3.0.*</release>
     <release version="f17">3.2.*</release>
-    <release version="f18">3.2.*</release>
+    <release version="f18">3.4.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="rest">
