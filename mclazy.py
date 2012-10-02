@@ -82,6 +82,33 @@ def switch_branch_and_reset(pkg_cache, branch_name):
 
     return 0
 
+def sync_to_master_branch(pkg_cache, args):
+    rc = switch_branch_and_reset (pkg_cache, 'master')
+    if rc != 0:
+        print "    FAILED: switch to 'master' branch"
+        return
+
+    # First try a fast-forward merge
+    rc = run_command (pkg_cache, ['git', 'merge', '--ff-only', args.fedora_branch])
+    if rc != 0:
+        print "    INFO: No fast-forward merge possible"
+        # ... and if the ff merge fails, fall back to cherry-picking
+        rc = run_command (pkg_cache, ['git', 'cherry-pick', args.fedora_branch])
+        if rc != 0:
+            print "    FAILED: cherry-pick"
+            return
+
+    rc = run_command (pkg_cache, ['git', 'push'])
+    if rc != 0:
+        print "    FAILED: push"
+        return
+
+    # ... and switch back to the original branch
+    rc = switch_branch_and_reset (pkg_cache, args.fedora_branch)
+    if rc != 0:
+        print "    FAILED: switch branch"
+        return
+
 def main():
 
     # use the main mirror
@@ -338,6 +365,11 @@ def main():
         if rc != 0:
             print("    FAILED: push")
             continue
+
+        # Try to push the same change to master branch
+        if args.fedora_branch != 'rawhide':
+            sync_to_master_branch (pkg_cache, args)
+            run_command (pkg_cache, ['git', 'checkout', args.fedora_branch])
 
         # work out release tag
         if args.fedora_branch == "f16":
