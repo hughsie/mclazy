@@ -66,6 +66,22 @@ def get_installed_package_version(store, pkg_name):
     package = Zif.Package.array_get_newest(packages)
     return package.get_version()
 
+def switch_branch_and_reset(pkg_cache, branch_name):
+    rc = run_command (pkg_cache, ['git', 'clean', '-dfx'])
+    if rc != 0:
+        return rc
+    rc = run_command (pkg_cache, ['git', 'fetch'])
+    if rc != 0:
+        return rc
+    rc = run_command (pkg_cache, ['git', 'checkout', branch_name])
+    if rc != 0:
+        return rc
+    rc = run_command (pkg_cache, ['git', 'reset', '--hard', "origin/%s" % branch_name])
+    if rc != 0:
+        return rc
+
+    return 0
+
 def main():
 
     # use the main mirror
@@ -177,15 +193,11 @@ def main():
 
         else:
             print("    INFO: git repo already exists")
-            run_command (pkg_cache, ['git', 'clean', '-dfx'])
-            run_command (pkg_cache, ['git', 'reset', '--hard'])
 
-        run_command (pkg_cache, ['git', 'fetch'])
         if args.fedora_branch == 'rawhide':
-            run_command (pkg_cache, ['git', 'checkout', 'master'])
+            switch_branch_and_reset (pkg_cache, 'master')
         else:
-            run_command (pkg_cache, ['git', 'checkout', args.fedora_branch])
-        run_command (pkg_cache, ['git', 'pull'])
+            switch_branch_and_reset (pkg_cache, args.fedora_branch)
 
         # get the current version
         version = 0
