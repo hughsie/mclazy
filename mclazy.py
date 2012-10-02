@@ -122,6 +122,7 @@ def main():
     parser.add_argument('--check-installed', action='store_true', help='Check installed version against built version')
     parser.add_argument('--relax-version-checks', action='store_true', help='Relax checks on the version numbering')
     parser.add_argument('--no-build', action='store_true', help='Do not actually build, e.g. for rawhide')
+    parser.add_argument('--no-rawhide-sync', action='store_true', help='Do not push the same changes to git master branch')
     parser.add_argument('--cache', default="cache", help='The cache of checked out packages')
     parser.add_argument('--modules', default="modules.xml", help='The modules to search')
     parser.add_argument('--buildone', default=None, help='Only build one specific package')
@@ -367,7 +368,7 @@ def main():
             continue
 
         # Try to push the same change to master branch
-        if args.fedora_branch != 'rawhide':
+        if not args.no_rawhide_sync and args.fedora_branch != 'rawhide':
             sync_to_master_branch (pkg_cache, args)
             run_command (pkg_cache, ['git', 'checkout', args.fedora_branch])
 
