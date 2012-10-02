@@ -444,7 +444,8 @@
     <release version="rawhide">*</release>
   </project>
   <project name="orca">
-    <release version="rawhide">3.6.*</release>
+    <release version="f18">3.6.*</release>
+    <release version="rawhide">*</release>
   </project>
   <project name="pango">
     <release version="f16">1.29.*</release>
