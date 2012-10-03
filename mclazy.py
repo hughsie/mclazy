@@ -293,7 +293,7 @@ def main():
         # is this newer than the rpm spec file version
         rc = rpm.labelCompare((None, newest_remote_version, None), (None, version, None))
         if rc > 0:
-            new_version = newest_version
+            new_version = newest_remote_version
 
         # check the installed version
         if args.check_installed:
