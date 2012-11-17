@@ -70,6 +70,9 @@ def switch_branch_and_reset(pkg_cache, branch_name):
     rc = run_command (pkg_cache, ['git', 'clean', '-dfx'])
     if rc != 0:
         return rc
+    rc = run_command (pkg_cache, ['git', 'reset', '--hard', 'HEAD'])
+    if rc != 0:
+        return rc
     rc = run_command (pkg_cache, ['git', 'fetch'])
     if rc != 0:
         return rc
