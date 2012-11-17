@@ -226,9 +226,13 @@ def main():
             print("    INFO: git repo already exists")
 
         if args.fedora_branch == 'rawhide':
-            switch_branch_and_reset (pkg_cache, 'master')
+            rc = switch_branch_and_reset (pkg_cache, 'master')
         else:
-            switch_branch_and_reset (pkg_cache, args.fedora_branch)
+            rc = switch_branch_and_reset (pkg_cache, args.fedora_branch)
+
+        if rc != 0:
+            print("    FAILED: switch branch")
+            continue
 
         # get the current version
         version = 0
