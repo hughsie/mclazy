@@ -104,7 +104,7 @@
     <release version="f18">1.12.*</release>
     <release version="rawhide">1.12.*</release>
   </project>
-  <project name="clutter-gst">
+  <project name="clutter-gst" pkgname="clutter-gst2">
     <release version="f16">1.4.*</release>
     <release version="f17">1.5.*</release>
     <release version="f18">1.6.*</release>
