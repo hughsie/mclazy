@@ -120,7 +120,7 @@ def main():
 
     # read defaults from command line arguments
     parser = argparse.ArgumentParser(description='Automatically build Fedora packages for a GNOME release')
-    parser.add_argument('--fedora-branch', default="f18", help='The fedora release to target (default: f18)')
+    parser.add_argument('--fedora-branch', default="f19", help='The fedora release to target (default: f19)')
     parser.add_argument('--simulate', action='store_true', help='Do not commit any changes')
     parser.add_argument('--check-installed', action='store_true', help='Check installed version against built version')
     parser.add_argument('--relax-version-checks', action='store_true', help='Relax checks on the version numbering')
@@ -172,6 +172,8 @@ def main():
             release_glob['f17'] = "3.4.*"
         if 'f18' not in release_glob:
             release_glob['f18'] = "3.6.*"
+        if 'f19' not in release_glob:
+            release_glob['f19'] = "3.8.*"
         if 'rawhide' not in release_glob:
             release_glob['rawhide'] = "*"
         if args.buildone == None or args.buildone == pkgname:
@@ -386,8 +388,10 @@ def main():
             pkg_release_tag = 'fc17'
         elif args.fedora_branch == "f18":
             pkg_release_tag = 'fc18'
-        elif args.fedora_branch == "rawhide":
+        elif args.fedora_branch == "f19":
             pkg_release_tag = 'fc19'
+        elif args.fedora_branch == "rawhide":
+            pkg_release_tag = 'fc20'
         else:
             print "    WARNING: Failed to get release tag for", args.fedora_branch
             continue;
@@ -410,8 +414,10 @@ def main():
             pkg_branch_name = 'f17-build'
         elif args.fedora_branch == "f18":
             pkg_branch_name = 'f18-build'
-        elif args.fedora_branch == "rawhide":
+        elif args.fedora_branch == "f19":
             pkg_branch_name = 'f19-build'
+        elif args.fedora_branch == "rawhide":
+            pkg_branch_name = 'f20-build'
         else:
             print "    WARNING: Failed to get repo branch tag for", args.fedora_branch
             continue;

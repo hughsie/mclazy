@@ -35,17 +35,20 @@
     <release version="f16">2.30.*</release>
     <release version="f17">2.32.*</release>
     <release version="f18">2.34.*</release>
-    <release version="rawhide">2.34.*</release>
+    <release version="f19">2.36.*</release>
+    <release version="rawhide">2.36.*</release>
   </project>
   <project name="gtk+" pkgname="gtk3" wait_repo="1">
     <release version="f16">3.2.*</release>
     <release version="f17">3.4.*</release>
     <release version="f18">3.6.*</release>
+    <release version="f19">3.8.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libwacom" wait_repo="1">
     <release version="f17">*</release>
     <release version="f18">*</release>
+    <release version="f19">*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-control-center" pkgname="control-center"/>
@@ -63,24 +66,28 @@
     <release version="f16">2.2.*</release>
     <release version="f17">2.4.*</release>
     <release version="f18">2.6.*</release>
-    <release version="rawhide">2.5.*</release>
+    <release version="f19">2.8.*</release>
+    <release version="rawhide">2.9.*</release>
   </project>
   <project name="atkmm">
     <release version="f16">2.22.*</release>
     <release version="f17">2.22.*</release>
     <release version="f18">2.22.*</release>
+    <release version="f19">2.22.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="at-spi2-core">
     <release version="f16">2.2.*</release>
     <release version="f17">2.4.*</release>
     <release version="f18">2.6.*</release>
-    <release version="rawhide">2.5.*</release>
+    <release version="f19">2.8.*</release>
+    <release version="rawhide">2.9.*</release>
   </project>
   <project name="at-spi2-atk">
     <release version="f16">2.2.*</release>
     <release version="f17">2.4.*</release>
     <release version="f18">2.6.*</release>
+    <release version="f19">2.8.*</release>
     <release version="rawhide">2.5.*</release>
   </project>
   <project name="baobab"/>
@@ -89,12 +96,14 @@
     <release version="f16">0.0.*</release>
     <release version="f17">0.0.*</release>
     <release version="f18">0.0.*</release>
+    <release version="f19">0.0.*</release>
     <release version="rawhide">0.0.*</release>
   </project>
   <project name="caribou">
     <release version="f16">0.4.*</release>
     <release version="f17">0.4.*</release>
     <release version="f18">0.4.*</release>
+    <release version="f19">0.4.*</release>
     <release version="rawhide">0.4.*</release>
   </project>
   <project name="cheese"/>
@@ -102,30 +111,35 @@
     <release version="f16">1.8.*</release>
     <release version="f17">1.10.*</release>
     <release version="f18">1.12.*</release>
-    <release version="rawhide">1.12.*</release>
+    <release version="f19">1.14.*</release>
+    <release version="rawhide">1.14.*</release>
   </project>
   <project name="clutter-gst" pkgname="clutter-gst2">
     <release version="f16">1.4.*</release>
     <release version="f17">1.5.*</release>
     <release version="f18">1.6.*</release>
+    <release version="f19">1.7.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="clutter-gtk">
     <release version="f16">1.0.*</release>
     <release version="f17">1.2.*</release>
     <release version="f18">1.4.*</release>
+    <release version="f19">1.6.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="cogl">
     <release version="f16">1.8.*</release>
     <release version="f17">1.10.*</release>
     <release version="f18">1.12.*</release>
+    <release version="f19">1.14.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="dconf">
     <release version="f16">0.10.*</release>
     <release version="f17">0.12.*</release>
     <release version="f18">0.14.*</release>
+    <release version="f19">0.16.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="devhelp"/>
@@ -137,6 +151,7 @@
     <release version="f16">3.2.*</release>
     <release version="f17">3.4.*</release>
     <release version="f18">3.6.*</release>
+    <release version="f19">3.8.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
@@ -149,18 +164,21 @@
     <release version="f16">0.6.*</release>
     <release version="f17">0.6.*</release>
     <release version="f18">0.8.*</release>
+    <release version="f19">0.10.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gcalctool">
     <release version="f16">6.2.*</release>
     <release version="f17">6.4.*</release>
     <release version="f18">6.6.*</release>
+    <release version="f19">6.8.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="GConf" pkgname="GConf2">
     <release version="f16">3.2.*</release>
     <release version="f17">3.2.*</release>
     <release version="f18">3.2.*</release>
+    <release version="f19">3.2.*</release>
     <release version="rawhide">3.2.*</release>
   </project>
   <project name="gcr"/>
@@ -168,6 +186,7 @@
     <release version="f16">2.24.*</release>
     <release version="f17">2.26.*</release>
     <release version="f18">2.26.*</release>
+    <release version="f19">2.26.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gdm"/>
@@ -184,11 +203,13 @@
     <release version="f16">1.30.*</release>
     <release version="f17">1.32.*</release>
     <release version="f18">1.34.*</release>
+    <release version="f19">1.36.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="glade">
     <release version="f17">3.12.*</release>
     <release version="f18">3.14.*</release>
+    <release version="f19">3.16.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
@@ -202,12 +223,14 @@
     <release version="f16">2.30.*</release>
     <release version="f17">2.32.*</release>
     <release version="f18">2.34.*</release>
-    <release version="rawhide">2.34.*</release>
+    <release version="f19">2.36.*</release>
+    <release version="rawhide">2.36.*</release>
   </project>
   <project name="gmime">
     <release version="f16">2.5.*</release>
     <release version="f17">2.6.*</release>
     <release version="f18">2.6.*</release>
+    <release version="f19">2.6.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-applets"/>
@@ -225,6 +248,7 @@
     <release version="f16">0.2.*</release>
     <release version="f17">0.4.*</release>
     <release version="f18">3.6.*</release>
+    <release version="f19">3.8.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-doc-utils"/>
@@ -240,6 +264,7 @@
     <release version="f16">0.1.*</release>
     <release version="f17">0.1.*</release>
     <release version="f18">0.1.*</release>
+    <release version="f19">0.1.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-keyring"/>
@@ -266,29 +291,34 @@
     <release version="f16">1.30.*</release>
     <release version="f17">1.32.*</release>
     <release version="f18">1.34.*</release>
+    <release version="f19">1.36.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gst-plugins-base" pkgname="gstreamer-plugins-base">
     <release version="f16">0.10.*</release>
     <release version="f17">0.10.*</release>
     <release version="f18">0.10.*</release>
+    <release version="f19">0.10.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gst-plugins-good" pkgname="gstreamer-plugins-good">
     <release version="f16">0.10.*</release>
     <release version="f17">0.10.*</release>
     <release version="f18">0.10.*</release>
+    <release version="f19">0.10.*</release>
     <release version="rawhide">*</release>  </project>
   <project name="gstreamer">
     <release version="f16">0.10.*</release>
     <release version="f17">0.10.*</release>
     <release version="f18">0.10.*</release>
+    <release version="f19">0.10.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gtk-doc">
     <release version="f16">1.*</release>
     <release version="f17">1.*</release>
     <release version="f18">1.*</release>
+    <release version="f19">1.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
@@ -309,6 +339,7 @@
     <release version="f16">3.2.*</release>
     <release version="f17">3.4.*</release>
     <release version="f18">3.6.*</release>
+    <release version="f19">3.8.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gucharmap"/>
@@ -316,24 +347,28 @@
     <release version="f16">1.10.*</release>
     <release version="f17">1.12.*</release>
     <release version="f18">1.14.*</release>
+    <release version="f19">1.16.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="json-glib">
     <release version="f16">0.14.*</release>
     <release version="f17">0.14.*</release>
     <release version="f18">0.15.*</release>
+    <release version="f19">0.15.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libchamplain">
     <release version="f16">0.12.*</release>
     <release version="f17">0.12.*</release>
     <release version="f18">0.12.*</release>
+    <release version="f19">0.12.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libcroco">
     <release version="f16">0.6.*</release>
     <release version="f17">0.6.*</release>
     <release version="f18">0.6.*</release>
+    <release version="f19">0.6.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libcryptui"/>
@@ -341,6 +376,7 @@
     <release version="f16">0.10.*</release>
     <release version="f17">0.12.*</release>
     <release version="f18">0.14.*</release>
+    <release version="f19">0.16.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
@@ -360,42 +396,49 @@
     <release version="f16">2.28.*</release>
     <release version="f17">2.28.*</release>
     <release version="f18">2.28.*</release>
+    <release version="f19">2.28.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libgweather">
     <release version="f16">3.2.*</release>
     <release version="f17">3.4.*</release>
     <release version="f18">3.6.*</release>
+    <release version="f19">3.8.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libgxps">
     <release version="f16">0.2.*</release>
     <release version="f17">0.2.*</release>
     <release version="f18">0.2.*</release>
+    <release version="f19">0.2.*</release>
     <release version="rawhide">0.2.*</release>
   </project>
   <project name="libnotify">
     <release version="f16">0.7.*</release>
     <release version="f17">0.7.*</release>
     <release version="f18">0.7.*</release>
+    <release version="f19">0.7.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libpeas">
     <release version="f16">1.2.*</release>
     <release version="f17">1.4.*</release>
     <release version="f18">1.6.*</release>
+    <release version="f19">1.8.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="librsvg" pkgname="librsvg2">
     <release version="f16">2.34.*</release>
     <release version="f17">2.36.*</release>
     <release version="f18">2.38.*</release>
+    <release version="f19">2.40.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libsoup">
     <release version="f16">2.36.*</release>
     <release version="f17">2.38.*</release>
     <release version="f18">2.40.*</release>
+    <release version="f19">2.42.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libwnck" pkgname="libwnck3"/>
@@ -403,12 +446,14 @@
     <release version="f16">5.1.*</release>
     <release version="f17">5.2.*</release>
     <release version="f18">5.3.*</release>
+    <release version="f19">5.4.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="metacity">
     <release version="f16">2.34.*</release>
     <release version="f17">2.34.*</release>
     <release version="f18">2.34.*</release>
+    <release version="f19">2.34.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="mousetweaks"/>
@@ -418,11 +463,13 @@
     <release version="f16">3.0.*</release>
     <release version="f17">3.0.*</release>
     <release version="f18">3.0.*</release>
+    <release version="f19">3.0.*</release>
     <release version="rawhide">3.0.*</release>
   </project>
   <project name="nemiver">
     <release version="f17">0.9.*</release>
     <release version="f18">0.9.*</release>
+    <release version="f19">0.9.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
@@ -441,22 +488,26 @@
     <release version="f16">0.7.*</release>
     <release version="f17">0.7.*</release>
     <release version="f18">0.7.*</release>
+    <release version="f19">0.7.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="orca">
     <release version="f18">3.6.*</release>
+    <release version="f19">3.8.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="pango">
     <release version="f16">1.29.*</release>
     <release version="f17">1.30.*</release>
     <release version="f18">1.32.*</release>
+    <release version="f19">1.34.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="pangomm">
     <release version="f16">2.28.*</release>
     <release version="f17">2.28.*</release>
     <release version="f18">2.28.*</release>
+    <release version="f19">2.28.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
@@ -467,18 +518,21 @@
     <release version="f16">3.0.*</release>
     <release version="f17">3.2.*</release>
     <release version="f18">3.4.*</release>
+    <release version="f19">3.6.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="rest">
     <release version="f16">0.7.*</release>
     <release version="f17">0.7.*</release>
     <release version="f18">0.7.*</release>
+    <release version="f19">0.7.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="rygel">
     <release version="f16">0.12.*</release>
     <release version="f17">0.14.*</release>
     <release version="f18">0.16.*</release>
+    <release version="f19">0.18.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="seahorse"/>
@@ -486,6 +540,7 @@
     <release version="f16">3.2.*</release>
     <release version="f17">3.2.*</release>
     <release version="f18">3.2.*</release>
+    <release version="f19">3.2.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="simple-scan"/>
@@ -500,6 +555,7 @@
     <release version="f16">2.32.*</release>
     <release version="f17">2.32.*</release>
     <release version="f18">3.4.*</release>
+    <release version="f19">3.6.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
@@ -516,6 +572,7 @@
     <release version="f16">0.30.*</release>
     <release version="f17">0.32.*</release>
     <release version="f18">0.34.*</release>
+    <release version="f19">0.36.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="yelp"/>
