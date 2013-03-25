@@ -114,12 +114,6 @@ def sync_to_master_branch(pkg_cache, args):
         print "    FAILED: build"
         return
 
-    # ... and switch back to the original branch
-    rc = switch_branch_and_reset (pkg_cache, args.fedora_branch)
-    if rc != 0:
-        print "    FAILED: switch branch"
-        return
-
 # first two digits of version
 def majorminor(ver):
     v = ver.split('.')
