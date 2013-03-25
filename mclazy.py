@@ -74,9 +74,6 @@ def switch_branch_and_reset(pkg_cache, branch_name):
     rc = run_command (pkg_cache, ['git', 'reset', '--hard', 'HEAD'])
     if rc != 0:
         return rc
-    rc = run_command (pkg_cache, ['git', 'fetch'])
-    if rc != 0:
-        return rc
     rc = run_command (pkg_cache, ['git', 'checkout', branch_name])
     if rc != 0:
         return rc
@@ -233,6 +230,10 @@ def main():
 
         else:
             print("    INFO: git repo already exists")
+            rc = run_command (pkg_cache, ['git', 'fetch'])
+            if rc != 0:
+                print("    FAILED: to update repo %s" % pkg)
+                continue
 
         if args.fedora_branch == 'rawhide':
             rc = switch_branch_and_reset (pkg_cache, 'master')
