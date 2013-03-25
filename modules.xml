@@ -484,7 +484,7 @@
   <project name="vte" pkgname="vte3">
     <release version="f17">0.32.*</release>
     <release version="f18">0.34.*</release>
-    <release version="f19">0.36.*</release>
+    <release version="f19">0.34.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="yelp"/>
