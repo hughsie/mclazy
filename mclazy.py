@@ -107,6 +107,12 @@ def sync_to_master_branch(pkg_cache, args):
         print "    FAILED: push"
         return
 
+    # Build the package
+    rc = run_command (pkg_cache, ['fedpkg', 'build', '--nowait'])
+    if rc != 0:
+        print "    FAILED: build"
+        return
+
     # ... and switch back to the original branch
     rc = switch_branch_and_reset (pkg_cache, args.fedora_branch)
     if rc != 0:
