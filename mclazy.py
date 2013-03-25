@@ -367,11 +367,17 @@ def main():
                 print("    FAILED: to build %s as patches did not apply" % pkg)
                 continue
 
-        # commit and push changelog
+        # commit the changes
+        rc = run_command (pkg_cache, ['git', 'commit', '-a', "--message=%s" % comment])
+        if rc != 0:
+            print("    FAILED: commit")
+            continue
+
+        # push the changes
         if args.simulate:
             print("    INFO: not pushing as simulating")
             continue
-        rc = run_command (pkg_cache, ['fedpkg', 'commit', "-m %s" % comment, '-p'])
+        rc = run_command (pkg_cache, ['git', 'push'])
         if rc != 0:
             print("    FAILED: push")
             continue
