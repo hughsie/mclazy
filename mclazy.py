@@ -99,6 +99,7 @@ def sync_to_master_branch(pkg_cache, args):
         # ... and if the ff merge fails, fall back to cherry-picking
         rc = run_command (pkg_cache, ['git', 'cherry-pick', args.fedora_branch])
         if rc != 0:
+            run_command (pkg_cache, ['git', 'cherry-pick', '--abort'])
             print "    FAILED: cherry-pick"
             return
 
