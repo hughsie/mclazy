@@ -22,6 +22,7 @@ import os
 import subprocess
 import urllib
 import json
+import re
 import rpm
 import argparse
 import fnmatch
@@ -111,6 +112,11 @@ def sync_to_master_branch(pkg_cache, args):
     if rc != 0:
         print "    FAILED: switch branch"
         return
+
+# first two digits of version
+def majorminor(ver):
+    v = ver.split('.')
+    return "%s.%s" % (v[0], v[1])
 
 def main():
 
@@ -352,6 +358,10 @@ def main():
                         line = replace_spec_value(line, new_version + '\n')
                     elif line.startswith('Release:'):
                         line = replace_spec_value(line, '0%{?dist}\n')
+                    elif line.startswith(('Source:', 'Source0:')):
+                        line = re.sub("/" + majorminor(version) + "/",
+                                      "/" + majorminor(new_version) + "/",
+                                      line)
                     tmp_spec.write(line)
         os.rename(spec_filename + ".tmp", spec_filename)
 
