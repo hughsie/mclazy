@@ -164,9 +164,10 @@
   <project name="gdk-pixbuf" pkgname="gdk-pixbuf2">
     <release version="f17">2.26.*</release>
     <release version="f18">2.26.*</release>
-    <release version="f19">2.26.*</release>
+    <release version="f19">2.28.*</release>
     <release version="rawhide">*</release>
   </project>
+  <project name="gdl" pkgname="libgdl"/>
   <project name="gdm"/>
   <project name="gedit"/>
 <!--
@@ -224,9 +225,7 @@
   </project>
   <project name="gnome-doc-utils"/>
   <project name="gnome-dvb-daemon"/>
-<!--
   <project name="gnome-font-viewer"/>
--->
   <project name="gnome-games"/>
   <project name="gnome-icon-theme"/>
   <project name="gnome-icon-theme-extras"/>
@@ -434,10 +433,16 @@
   We only use this in fallback mode, and there are going to be no more releases
   <project name="polkit-gnome"/>
 -->
+  <project name="pyatspi">
+    <release version="f17">2.4.*</release>
+    <release version="f18">2.6.*</release>
+    <release version="f19">2.8.*</release>
+    <release version="rawhide">*</release>
+  </project>
   <project name="pygobject" pkgname="pygobject3">
     <release version="f17">3.2.*</release>
     <release version="f18">3.4.*</release>
-    <release version="f19">3.6.*</release>
+    <release version="f19">3.8.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="rest">
@@ -453,6 +458,8 @@
     <release version="rawhide">*</release>
   </project>
   <project name="seahorse"/>
+  <project name="seahorse-nautilus"/>
+  <project name="seahorse-sharing"/>
   <project name="seed">
     <release version="f17">3.2.*</release>
     <release version="f18">3.2.*</release>
