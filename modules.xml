@@ -107,15 +107,14 @@
     <release version="rawhide">1.14.*</release>
   </project>
   <project name="clutter-gst" pkgname="clutter-gst2">
-    <release version="f17">1.5.*</release>
-    <release version="f18">1.6.*</release>
-    <release version="f19">1.7.*</release>
+    <release version="f18">2.0.*</release>
+    <release version="f19">2.0.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="clutter-gtk">
     <release version="f17">1.2.*</release>
     <release version="f18">1.4.*</release>
-    <release version="f19">1.6.*</release>
+    <release version="f19">1.4.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="cogl">
@@ -146,12 +145,6 @@
     <release version="f17">0.6.*</release>
     <release version="f18">0.8.*</release>
     <release version="f19">0.10.*</release>
-    <release version="rawhide">*</release>
-  </project>
-  <project name="gcalctool">
-    <release version="f17">6.4.*</release>
-    <release version="f18">6.6.*</release>
-    <release version="f19">6.8.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="GConf" pkgname="GConf2">
@@ -210,6 +203,7 @@
   <project name="gnome-backgrounds"/>
   <project name="gnome-bluetooth"/>
   <project name="gnome-boxes"/>
+  <project name="gnome-calculator"/>
   <project name="gnome-color-manager"/>
   <project name="gnome-common"/>
   <project name="gnome-contacts"/>
@@ -223,10 +217,19 @@
     <release version="f19">3.8.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="gnome-doc-utils"/>
-  <project name="gnome-dvb-daemon"/>
+  <project name="gnome-doc-utils">
+    <release version="f17">0.20.*</release>
+    <release version="f18">0.20.*</release>
+    <release version="f19">0.20.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="gnome-dvb-daemon">
+    <release version="f17">0.2.*</release>
+    <release version="f18">0.2.*</release>
+    <release version="f19">0.2.*</release>
+    <release version="rawhide">*</release>
+  </project>
   <project name="gnome-font-viewer"/>
-  <project name="gnome-games"/>
   <project name="gnome-icon-theme"/>
   <project name="gnome-icon-theme-extras"/>
   <project name="gnome-icon-theme-symbolic"/>
@@ -237,12 +240,16 @@
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-keyring"/>
-  <project name="gnome-media"/>
   <project name="gnome-menus"/>
   <project name="gnome-online-accounts"/>
   <project name="gnome-packagekit"/>
   <project name="gnome-power-manager"/>
-  <project name="gnome-screensaver"/>
+  <project name="gnome-screensaver">
+    <release version="f17">3.4.*</release>
+    <release version="f18">3.6.*</release>
+    <release version="f19">3.6.*</release>
+    <release version="rawhide">*</release>
+  </project>
   <project name="gnome-screenshot"/>
   <project name="gnome-search-tool"/>
   <project name="gnome-session"/>
@@ -254,7 +261,12 @@
   <project name="gnome-tweak-tool"/>
   <project name="gnome-user-docs"/>
   <project name="gnome-user-share"/>
-  <project name="gnome-video-effects"/>
+  <project name="gnome-video-effects">
+    <release version="f17">0.4.*</release>
+    <release version="f18">0.4.*</release>
+    <release version="f19">0.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
   <project name="gobject-introspection">
     <release version="f17">1.32.*</release>
     <release version="f18">1.34.*</release>
@@ -325,8 +337,8 @@
   <project name="libcryptui"/>
   <project name="libgdata">
     <release version="f17">0.12.*</release>
-    <release version="f18">0.14.*</release>
-    <release version="f19">0.16.*</release>
+    <release version="f18">0.13.*</release>
+    <release version="f19">0.13.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
@@ -368,8 +380,8 @@
   </project>
   <project name="librsvg" pkgname="librsvg2">
     <release version="f17">2.36.*</release>
-    <release version="f18">2.38.*</release>
-    <release version="f19">2.40.*</release>
+    <release version="f18">2.36.*</release>
+    <release version="f19">2.38.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libsoup">
@@ -378,7 +390,12 @@
     <release version="f19">2.42.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="libwnck" pkgname="libwnck3"/>
+  <project name="libwnck" pkgname="libwnck3">
+    <release version="f17">3.4.*</release>
+    <release version="f18">3.4.*</release>
+    <release version="f19">3.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
   <project name="libxklavier">
     <release version="f17">5.2.*</release>
     <release version="f18">5.3.*</release>
@@ -476,13 +493,14 @@
   <project name="totem-pl-parser">
     <release version="f17">2.32.*</release>
     <release version="f18">3.4.*</release>
-    <release version="f19">3.6.*</release>
+    <release version="f19">3.4.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
   <project name="vala">
     <release version="f17">0.16.*</release>
-    <release version="f18">0.16.*</release>
+    <release version="f18">0.18.*</release>
+    <release version="f19">0.20.*</release>
     <release version="rawhide">*</release>
   </project>
 -->
