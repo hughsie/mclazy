@@ -148,6 +148,7 @@
     <release version="f19">0.10.*</release>
     <release version="rawhide">*</release>
   </project>
+  <project name="four-in-a-row"/>
   <project name="GConf" pkgname="GConf2">
     <release version="f17">3.2.*</release>
     <release version="f18">3.2.*</release>
@@ -241,7 +242,10 @@
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-keyring"/>
+  <project name="gnome-klotski"/>
+  <project name="gnome-mahjongg"/>
   <project name="gnome-menus"/>
+  <project name="gnome-mines"/>
   <project name="gnome-online-accounts"/>
   <project name="gnome-packagekit"/>
   <project name="gnome-photos"/>
@@ -256,9 +260,11 @@
   <project name="gnome-search-tool"/>
   <project name="gnome-session"/>
   <project name="gnome-shell"/>
+  <project name="gnome-sudoku"/>
   <project name="gnome-system-log"/>
   <project name="gnome-system-monitor"/>
   <project name="gnome-terminal"/>
+  <project name="gnome-tetravex"/>
   <project name="gnome-themes-standard"/>
   <project name="gnome-tweak-tool"/>
   <project name="gnome-user-docs"/>
@@ -324,6 +330,7 @@
     <release version="f19">0.15.*</release>
     <release version="rawhide">*</release>
   </project>
+  <project name="iagno"/>
   <project name="libchamplain">
     <release version="f17">0.12.*</release>
     <release version="f18">0.12.*</release>
@@ -404,6 +411,7 @@
     <release version="f19">5.4.*</release>
     <release version="rawhide">*</release>
   </project>
+  <project name="lightsoff"/>
   <project name="metacity">
     <release version="f17">2.34.*</release>
     <release version="f18">2.34.*</release>
@@ -491,6 +499,7 @@
     <release version="f17">0.4.*</release>
     <release version="rawhide">*</release>
   </project>
+  <project name="swell-foop"/>
   <project name="totem"/>
   <project name="totem-pl-parser">
     <release version="f17">2.32.*</release>
