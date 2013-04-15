@@ -13,6 +13,7 @@
   By default, the following version mapping is assumed:
     f17     = 3.4.*
     f18     = 3.6.*
+    f19     = 3.8.*
     rawhide = * (the newest upsream version)
 
   If the package name differs from the upstream tarball name, then do
