@@ -243,6 +243,7 @@
   <project name="gnome-menus"/>
   <project name="gnome-online-accounts"/>
   <project name="gnome-packagekit"/>
+  <project name="gnome-photos"/>
   <project name="gnome-power-manager"/>
   <project name="gnome-screensaver">
     <release version="f17">3.4.*</release>
