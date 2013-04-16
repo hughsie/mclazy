@@ -184,12 +184,12 @@
     <release version="f19">3.16.*</release>
     <release version="rawhide">*</release>
   </project>
-<!--
   <project name="glibmm" pkgname="glibmm24">
     <release version="f17">2.32.*</release>
+    <release version="f18">2.34.*</release>
+    <release version="f19">2.36.*</release>
     <release version="rawhide">*</release>
   </project>
--->
   <project name="glib-networking">
     <release version="f17">2.32.*</release>
     <release version="f18">2.34.*</release>
@@ -206,6 +206,7 @@
   <project name="gnome-bluetooth"/>
   <project name="gnome-boxes"/>
   <project name="gnome-calculator"/>
+  <project name="gnome-clocks"/>
   <project name="gnome-color-manager"/>
   <project name="gnome-common"/>
   <project name="gnome-contacts"/>
@@ -275,6 +276,7 @@
     <release version="f19">0.4.*</release>
     <release version="rawhide">*</release>
   </project>
+  <project name="gnome-weather"/>
   <project name="gobject-introspection">
     <release version="f17">1.32.*</release>
     <release version="f18">1.34.*</release>
@@ -310,12 +312,12 @@
     <release version="rawhide">2.20.*</release>
   </project>
 -->
-<!--
   <project name="gtkmm" pkgname="gtkmm30">
     <release version="f17">3.4.*</release>
+    <release version="f18">3.6.*</release>
+    <release version="f19">3.8.*</release>
     <release version="rawhide">*</release>
   </project>
--->
   <project name="gtksourceview" pkgname="gtksourceview3"/>
   <project name="gucharmap"/>
   <project name="gvfs">
@@ -327,7 +329,7 @@
   <project name="json-glib">
     <release version="f17">0.14.*</release>
     <release version="f18">0.15.*</release>
-    <release version="f19">0.15.*</release>
+    <release version="f19">0.16.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="iagno"/>
