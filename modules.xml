@@ -181,7 +181,7 @@
   <project name="glade">
     <release version="f17">3.12.*</release>
     <release version="f18">3.14.*</release>
-    <release version="f19">3.16.*</release>
+    <release version="f19">3.14.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="glibmm" pkgname="glibmm24">
