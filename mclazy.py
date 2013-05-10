@@ -30,6 +30,13 @@ from gi.repository import Zif
 from gi.repository import Gio
 from xml.etree.ElementTree import ElementTree
 
+COLOR_HEADER = '\033[95m'
+COLOR_OKBLUE = '\033[94m'
+COLOR_OKGREEN = '\033[92m'
+COLOR_WARNING = '\033[93m'
+COLOR_FAIL = '\033[91m'
+COLOR_ENDC = '\033[0m'
+
 def run_command(cwd, argv):
     print("    INFO: running %s" % " ".join(argv))
     p = subprocess.Popen(argv, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -86,7 +93,7 @@ def switch_branch_and_reset(pkg_cache, branch_name):
 def sync_to_master_branch(pkg_cache, args):
     rc = switch_branch_and_reset (pkg_cache, 'master')
     if rc != 0:
-        print "    FAILED: switch to 'master' branch"
+        print COLOR_FAIL + "    FAILED: switch to 'master' branch" + COLOR_ENDC
         return
 
     # First try a fast-forward merge
@@ -97,18 +104,18 @@ def sync_to_master_branch(pkg_cache, args):
         rc = run_command (pkg_cache, ['git', 'cherry-pick', args.fedora_branch])
         if rc != 0:
             run_command (pkg_cache, ['git', 'cherry-pick', '--abort'])
-            print "    FAILED: cherry-pick"
+            print COLOR_FAIL + "    FAILED: cherry-pick" + COLOR_ENDC
             return
 
     rc = run_command (pkg_cache, ['git', 'push'])
     if rc != 0:
-        print "    FAILED: push"
+        print COLOR_FAIL + "    FAILED: push" + COLOR_ENDC
         return
 
     # Build the package
     rc = run_command (pkg_cache, ['fedpkg', 'build', '--nowait'])
     if rc != 0:
-        print "    FAILED: build"
+        print COLOR_FAIL + "    FAILED: build" + COLOR_ENDC
         return
 
 # first two digits of version
@@ -225,14 +232,14 @@ def main():
             print("    INFO: git repo does not exist")
             rc = run_command(args.cache, ["fedpkg", "co", pkg])
             if rc != 0:
-                print("    FAILED: to checkout %s" % pkg)
+                print(COLOR_FAIL + "    FAILED: to checkout %s" % pkg + COLOR_ENDC)
                 continue
 
         else:
             print("    INFO: git repo already exists")
             rc = run_command (pkg_cache, ['git', 'fetch'])
             if rc != 0:
-                print("    FAILED: to update repo %s" % pkg)
+                print(COLOR_FAIL + "    FAILED: to update repo %s" % pkg)
                 continue
 
         if args.fedora_branch == 'rawhide':
@@ -241,7 +248,7 @@ def main():
             rc = switch_branch_and_reset (pkg_cache, args.fedora_branch)
 
         if rc != 0:
-            print("    FAILED: switch branch")
+            print(COLOR_FAIL + "    FAILED: switch branch" + COLOR_ENDC)
             continue
 
         # get the current version
@@ -376,13 +383,13 @@ def main():
         if not args.simulate:
             rc = run_command (pkg_cache, ['fedpkg', 'prep'])
             if rc != 0:
-                print("    FAILED: to build %s as patches did not apply" % pkg)
+                print(COLOR_FAIL + "    FAILED: to build %s as patches did not apply" % pkg + COLOR_ENDC)
                 continue
 
         # commit the changes
         rc = run_command (pkg_cache, ['git', 'commit', '-a', "--message=%s" % comment])
         if rc != 0:
-            print("    FAILED: commit")
+            print(COLOR_FAIL + "    FAILED: commit" + COLOR_ENDC)
             continue
 
         # push the changes
@@ -391,7 +398,7 @@ def main():
             continue
         rc = run_command (pkg_cache, ['git', 'push'])
         if rc != 0:
-            print("    FAILED: push")
+            print(COLOR_FAIL + "    FAILED: push" + COLOR_ENDC)
             continue
 
         # Try to push the same change to master branch
@@ -416,13 +423,13 @@ def main():
 
         # build package
         if not args.no_build:
-            print("    INFO: Building %s-%s-1.%s" % (pkg, new_version, pkg_release_tag))
+            print(COLOR_OKBLUE + "    INFO: Building %s-%s-1.%s" % (pkg, new_version, pkg_release_tag) + COLOR_ENDC)
             if args.buildroot:
                 rc = run_command (pkg_cache, ['fedpkg', 'build', '--target', args.buildroot])
             else:
                 rc = run_command (pkg_cache, ['fedpkg', 'build'])
             if rc != 0:
-                print("    FAILED: build")
+                print(COLOR_FAIL + "    FAILED: build" + COLOR_ENDC)
                 continue
 
         # work out repo branch
@@ -437,18 +444,18 @@ def main():
         elif args.fedora_branch == "rawhide":
             pkg_branch_name = 'f20-build'
         else:
-            print "    WARNING: Failed to get repo branch tag for", args.fedora_branch
+            print(COLOR_FAIL + "    WARNING: Failed to get repo branch tag for" + args.fedora_branch + COLOR_ENDC)
             continue;
 
         # wait for repo to sync
         if wait_repo and args.fedora_branch == "rawhide":
             rc = run_command (pkg_cache, ['koji', 'wait-repo', pkg_branch_name, '--build', "%s-%s-1.%s" % (pkg, new_version, pkg_release_tag)])
             if rc != 0:
-                print("    FAILED: wait for repo")
+                print(COLOR_FAIL + "    FAILED: wait for repo" + COLOR_ENDC)
                 continue
 
         # success!
-        print("    SUCCESS: waiting for build to complete")
+        print(COLOR_OKGREEN + "    SUCCESS: waited for build to complete" + COLOR_ENDC)
 
         # unlock build
         unlock_file(lock_filename)
