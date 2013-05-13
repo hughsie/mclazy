@@ -142,6 +142,7 @@
   <project name="evolution-data-server"/>
 -->
   <project name="file-roller"/>
+  <project name="five-or-more"/>
   <project name="folks">
     <release version="f17">0.6.*</release>
     <release version="f18">0.8.*</release>
@@ -206,6 +207,7 @@
   <project name="gnome-bluetooth"/>
   <project name="gnome-boxes"/>
   <project name="gnome-calculator"/>
+  <project name="gnome-chess"/>
   <project name="gnome-clocks"/>
   <project name="gnome-color-manager"/>
   <project name="gnome-common"/>
@@ -247,10 +249,12 @@
   <project name="gnome-mahjongg"/>
   <project name="gnome-menus"/>
   <project name="gnome-mines"/>
+  <project name="gnome-nibbles"/>
   <project name="gnome-online-accounts"/>
   <project name="gnome-packagekit"/>
   <project name="gnome-photos"/>
   <project name="gnome-power-manager"/>
+  <project name="gnome-robots"/>
   <project name="gnome-screensaver">
     <release version="f17">3.4.*</release>
     <release version="f18">3.6.*</release>
@@ -455,7 +459,7 @@
   <project name="pangomm">
     <release version="f17">2.28.*</release>
     <release version="f18">2.28.*</release>
-    <release version="f19">2.28.*</release>
+    <release version="f19">2.34.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
@@ -474,6 +478,7 @@
     <release version="f19">3.8.*</release>
     <release version="rawhide">*</release>
   </project>
+  <project name="quadrapassel"/>
   <project name="rest">
     <release version="f17">0.7.*</release>
     <release version="f18">0.7.*</release>
@@ -502,6 +507,7 @@
     <release version="rawhide">*</release>
   </project>
   <project name="swell-foop"/>
+  <project name="tali"/>
   <project name="totem"/>
   <project name="totem-pl-parser">
     <release version="f17">2.32.*</release>
