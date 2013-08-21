@@ -213,12 +213,14 @@
     <release version="f17">2.32.*</release>
     <release version="f18">2.34.*</release>
     <release version="f19">2.36.*</release>
-    <release version="rawhide">2.36.*</release>
+    <release version="f20">2.37.*</release>
+    <release version="rawhide">2.37.*</release>
   </project>
   <project name="gmime">
     <release version="f17">2.6.*</release>
     <release version="f18">2.6.*</release>
     <release version="f19">2.6.*</release>
+    <release version="f20">2.6.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-backgrounds"/>
@@ -238,18 +240,21 @@
     <release version="f17">0.4.*</release>
     <release version="f18">3.6.*</release>
     <release version="f19">3.8.*</release>
+    <release version="f19">3.9.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-doc-utils">
     <release version="f17">0.20.*</release>
     <release version="f18">0.20.*</release>
     <release version="f19">0.20.*</release>
+    <release version="f20">0.20.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-dvb-daemon">
     <release version="f17">0.2.*</release>
     <release version="f18">0.2.*</release>
     <release version="f19">0.2.*</release>
+    <release version="f20">0.2.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-font-viewer"/>
@@ -260,6 +265,7 @@
     <release version="f17">0.1.*</release>
     <release version="f18">0.1.*</release>
     <release version="f19">0.1.*</release>
+    <release version="f20">0.1.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-keyring"/>
@@ -277,6 +283,7 @@
     <release version="f17">3.4.*</release>
     <release version="f18">3.6.*</release>
     <release version="f19">3.6.*</release>
+    <release version="f20">3.6.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-screenshot"/>
@@ -296,6 +303,7 @@
     <release version="f17">0.4.*</release>
     <release version="f18">0.4.*</release>
     <release version="f19">0.4.*</release>
+    <release version="f20">0.4.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-weather"/>
@@ -303,29 +311,34 @@
     <release version="f17">1.32.*</release>
     <release version="f18">1.34.*</release>
     <release version="f19">1.36.*</release>
+    <release version="f20">1.37.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gst-plugins-base" pkgname="gstreamer-plugins-base">
     <release version="f17">0.10.*</release>
     <release version="f18">0.10.*</release>
     <release version="f19">0.10.*</release>
+    <release version="f20">0.10.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gst-plugins-good" pkgname="gstreamer-plugins-good">
     <release version="f17">0.10.*</release>
     <release version="f18">0.10.*</release>
     <release version="f19">0.10.*</release>
+    <release version="f20">0.10.*</release>
     <release version="rawhide">*</release>  </project>
   <project name="gstreamer">
     <release version="f17">0.10.*</release>
     <release version="f18">0.10.*</release>
     <release version="f19">0.10.*</release>
+    <release version="f20">0.10.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gtk-doc">
     <release version="f17">1.*</release>
     <release version="f18">1.*</release>
     <release version="f19">1.*</release>
+    <release version="f20">1.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
@@ -338,6 +351,7 @@
     <release version="f17">3.4.*</release>
     <release version="f18">3.6.*</release>
     <release version="f19">3.8.*</release>
+    <release version="f20">3.9.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gtksourceview" pkgname="gtksourceview3"/>
@@ -346,12 +360,14 @@
     <release version="f17">1.12.*</release>
     <release version="f18">1.14.*</release>
     <release version="f19">1.16.*</release>
+    <release version="f20">1.17.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="json-glib">
     <release version="f17">0.14.*</release>
     <release version="f18">0.15.*</release>
     <release version="f19">0.16.*</release>
+    <release version="f20">0.16.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="iagno"/>
@@ -359,12 +375,14 @@
     <release version="f17">0.12.*</release>
     <release version="f18">0.12.*</release>
     <release version="f19">0.12.*</release>
+    <release version="f20">0.12.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libcroco">
     <release version="f17">0.6.*</release>
     <release version="f18">0.6.*</release>
     <release version="f19">0.6.*</release>
+    <release version="f20">0.6.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libcryptui"/>
@@ -372,6 +390,7 @@
     <release version="f17">0.12.*</release>
     <release version="f18">0.13.*</release>
     <release version="f19">0.13.*</release>
+    <release version="f20">0.13.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
