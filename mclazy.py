@@ -131,7 +131,7 @@ def main():
 
     # read defaults from command line arguments
     parser = argparse.ArgumentParser(description='Automatically build Fedora packages for a GNOME release')
-    parser.add_argument('--fedora-branch', default="f19", help='The fedora release to target (default: f19)')
+    parser.add_argument('--fedora-branch', default="f20", help='The fedora release to target (default: f20)')
     parser.add_argument('--simulate', action='store_true', help='Do not commit any changes')
     parser.add_argument('--check-installed', action='store_true', help='Check installed version against built version')
     parser.add_argument('--relax-version-checks', action='store_true', help='Relax checks on the version numbering')
@@ -441,8 +441,10 @@ def main():
             pkg_branch_name = 'f18-build'
         elif args.fedora_branch == "f19":
             pkg_branch_name = 'f19-build'
-        elif args.fedora_branch == "rawhide":
+        elif args.fedora_branch == "f20":
             pkg_branch_name = 'f20-build'
+        elif args.fedora_branch == "rawhide":
+            pkg_branch_name = 'f21-build'
         else:
             print(COLOR_FAIL + "    WARNING: Failed to get repo branch tag for" + args.fedora_branch + COLOR_ENDC)
             continue;
