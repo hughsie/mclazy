@@ -185,6 +185,8 @@ def main():
             release_glob['f18'] = "3.6.*"
         if 'f19' not in release_glob:
             release_glob['f19'] = "3.8.*"
+        if 'f20' not in release_glob:
+            release_glob['f20'] = "3.9.*"
         if 'rawhide' not in release_glob:
             release_glob['rawhide'] = "*"
         if args.buildone == None or args.buildone == pkgname:
@@ -415,6 +417,8 @@ def main():
             pkg_release_tag = 'fc18'
         elif args.fedora_branch == "f19":
             pkg_release_tag = 'fc19'
+        elif args.fedora_branch == "f20":
+            pkg_release_tag = 'fc20'
         elif args.fedora_branch == "rawhide":
             pkg_release_tag = 'fc20'
         else:
