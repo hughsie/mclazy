@@ -177,10 +177,6 @@ def main():
             release_glob[version] = release.text
 
         # add the hardcoded gnome release numbers
-        if 'f16' not in release_glob:
-            release_glob['f16'] = "3.2.*"
-        if 'f17' not in release_glob:
-            release_glob['f17'] = "3.4.*"
         if 'f18' not in release_glob:
             release_glob['f18'] = "3.6.*"
         if 'f19' not in release_glob:
@@ -409,11 +405,7 @@ def main():
             run_command (pkg_cache, ['git', 'checkout', args.fedora_branch])
 
         # work out release tag
-        if args.fedora_branch == "f16":
-            pkg_release_tag = 'fc16'
-        elif args.fedora_branch == "f17":
-            pkg_release_tag = 'fc17'
-        elif args.fedora_branch == "f18":
+        if args.fedora_branch == "f18":
             pkg_release_tag = 'fc18'
         elif args.fedora_branch == "f19":
             pkg_release_tag = 'fc19'
@@ -437,11 +429,7 @@ def main():
                 continue
 
         # work out repo branch
-        if args.fedora_branch == "f16":
-            pkg_branch_name = 'f16-build'
-        elif args.fedora_branch == "f17":
-            pkg_branch_name = 'f17-build'
-        elif args.fedora_branch == "f18":
+        if args.fedora_branch == "f18":
             pkg_branch_name = 'f18-build'
         elif args.fedora_branch == "f19":
             pkg_branch_name = 'f19-build'
