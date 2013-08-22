@@ -348,15 +348,12 @@
     <release version="f20">0.13.*</release>
     <release version="rawhide">*</release>
   </project>
-<!--
-  Disable for now, as:
-  * it's got a patch against the generated C code that's needed on s390x
-  * it sometimes depends on much newer versions of Vala
   <project name="libgee">
-    <release version="f18">0.7.*</release>
+    <release version="f18">0.8.*</release>
+    <release version="f19">0.10.*</release>
+    <release version="f20">0.11.*</release>
     <release version="rawhide">*</release>
   </project>
--->
   <project name="libgnomekbd"/>
   <project name="libgnome-keyring"/>
   <project name="libgtop" pkgname="libgtop2">
