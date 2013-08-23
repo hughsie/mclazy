@@ -244,6 +244,7 @@
   <project name="gnome-music"/>
   <project name="gnome-nibbles"/>
   <project name="gnome-online-accounts"/>
+  <project name="gnome-online-miners"/>
   <project name="gnome-packagekit"/>
   <project name="gnome-photos"/>
   <project name="gnome-power-manager"/>
