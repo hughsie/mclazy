@@ -57,6 +57,7 @@
     <release version="f20">3.9.*</release>
     <release version="rawhide">*</release>
   </project>
+  <project name="alacarte"/>
   <project name="anjuta"/>
   <project name="atk">
     <release version="f18">2.6.*</release>
@@ -237,6 +238,7 @@
   <project name="gnome-keyring"/>
   <project name="gnome-klotski"/>
   <project name="gnome-mahjongg"/>
+  <project name="gnome-maps"/>
   <project name="gnome-menus"/>
   <project name="gnome-mines"/>
   <project name="gnome-music"/>
@@ -257,6 +259,7 @@
   <project name="gnome-search-tool"/>
   <project name="gnome-session"/>
   <project name="gnome-shell"/>
+  <project name="gnome-software"/>
   <project name="gnome-sudoku"/>
   <project name="gnome-system-log"/>
   <project name="gnome-system-monitor"/>
@@ -345,7 +348,7 @@
   <project name="libgdata">
     <release version="f18">0.13.*</release>
     <release version="f19">0.13.*</release>
-    <release version="f20">0.13.*</release>
+    <release version="f20">0.14.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libgee">
@@ -385,6 +388,12 @@
     <release version="f18">2.36.*</release>
     <release version="f19">2.38.*</release>
     <release version="f20">2.39.*</release>
+    <release version="rawhide">*</release>
+  </project>
+  <project name="libsecret">
+    <release version="f18">0.12.*</release>
+    <release version="f19">0.15.*</release>
+    <release version="f20">0.16.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libsoup">
@@ -492,7 +501,7 @@
   <project name="totem-pl-parser">
     <release version="f18">3.4.*</release>
     <release version="f19">3.4.*</release>
-    <release version="f20">3.4.*</release>
+    <release version="f20">3.9.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
