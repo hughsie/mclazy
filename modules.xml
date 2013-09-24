@@ -277,23 +277,6 @@
     <release version="f20">1.38.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="gst-plugins-base" pkgname="gstreamer-plugins-base">
-    <release version="f18">0.10.*</release>
-    <release version="f19">0.10.*</release>
-    <release version="f20">0.10.*</release>
-    <release version="rawhide">*</release>
-  </project>
-  <project name="gst-plugins-good" pkgname="gstreamer-plugins-good">
-    <release version="f18">0.10.*</release>
-    <release version="f19">0.10.*</release>
-    <release version="f20">0.10.*</release>
-    <release version="rawhide">*</release>  </project>
-  <project name="gstreamer">
-    <release version="f18">0.10.*</release>
-    <release version="f19">0.10.*</release>
-    <release version="f20">0.10.*</release>
-    <release version="rawhide">*</release>
-  </project>
   <project name="gtk-doc">
     <release version="f18">1.*</release>
     <release version="f19">1.*</release>
