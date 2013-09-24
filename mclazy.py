@@ -182,7 +182,7 @@ def main():
         if 'f19' not in release_glob:
             release_glob['f19'] = "3.8.*"
         if 'f20' not in release_glob:
-            release_glob['f20'] = "3.9.*"
+            release_glob['f20'] = "3.10.*"
         if 'rawhide' not in release_glob:
             release_glob['rawhide'] = "*"
         if args.buildone == None or args.buildone == pkgname:

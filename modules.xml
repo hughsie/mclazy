@@ -33,8 +33,8 @@
   <project name="glib" pkgname="glib2" wait_repo="1">
     <release version="f18">2.34.*</release>
     <release version="f19">2.36.*</release>
-    <release version="f20">2.37.*</release>
-    <release version="rawhide">2.37.*</release>
+    <release version="f20">2.38.*</release>
+    <release version="rawhide">*</release>
   </project>
   <project name="gtk+" pkgname="gtk3" wait_repo="1">
     <release version="f18">3.6.*</release>
@@ -51,19 +51,14 @@
   <project name="gnome-control-center" pkgname="control-center"/>
 
   <project name="accerciser"/>
-  <project name="aisleriot">
-    <release version="f18">3.2.*</release>
-    <release version="f19">3.8.*</release>
-    <release version="f20">3.9.*</release>
-    <release version="rawhide">*</release>
-  </project>
+  <project name="aisleriot"/>
   <project name="alacarte"/>
   <project name="anjuta"/>
   <project name="atk">
     <release version="f18">2.6.*</release>
     <release version="f19">2.8.*</release>
-    <release version="f20">2.9.*</release>
-    <release version="rawhide">2.9.*</release>
+    <release version="f20">2.10.*</release>
+    <release version="rawhide">*</release>
   </project>
   <project name="atkmm">
     <release version="f18">2.22.*</release>
@@ -74,14 +69,14 @@
   <project name="at-spi2-core">
     <release version="f18">2.6.*</release>
     <release version="f19">2.8.*</release>
-    <release version="f20">2.9.*</release>
-    <release version="rawhide">2.9.*</release>
+    <release version="f20">2.10.*</release>
+    <release version="rawhide">*</release>
   </project>
   <project name="at-spi2-atk">
     <release version="f18">2.6.*</release>
     <release version="f19">2.8.*</release>
-    <release version="f20">2.9.*</release>
-    <release version="rawhide">2.9.*</release>
+    <release version="f20">2.10.*</release>
+    <release version="rawhide">*</release>
   </project>
   <project name="baobab"/>
   <project name="brasero"/>
@@ -101,8 +96,8 @@
   <project name="clutter">
     <release version="f18">1.12.*</release>
     <release version="f19">1.14.*</release>
-    <release version="f20">1.15.*</release>
-    <release version="rawhide">1.15.*</release>
+    <release version="f20">1.16.*</release>
+    <release version="rawhide">1.16.*</release>
   </project>
   <project name="clutter-gst" pkgname="clutter-gst2">
     <release version="f18">2.0.*</release>
@@ -119,13 +114,13 @@
   <project name="cogl">
     <release version="f18">1.12.*</release>
     <release version="f19">1.14.*</release>
-    <release version="f20">1.15.*</release>
-    <release version="rawhide">*</release>
+    <release version="f20">1.16.*</release>
+    <release version="rawhide">1.16.*</release>
   </project>
   <project name="dconf">
     <release version="f18">0.14.*</release>
     <release version="f19">0.16.*</release>
-    <release version="f20">0.17.*</release>
+    <release version="f20">0.18.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="devhelp"/>
@@ -158,40 +153,40 @@
   <project name="gdk-pixbuf" pkgname="gdk-pixbuf2">
     <release version="f18">2.26.*</release>
     <release version="f19">2.28.*</release>
-    <release version="f20">2.29.*</release>
+    <release version="f20">2.30.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gdl" pkgname="libgdl"/>
   <project name="gdm"/>
   <project name="gedit"/>
   <project name="geocode-glib">
-    <release version="f20">0.99.*</release>
+    <release version="f20">3.10.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="ghex"/>
   <project name="gjs">
     <release version="f18">1.34.*</release>
     <release version="f19">1.36.*</release>
-    <release version="f20">1.37.*</release>
+    <release version="f20">1.38.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="glade">
     <release version="f18">3.14.*</release>
     <release version="f19">3.14.*</release>
-    <release version="f20">3.15.*</release>
-    <release version="rawhide">*</release>
+    <release version="f20">3.16.*</release>
+    <release version="rawhide">3.16.*</release>
   </project>
   <project name="glibmm" pkgname="glibmm24">
     <release version="f18">2.34.*</release>
     <release version="f19">2.36.*</release>
-    <release version="f20">2.37.*</release>
+    <release version="f20">2.38.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="glib-networking">
     <release version="f18">2.34.*</release>
     <release version="f19">2.36.*</release>
-    <release version="f20">2.37.*</release>
-    <release version="rawhide">2.37.*</release>
+    <release version="f20">2.38.*</release>
+    <release version="rawhide">*</release>
   </project>
   <project name="gmime">
     <release version="f18">2.6.*</release>
@@ -279,7 +274,7 @@
   <project name="gobject-introspection">
     <release version="f18">1.34.*</release>
     <release version="f19">1.36.*</release>
-    <release version="f20">1.37.*</release>
+    <release version="f20">1.38.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gst-plugins-base" pkgname="gstreamer-plugins-base">
@@ -311,18 +306,13 @@
     <release version="rawhide">2.20.*</release>
   </project>
 -->
-  <project name="gtkmm" pkgname="gtkmm30">
-    <release version="f18">3.6.*</release>
-    <release version="f19">3.8.*</release>
-    <release version="f20">3.9.*</release>
-    <release version="rawhide">*</release>
-  </project>
+  <project name="gtkmm" pkgname="gtkmm30"/>
   <project name="gtksourceview" pkgname="gtksourceview3"/>
   <project name="gucharmap"/>
   <project name="gvfs">
     <release version="f18">1.14.*</release>
     <release version="f19">1.16.*</release>
-    <release version="f20">1.17.*</release>
+    <release version="f20">1.18.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="json-glib">
@@ -354,7 +344,7 @@
   <project name="libgee">
     <release version="f18">0.8.*</release>
     <release version="f19">0.10.*</release>
-    <release version="f20">0.11.*</release>
+    <release version="f20">0.12.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libgnomekbd"/>
@@ -381,13 +371,13 @@
   <project name="libpeas">
     <release version="f18">1.6.*</release>
     <release version="f19">1.8.*</release>
-    <release version="f20">1.9.*</release>
+    <release version="f20">1.10.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="librsvg" pkgname="librsvg2">
     <release version="f18">2.36.*</release>
     <release version="f19">2.38.*</release>
-    <release version="f20">2.39.*</release>
+    <release version="f20">2.40.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libsecret">
@@ -399,7 +389,7 @@
   <project name="libsoup">
     <release version="f18">2.40.*</release>
     <release version="f19">2.42.*</release>
-    <release version="f20">2.43.*</release>
+    <release version="f20">2.44.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="libwnck" pkgname="libwnck3">
@@ -427,7 +417,7 @@
   <project name="nautilus-sendto">
     <release version="f18">3.0.*</release>
     <release version="f19">3.8.*</release>
-    <release version="f20">3.9.*</release>
+    <release version="f20">3.10.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="nemiver">
@@ -450,7 +440,7 @@
   <project name="pango">
     <release version="f18">1.32.*</release>
     <release version="f19">1.34.*</release>
-    <release version="f20">1.35.*</release>
+    <release version="f20">1.36.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="pangomm">
@@ -466,7 +456,7 @@
   <project name="pyatspi">
     <release version="f18">2.6.*</release>
     <release version="f19">2.8.*</release>
-    <release version="f20">2.9.*</release>
+    <release version="f20">2.10.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="pygobject" pkgname="pygobject3"/>
@@ -480,7 +470,7 @@
   <project name="rygel">
     <release version="f18">0.16.*</release>
     <release version="f19">0.18.*</release>
-    <release version="f20">0.19.*</release>
+    <release version="f20">0.20.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="seahorse"/>
@@ -501,7 +491,7 @@
   <project name="totem-pl-parser">
     <release version="f18">3.4.*</release>
     <release version="f19">3.4.*</release>
-    <release version="f20">3.9.*</release>
+    <release version="f20">3.10.*</release>
     <release version="rawhide">*</release>
   </project>
 <!--
