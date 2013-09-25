@@ -224,6 +224,7 @@
   <project name="gnome-icon-theme"/>
   <project name="gnome-icon-theme-extras"/>
   <project name="gnome-icon-theme-symbolic"/>
+  <project name="gnome-initial-setup"/>
   <project name="gnome-js-common">
     <release version="f18">0.1.*</release>
     <release version="f19">0.1.*</release>
