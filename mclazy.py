@@ -182,7 +182,7 @@ def main():
         if 'f19' not in release_glob:
             release_glob['f19'] = "3.8.*"
         if 'f20' not in release_glob:
-            release_glob['f20'] = "3.10.*"
+            release_glob['f20'] = "3.9.*,3.10.*"
         if 'rawhide' not in release_glob:
             release_glob['rawhide'] = "*"
         if args.buildone == None or args.buildone == pkgname:
@@ -293,7 +293,12 @@ def main():
             # find the newest version
             newest_remote_version = '0'
             for remote_ver in j[2][module]:
-                if not args.relax_version_checks and not fnmatch.fnmatch(remote_ver, gnome_branch):
+                version_valid = False
+                for b in gnome_branch.split(','):
+                    if fnmatch.fnmatch(remote_ver, b):
+                        version_valid = True
+                        break
+                if not args.relax_version_checks and not version_valid:
                     continue
                 rc = rpm.labelCompare((None, remote_ver, None), (None, newest_remote_version, None))
                 if rc > 0:
