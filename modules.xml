@@ -478,13 +478,12 @@
     <release version="f20">3.10.*</release>
     <release version="rawhide">*</release>
   </project>
-<!--
   <project name="vala">
     <release version="f18">0.18.*</release>
     <release version="f19">0.20.*</release>
+    <release version="f20">0.22.*</release>
     <release version="rawhide">*</release>
   </project>
--->
   <project name="vinagre"/>
   <project name="vino"/>
   <project name="vte" pkgname="vte3">
