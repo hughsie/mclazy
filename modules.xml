@@ -159,6 +159,7 @@
   <project name="gdl" pkgname="libgdl"/>
   <project name="gdm"/>
   <project name="gedit"/>
+  <project name="gedit-plugins"/>
   <project name="geocode-glib">
     <release version="f20">3.10.*</release>
     <release version="rawhide">*</release>
