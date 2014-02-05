@@ -279,7 +279,8 @@ def main():
 
         new_version = None
         gnome_branch = release_version[args.fedora_branch]
-        with open("%s/%s/cache.json" % (args.cache, pkg), 'r') as f:
+        local_json_file = "%s/%s/cache.json" % (args.cache, pkg)
+        with open(local_json_file, 'r') as f:
 
             # the format of the json file is as follows:
             # j[0] = some kind of version number?
@@ -288,7 +289,11 @@ def main():
             # j[2] = array of remote versions, e.g.
             #        { 'pkgname' : {  '3.3.92', '3.4.0' }
             # j[3] = the LATEST-IS files
-            j = json.loads(f.read())
+            try:
+                j = json.loads(f.read())
+            except Exception, e:
+                print "    WARNING: Failed to read JSON at %s: %s" % (local_json_file, str(e))
+                continue
 
             # find the newest version
             newest_remote_version = '0'
