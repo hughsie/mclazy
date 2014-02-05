@@ -97,13 +97,13 @@
     <release version="f18">1.12.*</release>
     <release version="f19">1.14.*</release>
     <release version="f20">1.16.*</release>
-    <release version="rawhide">1.16.*</release>
+    <release version="rawhide">1.17.*</release>
   </project>
   <project name="clutter-gst" pkgname="clutter-gst2">
     <release version="f18">2.0.*</release>
     <release version="f19">2.0.*</release>
     <release version="f20">2.0.*</release>
-    <release version="rawhide">*</release>
+    <release version="rawhide">2.0.*</release>
   </project>
   <project name="clutter-gtk">
     <release version="f18">1.4.*</release>
@@ -115,7 +115,7 @@
     <release version="f18">1.12.*</release>
     <release version="f19">1.14.*</release>
     <release version="f20">1.16.*</release>
-    <release version="rawhide">1.16.*</release>
+    <release version="rawhide">1.17.*</release>
   </project>
   <project name="dconf">
     <release version="f18">0.14.*</release>
