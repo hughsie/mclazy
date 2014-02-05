@@ -398,6 +398,7 @@
   </project>
   <project name="mousetweaks"/>
   <project name="mutter"/>
+  <project name="mutter-wayland"/>
   <project name="nautilus"/>
   <project name="nautilus-sendto">
     <release version="f18">3.0.*</release>
