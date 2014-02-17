@@ -152,6 +152,8 @@ def main():
 
         # get the project name and optional tarball name
         name = project.get('name')
+        if not name:
+            continue
         pkgname = project.get('pkgname')
         if not pkgname:
             pkgname = name;

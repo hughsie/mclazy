@@ -25,6 +25,12 @@
 <projects>
 
 <!--
+  These are deps of the GNOME modules, and are not built directly by mclazy
+-->
+  <project pkgname="PackageKit"/>
+  <project pkgname="wayland"/>
+
+<!--
   These projects are at the top in some kind of dependency order
 -->
   <project name="gsettings-desktop-schemas" wait_repo="1"/>
