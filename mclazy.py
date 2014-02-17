@@ -26,8 +26,6 @@ import re
 import rpm
 import argparse
 import fnmatch
-from gi.repository import Zif
-from gi.repository import Gio
 from xml.etree.ElementTree import ElementTree
 
 COLOR_HEADER = '\033[95m'
@@ -64,15 +62,6 @@ def get_modules(modules_file):
             if line.startswith('#'):
                 continue
             yield line.strip()
-
-# get the newest package from the store
-def get_installed_package_version(store, pkg_name):
-    state = Zif.State.new()
-    packages = store.resolve([pkg_name], state)
-    if len(packages) == 0:
-        return None
-    package = Zif.Package.array_get_newest(packages)
-    return package.get_version()
 
 def switch_branch_and_reset(pkg_cache, branch_name):
     rc = run_command (pkg_cache, ['git', 'clean', '-dfx'])
@@ -143,16 +132,15 @@ def main():
     parser.add_argument('--buildroot', default=None, help='Use a custom buildroot, e.g. f18-gnome')
     args = parser.parse_args()
 
-    # use zif to check the installed version
+    # use rpm to check the installed version
+    installed_pkgs = {}
     if args.check_installed:
-        config = Zif.Config.new()
-        config.set_filename('/etc/zif/zif.conf')
-        store = Zif.StoreLocal.new()
         print("    INFO: loading rpmdb")
-        state = Zif.State.new()
-        state.set_cancellable(Gio.Cancellable.new())
-        store.load(state)
-        print("    INFO: loaded rpmdb with %i items" % store.get_size())
+        ts = rpm.TransactionSet()
+        mi = ts.dbMatch()
+        for h in mi:
+            installed_pkgs[h['name']] = h['version']
+        print("    INFO: loaded rpmdb with %i items" % len(installed_pkgs))
 
     # parse the configuration file
     modules = []
@@ -322,9 +310,8 @@ def main():
 
         # check the installed version
         if args.check_installed:
-            installed_evr = get_installed_package_version(store, pkg)
-            if installed_evr:
-                installed_ver = installed_evr.rsplit('-')[0]
+            if pkg in installed_pkgs:
+                installed_ver = installed_pkgs[pkg]
                 if installed_ver == newest_remote_version:
                     print "    INFO: installed version is up to date"
                 else:
