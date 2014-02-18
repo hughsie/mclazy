@@ -156,7 +156,7 @@ def main():
             continue
         if item.disabled:
             continue
-        if args.buildone == None or args.buildone == pkgname:
+        if args.buildone == None or args.buildone == item.pkgname:
             modules.append((item.name, item.pkgname, item.release_glob, item.wait_repo))
 
     # create the cache directory if it's not already existing
