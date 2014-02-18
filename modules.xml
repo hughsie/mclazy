@@ -18,7 +18,8 @@
   If the package name differs from the upstream tarball name, then do
   something like this:
 
-  <project name="gnome-desktop" pkgname="gnome-desktop3"/>
+  <project name="gnome-desktop" pkgname="gnome-desktop3">
+  </project>
 
 -->
 
@@ -27,15 +28,27 @@
 <!--
   These are deps of the GNOME modules, and are not built directly by mclazy
 -->
-  <project pkgname="PackageKit"/>
-  <project pkgname="wayland"/>
+  <project pkgname="PackageKit">
+    <dep>glib</dep>
+  </project>
+  <project pkgname="wayland">
+  </project>
+  <project pkgname="upower">
+    <dep>glib</dep>
+  </project>
+  <project pkgname="libmediaart">
+  </project>
+  <!-- disabled as it's bumped soname >= 0.17.1
+  <project pkgname="tracker">
+    <dep>libmediaart</dep>
+  </project>
+  -->
 
 <!--
   These projects are at the top in some kind of dependency order
 -->
-  <project name="gsettings-desktop-schemas" wait_repo="1"/>
-  <project name="gnome-desktop" pkgname="gnome-desktop3" wait_repo="1"/>
-  <project name="gnome-settings-daemon" wait_repo="1"/>
+  <project name="gsettings-desktop-schemas" wait_repo="1">
+  </project>
   <project name="glib" pkgname="glib2" wait_repo="1">
     <release version="f18">2.34.*</release>
     <release version="f19">2.36.*</release>
@@ -47,6 +60,16 @@
     <release version="f19">3.8.*</release>
     <release version="f20">3.10.*</release>
     <release version="rawhide">*</release>
+    <dep>wayland</dep>
+    <dep>glib</dep>
+    <dep>gdk-pixbuf</dep>
+  </project>
+  <project name="gnome-desktop" pkgname="gnome-desktop3" wait_repo="1">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-settings-daemon" wait_repo="1">
+    <dep>gtk+</dep>
+    <dep>upower</dep>
   </project>
   <project name="libwacom" wait_repo="1">
     <release version="f18">*</release>
@@ -54,12 +77,20 @@
     <release version="f20">*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="gnome-control-center" pkgname="control-center"/>
+  <project name="gnome-control-center" pkgname="control-center">
+    <dep>gtk+</dep>
+    <dep>libwacom</dep>
+  </project>
 
-  <project name="accerciser"/>
-  <project name="aisleriot"/>
-  <project name="alacarte"/>
-  <project name="anjuta"/>
+  <project name="accerciser">
+  </project>
+  <project name="aisleriot">
+  </project>
+  <project name="alacarte">
+  </project>
+  <project name="anjuta">
+    <dep>gtk+</dep>
+  </project>
   <project name="atk">
     <release version="f18">2.6.*</release>
     <release version="f19">2.8.*</release>
@@ -84,8 +115,12 @@
     <release version="f20">2.10.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="baobab"/>
-  <project name="brasero"/>
+  <project name="baobab">
+    <dep>gtk+</dep>
+  </project>
+  <project name="brasero">
+    <dep>gtk+</dep>
+  </project>
   <project name="cantarell-fonts" pkgname="abattis-cantarell-fonts">
     <release version="f18">0.0.*</release>
     <release version="f19">0.0.*</release>
@@ -98,24 +133,30 @@
     <release version="f20">0.4.*</release>
     <release version="rawhide">0.4.*</release>
   </project>
-  <project name="cheese"/>
+  <project name="cheese">
+    <dep>clutter</dep>
+  </project>
   <project name="clutter">
     <release version="f18">1.12.*</release>
     <release version="f19">1.14.*</release>
     <release version="f20">1.16.*</release>
     <release version="rawhide">1.17.*</release>
+    <dep>cogl</dep>
   </project>
   <project name="clutter-gst" pkgname="clutter-gst2">
     <release version="f18">2.0.*</release>
     <release version="f19">2.0.*</release>
     <release version="f20">2.0.*</release>
     <release version="rawhide">2.0.*</release>
+    <dep>clutter</dep>
   </project>
   <project name="clutter-gtk">
     <release version="f18">1.4.*</release>
     <release version="f19">1.4.*</release>
     <release version="f20">1.4.*</release>
     <release version="rawhide">*</release>
+    <dep>clutter</dep>
+    <dep>gtk+</dep>
   </project>
   <project name="cogl">
     <release version="f18">1.12.*</release>
@@ -128,49 +169,78 @@
     <release version="f19">0.16.*</release>
     <release version="f20">0.18.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
-  <project name="devhelp"/>
-  <project name="empathy"/>
-  <project name="eog"/>
-  <project name="eog-plugins"/>
-  <project name="epiphany"/>
-  <project name="evince"/>
+  <project name="devhelp">
+    <dep>gtk+</dep>
+  </project>
+  <project name="empathy">
+    <dep>gtk+</dep>
+  </project>
+  <project name="eog">
+    <dep>gtk+</dep>
+  </project>
+  <project name="eog-plugins">
+    <dep>gtk+</dep>
+  </project>
+  <project name="epiphany">
+    <dep>gtk+</dep>
+  </project>
+  <project name="evince">
+    <dep>gtk+</dep>
+  </project>
 <!--
   NOTE: Milan Crha told us not to touch this.
-  <project name="evolution"/>
-  <project name="evolution-data-server"/>
+  <project name="evolution">
+  </project>
+  <project name="evolution-data-server">
+  </project>
 -->
-  <project name="file-roller"/>
-  <project name="five-or-more"/>
+  <project name="file-roller">
+    <dep>gtk+</dep>
+  </project>
+  <project name="five-or-more">
+    <dep>gtk+</dep>
+  </project>
   <project name="folks">
     <release version="f18">0.8.*</release>
     <release version="f19">0.9.*</release>
     <release version="f20">0.9.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="four-in-a-row"/>
+  <project name="four-in-a-row">
+    <dep>gtk+</dep>
+  </project>
   <project name="GConf" pkgname="GConf2">
     <release version="f18">3.2.*</release>
     <release version="f19">3.2.*</release>
     <release version="f20">3.2.*</release>
     <release version="rawhide">3.2.*</release>
   </project>
-  <project name="gcr"/>
+  <project name="gcr">
+  </project>
   <project name="gdk-pixbuf" pkgname="gdk-pixbuf2">
     <release version="f18">2.26.*</release>
     <release version="f19">2.28.*</release>
     <release version="f20">2.30.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="gdl" pkgname="libgdl"/>
-  <project name="gdm"/>
-  <project name="gedit"/>
-  <project name="gedit-plugins"/>
+  <project name="gdl" pkgname="libgdl">
+  </project>
+  <project name="gdm">
+  </project>
+  <project name="gedit">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gedit-plugins">
+    <dep>gedit</dep>
+  </project>
   <project name="geocode-glib">
     <release version="f20">3.10.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="ghex"/>
+  <project name="ghex">
+  </project>
   <project name="gjs">
     <release version="f18">1.34.*</release>
     <release version="f19">1.36.*</release>
@@ -182,18 +252,21 @@
     <release version="f19">3.14.*</release>
     <release version="f20">3.16.*</release>
     <release version="rawhide">3.16.*</release>
+    <dep>gtk+</dep>
   </project>
   <project name="glibmm" pkgname="glibmm24">
     <release version="f18">2.34.*</release>
     <release version="f19">2.36.*</release>
     <release version="f20">2.38.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
   <project name="glib-networking">
     <release version="f18">2.34.*</release>
     <release version="f19">2.36.*</release>
     <release version="f20">2.38.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
   <project name="gmime">
     <release version="f18">2.6.*</release>
@@ -201,20 +274,44 @@
     <release version="f20">2.6.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="gnome-backgrounds"/>
-  <project name="gnome-bluetooth"/>
-  <project name="gnome-boxes"/>
-  <project name="gnome-calculator"/>
-  <project name="gnome-chess"/>
-  <project name="gnome-clocks"/>
-  <project name="gnome-color-manager"/>
-  <project name="gnome-common"/>
-  <project name="gnome-contacts"/>
-  <project name="gnome-desktop" pkgname="gnome-desktop3"/>
-  <project name="gnome-devel-docs"/>
-  <project name="gnome-dictionary"/>
-  <project name="gnome-disk-utility"/>
-  <project name="gnome-documents"/>
+  <project name="gnome-backgrounds">
+  </project>
+  <project name="gnome-bluetooth">
+  </project>
+  <project name="gnome-boxes">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-calculator">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-chess">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-clocks">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-color-manager">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-common">
+  </project>
+  <project name="gnome-contacts">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-desktop" pkgname="gnome-desktop3">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-devel-docs">
+  </project>
+  <project name="gnome-dictionary">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-disk-utility">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-documents">
+    <dep>gtk+</dep>
+  </project>
   <project name="gnome-doc-utils">
     <release version="f18">0.20.*</release>
     <release version="f19">0.20.*</release>
@@ -227,58 +324,115 @@
     <release version="f20">0.2.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="gnome-font-viewer"/>
-  <project name="gnome-icon-theme"/>
-  <project name="gnome-icon-theme-extras"/>
-  <project name="gnome-icon-theme-symbolic"/>
-  <project name="gnome-initial-setup"/>
+  <project name="gnome-font-viewer">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-icon-theme">
+  </project>
+  <project name="gnome-icon-theme-extras">
+  </project>
+  <project name="gnome-icon-theme-symbolic">
+  </project>
+  <project name="gnome-initial-setup">
+    <dep>gtk+</dep>
+  </project>
   <project name="gnome-js-common">
     <release version="f18">0.1.*</release>
     <release version="f19">0.1.*</release>
     <release version="f20">0.1.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="gnome-keyring"/>
-  <project name="gnome-klotski"/>
-  <project name="gnome-mahjongg"/>
-  <project name="gnome-maps"/>
-  <project name="gnome-menus"/>
-  <project name="gnome-mines"/>
-  <project name="gnome-music"/>
-  <project name="gnome-nibbles"/>
-  <project name="gnome-online-accounts"/>
-  <project name="gnome-online-miners"/>
-  <project name="gnome-packagekit"/>
-  <project name="gnome-photos"/>
-  <project name="gnome-power-manager"/>
-  <project name="gnome-robots"/>
+  <project name="gnome-keyring">
+  </project>
+  <project name="gnome-klotski">
+  </project>
+  <project name="gnome-mahjongg">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-maps">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-menus">
+  </project>
+  <project name="gnome-mines">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-music">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-nibbles">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-online-accounts">
+  </project>
+  <project name="gnome-online-miners">
+  </project>
+  <project name="gnome-packagekit">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-photos">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-power-manager">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-robots">
+    <dep>gtk+</dep>
+  </project>
   <project name="gnome-screensaver">
     <release version="f18">3.6.*</release>
     <release version="f19">3.6.*</release>
     <release version="f20">3.6.*</release>
     <release version="rawhide">*</release>
+    <dep>gtk+</dep>
   </project>
-  <project name="gnome-screenshot"/>
-  <project name="gnome-search-tool"/>
-  <project name="gnome-session"/>
-  <project name="gnome-shell"/>
-  <project name="gnome-software"/>
-  <project name="gnome-sudoku"/>
-  <project name="gnome-system-log"/>
-  <project name="gnome-system-monitor"/>
-  <project name="gnome-terminal"/>
-  <project name="gnome-tetravex"/>
-  <project name="gnome-themes-standard"/>
-  <project name="gnome-tweak-tool"/>
-  <project name="gnome-user-docs"/>
-  <project name="gnome-user-share"/>
+  <project name="gnome-screenshot">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-search-tool">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-session">
+  </project>
+  <project name="gnome-shell">
+  </project>
+  <project name="gnome-software">
+    <dep>gtk+</dep>
+    <dep>PackageKit</dep>
+  </project>
+  <project name="gnome-sudoku">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-system-log">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-system-monitor">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-terminal">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-tetravex">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-themes-standard">
+  </project>
+  <project name="gnome-tweak-tool">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-user-docs">
+  </project>
+  <project name="gnome-user-share">
+  </project>
   <project name="gnome-video-effects">
     <release version="f18">0.4.*</release>
     <release version="f19">0.4.*</release>
     <release version="f20">0.4.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="gnome-weather"/>
+  <project name="gnome-weather">
+    <dep>gtk+</dep>
+  </project>
   <project name="gobject-introspection">
     <release version="f18">1.34.*</release>
     <release version="f19">1.36.*</release>
@@ -297,9 +451,14 @@
     <release version="rawhide">2.20.*</release>
   </project>
 -->
-  <project name="gtkmm" pkgname="gtkmm30"/>
-  <project name="gtksourceview" pkgname="gtksourceview3"/>
-  <project name="gucharmap"/>
+  <project name="gtkmm" pkgname="gtkmm30">
+    <dep>gtk+</dep>
+  </project>
+  <project name="gtksourceview" pkgname="gtksourceview3">
+  </project>
+  <project name="gucharmap">
+    <dep>gtk+</dep>
+  </project>
   <project name="gvfs">
     <release version="f18">1.14.*</release>
     <release version="f19">1.16.*</release>
@@ -312,7 +471,9 @@
     <release version="f20">0.16.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="iagno"/>
+  <project name="iagno">
+    <dep>gtk+</dep>
+  </project>
   <project name="libchamplain">
     <release version="f18">0.12.*</release>
     <release version="f19">0.12.*</release>
@@ -325,7 +486,8 @@
     <release version="f20">0.6.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="libcryptui"/>
+  <project name="libcryptui">
+  </project>
   <project name="libgdata">
     <release version="f18">0.13.*</release>
     <release version="f19">0.13.*</release>
@@ -338,15 +500,18 @@
     <release version="f20">0.12.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="libgnomekbd"/>
-  <project name="libgnome-keyring"/>
+  <project name="libgnomekbd">
+  </project>
+  <project name="libgnome-keyring">
+  </project>
   <project name="libgtop" pkgname="libgtop2">
     <release version="f18">2.28.*</release>
     <release version="f19">2.28.*</release>
     <release version="f20">2.28.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="libgweather"/>
+  <project name="libgweather">
+  </project>
   <project name="libgxps">
     <release version="f18">0.2.*</release>
     <release version="f19">0.2.*</release>
@@ -358,36 +523,42 @@
     <release version="f19">0.7.*</release>
     <release version="f20">0.7.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
   <project name="libpeas">
     <release version="f18">1.6.*</release>
     <release version="f19">1.8.*</release>
     <release version="f20">1.10.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
   <project name="librsvg" pkgname="librsvg2">
     <release version="f18">2.36.*</release>
     <release version="f19">2.38.*</release>
     <release version="f20">2.40.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
   <project name="libsecret">
     <release version="f18">0.12.*</release>
     <release version="f19">0.15.*</release>
     <release version="f20">0.16.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
   <project name="libsoup">
     <release version="f18">2.40.*</release>
     <release version="f19">2.42.*</release>
     <release version="f20">2.44.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
   <project name="libwnck" pkgname="libwnck3">
     <release version="f18">3.4.*</release>
     <release version="f19">3.4.*</release>
     <release version="f20">3.4.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
   <project name="libxklavier">
     <release version="f18">5.3.*</release>
@@ -395,28 +566,40 @@
     <release version="f20">5.3.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="lightsoff"/>
+  <project name="lightsoff">
+    <dep>gtk+</dep>
+  </project>
   <project name="metacity">
     <release version="f18">2.34.*</release>
     <release version="f19">2.34.*</release>
     <release version="f20">2.34.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
-  <project name="mousetweaks"/>
-  <project name="mutter"/>
-  <project name="mutter-wayland"/>
-  <project name="nautilus"/>
+  <project name="mousetweaks">
+  </project>
+  <project name="mutter">
+    <dep>glib</dep>
+  </project>
+  <project name="mutter-wayland">
+    <dep>glib</dep>
+  </project>
+  <project name="nautilus">
+    <dep>gtk+</dep>
+  </project>
   <project name="nautilus-sendto">
     <release version="f18">3.0.*</release>
     <release version="f19">3.8.*</release>
     <release version="f20">3.10.*</release>
     <release version="rawhide">*</release>
+    <dep>nautilus</dep>
   </project>
   <project name="nemiver">
     <release version="f18">0.9.*</release>
     <release version="f19">0.9.*</release>
     <release version="f20">0.9.*</release>
     <release version="rawhide">*</release>
+    <dep>gtk+</dep>
   </project>
 <!--
   <project name="NetworkManager">
@@ -428,22 +611,27 @@
     <release version="rawhide">*</release>
   </project>
 -->
-  <project name="orca"/>
+  <project name="orca">
+  </project>
   <project name="pango">
     <release version="f18">1.32.*</release>
     <release version="f19">1.34.*</release>
     <release version="f20">1.36.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
   <project name="pangomm">
     <release version="f18">2.28.*</release>
     <release version="f19">2.34.*</release>
     <release version="f20">2.34.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
+    <dep>pango</dep>
   </project>
 <!--
   We only use this in fallback mode, and there are going to be no more releases
-  <project name="polkit-gnome"/>
+  <project name="polkit-gnome">
+  </project>
 -->
   <project name="pyatspi">
     <release version="f18">2.6.*</release>
@@ -451,35 +639,57 @@
     <release version="f20">2.10.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="pygobject" pkgname="pygobject3"/>
-  <project name="quadrapassel"/>
+  <project name="pygobject" pkgname="pygobject3">
+  </project>
+  <project name="quadrapassel">
+  </project>
   <project name="rest">
     <release version="f18">0.7.*</release>
     <release version="f19">0.7.*</release>
     <release version="f20">0.7.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
   <project name="rygel">
     <release version="f18">0.16.*</release>
     <release version="f19">0.18.*</release>
     <release version="f20">0.20.*</release>
     <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
-  <project name="seahorse"/>
-  <project name="seahorse-nautilus"/>
-  <project name="seahorse-sharing"/>
+  <project name="seahorse">
+    <dep>glib</dep>
+  </project>
+  <project name="seahorse-nautilus">
+    <dep>seahorse</dep>
+  </project>
+  <project name="seahorse-sharing">
+    <dep>seahorse</dep>
+  </project>
   <project name="seed">
     <release version="f18">3.2.*</release>
     <release version="f19">3.8.*</release>
     <release version="f20">3.8.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="simple-scan"/>
-  <project name="sound-juicer"/>
-  <project name="sushi"/>
-  <project name="swell-foop"/>
-  <project name="tali"/>
-  <project name="totem"/>
+  <project name="simple-scan">
+    <dep>gtk+</dep>
+  </project>
+  <project name="sound-juicer">
+    <dep>gtk+</dep>
+  </project>
+  <project name="sushi">
+    <dep>gtk+</dep>
+  </project>
+  <project name="swell-foop">
+    <dep>gtk+</dep>
+  </project>
+  <project name="tali">
+    <dep>gtk+</dep>
+  </project>
+  <project name="totem">
+    <dep>gtk+</dep>
+  </project>
   <project name="totem-pl-parser">
     <release version="f18">3.4.*</release>
     <release version="f19">3.4.*</release>
@@ -492,16 +702,26 @@
     <release version="f20">0.22.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="vinagre"/>
-  <project name="vino"/>
+  <project name="vinagre">
+    <dep>gtk+</dep>
+  </project>
+  <project name="vino">
+    <dep>gtk+</dep>
+  </project>
   <project name="vte" pkgname="vte3">
     <release version="f18">0.34.*</release>
     <release version="f19">0.34.*</release>
     <release version="f20">0.34.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="yelp"/>
-  <project name="yelp-tools"/>
-  <project name="yelp-xsl"/>
-  <project name="zenity"/>
+  <project name="yelp">
+    <dep>gtk+</dep>
+  </project>
+  <project name="yelp-tools">
+  </project>
+  <project name="yelp-xsl">
+  </project>
+  <project name="zenity">
+    <dep>gtk+</dep>
+  </project>
 </projects>
