@@ -30,7 +30,8 @@ MCLAZY_COPR_ID = 'f20-gnome-3-12'
 MCLAZY_COPR_DATABASE = './copr.db'
 MCLAZY_KOJI_INSTANCE = 'http://kojipkgs.fedoraproject.org/packages/'
 MCLAZY_KOJI_HUB = 'http://koji.fedoraproject.org/kojihub/'
-MCLAZY_BRANCH_INHERIT = 'rawhide'
+MCLAZY_BRANCH_TARGET = 'rawhide'
+MCLAZY_BRANCH_SOURCE = 'f20'
 
 COLOR_OKBLUE = '\033[94m'
 COLOR_OKGREEN = '\033[92m'
@@ -86,8 +87,10 @@ class Koji:
     def __init__(self):
         self.session = koji.ClientSession(MCLAZY_KOJI_HUB)
 
-    def get_newest_build(self, pkgname):
-        builds = self.session.getLatestRPMS(MCLAZY_BRANCH_INHERIT, package=pkgname, arch='src')
+    def get_newest_build(self, branch, pkgname):
+        builds = self.session.getLatestRPMS(branch, package=pkgname, arch='src')
+        if len(builds[0]) == 0:
+            return None
         latest = builds[0][0]
         pkg = Package()
         pkg.name = latest['name']
@@ -171,13 +174,21 @@ def main():
         print_info("Looking for %s" % pkg_name)
 
         # get the latest build from koji
-        pkg = koji.get_newest_build(pkg_name)
-        print_info("Latest version " + pkg.get_nvr())
+        pkg = koji.get_newest_build(MCLAZY_BRANCH_TARGET, pkg_name)
+        print("Latest version in %s: %s" % (MCLAZY_BRANCH_TARGET, pkg.get_nvr()))
 
         # has this build been submitted?
         if db.build_exists(pkg):
             print_info("Already build in copr!")
             continue
+
+        # does this version already exist?
+        pkg_stable = koji.get_newest_build(MCLAZY_BRANCH_SOURCE, pkg_name)
+        if pkg_stable:
+            print("Latest version in %s: %s" % (MCLAZY_BRANCH_SOURCE, pkg_stable.get_nvr()))
+            if pkg.version == pkg_stable.version:
+                print("Already exists same version!")
+                continue
 
         # submit to copr
         print_info("Submitting URL " + pkg.get_url())
