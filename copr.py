@@ -26,9 +26,11 @@ import requests
 import copr_cli.subcommands
 from xml.etree.ElementTree import ElementTree
 
+from modules import ModulesXml
+from package import Package
+
 MCLAZY_COPR_ID = 'f20-gnome-3-12'
 MCLAZY_COPR_DATABASE = './copr.db'
-MCLAZY_KOJI_INSTANCE = 'http://kojipkgs.fedoraproject.org/packages/'
 MCLAZY_KOJI_HUB = 'http://koji.fedoraproject.org/kojihub/'
 MCLAZY_BRANCH_TARGET = 'rawhide'
 MCLAZY_BRANCH_SOURCE = 'f20'
@@ -39,23 +41,7 @@ COLOR_WARNING = '\033[93m'
 COLOR_FAIL = '\033[91m'
 COLOR_ENDC = '\033[0m'
 
-class Package:
-
-    def __init__(self):
-        self.name = None
-        self.version = None
-        self.release = None
-
-    def get_url(self):
-        uri = MCLAZY_KOJI_INSTANCE
-        uri += "%s/%s/%s/src/" % (self.name, self.version, self.release)
-        uri += "%s-%s-%s.src.rpm" % (self.name, self.version, self.release)
-        return uri
-
-    def get_nvr(self):
-        return "%s-%s-%s" % (self.name, self.version, self.release)
-
-class Db:
+class LocalDb:
     def __init__(self):
         self.con = sqlite3.connect(MCLAZY_COPR_DATABASE)
         cur = self.con.cursor()
@@ -119,7 +105,7 @@ def build_in_copr(copr, pkgs, wait=True):
     if output is None:
         return False
     else:
-        print_info(output['message'])
+        print(output['message'])
 
     if wait:
         print_info("Watching build: %i" % output['id'])
@@ -155,23 +141,19 @@ def print_fail(text):
 def main():
 
     # parse the configuration file
-    pkg_names = []
-    tree = ElementTree()
-    tree.parse("./modules.xml")
-    projects = list(tree.iter("project"))
-    for project in projects:
-        name = project.get('name')
-        pkgname = project.get('pkgname')
-        if not pkgname:
-            pkgname = name;
-        pkg_names.append(pkgname)
+    data = ModulesXml("./modules.xml")
+    print("Depsolving moduleset...")
+    if not data.depsolve():
+        print_fail("Failed to depsolve")
+        return
 
     koji = Koji()
-    db = Db()
+    db = LocalDb()
 
+    pkg_names = data.get_pkgnames()
     for pkg_name in pkg_names:
 
-        print_info("Looking for %s" % pkg_name)
+        print("Looking for %s" % pkg_name)
 
         # get the latest build from koji
         pkg = koji.get_newest_build(MCLAZY_BRANCH_TARGET, pkg_name)
@@ -179,7 +161,7 @@ def main():
 
         # has this build been submitted?
         if db.build_exists(pkg):
-            print_info("Already build in copr!")
+            print("Already built in copr!")
             continue
 
         # does this version already exist?
@@ -191,7 +173,7 @@ def main():
                 continue
 
         # submit to copr
-        print_info("Submitting URL " + pkg.get_url())
+        print("Submitting URL " + pkg.get_url())
         rc = build_in_copr(MCLAZY_COPR_ID, [pkg.get_url()])
         if rc != True:
             print_fail("build")
