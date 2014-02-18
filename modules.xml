@@ -33,6 +33,8 @@
   </project>
   <project pkgname="wayland">
   </project>
+  <project pkgname="mozjs24">
+  </project>
   <project pkgname="upower">
     <dep>glib</dep>
   </project>
@@ -251,6 +253,7 @@
     <release version="f19">1.36.*</release>
     <release version="f20">1.38.*</release>
     <release version="rawhide">*</release>
+    <dep>mozjs24</dep>
   </project>
   <project name="glade">
     <release version="f18">3.14.*</release>
