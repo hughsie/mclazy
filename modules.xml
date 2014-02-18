@@ -85,8 +85,10 @@
   <project name="accerciser">
   </project>
   <project name="aisleriot">
+    <dep>gtk+</dep>
   </project>
   <project name="alacarte">
+    <dep>gtk+</dep>
   </project>
   <project name="anjuta">
     <dep>gtk+</dep>
@@ -96,12 +98,14 @@
     <release version="f19">2.8.*</release>
     <release version="f20">2.10.*</release>
     <release version="rawhide">*</release>
+    <dep>gtk+</dep>
   </project>
   <project name="atkmm">
     <release version="f18">2.22.*</release>
     <release version="f19">2.22.*</release>
     <release version="f20">2.22.*</release>
     <release version="rawhide">*</release>
+    <dep>atk</dep>
   </project>
   <project name="at-spi2-core">
     <release version="f18">2.6.*</release>
@@ -114,6 +118,7 @@
     <release version="f19">2.8.*</release>
     <release version="f20">2.10.*</release>
     <release version="rawhide">*</release>
+    <dep>at-spi2-core</dep>
   </project>
   <project name="baobab">
     <dep>gtk+</dep>
