@@ -84,7 +84,7 @@ class Koji:
         pkg.release = latest['release']
         return pkg
 
-def build_in_copr(copr, pkgs, wait=True):
+def build_in_copr(copr, pkgs):
     """ Build a new package into a given copr. """
     user = copr_cli.subcommands.get_user()
     copr_api_url = copr_cli.subcommands.get_api_url()
@@ -103,34 +103,40 @@ def build_in_copr(copr, pkgs, wait=True):
                         data=data)
     output = copr_cli.subcommands._get_data(req, user, copr)
     if output is None:
-        return False
+        return None
     else:
         print(output['message'])
 
-    if wait:
-        print_info("Watching build: %i" % output['id'])
-        prevstatus = None
-        try:
-            while True:
-                (ret, status) = copr_cli.subcommands._fetch_status(output['id'])
+    return output['id']
+
+
+def wait_for_builds(builds_in_progress, db):
+    rc = True
+    for pkg in builds_in_progress:
+        print_info("Waiting for %s [%i]" % (pkg.get_nvr(), pkg.build_id))
+    try:
+        while len(builds_in_progress) > 0:
+            for pkg in builds_in_progress:
+                (ret, status) = copr_cli.subcommands._fetch_status(pkg.build_id)
                 if not ret:
-                    print_fail("Unable to get build status")
-                    return False
-
-                if prevstatus != status:
-                    prevstatus = status
-
+                    print_fail("Unable to get build status for %i" % pkg.build_id)
+                    continue
                 if status == 'succeeded':
-                    return True
-                if status == 'failed':
-                    return False
-
-                time.sleep(10)
-
-        except KeyboardInterrupt:
-            pass
-
-    return True
+                    # add to database
+                    builds_in_progress.remove(pkg)
+                    print_info("build %s [%i] succeeded" % (pkg.name, pkg.build_id))
+                    db.add_build(pkg)
+                elif status == 'running':
+                    print_info("build %s [%i] running" % (pkg.name, pkg.build_id))
+                elif status == 'failed':
+                    builds_in_progress.remove(pkg)
+                    print_fail("build %s [%i] failed" % (pkg.name, pkg.build_id))
+                    rc = False
+                time.sleep(1)
+            time.sleep(10)
+    except KeyboardInterrupt:
+        rc = False
+    return rc
 
 def print_info(text):
     print COLOR_OKBLUE + "    INFO: " + text + COLOR_ENDC
@@ -150,37 +156,47 @@ def main():
     koji = Koji()
     db = LocalDb()
 
-    pkg_names = data.get_pkgnames()
-    for pkg_name in pkg_names:
+    current_depsolve_level = 0;
+    builds_in_progress = []
 
-        print("Looking for %s" % pkg_name)
+    for item in data.items:
+
+        if current_depsolve_level != item._depsolve_order:
+            if len(builds_in_progress):
+                print("Waiting for depsolve level %i" % current_depsolve_level)
+                rc = wait_for_builds(builds_in_progress, db)
+                if not rc:
+                    print_fail("Aborting")
+                    break
+            current_depsolve_level = item._depsolve_order
+            print("Now running depsolve level %i" % current_depsolve_level)
 
         # get the latest build from koji
-        pkg = koji.get_newest_build(MCLAZY_BRANCH_TARGET, pkg_name)
-        print("Latest version in %s: %s" % (MCLAZY_BRANCH_TARGET, pkg.get_nvr()))
+        pkg = koji.get_newest_build(MCLAZY_BRANCH_TARGET, item.pkgname)
+        print("Latest version of %s in %s: %s" % (item.pkgname, MCLAZY_BRANCH_TARGET, pkg.get_nvr()))
 
         # has this build been submitted?
         if db.build_exists(pkg):
-            print("Already built in copr!")
+            print("Already built in copr")
             continue
 
         # does this version already exist?
-        pkg_stable = koji.get_newest_build(MCLAZY_BRANCH_SOURCE, pkg_name)
+        pkg_stable = koji.get_newest_build(MCLAZY_BRANCH_SOURCE, item.pkgname)
         if pkg_stable:
             print("Latest version in %s: %s" % (MCLAZY_BRANCH_SOURCE, pkg_stable.get_nvr()))
             if pkg.version == pkg_stable.version:
-                print("Already exists same version!")
+                print("Already exists same version")
                 continue
 
         # submit to copr
         print("Submitting URL " + pkg.get_url())
-        rc = build_in_copr(MCLAZY_COPR_ID, [pkg.get_url()])
-        if rc != True:
+        pkg.build_id = build_in_copr(MCLAZY_COPR_ID, [pkg.get_url()])
+        if not pkg.build_id:
             print_fail("build")
             break
+        print("Adding build " + str(pkg.build_id))
+        builds_in_progress.append(pkg)
 
-        # add to database
-        db.add_build(pkg)
 
 if __name__ == "__main__":
     main()
