@@ -28,6 +28,8 @@ import argparse
 import fnmatch
 from xml.etree.ElementTree import ElementTree
 
+from modules import ModulesXml
+
 COLOR_HEADER = '\033[95m'
 COLOR_OKBLUE = '\033[94m'
 COLOR_OKGREEN = '\033[92m'
@@ -144,39 +146,18 @@ def main():
 
     # parse the configuration file
     modules = []
-    tree = ElementTree()
-    tree.parse(args.modules)
-    projects = list(tree.iter("project"))
-    for project in projects:
-        release_glob = {}
-
-        # get the project name and optional tarball name
-        name = project.get('name')
-        if not name:
+    data = ModulesXml(args.modules)
+    print("Depsolving moduleset...")
+    if not data.depsolve():
+        print_fail("Failed to depsolve")
+        return
+    for item in data.items:
+        if not item.name:
             continue
-        pkgname = project.get('pkgname')
-        if not pkgname:
-            pkgname = name;
-        wait_repo = False
-        if project.get('wait_repo') == "1":
-            wait_repo = True;
-
-        # find any gnome release number overrides
-        for release in list(project):
-            version = release.get('version')
-            release_glob[version] = release.text
-
-        # add the hardcoded gnome release numbers
-        if 'f18' not in release_glob:
-            release_glob['f18'] = "3.6.*"
-        if 'f19' not in release_glob:
-            release_glob['f19'] = "3.8.*"
-        if 'f20' not in release_glob:
-            release_glob['f20'] = "3.9.*,3.10.*,3.10"
-        if 'rawhide' not in release_glob:
-            release_glob['rawhide'] = "*"
+        if item.disabled:
+            continue
         if args.buildone == None or args.buildone == pkgname:
-            modules.append((name, pkgname, release_glob, wait_repo))
+            modules.append((item.name, item.pkgname, item.release_glob, item.wait_repo))
 
     # create the cache directory if it's not already existing
     if not os.path.isdir(args.cache):
