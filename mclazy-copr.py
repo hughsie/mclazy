@@ -122,8 +122,6 @@ def wait_for_builds(builds_in_progress, db):
                     builds_in_progress.remove(pkg)
                     print_info("build %s [%i] succeeded" % (pkg.name, pkg.build_id))
                     db.add_build(pkg)
-                elif status == 'running':
-                    print_info("build %s [%i] running" % (pkg.name, pkg.build_id))
                 elif status == 'failed':
                     builds_in_progress.remove(pkg)
                     print_fail("build %s [%i] failed" % (pkg.name, pkg.build_id))
