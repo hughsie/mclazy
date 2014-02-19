@@ -29,28 +29,13 @@ from xml.etree.ElementTree import ElementTree
 
 from modules import ModulesXml
 from package import Package
+from koji_helper import KojiHelper
 
 COLOR_OKBLUE = '\033[94m'
 COLOR_OKGREEN = '\033[92m'
 COLOR_WARNING = '\033[93m'
 COLOR_FAIL = '\033[91m'
 COLOR_ENDC = '\033[0m'
-
-class Koji:
-    def __init__(self):
-        koji_instance = 'http://koji.fedoraproject.org/kojihub/'
-        self.session = koji.ClientSession(koji_instance)
-
-    def get_newest_build(self, branch, pkgname):
-        builds = self.session.getLatestRPMS(branch, package=pkgname, arch='src')
-        if len(builds[0]) == 0:
-            return None
-        latest = builds[0][0]
-        pkg = Package()
-        pkg.name = latest['name']
-        pkg.version = latest['version']
-        pkg.release = latest['release']
-        return pkg
 
 def build_in_copr(copr, pkgs):
     """ Build a new package into a given copr. """
@@ -139,7 +124,7 @@ def main():
     # parse the configuration file
     data = ModulesXml(args.modules)
 
-    koji = Koji()
+    koji = KojiHelper()
 
     current_depsolve_level = 0;
     builds_in_progress = []
