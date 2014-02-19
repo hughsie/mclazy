@@ -97,6 +97,7 @@
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
     <dep>gobject-introspection</dep>
+    <dep>grilo</dep>
     <dep>gtk+</dep>
     <dep>json-glib</dep>
     <dep>libmx</dep>
@@ -195,6 +196,7 @@
     <dep>gnome-menus</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gnome-settings-daemon</dep>
+    <dep>grilo</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
     <dep>libgtop</dep>
@@ -769,6 +771,7 @@
   </project>
   <project name="gnome-music">
     <dep>gobject-introspection</dep>
+    <dep>grilo</dep>
   </project>
   <project name="gnome-nibbles">
     <dep>clutter</dep>
@@ -791,6 +794,7 @@
   <project name="gnome-online-miners">
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
+    <dep>grilo</dep>
     <dep>libgdata</dep>
     <dep>libgfbgraph</dep>
     <dep>tracker</dep>
@@ -806,6 +810,7 @@
     <dep>glib</dep>
     <dep>gnome-desktop</dep>
     <dep>gnome-online-accounts</dep>
+    <dep>grilo</dep>
     <dep>gtk+</dep>
     <dep>libgfbgraph</dep>
     <dep>librsvg</dep>
@@ -982,6 +987,19 @@
     <dep>glade</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
+  </project>
+  <project name="grilo">
+    <dep>glib</dep>
+    <dep>gnome-common</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>libsoup</dep>
+    <!-- circular dep
+    <dep>totem</dep>
+    -->
+    <dep>totem-pl-parser</dep>
+    <dep>vala</dep>
   </project>
   <project name="gucharmap">
     <dep>glib</dep>
@@ -1437,6 +1455,7 @@
     <dep>clutter-gtk</dep>
     <dep>gnome-common</dep>
     <dep>gnome-icon-theme</dep>
+    <dep>grilo</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk-doc</dep>
     <dep>libgdata</dep>
