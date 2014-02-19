@@ -215,14 +215,11 @@ def main():
 
         # ensure package is checked out
         if not os.path.isdir(args.cache + "/" + pkg):
-            print_debug("Repo does not exist")
             rc = run_command(args.cache, ["fedpkg", "co", pkg])
             if rc != 0:
                 print_fail("Checkout %s" % pkg)
                 continue
-
         else:
-            print_debug("Repo already exists")
             rc = run_command (pkg_cache, ['git', 'fetch'])
             if rc != 0:
                 print_fail("Update repo %s" % pkg)
