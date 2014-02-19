@@ -29,6 +29,7 @@
   These are deps of the GNOME modules, and are not built directly by mclazy
 -->
   <project pkgname="PackageKit">
+    <dep>NetworkManager</dep>
     <dep>glib</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gobject-introspection</dep>
@@ -57,6 +58,7 @@
   </project>
   <!-- disabled as it's bumped soname >= 0.17.1 -->
   <project pkgname="tracker" disabled="1">
+    <dep>NetworkManager</dep>
     <dep>gdk-pixbuf</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
@@ -64,7 +66,14 @@
     <dep>libgxps</dep>
     <dep>libmediaart</dep>
     <dep>libsecret</dep>
+    <!-- circular dep
+    <dep>nautilus</dep>
+    -->
     <dep>rest</dep>
+    <!-- circular dep
+    <dep>totem</dep>
+    <dep>totem-pl-parser</dep>
+    -->
     <dep>upower</dep>
     <dep>vala</dep>
   </project>
@@ -167,6 +176,7 @@
     <dep>glib</dep>
   </project>
   <project name="gnome-control-center" pkgname="control-center">
+    <dep>NetworkManager</dep>
     <dep>cheese</dep>
     <dep>clutter</dep>
     <dep>clutter-gtk</dep>
@@ -295,6 +305,8 @@
     <dep>clutter</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
+    <dep>evolution</dep>
+    <dep>evolution-data-server</dep>
     <dep>gnome-desktop</dep>
     <dep>gnome-video-effects</dep>
     <dep>gtk+</dep>
@@ -361,6 +373,7 @@
     <dep>webkitgtk3</dep>
   </project>
   <project name="empathy">
+    <dep>NetworkManager</dep>
     <dep>cheese</dep>
     <dep>clutter</dep>
     <dep>clutter-gst</dep>
@@ -425,13 +438,41 @@
     <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
-<!--
-  NOTE: Milan Crha told us not to touch this.
-  <project name="evolution">
+  <!-- NOTE: Milan Crha told us not to touch this -->
+  <project name="evolution" disabled="1">
+    <dep>atk</dep>
+    <dep>clutter</dep>
+    <dep>clutter-gtk</dep>
+    <dep>evolution-data-server</dep>
+    <dep>glib</dep>
+    <dep>gnome-common</dep>
+    <dep>gnome-desktop</dep>
+    <dep>gnome-doc-utils</dep>
+    <dep>gnome-icon-theme</dep>
+    <dep>gnome-online-accounts</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>libgdata</dep>
+    <dep>libgweather</dep>
+    <dep>libnotify</dep>
+    <dep>libsoup</dep>
+    <dep>webkitgtk3</dep>
+    <dep>yelp</dep>
+    <dep>yelp-tools</dep>
   </project>
-  <project name="evolution-data-server">
+  <project name="evolution-data-server" disabled="1">
+    <dep>gcr</dep>
+    <dep>glib</dep>
+    <dep>gnome-common</dep>
+    <dep>gnome-online-accounts</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>libgdata</dep>
+    <dep>libgweather</dep>
+    <dep>libsecret</dep>
+    <dep>libsoup</dep>
+    <dep>vala</dep>
   </project>
--->
   <project name="file-roller">
     <dep>GConf</dep>
     <dep>glib</dep>
@@ -450,6 +491,8 @@
     <release version="f20">0.9.*</release>
     <release version="rawhide">*</release>
     <dep>GConf</dep>
+    <dep>evolution</dep>
+    <dep>evolution-data-server</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
@@ -685,6 +728,7 @@
   <project name="gnome-icon-theme-symbolic">
   </project>
   <project name="gnome-initial-setup">
+    <dep>NetworkManager</dep>
     <dep>cheese</dep>
     <dep>gdm</dep>
     <dep>gnome-common</dep>
@@ -803,8 +847,11 @@
     <dep>upower</dep>
   </project>
   <project name="gnome-shell">
+    <dep>NetworkManager</dep>
     <dep>caribou</dep>
     <dep>clutter</dep>
+    <dep>evolution</dep>
+    <dep>evolution-data-server</dep>
     <dep>gcr</dep>
     <dep>gjs</dep>
     <dep>glib</dep>
@@ -908,6 +955,10 @@
     <release version="f20">1.*</release>
     <release version="rawhide">*</release>
     <dep>gnome-doc-utils</dep>
+    <!-- circular dep
+    <dep>yelp</dep>
+    <dep>yelp-tools</dep>
+    -->
   </project>
 <!--
   <project name="gtk-engines">
@@ -1206,16 +1257,26 @@
     <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
-<!--
-  <project name="NetworkManager">
+  <project name="NetworkManager" disabled="1">
     <release version="f17">0.9.*</release>
     <release version="rawhide">0.9.*</release>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk-doc</dep>
+    <dep>libsoup</dep>
+    <dep>vala</dep>
   </project>
-  <project name="network-manager-applet">
+  <project name="network-manager-applet" disabled="1">
     <release version="f17">0.9.*</release>
     <release version="rawhide">*</release>
+    <dep>NetworkManager</dep>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>libnotify</dep>
+    <dep>libsecret</dep>
   </project>
--->
   <project name="orca">
     <dep>at-spi2-core</dep>
     <dep>gtk+</dep>
@@ -1240,11 +1301,13 @@
     <dep>glibmm</dep>
     <dep>pango</dep>
   </project>
-<!--
-  We only use this in fallback mode, and there are going to be no more releases
-  <project name="polkit-gnome">
+  <!-- we only use this in fallback mode -->
+  <project name="polkit-gnome" disabled="1">
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
   </project>
--->
   <project name="pyatspi">
     <release version="f18">2.6.*</release>
     <release version="f19">2.8.*</release>
@@ -1392,6 +1455,7 @@
     <dep>vte</dep>
   </project>
   <project name="vino">
+    <dep>NetworkManager</dep>
     <dep>gcr</dep>
     <dep>gnome-common</dep>
     <dep>gtk+</dep>
@@ -1408,7 +1472,9 @@
     <dep>gtk+</dep>
   </project>
   <project name="yelp">
+    <!-- circular dep
     <dep>folks</dep>
+    -->
     <dep>gtk+</dep>
     <dep>libgee</dep>
     <dep>webkitgtk3</dep>
