@@ -41,7 +41,7 @@ class CoprHelper(object):
 
         # already in the queue
         if pkg in self.builds_in_progress:
-            reutrn True
+            return True
 
         user = copr_cli.subcommands.get_user()
         copr_api_url = copr_cli.subcommands.get_api_url()
@@ -97,6 +97,7 @@ class CoprHelper(object):
                 for pkg in self.builds_in_progress:
                     (ret, status) = copr_cli.subcommands._fetch_status(pkg.build_id)
                     if not ret:
+                        self.builds_in_progress.remove(pkg)
                         print_fail("Unable to get build status for %i" % pkg.build_id)
                         continue
                     if status == 'succeeded':
