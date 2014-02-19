@@ -364,15 +364,15 @@ def main():
                 print(COLOR_FAIL + "    FAILED: to build %s as patches did not apply" % pkg + COLOR_ENDC)
                 continue
 
+        # push the changes
+        if args.simulate:
+            print("    INFO: not pushing as simulating")
+            continue
+
         # commit the changes
         rc = run_command (pkg_cache, ['git', 'commit', '-a', "--message=%s" % comment])
         if rc != 0:
             print(COLOR_FAIL + "    FAILED: commit" + COLOR_ENDC)
-            continue
-
-        # push the changes
-        if args.simulate:
-            print("    INFO: not pushing as simulating")
             continue
         rc = run_command (pkg_cache, ['git', 'push'])
         if rc != 0:
