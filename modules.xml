@@ -62,8 +62,7 @@
   <project pkgname="libmediaart">
     <dep>vala</dep>
   </project>
-  <!-- disabled as it's bumped soname >= 0.17.1 -->
-  <project pkgname="tracker" disabled="1">
+  <project pkgname="tracker">
     <dep>NetworkManager</dep>
     <dep>gdk-pixbuf</dep>
     <dep>gobject-introspection</dep>

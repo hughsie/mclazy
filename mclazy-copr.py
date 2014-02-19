@@ -66,7 +66,6 @@ def main():
 
     # build one module, plus the things that depend on it
     if args.bump_soname:
-        args.ignore_existing = True
         for item in data.items:
             disabled = True
             if item.pkgname == args.bump_soname:
@@ -101,9 +100,14 @@ def main():
         print_debug("Latest version of %s in %s: %s" % (item.pkgname, args.branch_source, pkg.get_nvr()))
 
         # has this build been submitted?
-        if not args.ignore_existing and copr.build_exists(pkg):
-            print_debug("Already built in copr")
-            continue
+        if copr.build_exists(pkg):
+            if not args.ignore_existing and not args.bump_soname:
+                print_debug("Already built in copr")
+                continue
+        else:
+            if args.bump_soname and args.bump_soname != item.pkgname:
+                print_debug("Not building %s as not yet built in copr" % item.pkgname)
+                continue
 
         # does this version already exist?
         pkg_stable = koji.get_newest_build(args.branch_destination, item.pkgname)
