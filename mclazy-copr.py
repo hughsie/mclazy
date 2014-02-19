@@ -54,7 +54,7 @@ def main():
     # only build one module
     if args.buildone:
         for item in data.items:
-            if item.pkgname == args.buildone:
+            if item.pkgname in args.buildone.split(','):
                 item.disabled = False
             else:
                 item.disabled = True
