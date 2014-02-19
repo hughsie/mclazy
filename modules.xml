@@ -36,9 +36,16 @@
     <dep>gtk-doc</dep>
     <dep>pango</dep>
   </project>
-  <project pkgname="wayland">
-  </project>
-  <project pkgname="mozjs24">
+  <project pkgname="wayland"/>
+  <project pkgname="mozjs24"/>
+  <project pkgname="webkitgtk3">
+    <dep>at-spi2-core</dep>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>libsecret</dep>
+    <dep>libsoup</dep>
   </project>
   <project pkgname="upower">
     <dep>glib</dep>
@@ -60,6 +67,45 @@
     <dep>rest</dep>
     <dep>upower</dep>
     <dep>vala</dep>
+  </project>
+
+  <!-- for cogl soname bump -->
+  <project pkgname="libmx">
+    <dep>clutter</dep>
+    <dep>gdk-pixbuf</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk-doc</dep>
+  </project>
+  <project pkgname="rhythmbox">
+    <dep>brasero</dep>
+    <dep>clutter</dep>
+    <dep>clutter-gst</dep>
+    <dep>clutter-gtk</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>json-glib</dep>
+    <dep>libmx</dep>
+    <dep>libnotify</dep>
+    <dep>libpeas</dep>
+    <dep>libsecret</dep>
+    <dep>libsoup</dep>
+    <dep>pygobject</dep>
+    <dep>totem</dep>
+    <dep>totem-pl-parser</dep>
+    <dep>webkitgtk3</dep>
+    <dep>yelp</dep>
+    <dep>yelp-tools</dep>
+  </project>
+  <project pkgname="libmash">
+    <dep>clutter</dep>
+    <dep>glib</dep>
+    <dep>gtk-doc</dep>
+  </project>
+
+  <!-- for PackageKit soname bump -->
+  <project pkgname="realmd">
+    <dep>PackageKit</dep>
+    <dep>glib</dep>
   </project>
 
 <!--
@@ -312,6 +358,7 @@
   <project name="devhelp">
     <dep>GConf</dep>
     <dep>gtk+</dep>
+    <dep>webkitgtk3</dep>
   </project>
   <project name="empathy">
     <dep>cheese</dep>
@@ -329,6 +376,7 @@
     <dep>libchamplain</dep>
     <dep>libnotify</dep>
     <dep>libsecret</dep>
+    <dep>webkitgtk3</dep>
   </project>
   <project name="eog">
     <dep>gdk-pixbuf</dep>
@@ -362,6 +410,7 @@
     <dep>libsecret</dep>
     <dep>libsoup</dep>
     <dep>libwnck</dep>
+    <dep>webkitgtk3</dep>
   </project>
   <project name="evince">
     <dep>glib</dep>
@@ -608,6 +657,7 @@
     <dep>gtk+</dep>
     <dep>libgdata</dep>
     <dep>tracker</dep>
+    <dep>webkitgtk3</dep>
   </project>
   <project name="gnome-doc-utils">
     <release version="f18">0.20.*</release>
@@ -690,6 +740,7 @@
     <dep>libsecret</dep>
     <dep>libsoup</dep>
     <dep>rest</dep>
+    <dep>webkitgtk3</dep>
   </project>
   <project name="gnome-online-miners">
     <dep>glib</dep>
@@ -1285,6 +1336,7 @@
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>gtksourceview</dep>
+    <dep>webkitgtk3</dep>
   </project>
   <project name="swell-foop">
     <dep>clutter</dep>
@@ -1359,6 +1411,7 @@
     <dep>folks</dep>
     <dep>gtk+</dep>
     <dep>libgee</dep>
+    <dep>webkitgtk3</dep>
     <dep>yelp-xsl</dep>
   </project>
   <project name="yelp-tools">
