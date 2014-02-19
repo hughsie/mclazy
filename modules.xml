@@ -70,6 +70,7 @@
     <dep>libgee</dep>
     <dep>libgxps</dep>
     <dep>libmediaart</dep>
+    <dep>libosinfo</dep>
     <dep>libsecret</dep>
     <!-- circular dep
     <dep>nautilus</dep>
@@ -634,6 +635,7 @@
     <dep>clutter-gtk</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
+    <dep>libosinfo</dep>
     <dep>libsoup</dep>
     <dep>tracker</dep>
     <dep>vala</dep>
@@ -1119,6 +1121,12 @@
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
+  </project>
+  <project name="libosinfo">
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>libsoup</dep>
+    <dep>vala</dep>
   </project>
   <project name="libpeas">
     <release version="f18">1.6.*</release>
