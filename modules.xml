@@ -1001,6 +1001,18 @@
     <dep>totem-pl-parser</dep>
     <dep>vala</dep>
   </project>
+  <project name="grilo-plugins">
+    <dep>gcr</dep>
+    <dep>glib</dep>
+    <dep>gmime</dep>
+    <dep>grilo</dep>
+    <dep>json-glib</dep>
+    <dep>libgdata</dep>
+    <dep>libsoup</dep>
+    <dep>totem</dep>
+    <dep>totem-pl-parser</dep>
+    <dep>tracker</dep>
+  </project>
   <project name="gucharmap">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
