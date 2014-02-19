@@ -132,6 +132,7 @@ def main():
     parser.add_argument('--modules', default="modules.xml", help='The modules to search')
     parser.add_argument('--buildone', default=None, help='Only build one specific package')
     parser.add_argument('--buildroot', default=None, help='Use a custom buildroot, e.g. f18-gnome')
+    parser.add_argument('--bump-soname', default=None, help='Build any package that deps on this')
     args = parser.parse_args()
 
     # use rpm to check the installed version
@@ -156,7 +157,21 @@ def main():
             continue
         if item.disabled:
             continue
-        if args.buildone == None or args.buildone == item.pkgname:
+        enabled = False
+
+        # build just this
+        if args.buildone == item.pkgname:
+            enabled = True
+
+        # build this as it deps on the thing that's just bumped the soname
+        if args.bump_soname in item.deps:
+            item.wait_repo = True
+            enabled = True
+
+        # build everything
+        if args.buildone == None and args.bump_soname == None:
+            enabled = True
+        if enabled:
             modules.append((item.name, item.pkgname, item.release_glob, item.wait_repo))
 
     # create the cache directory if it's not already existing
@@ -288,6 +303,7 @@ def main():
 
         # is this newer than the rpm spec file version
         rc = rpm.labelCompare((None, newest_remote_version, None), (None, version, None))
+        new_version = None
         if rc > 0:
             new_version = newest_remote_version
 
@@ -305,55 +321,62 @@ def main():
                         print "    WARNING: check modules.xml is looking at the correct branch"
 
         # nothing to do
-        if new_version == None:
+        if new_version == None and not args.bump_soname:
             print("    INFO: No updates available")
             unlock_file(lock_filename)
             continue
 
         # never update a major version number */
-        if args.relax_version_checks:
-            print("    INFO: Updating major version number, but ignoring")
-        elif new_version.split('.')[0] != version.split('.')[0]:
-            print("    WARNING: Cannot update major version numbers")
-            continue
+        if new_version:
+            if args.relax_version_checks:
+                print("    INFO: Updating major version number, but ignoring")
+            elif new_version.split('.')[0] != version.split('.')[0]:
+                print("    WARNING: Cannot update major version numbers")
+                continue
 
         # we need to update the package
-        print("    INFO: Need to update from %s to %s" %(version, new_version))
+        if new_version:
+            print("    INFO: Need to update from %s to %s" %(version, new_version))
 
         # download the tarball if it doesn't exist
-        tarball = j[1][module][new_version]['tar.xz']
-        dest_tarball = tarball.split('/')[1]
-        if os.path.exists(pkg + "/" + dest_tarball):
-            print("    INFO: source %s already exists" % dest_tarball)
-        else:
-            tarball_url = gnome_ftp + "/" + module + "/" + tarball
-            print("    INFO: download %s" % tarball_url)
-            if not args.simulate:
-                try:
-                    urllib.urlretrieve (tarball_url, args.cache + "/" + pkg + "/" + dest_tarball)
-                except IOError as e:
-                    print "    WARNING: Failed to get tarball", e
-                    continue
-                # add the new source
-                run_command (pkg_cache, ['fedpkg', 'new-sources', dest_tarball])
+        if new_version:
+            tarball = j[1][module][new_version]['tar.xz']
+            dest_tarball = tarball.split('/')[1]
+            if os.path.exists(pkg + "/" + dest_tarball):
+                print("    INFO: source %s already exists" % dest_tarball)
+            else:
+                tarball_url = gnome_ftp + "/" + module + "/" + tarball
+                print("    INFO: download %s" % tarball_url)
+                if not args.simulate:
+                    try:
+                        urllib.urlretrieve (tarball_url, args.cache + "/" + pkg + "/" + dest_tarball)
+                    except IOError as e:
+                        print "    WARNING: Failed to get tarball", e
+                        continue
+                    # add the new source
+                    run_command (pkg_cache, ['fedpkg', 'new-sources', dest_tarball])
 
         # prep the spec file for rpmdev-bumpspec
-        with open(spec_filename, 'r') as f:
-            with open(spec_filename+".tmp", "w") as tmp_spec:
-                for line in f:
-                    if line.startswith('Version:'):
-                        line = replace_spec_value(line, new_version + '\n')
-                    elif line.startswith('Release:'):
-                        line = replace_spec_value(line, '0%{?dist}\n')
-                    elif line.startswith(('Source:', 'Source0:')):
-                        line = re.sub("/" + majorminor(version) + "/",
-                                      "/" + majorminor(new_version) + "/",
-                                      line)
-                    tmp_spec.write(line)
-        os.rename(spec_filename + ".tmp", spec_filename)
+        if new_version:
+            with open(spec_filename, 'r') as f:
+                with open(spec_filename+".tmp", "w") as tmp_spec:
+                    for line in f:
+                        if line.startswith('Version:'):
+                            line = replace_spec_value(line, new_version + '\n')
+                        elif line.startswith('Release:'):
+                            line = replace_spec_value(line, '0%{?dist}\n')
+                        elif line.startswith(('Source:', 'Source0:')):
+                            line = re.sub("/" + majorminor(version) + "/",
+                                          "/" + majorminor(new_version) + "/",
+                                          line)
+                        tmp_spec.write(line)
+            os.rename(spec_filename + ".tmp", spec_filename)
 
         # bump the spec file
-        comment = "Update to " + new_version
+        if args.bump_soname:
+            comment = "Rebuilt for %s soname bump" % args.bump_soname
+        else:
+            comment = "Update to " + new_version
         cmd = ['rpmdev-bumpspec', "--comment=%s" % comment, "%s.spec" % pkg]
         run_command (pkg_cache, cmd)
 
@@ -399,7 +422,10 @@ def main():
 
         # build package
         if not args.no_build:
-            print(COLOR_OKBLUE + "    INFO: Building %s-%s-1.%s" % (pkg, new_version, pkg_release_tag) + COLOR_ENDC)
+            if new_version:
+                print(COLOR_OKBLUE + "    INFO: Building %s-%s-1.%s" % (pkg, new_version, pkg_release_tag) + COLOR_ENDC)
+            else:
+                print(COLOR_OKBLUE + "    INFO: Building %s-%s-1.%s" % (pkg, version, pkg_release_tag) + COLOR_ENDC)
             if args.buildroot:
                 rc = run_command (pkg_cache, ['fedpkg', 'build', '--target', args.buildroot])
             else:
