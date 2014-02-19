@@ -18,27 +18,22 @@
 # Copyright (C) 2014
 #    Richard Hughes <richard@hughsie.com>
 
-""" Helper object for Koji """
+""" Logging module, which just shows colored text on the screen """
 
-import koji
+COLOR_OKBLUE = '\033[94m'
+COLOR_OKGREEN = '\033[92m'
+COLOR_WARNING = '\033[93m'
+COLOR_FAIL = '\033[91m'
+COLOR_ENDC = '\033[0m'
 
-from package import Package
+def print_info(text):
+    """ Logs some info text """
+    print(COLOR_OKBLUE + "    INFO: " + text + COLOR_ENDC)
 
-class KojiHelper(object):
-    """ Helper object for Koji """
+def print_fail(text):
+    """ Logs some failure text """
+    print(COLOR_FAIL + "  FAILED: " + text + COLOR_ENDC)
 
-    def __init__(self):
-        koji_instance = 'http://koji.fedoraproject.org/kojihub/'
-        self.session = koji.ClientSession(koji_instance)
-
-    def get_newest_build(self, branch, pkgname):
-        """ Returns the newest 'Package' for a given branch and package name """
-        builds = self.session.getLatestRPMS(branch, package=pkgname, arch='src')
-        if len(builds[0]) == 0:
-            return None
-        latest = builds[0][0]
-        pkg = Package()
-        pkg.name = latest['name']
-        pkg.version = latest['version']
-        pkg.release = latest['release']
-        return pkg
+def print_debug(text):
+    """ Logs some debug text """
+    print("   DEBUG: " + text)

@@ -18,6 +18,8 @@
 # Copyright (C) 2012
 #    Richard Hughes <richard@hughsie.com>
 
+""" A simple script that builds GNOME packages for koji """
+
 import os
 import subprocess
 import urllib
@@ -26,9 +28,10 @@ import re
 import rpm
 import argparse
 import fnmatch
-from xml.etree.ElementTree import ElementTree
 
+# internal
 from modules import ModulesXml
+from log import print_debug, print_info, print_fail
 
 COLOR_HEADER = '\033[95m'
 COLOR_OKBLUE = '\033[94m'
@@ -38,7 +41,7 @@ COLOR_FAIL = '\033[91m'
 COLOR_ENDC = '\033[0m'
 
 def run_command(cwd, argv):
-    print("    INFO: running %s" % " ".join(argv))
+    print_debug("Running %s" % " ".join(argv))
     p = subprocess.Popen(argv, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, error = p.communicate()
     if p.returncode != 0:
@@ -84,29 +87,29 @@ def switch_branch_and_reset(pkg_cache, branch_name):
 def sync_to_master_branch(pkg_cache, args):
     rc = switch_branch_and_reset (pkg_cache, 'master')
     if rc != 0:
-        print COLOR_FAIL + "    FAILED: switch to 'master' branch" + COLOR_ENDC
+        print_fail("switch to 'master' branch")
         return
 
     # First try a fast-forward merge
     rc = run_command (pkg_cache, ['git', 'merge', '--ff-only', args.fedora_branch])
     if rc != 0:
-        print "    INFO: No fast-forward merge possible"
+        print_info("No fast-forward merge possible")
         # ... and if the ff merge fails, fall back to cherry-picking
         rc = run_command (pkg_cache, ['git', 'cherry-pick', args.fedora_branch])
         if rc != 0:
             run_command (pkg_cache, ['git', 'cherry-pick', '--abort'])
-            print COLOR_FAIL + "    FAILED: cherry-pick" + COLOR_ENDC
+            print_fail("cherry-pick")
             return
 
     rc = run_command (pkg_cache, ['git', 'push'])
     if rc != 0:
-        print COLOR_FAIL + "    FAILED: push" + COLOR_ENDC
+        print_fail("push")
         return
 
     # Build the package
     rc = run_command (pkg_cache, ['fedpkg', 'build', '--nowait'])
     if rc != 0:
-        print COLOR_FAIL + "    FAILED: build" + COLOR_ENDC
+        print_fail("build")
         return
 
 # first two digits of version
@@ -138,20 +141,21 @@ def main():
     # use rpm to check the installed version
     installed_pkgs = {}
     if args.check_installed:
-        print("    INFO: loading rpmdb")
+        print_info("Loading rpmdb")
         ts = rpm.TransactionSet()
         mi = ts.dbMatch()
         for h in mi:
             installed_pkgs[h['name']] = h['version']
-        print("    INFO: loaded rpmdb with %i items" % len(installed_pkgs))
+        print_debug("Loaded rpmdb with %i items" % len(installed_pkgs))
 
     # parse the configuration file
     modules = []
     data = ModulesXml(args.modules)
-    print("Depsolving moduleset...")
-    if not data.depsolve():
-        print_fail("Failed to depsolve")
-        return
+    if not args.buildone:
+        print_debug("Depsolving moduleset...")
+        if not data.depsolve():
+            print_fail("Failed to depsolve")
+            return
     for item in data.items:
         if not item.name:
             continue
@@ -165,7 +169,6 @@ def main():
 
         # build this as it deps on the thing that's just bumped the soname
         if args.bump_soname in item.deps:
-            item.wait_repo = True
             enabled = True
 
         # build everything
@@ -180,9 +183,9 @@ def main():
 
     # loop these
     for module, pkg, release_version, wait_repo in modules:
-        print("%s:" % module)
-        print("    INFO: package name: %s" % pkg)
-        print("    INFO: version glob: %s" % release_version[args.fedora_branch])
+        print_info("Loading %s" % module)
+        print_debug("Package name: %s" % pkg)
+        print_debug("Version glob: %s" % release_version[args.fedora_branch])
 
         # ensure we've not locked this build in another instance
         lock_filename = args.cache + "/" + pkg + "-" + lockfile
@@ -199,13 +202,12 @@ def main():
                     pass
 
             if is_still_running:
-                print("    INFO: ignoring as another process (PID %i) has this" % pid)
+                print_info("Ignoring as another process (PID %i) has this" % pid)
                 continue
             else:
-                print("    WARNING: process with PID %i locked but did not release" % pid)
+                print_fail("Process with PID %i locked but did not release" % pid)
 
         # create lockfile
-        print("    INFO: creating lockfile")
         with open(lock_filename, 'w') as f:
             f.write("%s" % os.getpid())
 
@@ -213,17 +215,17 @@ def main():
 
         # ensure package is checked out
         if not os.path.isdir(args.cache + "/" + pkg):
-            print("    INFO: git repo does not exist")
+            print_debug("Repo does not exist")
             rc = run_command(args.cache, ["fedpkg", "co", pkg])
             if rc != 0:
-                print(COLOR_FAIL + "    FAILED: to checkout %s" % pkg + COLOR_ENDC)
+                print_fail("Checkout %s" % pkg)
                 continue
 
         else:
-            print("    INFO: git repo already exists")
+            print_debug("Repo already exists")
             rc = run_command (pkg_cache, ['git', 'fetch'])
             if rc != 0:
-                print(COLOR_FAIL + "    FAILED: to update repo %s" % pkg)
+                print_fail("Update repo %s" % pkg)
                 continue
 
         if args.fedora_branch == 'rawhide':
@@ -232,14 +234,14 @@ def main():
             rc = switch_branch_and_reset (pkg_cache, args.fedora_branch)
 
         if rc != 0:
-            print(COLOR_FAIL + "    FAILED: switch branch" + COLOR_ENDC)
+            print_fail("Switch branch")
             continue
 
         # get the current version
         version = 0
         spec_filename = "%s/%s/%s.spec" % (args.cache, pkg, pkg)
         if not os.path.exists(spec_filename):
-            print "    WARNING: No spec file"
+            print_fail("No spec file")
             continue
 
         # open spec file
@@ -247,9 +249,9 @@ def main():
             spec = rpm.spec(spec_filename)
             version = spec.sourceHeader["version"]
         except ValueError as e:
-            print "    WARNING: Can't parse spec file"
+            print_fail("Can't parse spec file")
             continue
-        print("    INFO: current version is %s" % version)
+        print_debug("Current version is %s" % version)
 
         # check for newer version on GNOME.org
         success = False
@@ -259,9 +261,9 @@ def main():
                 success = True
                 break
             except IOError as e:
-                print "    WARNING: Failed to get JSON on try", i, e
+                print_fail("Failed to get JSON on try", i, e)
         if not success:
-            continue;
+            continue
 
         new_version = None
         gnome_branch = release_version[args.fedora_branch]
@@ -278,7 +280,7 @@ def main():
             try:
                 j = json.loads(f.read())
             except Exception, e:
-                print "    WARNING: Failed to read JSON at %s: %s" % (local_json_file, str(e))
+                print_fail("Failed to read JSON at %s: %s" % (local_json_file, str(e)))
                 continue
 
             # find the newest version
@@ -295,11 +297,11 @@ def main():
                 if rc > 0:
                     newest_remote_version = remote_ver
         if newest_remote_version == '0':
-            print "    WARNING: no remote versions matching the gnome branch", gnome_branch
-            print "    WARNING: check modules.xml is looking at the correct branch"
+            print_fail("No remote versions matching the gnome branch", gnome_branch)
+            print_fail("Check modules.xml is looking at the correct branch")
             continue
 
-        print "    INFO: newest remote version is", newest_remote_version
+        print_debug("Newest remote version is: %s" % newest_remote_version)
 
         # is this newer than the rpm spec file version
         rc = rpm.labelCompare((None, newest_remote_version, None), (None, version, None))
@@ -312,46 +314,46 @@ def main():
             if pkg in installed_pkgs:
                 installed_ver = installed_pkgs[pkg]
                 if installed_ver == newest_remote_version:
-                    print "    INFO: installed version is up to date"
+                    print_debug("installed version is up to date")
                 else:
-                    print "    INFO: installed version is", installed_ver
+                    print_debug("installed version is", installed_ver)
                     rc = rpm.labelCompare((None, installed_ver, None), (None, newest_remote_version, None))
                     if rc > 0:
-                        print "    WARNING: installed version is newer than gnome branch version"
-                        print "    WARNING: check modules.xml is looking at the correct branch"
+                        print_fail("installed version is newer than gnome branch version")
+                        print_fail("check modules.xml is looking at the correct branch")
 
         # nothing to do
         if new_version == None and not args.bump_soname:
-            print("    INFO: No updates available")
+            print_debug("No updates available")
             unlock_file(lock_filename)
             continue
 
         # never update a major version number */
         if new_version:
             if args.relax_version_checks:
-                print("    INFO: Updating major version number, but ignoring")
+                print_debug("Updating major version number, but ignoring")
             elif new_version.split('.')[0] != version.split('.')[0]:
-                print("    WARNING: Cannot update major version numbers")
+                print_fail("Cannot update major version numbers")
                 continue
 
         # we need to update the package
         if new_version:
-            print("    INFO: Need to update from %s to %s" %(version, new_version))
+            print_debug("Need to update from %s to %s" %(version, new_version))
 
         # download the tarball if it doesn't exist
         if new_version:
             tarball = j[1][module][new_version]['tar.xz']
             dest_tarball = tarball.split('/')[1]
             if os.path.exists(pkg + "/" + dest_tarball):
-                print("    INFO: source %s already exists" % dest_tarball)
+                print_debug("Source %s already exists" % dest_tarball)
             else:
                 tarball_url = gnome_ftp + "/" + module + "/" + tarball
-                print("    INFO: download %s" % tarball_url)
+                print_debug("Download %s" % tarball_url)
                 if not args.simulate:
                     try:
                         urllib.urlretrieve (tarball_url, args.cache + "/" + pkg + "/" + dest_tarball)
                     except IOError as e:
-                        print "    WARNING: Failed to get tarball", e
+                        print_fail("Failed to get tarball", e)
                         continue
                     # add the new source
                     run_command (pkg_cache, ['fedpkg', 'new-sources', dest_tarball])
@@ -384,22 +386,22 @@ def main():
         if not args.simulate:
             rc = run_command (pkg_cache, ['fedpkg', 'prep'])
             if rc != 0:
-                print(COLOR_FAIL + "    FAILED: to build %s as patches did not apply" % pkg + COLOR_ENDC)
+                print_fail("to build %s as patches did not apply" % pkg)
                 continue
 
         # push the changes
         if args.simulate:
-            print("    INFO: not pushing as simulating")
+            print_debug("Not pushing as simulating")
             continue
 
         # commit the changes
         rc = run_command (pkg_cache, ['git', 'commit', '-a', "--message=%s" % comment])
         if rc != 0:
-            print(COLOR_FAIL + "    FAILED: commit" + COLOR_ENDC)
+            print_fail("commit")
             continue
         rc = run_command (pkg_cache, ['git', 'push'])
         if rc != 0:
-            print(COLOR_FAIL + "    FAILED: push" + COLOR_ENDC)
+            print_fail("push")
             continue
 
         # Try to push the same change to master branch
@@ -417,21 +419,21 @@ def main():
         elif args.fedora_branch == "rawhide":
             pkg_release_tag = 'fc21'
         else:
-            print "    WARNING: Failed to get release tag for", args.fedora_branch
-            continue;
+            print_fail("Failed to get release tag for", args.fedora_branch)
+            continue
 
         # build package
         if not args.no_build:
             if new_version:
-                print(COLOR_OKBLUE + "    INFO: Building %s-%s-1.%s" % (pkg, new_version, pkg_release_tag) + COLOR_ENDC)
+                print_info("Building %s-%s-1.%s" % (pkg, new_version, pkg_release_tag))
             else:
-                print(COLOR_OKBLUE + "    INFO: Building %s-%s-1.%s" % (pkg, version, pkg_release_tag) + COLOR_ENDC)
+                print_info("Building %s-%s-1.%s" % (pkg, version, pkg_release_tag))
             if args.buildroot:
                 rc = run_command (pkg_cache, ['fedpkg', 'build', '--target', args.buildroot])
             else:
                 rc = run_command (pkg_cache, ['fedpkg', 'build'])
             if rc != 0:
-                print(COLOR_FAIL + "    FAILED: build" + COLOR_ENDC)
+                print_fail("Build")
                 continue
 
         # work out repo branch
@@ -444,18 +446,18 @@ def main():
         elif args.fedora_branch == "rawhide":
             pkg_branch_name = 'f21-build'
         else:
-            print(COLOR_FAIL + "    WARNING: Failed to get repo branch tag for" + args.fedora_branch + COLOR_ENDC)
-            continue;
+            print_fail("Failed to get repo branch tag for" + args.fedora_branch)
+            continue
 
         # wait for repo to sync
         if wait_repo and args.fedora_branch == "rawhide":
             rc = run_command (pkg_cache, ['koji', 'wait-repo', pkg_branch_name, '--build', "%s-%s-1.%s" % (pkg, new_version, pkg_release_tag)])
             if rc != 0:
-                print(COLOR_FAIL + "    FAILED: wait for repo" + COLOR_ENDC)
+                print_fail("Wait for repo")
                 continue
 
         # success!
-        print(COLOR_OKGREEN + "    SUCCESS: waited for build to complete" + COLOR_ENDC)
+        print_info("Waited for build to complete")
 
         # unlock build
         unlock_file(lock_filename)

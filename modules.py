@@ -18,9 +18,12 @@
 # Copyright (C) 2014
 #    Richard Hughes <richard@hughsie.com>
 
+""" Parses the modules.xml file """
+
 from xml.etree.ElementTree import ElementTree
 
-class ModulesItem:
+class ModulesItem(object):
+    """ Represents a project in the modules.xml file """
     def __init__(self):
         self.name = None
         self.pkgname = None
@@ -28,7 +31,7 @@ class ModulesItem:
         self.disabled = False
         self.release_glob = {}
         self.deps = []
-        self._depsolve_order = 0;
+        self.depsolve_level = 0
 
         # add the default gnome release numbers
         self.release_glob['f18'] = "3.6.*"
@@ -36,7 +39,9 @@ class ModulesItem:
         self.release_glob['f20'] = "3.9.*,3.10.*,3.10"
         self.release_glob['rawhide'] = "*"
 
-class ModulesXml:
+class ModulesXml(object):
+    """ Parses the modules.xml file """
+
     def __init__(self, filename):
         self.items = []
         tree = ElementTree()
@@ -47,11 +52,11 @@ class ModulesXml:
             item.name = project.get('name')
             item.pkgname = project.get('pkgname')
             if not item.pkgname:
-                item.pkgname = item.name;
+                item.pkgname = item.name
             if project.get('wait_repo') == "1":
-                item.wait_repo = True;
+                item.wait_repo = True
             if project.get('disabled') == "1":
-                item.disabled = True;
+                item.disabled = True
             for data in project:
                 if data.tag == 'dep':
                     item.deps.append(data.text)
@@ -61,11 +66,14 @@ class ModulesXml:
             self.items.append(item)
 
     def depsolve(self):
+        """ depsolves the list into the correct order """
 
         # check there are no recyprical deps
         for item in self.items:
             for dep in item.deps:
                 item2 = self._get_item_by_name(dep)
+                if not item2:
+                    continue
                 if item.pkgname in item2.deps:
                     print item.pkgname, "depends on", item2.pkgname
                     print item2.pkgname, "depends on", item.pkgname
@@ -77,14 +85,14 @@ class ModulesXml:
         while changes:
             if cnt > 10000:
                 print "Depsolve error"
-                self.items = sorted(self.items, key=lambda item: item._depsolve_order)
+                self.items = sorted(self.items, key=lambda item: item.depsolve_level)
                 for item in self.items:
                     if item.name:
-                        print item.name, item._depsolve_order
+                        print item.name, item.depsolve_level
                     else:
-                        print item.pkgname, item._depsolve_order
+                        print item.pkgname, item.depsolve_level
                     for dep in item.deps:
-                        print "  ", dep, self._get_item_by_name(dep)._depsolve_order
+                        print "  ", dep, self._get_item_by_name(dep).depsolve_level
                 return False
             changes = False
             for item in self.items:
@@ -93,20 +101,20 @@ class ModulesXml:
                     if not item_dep:
                         print "failed to find dep", dep
                         return False
-                    if item._depsolve_order <= item_dep._depsolve_order:
-                        item._depsolve_order += 1
+                    if item.depsolve_level <= item_dep.depsolve_level:
+                        item.depsolve_level += 1
                         changes = True
                         cnt = cnt + 1
                         break
                 if changes:
                     break
         # sort by depsolve key
-        self.items = sorted(self.items, key=lambda item: item._depsolve_order)
+        self.items = sorted(self.items, key=lambda item: item.depsolve_level)
         return True
 
     def _print(self):
         for item in self.items:
-            print("%02i " % item._depsolve_order + ' ' * item._depsolve_order + item.pkgname)
+            print("%02i " % item.depsolve_level + ' ' * item.depsolve_level + item.pkgname)
 
     def _get_item_by_name(self, name):
         for item in self.items:
@@ -116,11 +124,3 @@ class ModulesXml:
             if name_tmp == name:
                 return item
         return None
-
-    def get_pkgnames(self):
-        pkg_names = []
-        for item in self.items:
-            if item.disabled:
-                continue
-            pkg_names.append(item.pkgname)
-        return pkg_names

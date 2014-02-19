@@ -18,7 +18,10 @@
 # Copyright (C) 2014
 #    Richard Hughes <richard@hughsie.com>
 
-class Package:
+""" A package with NVR data """
+
+class Package(object):
+    """ A package with NVR data """
 
     def __init__(self):
         self.name = None
@@ -26,10 +29,12 @@ class Package:
         self.release = None
 
     def get_url(self):
+        """ Returns the full URL pf the source package """
         uri = 'http://kojipkgs.fedoraproject.org/packages/'
         uri += "%s/%s/%s/src/" % (self.name, self.version, self.release)
         uri += "%s-%s-%s.src.rpm" % (self.name, self.version, self.release)
         return uri
 
     def get_nvr(self):
+        """ Returns the NVR of the package """
         return "%s-%s-%s" % (self.name, self.version, self.release)

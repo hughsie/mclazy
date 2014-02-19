@@ -18,93 +18,15 @@
 # Copyright (C) 2014
 #    Richard Hughes <richard@hughsie.com>
 
-import koji
-import time
-import requests
+""" A simple script that builds GNOME packages for COPR """
+
 import argparse
-import urllib2
 
-import copr_cli.subcommands
-from xml.etree.ElementTree import ElementTree
-
+# internal
+from log import print_debug, print_info, print_fail
 from modules import ModulesXml
-from package import Package
 from koji_helper import KojiHelper
-
-COLOR_OKBLUE = '\033[94m'
-COLOR_OKGREEN = '\033[92m'
-COLOR_WARNING = '\033[93m'
-COLOR_FAIL = '\033[91m'
-COLOR_ENDC = '\033[0m'
-
-def build_in_copr(copr, pkgs):
-    """ Build a new package into a given copr. """
-    user = copr_cli.subcommands.get_user()
-    copr_api_url = copr_cli.subcommands.get_api_url()
-    URL = '{0}/coprs/{1}/{2}/new_build/'.format(
-        copr_api_url,
-        user['username'],
-        copr)
-
-    data = {'pkgs': ' '.join(pkgs),
-            'memory': None,
-            'timeout': None
-            }
-
-    req = requests.post(URL,
-                        auth=(user['login'], user['token']),
-                        data=data)
-    output = copr_cli.subcommands._get_data(req, user, copr)
-    if output is None:
-        return None
-    else:
-        print(output['message'])
-
-    return output['id']
-
-def build_exists(copr_id, pkg):
-    url = 'http://copr-be.cloud.fedoraproject.org/results/rhughes/'
-    url += copr_id
-    url += '/fedora-20-x86_64/'
-    url += pkg.get_nvr()
-    url += '/success'
-    try:
-        ret = urllib2.urlopen(url)
-        return ret.code == 200
-    except Exception, e:
-        pass
-    return False
-
-def wait_for_builds(builds_in_progress):
-    rc = True
-    for pkg in builds_in_progress:
-        print_info("Waiting for %s [%i]" % (pkg.get_nvr(), pkg.build_id))
-    try:
-        while len(builds_in_progress) > 0:
-            for pkg in builds_in_progress:
-                (ret, status) = copr_cli.subcommands._fetch_status(pkg.build_id)
-                if not ret:
-                    print_fail("Unable to get build status for %i" % pkg.build_id)
-                    continue
-                if status == 'succeeded':
-                    # add to database
-                    builds_in_progress.remove(pkg)
-                    print_info("build %s [%i] succeeded" % (pkg.name, pkg.build_id))
-                elif status == 'failed':
-                    builds_in_progress.remove(pkg)
-                    print_fail("build %s [%i] failed" % (pkg.name, pkg.build_id))
-                    rc = False
-                time.sleep(1)
-            time.sleep(10)
-    except KeyboardInterrupt:
-        rc = False
-    return rc
-
-def print_info(text):
-    print COLOR_OKBLUE + "    INFO: " + text + COLOR_ENDC
-
-def print_fail(text):
-    print COLOR_FAIL + "    FAILED: " + text + COLOR_ENDC
+from copr_helper import CoprHelper
 
 def main():
 
@@ -125,9 +47,9 @@ def main():
     data = ModulesXml(args.modules)
 
     koji = KojiHelper()
+    copr = CoprHelper(args.copr_id)
 
-    current_depsolve_level = 0;
-    builds_in_progress = []
+    current_depsolve_level = 0
 
     # only build one module
     if args.buildone:
@@ -137,7 +59,7 @@ def main():
             else:
                 item.disabled = True
     else:
-        print("Depsolving moduleset...")
+        print_info("Depsolving moduleset")
         if not data.depsolve():
             print_fail("Failed to depsolve")
             return
@@ -159,15 +81,13 @@ def main():
     for item in data.items:
 
         # wait for builds
-        if current_depsolve_level != item._depsolve_order:
-            if len(builds_in_progress):
-                print("Waiting for depsolve level %i" % current_depsolve_level)
-                rc = wait_for_builds(builds_in_progress)
-                if not rc:
-                    print_fail("Aborting")
-                    break
-            current_depsolve_level = item._depsolve_order
-            print("Now running depsolve level %i" % current_depsolve_level)
+        if current_depsolve_level != item.depsolve_level:
+            rc = copr.wait_for_builds()
+            if not rc:
+                print_fail("A build failed, so aborting")
+                break
+            current_depsolve_level = item.depsolve_level
+            print_debug("Now running depsolve level %i" % current_depsolve_level)
 
         # skip
         if item.disabled:
@@ -178,37 +98,33 @@ def main():
         if not pkg:
             print_fail("package %s does not exists in %s" % (item.pkgname, args.branch_destination))
             continue
-        print("Latest version of %s in %s: %s" % (item.pkgname, args.branch_source, pkg.get_nvr()))
+        print_debug("Latest version of %s in %s: %s" % (item.pkgname, args.branch_source, pkg.get_nvr()))
 
         # has this build been submitted?
-        if not args.ignore_existing and build_exists(args.copr_id, pkg):
-            print("Already built in copr")
+        if not args.ignore_existing and copr.build_exists(pkg):
+            print_debug("Already built in copr")
             continue
 
         # does this version already exist?
         pkg_stable = koji.get_newest_build(args.branch_destination, item.pkgname)
         if pkg_stable:
-            print("Latest version in %s: %s" % (args.branch_destination, pkg_stable.get_nvr()))
+            print_debug("Latest version in %s: %s" % (args.branch_destination, pkg_stable.get_nvr()))
             if not args.ignore_version and pkg.version == pkg_stable.version:
-                print("Already exists same version")
+                print_debug("Already exists same version")
                 continue
 
         # submit to copr
-        print("Submitting URL " + pkg.get_url())
+        print_debug("Submitting URL " + pkg.get_url())
         if args.simulate:
             continue
-        pkg.build_id = build_in_copr(args.copr_id, [pkg.get_url()])
-        if not pkg.build_id:
+        if not copr.build(pkg):
             print_fail("build")
             break
-        print("Adding build " + str(pkg.build_id))
-        builds_in_progress.append(pkg)
 
     # final pass
-    if len(builds_in_progress):
-        rc = wait_for_builds(builds_in_progress)
-        if not rc:
-            print_fail("Failed")
+    rc = copr.wait_for_builds()
+    if not rc:
+        print_fail("Failed")
 
     print_info("Done!")
 

@@ -18,8 +18,9 @@
 # Copyright (C) 2014
 #    Richard Hughes <richard@hughsie.com>
 
+""" Print dep information for a modules.xml file """
+
 from modules import ModulesXml
-from package import Package
 
 def main():
 
