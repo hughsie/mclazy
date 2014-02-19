@@ -19,10 +19,10 @@
 #    Richard Hughes <richard@hughsie.com>
 
 import koji
-import sqlite3
 import time
 import requests
 import argparse
+import urllib2
 
 import copr_cli.subcommands
 from xml.etree.ElementTree import ElementTree
@@ -35,34 +35,6 @@ COLOR_OKGREEN = '\033[92m'
 COLOR_WARNING = '\033[93m'
 COLOR_FAIL = '\033[91m'
 COLOR_ENDC = '\033[0m'
-
-class LocalDb:
-    def __init__(self):
-        self.con = sqlite3.connect('./copr.db')
-        cur = self.con.cursor()
-        cur.execute("CREATE TABLE IF NOT EXISTS builds(timestamp INTEGER PRIMARY KEY ASC, nvr TEXT)")
-        cur.close()
-        self.con.commit()
-
-    def __del__(self):
-        self.con.close()
-
-    def build_exists(self, pkg):
-        cur = self.con.cursor()
-        cur.execute("SELECT * FROM builds WHERE nvr = '%s'" % pkg.get_nvr())
-        rows = cur.fetchall()
-        cur.close()
-        return len(rows) > 0
-
-    def add_build(self, pkg):
-        if self.build_exists(pkg):
-            print "pkg already exists!"
-            return;
-        cur = self.con.cursor()
-        ts = int(time.time())
-        cur.execute("INSERT INTO builds(timestamp,nvr) VALUES(?,?)", (ts, pkg.get_nvr()))
-        cur.close()
-        self.con.commit()
 
 class Koji:
     def __init__(self):
@@ -105,8 +77,20 @@ def build_in_copr(copr, pkgs):
 
     return output['id']
 
+def build_exists(copr_id, pkg):
+    url = 'http://copr-be.cloud.fedoraproject.org/results/rhughes/'
+    url += copr_id
+    url += '/fedora-20-x86_64/'
+    url += pkg.get_nvr()
+    url += '/success'
+    try:
+        ret = urllib2.urlopen(url)
+        return ret.code == 200
+    except Exception, e:
+        pass
+    return False
 
-def wait_for_builds(builds_in_progress, db):
+def wait_for_builds(builds_in_progress):
     rc = True
     for pkg in builds_in_progress:
         print_info("Waiting for %s [%i]" % (pkg.get_nvr(), pkg.build_id))
@@ -121,7 +105,6 @@ def wait_for_builds(builds_in_progress, db):
                     # add to database
                     builds_in_progress.remove(pkg)
                     print_info("build %s [%i] succeeded" % (pkg.name, pkg.build_id))
-                    db.add_build(pkg)
                 elif status == 'failed':
                     builds_in_progress.remove(pkg)
                     print_fail("build %s [%i] failed" % (pkg.name, pkg.build_id))
@@ -157,7 +140,6 @@ def main():
     data = ModulesXml(args.modules)
 
     koji = Koji()
-    db = LocalDb()
 
     current_depsolve_level = 0;
     builds_in_progress = []
@@ -195,7 +177,7 @@ def main():
         if current_depsolve_level != item._depsolve_order:
             if len(builds_in_progress):
                 print("Waiting for depsolve level %i" % current_depsolve_level)
-                rc = wait_for_builds(builds_in_progress, db)
+                rc = wait_for_builds(builds_in_progress)
                 if not rc:
                     print_fail("Aborting")
                     break
@@ -214,7 +196,7 @@ def main():
         print("Latest version of %s in %s: %s" % (item.pkgname, args.branch_source, pkg.get_nvr()))
 
         # has this build been submitted?
-        if not args.ignore_existing and db.build_exists(pkg):
+        if not args.ignore_existing and build_exists(args.copr_id, pkg):
             print("Already built in copr")
             continue
 
@@ -239,7 +221,7 @@ def main():
 
     # final pass
     if len(builds_in_progress):
-        rc = wait_for_builds(builds_in_progress, db)
+        rc = wait_for_builds(builds_in_progress)
         if not rc:
             print_fail("Failed")
 
