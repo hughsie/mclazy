@@ -148,7 +148,9 @@ def main():
     parser.add_argument('--modules', default="modules.xml", help='The modules to search')
     parser.add_argument('--copr-id', default="f20-gnome-3-12", help='The COPR to use')
     parser.add_argument('--buildone', default=None, help='Only build one specific package')
-    parser.add_argument('--force', action='store_true', help='Always build the module')
+    parser.add_argument('--bump-soname', default=None, help='Build this package any any that dep on it')
+    parser.add_argument('--ignore-existing', action='store_true', help='Build the module even if it already exists in COPR')
+    parser.add_argument('--ignore-version', action='store_true', help='Build the module even if the same version exists in the destination')
     args = parser.parse_args()
 
     # parse the configuration file
@@ -172,6 +174,20 @@ def main():
         if not data.depsolve():
             print_fail("Failed to depsolve")
             return
+
+    # build one module, plus the things that depend on it
+    if args.bump_soname:
+        args.ignore_existing = True
+        for item in data.items:
+            disabled = True
+            if item.pkgname == args.bump_soname:
+                disabled = False
+            else:
+                for dep in item.deps:
+                    if dep == args.bump_soname:
+                        disabled = False
+                        break
+            item.disabled = disabled
 
     for item in data.items:
 
@@ -198,7 +214,7 @@ def main():
         print("Latest version of %s in %s: %s" % (item.pkgname, args.branch_source, pkg.get_nvr()))
 
         # has this build been submitted?
-        if not args.force and db.build_exists(pkg):
+        if not args.ignore_existing and db.build_exists(pkg):
             print("Already built in copr")
             continue
 
@@ -206,7 +222,7 @@ def main():
         pkg_stable = koji.get_newest_build(args.branch_destination, item.pkgname)
         if pkg_stable:
             print("Latest version in %s: %s" % (args.branch_destination, pkg_stable.get_nvr()))
-            if not args.force and pkg.version == pkg_stable.version:
+            if not args.ignore_version and pkg.version == pkg_stable.version:
                 print("Already exists same version")
                 continue
 
