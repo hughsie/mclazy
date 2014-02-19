@@ -790,6 +790,7 @@
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
     <dep>libgdata</dep>
+    <dep>libgfbgraph</dep>
     <dep>tracker</dep>
   </project>
   <project name="gnome-packagekit">
@@ -804,6 +805,7 @@
     <dep>gnome-desktop</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gtk+</dep>
+    <dep>libgfbgraph</dep>
     <dep>librsvg</dep>
     <dep>tracker</dep>
   </project>
@@ -1050,6 +1052,15 @@
     <dep>libgnome-keyring</dep>
     <dep>libsoup</dep>
     <dep>vala</dep>
+  </project>
+  <project name="libgfbgraph" pkgname="gfbgraph">
+    <dep>glib</dep>
+    <dep>gnome-online-accounts</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk-doc</dep>
+    <dep>json-glib</dep>
+    <dep>libsoup</dep>
+    <dep>rest</dep>
   </project>
   <project name="libgee">
     <release version="f18">0.8.*</release>
