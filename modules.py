@@ -104,6 +104,10 @@ class ModulesXml:
         self.items = sorted(self.items, key=lambda item: item._depsolve_order)
         return True
 
+    def _print(self):
+        for item in self.items:
+            print("%02i " % item._depsolve_order + ' ' * item._depsolve_order + item.pkgname)
+
     def _get_item_by_name(self, name):
         for item in self.items:
             name_tmp = item.name
