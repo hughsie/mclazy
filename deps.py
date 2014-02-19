@@ -37,10 +37,10 @@ def main():
         f = open('/home/hughsie/Work/Fedora/' + item.pkgname + '/' + item.pkgname + '.spec', 'r')
         found = []
         for l in f.readlines():
-            l = l.replace('\n', '')
-            l = l.replace('-devel', '')
             if not l.startswith('BuildRequires'):
                 continue
+            l = l.replace('\n', '')
+            l = l.replace('-devel', '')
             for item2 in data.items:
                 if item2.pkgname == item.pkgname:
                     continue

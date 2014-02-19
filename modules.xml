@@ -53,6 +53,12 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
+  <project pkgname="geoclue2">
+    <dep>NetworkManager</dep>
+    <dep>glib</dep>
+    <dep>json-glib</dep>
+    <dep>libsoup</dep>
+  </project>
   <project pkgname="libmediaart">
     <dep>vala</dep>
   </project>
@@ -156,6 +162,7 @@
   </project>
   <project name="gnome-settings-daemon" wait_repo="1">
     <dep>PackageKit</dep>
+    <dep>geoclue2</dep>
     <dep>geocode-glib</dep>
     <dep>gnome-desktop</dep>
     <dep>gsettings-desktop-schemas</dep>
@@ -381,6 +388,7 @@
     <dep>cogl</dep>
     <dep>folks</dep>
     <dep>gcr</dep>
+    <dep>geoclue2</dep>
     <dep>geocode-glib</dep>
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
@@ -645,6 +653,7 @@
     <dep>vala</dep>
   </project>
   <project name="gnome-clocks">
+    <dep>geoclue2</dep>
     <dep>geocode-glib</dep>
     <dep>glib</dep>
     <dep>gnome-desktop</dep>
