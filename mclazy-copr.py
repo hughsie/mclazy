@@ -22,18 +22,13 @@ import koji
 import sqlite3
 import time
 import requests
+import argparse
 
 import copr_cli.subcommands
 from xml.etree.ElementTree import ElementTree
 
 from modules import ModulesXml
 from package import Package
-
-MCLAZY_COPR_ID = 'f20-gnome-3-12'
-MCLAZY_COPR_DATABASE = './copr.db'
-MCLAZY_KOJI_HUB = 'http://koji.fedoraproject.org/kojihub/'
-MCLAZY_BRANCH_TARGET = 'rawhide'
-MCLAZY_BRANCH_SOURCE = 'f20'
 
 COLOR_OKBLUE = '\033[94m'
 COLOR_OKGREEN = '\033[92m'
@@ -43,7 +38,7 @@ COLOR_ENDC = '\033[0m'
 
 class LocalDb:
     def __init__(self):
-        self.con = sqlite3.connect(MCLAZY_COPR_DATABASE)
+        self.con = sqlite3.connect('./copr.db')
         cur = self.con.cursor()
         cur.execute("CREATE TABLE IF NOT EXISTS builds(timestamp INTEGER PRIMARY KEY ASC, nvr TEXT)")
         cur.close()
@@ -71,7 +66,8 @@ class LocalDb:
 
 class Koji:
     def __init__(self):
-        self.session = koji.ClientSession(MCLAZY_KOJI_HUB)
+        koji_instance = 'http://koji.fedoraproject.org/kojihub/'
+        self.session = koji.ClientSession(koji_instance)
 
     def get_newest_build(self, branch, pkgname):
         builds = self.session.getLatestRPMS(branch, package=pkgname, arch='src')
@@ -146,12 +142,19 @@ def print_fail(text):
 
 def main():
 
+    # read defaults from command line arguments
+    parser = argparse.ArgumentParser(description='Automatically build Fedora packages in COPR')
+    parser.add_argument('--branch-source', default="rawhide", help='The branch to use as a source (default: rawhide)')
+    parser.add_argument('--branch-destination', default="f20", help='The branch to use as a destination (default: f20)')
+    parser.add_argument('--simulate', action='store_true', help='Do not commit any changes')
+    parser.add_argument('--modules', default="modules.xml", help='The modules to search')
+    parser.add_argument('--copr-id', default="f20-gnome-3-12", help='The COPR to use')
+    parser.add_argument('--buildone', default=None, help='Only build one specific package')
+    parser.add_argument('--force', action='store_true', help='Always build the module')
+    args = parser.parse_args()
+
     # parse the configuration file
-    data = ModulesXml("./modules.xml")
-    print("Depsolving moduleset...")
-    if not data.depsolve():
-        print_fail("Failed to depsolve")
-        return
+    data = ModulesXml(args.modules)
 
     koji = Koji()
     db = LocalDb()
@@ -159,8 +162,22 @@ def main():
     current_depsolve_level = 0;
     builds_in_progress = []
 
+    # only build one module
+    if args.buildone:
+        for item in data.items:
+            if item.pkgname == args.buildone:
+                item.disabled = False
+            else:
+                item.disabled = True
+    else:
+        print("Depsolving moduleset...")
+        if not data.depsolve():
+            print_fail("Failed to depsolve")
+            return
+
     for item in data.items:
 
+        # wait for builds
         if current_depsolve_level != item._depsolve_order:
             if len(builds_in_progress):
                 print("Waiting for depsolve level %i" % current_depsolve_level)
@@ -171,32 +188,48 @@ def main():
             current_depsolve_level = item._depsolve_order
             print("Now running depsolve level %i" % current_depsolve_level)
 
+        # skip
+        if item.disabled:
+            continue
+
         # get the latest build from koji
-        pkg = koji.get_newest_build(MCLAZY_BRANCH_TARGET, item.pkgname)
-        print("Latest version of %s in %s: %s" % (item.pkgname, MCLAZY_BRANCH_TARGET, pkg.get_nvr()))
+        pkg = koji.get_newest_build(args.branch_source, item.pkgname)
+        if not pkg:
+            print_fail("package %s does not exists in %s" % (item.pkgname, args.branch_destination))
+            continue
+        print("Latest version of %s in %s: %s" % (item.pkgname, args.branch_source, pkg.get_nvr()))
 
         # has this build been submitted?
-        if db.build_exists(pkg):
+        if not args.force and db.build_exists(pkg):
             print("Already built in copr")
             continue
 
         # does this version already exist?
-        pkg_stable = koji.get_newest_build(MCLAZY_BRANCH_SOURCE, item.pkgname)
+        pkg_stable = koji.get_newest_build(args.branch_destination, item.pkgname)
         if pkg_stable:
-            print("Latest version in %s: %s" % (MCLAZY_BRANCH_SOURCE, pkg_stable.get_nvr()))
-            if pkg.version == pkg_stable.version:
+            print("Latest version in %s: %s" % (args.branch_destination, pkg_stable.get_nvr()))
+            if not args.force and pkg.version == pkg_stable.version:
                 print("Already exists same version")
                 continue
 
         # submit to copr
         print("Submitting URL " + pkg.get_url())
-        pkg.build_id = build_in_copr(MCLAZY_COPR_ID, [pkg.get_url()])
+        if args.simulate:
+            continue
+        pkg.build_id = build_in_copr(args.copr_id, [pkg.get_url()])
         if not pkg.build_id:
             print_fail("build")
             break
         print("Adding build " + str(pkg.build_id))
         builds_in_progress.append(pkg)
 
+    # final pass
+    if len(builds_in_progress):
+        rc = wait_for_builds(builds_in_progress, db)
+        if not rc:
+            print_fail("Failed")
+
+    print_info("Done!")
 
 if __name__ == "__main__":
     main()
