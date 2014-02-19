@@ -669,14 +669,6 @@
     <dep>libnotify</dep>
     <dep>vala</dep>
   </project>
-  <project name="gnome-desktop" pkgname="gnome-desktop3">
-    <dep>glib</dep>
-    <dep>gnome-common</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gsettings-desktop-schemas</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-  </project>
   <project name="gnome-devel-docs">
     <dep>yelp</dep>
     <dep>yelp-tools</dep>

@@ -38,6 +38,11 @@ class CoprHelper(object):
 
     def build(self, pkg):
         """ Build a new package into a given COPR """
+
+        # already in the queue
+        if pkg in self.builds_in_progress:
+            reutrn True
+
         user = copr_cli.subcommands.get_user()
         copr_api_url = copr_cli.subcommands.get_api_url()
         url = '{0}/coprs/{1}/{2}/new_build/'.format(
