@@ -929,6 +929,10 @@
     <dep>mutter-wayland</dep>
     <dep>upower</dep>
   </project>
+  <project name="gnome-shell-extensions">
+    <dep>desktop-file-utils</dep>
+    <dep>gnome-desktop</dep>
+  </project>
   <project name="gnome-software">
     <dep>PackageKit</dep>
     <dep>desktop-file-utils</dep>
