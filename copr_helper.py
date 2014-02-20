@@ -95,7 +95,12 @@ class CoprHelper(object):
         try:
             while len(self.builds_in_progress) > 0:
                 for pkg in self.builds_in_progress:
-                    (ret, status) = copr_cli.subcommands._fetch_status(pkg.build_id)
+                    try:
+                        (ret, status) = copr_cli.subcommands._fetch_status(pkg.build_id)
+                    except requests.exceptions.ConnectionError, e:
+                        self.builds_in_progress.remove(pkg)
+                        print_fail("Lost connection for build %i" % pkg.build_id)
+                        success = False
                     if not ret:
                         self.builds_in_progress.remove(pkg)
                         print_fail("Unable to get build status for %i" % pkg.build_id)
