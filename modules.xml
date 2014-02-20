@@ -525,6 +525,7 @@
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
+    <dep>p11-kit</dep>
     <dep>vala</dep>
   </project>
   <project name="gdk-pixbuf" pkgname="gdk-pixbuf2" pkgconfig="gdk-pixbuf-2.0">
@@ -766,6 +767,7 @@
     <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gtk-doc</dep>
+    <dep>p11-kit</dep>
   </project>
   <project name="gnome-klotski">
     <dep>desktop-file-utils</dep>
@@ -1372,6 +1374,9 @@
     <dep>gtk+</dep>
     <dep>pyatspi</dep>
     <dep>pygobject</dep>
+  </project>
+  <project name="p11-kit">
+    <dep>gtk-doc</dep>
   </project>
   <project name="pango">
     <release version="f18">1.32.*</release>
