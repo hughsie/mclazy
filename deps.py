@@ -28,9 +28,7 @@ def main():
     data = ModulesXml("./modules.xml")
     for item in data.items:
 
-        if not item.name:
-            print("  <project pkgname=\"%s\">" % item.pkgname)
-        elif item.pkgname == item.name:
+        if item.pkgname == item.name:
             print("  <project name=\"%s\">" % item.name)
         else:
             print("  <project name=\"%s\" pkgname=\"%s\">" % (item.name, item.pkgname))
@@ -40,15 +38,30 @@ def main():
             if not l.startswith('BuildRequires'):
                 continue
             l = l.replace('\n', '')
-            l = l.replace('-devel', '')
-            for item2 in data.items:
-                if item2.pkgname == item.pkgname:
-                    continue
-                if l.find(item2.pkgname) > 0:
-                    if item2.name:
-                        found.append(item2.name)
-                    elif item2.pkgname:
-                        found.append(item2.pkgname)
+            l = l[14:].lstrip()
+
+            for section in l.split(' '):
+                # remove pkgconfig() wrapper
+                if section.startswith('pkgconfig('):
+                    section = section[10:-1]
+                    for item2 in data.items:
+                        if section == item2.pkgconfig:
+                            found.append(item2.name)
+                            break
+                else:
+                    section = section.replace('NetworkManager-glib', 'NetworkManager')
+                    section = section.replace('PackageKit-glib', 'PackageKit')
+                    section = section.replace('libwayland-client-devel', 'wayland')
+                    section = section.replace('cheese-libs-devel', 'cheese')
+                    section = section.replace('vala-tools', 'vala')
+                    section = section.replace('libchamplain-gtk', 'libchamplain')
+                    section = section.replace('gnome-bluetooth-libs-devel', 'gnome-bluetooth')
+                    section = section.replace('-devel', '')
+                    for item2 in data.items:
+                        if section == item2.pkgname:
+                            found.append(item2.name)
+                            break
+
         for key in sorted(list(set(found))):
             print "    <dep>%s</dep>" % key
         f.close()

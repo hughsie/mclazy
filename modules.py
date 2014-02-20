@@ -27,6 +27,7 @@ class ModulesItem(object):
     def __init__(self):
         self.name = None
         self.pkgname = None
+        self.pkgconfig = None
         self.wait_repo = False
         self.disabled = False
         self.autobuild = True
@@ -50,14 +51,20 @@ class ModulesXml(object):
         projects = list(tree.iter("project"))
         for project in projects:
             item = ModulesItem()
+            item.disabled = False
             item.name = project.get('name')
             item.pkgname = project.get('pkgname')
             if not item.pkgname:
                 item.pkgname = item.name
+            item.pkgconfig = project.get('pkgconfig')
+            if not item.pkgconfig:
+                item.pkgconfig = item.name
             if project.get('wait_repo') == "1":
                 item.wait_repo = True
             if project.get('autobuild') == "False":
                 item.autobuild = False
+            if project.get('disabled') == "True":
+                item.disabled = True
             for data in project:
                 if data.tag == 'dep':
                     item.deps.append(data.text)
@@ -119,9 +126,6 @@ class ModulesXml(object):
 
     def _get_item_by_name(self, name):
         for item in self.items:
-            name_tmp = item.name
-            if not name_tmp:
-                name_tmp = item.pkgname
-            if name_tmp == name:
+            if item.name == name:
                 return item
         return None

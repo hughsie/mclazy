@@ -37,7 +37,7 @@
   </project>
   <project name="wayland" autobuild="False"/>
   <project name="mozjs24" autobuild="False"/>
-  <project name="webkitgtk3" autobuild="False">
+  <project name="webkitgtk3" pkgconfig="webkitgtk-3.0" autobuild="False">
     <dep>at-spi2-core</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -51,13 +51,15 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project name="geoclue2" autobuild="False">
+  <project name="geoclue2" pkgconfig="geoclue" autobuild="False">
     <dep>NetworkManager</dep>
     <dep>glib</dep>
     <dep>json-glib</dep>
     <dep>libsoup</dep>
   </project>
   <project name="libmediaart" autobuild="False">
+    <dep>gdk-pixbuf</dep>
+    <dep>glib</dep>
     <dep>vala</dep>
   </project>
   <project name="tracker" autobuild="False">
@@ -74,10 +76,7 @@
     <dep>nautilus</dep>
     -->
     <dep>rest</dep>
-    <!-- circular dep
-    <dep>totem</dep>
     <dep>totem-pl-parser</dep>
-    -->
     <dep>upower</dep>
     <dep>vala</dep>
   </project>
@@ -101,21 +100,18 @@
     <dep>glib</dep>
   </project>
 
-<!--
-  These projects are at the top in some kind of dependency order
--->
   <project name="gsettings-desktop-schemas" wait_repo="1">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
   </project>
-  <project name="glib" pkgname="glib2" wait_repo="1">
+  <project name="glib" pkgname="glib2" pkgconfig="glib-2.0" wait_repo="1">
     <release version="f18">2.34.*</release>
     <release version="f19">2.36.*</release>
     <release version="f20">2.38.*</release>
     <release version="rawhide">*</release>
     <dep>gtk-doc</dep>
   </project>
-  <project name="gtk+" pkgname="gtk3" wait_repo="1">
+  <project name="gtk+" pkgname="gtk3" pkgconfig="gtk+-3.0" wait_repo="1">
     <release version="f18">3.6.*</release>
     <release version="f19">3.8.*</release>
     <release version="f20">3.10.*</release>
@@ -130,7 +126,7 @@
     <dep>pango</dep>
     <dep>wayland</dep>
   </project>
-  <project name="gnome-desktop" pkgname="gnome-desktop3" wait_repo="1">
+  <project name="gnome-desktop" pkgname="gnome-desktop3" pkgconfig="gnome-desktop-3.0" wait_repo="1">
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -163,7 +159,6 @@
   <project name="gnome-control-center" pkgname="control-center">
     <dep>NetworkManager</dep>
     <dep>cheese</dep>
-    <dep>clutter</dep>
     <dep>clutter-gtk</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
@@ -193,7 +188,6 @@
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="alacarte">
@@ -260,10 +254,8 @@
     <dep>gtk-doc</dep>
     <dep>libnotify</dep>
     <dep>nautilus</dep>
-    <dep>totem</dep>
     <dep>totem-pl-parser</dep>
     <dep>tracker</dep>
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="cantarell-fonts" pkgname="abattis-cantarell-fonts">
@@ -291,7 +283,6 @@
     <dep>clutter</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
-    <dep>evolution</dep>
     <dep>evolution-data-server</dep>
     <dep>gnome-desktop</dep>
     <dep>gnome-video-effects</dep>
@@ -322,7 +313,7 @@
     <dep>clutter</dep>
     <dep>gobject-introspection</dep>
   </project>
-  <project name="clutter-gtk">
+  <project name="clutter-gtk" pkgconfig="clutter-gtk-1.0">
     <release version="f18">1.4.*</release>
     <release version="f19">1.4.*</release>
     <release version="f20">1.4.*</release>
@@ -361,7 +352,6 @@
   <project name="empathy">
     <dep>NetworkManager</dep>
     <dep>cheese</dep>
-    <dep>clutter</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
     <dep>cogl</dep>
@@ -374,6 +364,7 @@
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
     <dep>libchamplain</dep>
+    <dep>libgee</dep>
     <dep>libnotify</dep>
     <dep>libsecret</dep>
     <dep>webkitgtk3</dep>
@@ -390,7 +381,6 @@
     <dep>librsvg</dep>
   </project>
   <project name="eog-plugins">
-    <dep>clutter</dep>
     <dep>clutter-gtk</dep>
     <dep>eog</dep>
     <dep>gsettings-desktop-schemas</dep>
@@ -422,13 +412,11 @@
     <dep>libgxps</dep>
     <dep>libsecret</dep>
     <dep>nautilus</dep>
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
   <!-- NOTE: Milan Crha told us not to touch this -->
   <project name="evolution" autobuild="False">
     <dep>atk</dep>
-    <dep>clutter</dep>
     <dep>clutter-gtk</dep>
     <dep>evolution-data-server</dep>
     <dep>glib</dep>
@@ -444,7 +432,6 @@
     <dep>libnotify</dep>
     <dep>libsoup</dep>
     <dep>webkitgtk3</dep>
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="evolution-ews" autobuild="False">
@@ -482,10 +469,10 @@
     <release version="f20">0.9.*</release>
     <release version="rawhide">*</release>
     <dep>GConf</dep>
-    <dep>evolution</dep>
     <dep>evolution-data-server</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
+    <dep>libgee</dep>
     <dep>vala</dep>
   </project>
   <project name="four-in-a-row">
@@ -507,7 +494,7 @@
     <dep>gtk+</dep>
     <dep>vala</dep>
   </project>
-  <project name="gdk-pixbuf" pkgname="gdk-pixbuf2">
+  <project name="gdk-pixbuf" pkgname="gdk-pixbuf2" pkgconfig="gdk-pixbuf-2.0">
     <release version="f18">2.26.*</release>
     <release version="f19">2.28.*</release>
     <release version="f20">2.30.*</release>
@@ -538,7 +525,6 @@
     <dep>gtksourceview</dep>
     <dep>libpeas</dep>
     <dep>pygobject</dep>
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="gedit-plugins">
@@ -548,7 +534,6 @@
     <dep>libpeas</dep>
     <dep>pygobject</dep>
     <dep>vte</dep>
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="geocode-glib">
@@ -614,15 +599,14 @@
     <dep>gtk-doc</dep>
   </project>
   <project name="gnome-boxes">
-    <dep>clutter</dep>
     <dep>clutter-gtk</dep>
+    <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>libosinfo</dep>
     <dep>libsoup</dep>
     <dep>tracker</dep>
     <dep>vala</dep>
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="gnome-calculator">
@@ -663,7 +647,6 @@
     <dep>vala</dep>
   </project>
   <project name="gnome-devel-docs">
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="gnome-dictionary">
@@ -682,7 +665,6 @@
     <dep>gjs</dep>
     <dep>gnome-desktop</dep>
     <dep>gnome-online-accounts</dep>
-    <dep>gtk+</dep>
     <dep>libgdata</dep>
     <dep>tracker</dep>
     <dep>webkitgtk3</dep>
@@ -718,7 +700,6 @@
     <dep>gdm</dep>
     <dep>geoclue2</dep>
     <dep>glib</dep>
-    <dep>gnome-common</dep>
     <dep>gnome-desktop</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gnome-shell</dep>
@@ -760,14 +741,14 @@
   <project name="gnome-music">
     <dep>gobject-introspection</dep>
     <dep>grilo</dep>
+    <dep>gtk+</dep>
   </project>
   <project name="gnome-nibbles">
-    <dep>clutter</dep>
     <dep>clutter-gtk</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
-  <project name="gnome-online-accounts">
+  <project name="gnome-online-accounts" pkgconfig="goa-1.0">
     <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -793,7 +774,7 @@
     <dep>gtk+</dep>
     <dep>libnotify</dep>
   </project>
-  <project name="gnome-photos">
+  <project name="gnome-photos" disabled="True">
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gnome-desktop</dep>
@@ -847,7 +828,6 @@
     <dep>NetworkManager</dep>
     <dep>caribou</dep>
     <dep>clutter</dep>
-    <dep>evolution</dep>
     <dep>evolution-data-server</dep>
     <dep>gcr</dep>
     <dep>gjs</dep>
@@ -867,7 +847,6 @@
     <dep>mutter</dep>
     <dep>mutter-wayland</dep>
     <dep>upower</dep>
-    <dep>wayland</dep>
   </project>
   <project name="gnome-software">
     <dep>PackageKit</dep>
@@ -912,9 +891,10 @@
   </project>
   <project name="gnome-tweak-tool">
     <dep>gsettings-desktop-schemas</dep>
+    <dep>gtk+</dep>
+    <dep>pygobject</dep>
   </project>
   <project name="gnome-user-docs">
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="gnome-user-share">
@@ -937,7 +917,7 @@
     <dep>gtk+</dep>
     <dep>libgweather</dep>
   </project>
-  <project name="gobject-introspection">
+  <project name="gobject-introspection" pkgconfig="gobject-introspection-1.0">
     <release version="f18">1.34.*</release>
     <release version="f19">1.36.*</release>
     <release version="f20">1.38.*</release>
@@ -952,10 +932,7 @@
     <release version="f20">1.*</release>
     <release version="rawhide">*</release>
     <dep>gnome-doc-utils</dep>
-    <!-- circular dep
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
-    -->
   </project>
 <!--
   <project name="gtk-engines">
@@ -964,11 +941,9 @@
   </project>
 -->
   <project name="gtkmm" pkgname="gtkmm30">
-    <dep>atk</dep>
     <dep>atkmm</dep>
     <dep>glibmm</dep>
     <dep>gtk+</dep>
-    <dep>pango</dep>
     <dep>pangomm</dep>
   </project>
   <project name="gtksourceview" pkgname="gtksourceview3">
@@ -976,28 +951,23 @@
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
   </project>
-  <project name="grilo">
+  <project name="grilo" pkgconfig="grilo-0.2">
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
     <dep>libsoup</dep>
-    <!-- circular dep
-    <dep>totem</dep>
-    -->
     <dep>totem-pl-parser</dep>
     <dep>vala</dep>
   </project>
   <project name="grilo-plugins">
-    <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gmime</dep>
     <dep>grilo</dep>
     <dep>json-glib</dep>
     <dep>libgdata</dep>
     <dep>libsoup</dep>
-    <dep>totem</dep>
     <dep>totem-pl-parser</dep>
     <dep>tracker</dep>
   </project>
@@ -1011,7 +981,6 @@
     <release version="f19">1.16.*</release>
     <release version="f20">1.18.*</release>
     <release version="rawhide">*</release>
-    <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gtk+</dep>
@@ -1036,7 +1005,6 @@
     <release version="f19">0.12.*</release>
     <release version="f20">0.12.*</release>
     <release version="rawhide">*</release>
-    <dep>clutter</dep>
     <dep>clutter-gtk</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
@@ -1082,7 +1050,7 @@
     <dep>libsoup</dep>
     <dep>rest</dep>
   </project>
-  <project name="libgee">
+  <project name="libgee" pkgconfig="gee-0.8">
     <release version="f18">0.8.*</release>
     <release version="f19">0.10.*</release>
     <release version="f20">0.12.*</release>
@@ -1098,7 +1066,6 @@
     <dep>libxklavier</dep>
   </project>
   <project name="libgnome-keyring">
-    <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
@@ -1111,7 +1078,7 @@
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
   </project>
-  <project name="libgweather">
+  <project name="libgweather" pkgconfig="gweather-3.0">
     <dep>glade</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -1140,7 +1107,7 @@
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
   </project>
-  <project name="libosinfo" autobuild="False">
+  <project name="libosinfo" pkgconfig="libosinfo-1.0" autobuild="False">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>libsoup</dep>
@@ -1183,7 +1150,7 @@
     <dep>gtk-doc</dep>
     <dep>vala</dep>
   </project>
-  <project name="libsoup">
+  <project name="libsoup" pkgconfig="libsoup-2.4">
     <release version="f18">2.40.*</release>
     <release version="f19">2.42.*</release>
     <release version="f20">2.44.*</release>
@@ -1212,7 +1179,6 @@
     <dep>gobject-introspection</dep>
   </project>
   <project name="lightsoff">
-    <dep>clutter</dep>
     <dep>clutter-gtk</dep>
     <dep>gtk+</dep>
   </project>
@@ -1226,13 +1192,11 @@
     <dep>gnome-control-center</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>pango</dep>
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
     <dep>zenity</dep>
   </project>
   <project name="mousetweaks">
     <dep>GConf</dep>
-    <dep>glade</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
@@ -1291,10 +1255,9 @@
     <dep>gsettings-desktop-schemas</dep>
     <dep>libgtop</dep>
     <dep>vte</dep>
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="NetworkManager" autobuild="False" disabled="True">
+  <project name="NetworkManager" autobuild="False" pkgconfig="libnm-glib" disabled="True">
     <release version="f17">0.9.*</release>
     <release version="rawhide">0.9.*</release>
     <dep>glib</dep>
@@ -1353,13 +1316,12 @@
     <release version="rawhide">*</release>
     <dep>pygobject</dep>
   </project>
-  <project name="pygobject" pkgname="pygobject3">
+  <project name="pygobject" pkgname="pygobject3" pkgconfig="pygobject-3.0">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
   </project>
   <project name="quadrapassel">
-    <dep>clutter</dep>
     <dep>clutter-gtk</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
@@ -1376,7 +1338,6 @@
   </project>
   <project name="rhythmbox" autobuild="False">
     <dep>brasero</dep>
-    <dep>clutter</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
     <dep>gobject-introspection</dep>
@@ -1389,10 +1350,8 @@
     <dep>libsecret</dep>
     <dep>libsoup</dep>
     <dep>pygobject</dep>
-    <dep>totem</dep>
     <dep>totem-pl-parser</dep>
     <dep>webkitgtk3</dep>
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="rygel">
@@ -1436,6 +1395,7 @@
     <dep>gnome-js-common</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
+    <dep>webkitgtk3</dep>
   </project>
   <project name="simple-scan">
     <dep>gtk+</dep>
@@ -1461,10 +1421,8 @@
     <dep>webkitgtk3</dep>
   </project>
   <project name="swell-foop">
-    <dep>clutter</dep>
     <dep>clutter-gtk</dep>
     <dep>gtk+</dep>
-    <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="tali">
@@ -1472,7 +1430,6 @@
     <dep>librsvg</dep>
   </project>
   <project name="totem">
-    <dep>clutter</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
     <dep>gnome-common</dep>
@@ -1516,7 +1473,6 @@
   </project>
   <project name="vino">
     <dep>NetworkManager</dep>
-    <dep>gcr</dep>
     <dep>gnome-common</dep>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
@@ -1532,16 +1488,13 @@
     <dep>gtk+</dep>
   </project>
   <project name="yelp">
-    <!-- circular dep
     <dep>folks</dep>
-    -->
     <dep>gtk+</dep>
     <dep>libgee</dep>
     <dep>webkitgtk3</dep>
     <dep>yelp-xsl</dep>
   </project>
   <project name="yelp-tools">
-    <dep>yelp</dep>
     <dep>yelp-xsl</dep>
   </project>
   <project name="yelp-xsl">
