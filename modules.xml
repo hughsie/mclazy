@@ -65,6 +65,7 @@
   </project>
   <project name="tracker" autobuild="False">
     <dep>NetworkManager</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
@@ -120,6 +121,7 @@
     <dep>at-spi2-atk</dep>
     <dep>atk</dep>
     <dep>cairo</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
@@ -162,6 +164,7 @@
     <dep>NetworkManager</dep>
     <dep>cheese</dep>
     <dep>clutter-gtk</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gnome-bluetooth</dep>
@@ -182,21 +185,25 @@
   </project>
   <project name="accerciser">
     <dep>at-spi2-core</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
   </project>
   <project name="aisleriot">
     <dep>GConf</dep>
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="alacarte">
+    <dep>desktop-file-utils</dep>
     <dep>gnome-menus</dep>
     <dep>pygobject</dep>
   </project>
   <project name="anjuta">
+    <dep>desktop-file-utils</dep>
     <dep>devhelp</dep>
     <dep>gdl</dep>
     <dep>glade</dep>
@@ -242,6 +249,7 @@
     <dep>glib</dep>
   </project>
   <project name="baobab">
+    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>libgtop</dep>
@@ -249,6 +257,7 @@
   </project>
   <project name="brasero">
     <dep>GConf</dep>
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -279,6 +288,7 @@
     <release version="rawhide">0.4.*</release>
     <dep>at-spi2-core</dep>
     <dep>clutter</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -292,6 +302,7 @@
     <dep>clutter</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
+    <dep>desktop-file-utils</dep>
     <dep>evolution-data-server</dep>
     <dep>gnome-desktop</dep>
     <dep>gnome-video-effects</dep>
@@ -354,8 +365,12 @@
     <dep>gtk-doc</dep>
     <dep>vala</dep>
   </project>
+  <project name="desktop-file-utils" autobuild="False">
+    <dep>glib</dep>
+  </project>
   <project name="devhelp">
     <dep>GConf</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>webkitgtk3</dep>
   </project>
@@ -365,6 +380,7 @@
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
     <dep>cogl</dep>
+    <dep>desktop-file-utils</dep>
     <dep>folks</dep>
     <dep>gcr</dep>
     <dep>geoclue2</dep>
@@ -380,6 +396,7 @@
     <dep>webkitgtk3</dep>
   </project>
   <project name="eog">
+    <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gnome-desktop</dep>
@@ -413,6 +430,7 @@
     <dep>webkitgtk3</dep>
   </project>
   <project name="evince">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gnome-icon-theme</dep>
@@ -428,6 +446,7 @@
   <project name="evolution" autobuild="False">
     <dep>atk</dep>
     <dep>clutter-gtk</dep>
+    <dep>desktop-file-utils</dep>
     <dep>evolution-data-server</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
@@ -463,6 +482,7 @@
   </project>
   <project name="file-roller">
     <dep>GConf</dep>
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>json-glib</dep>
@@ -470,6 +490,7 @@
     <dep>pango</dep>
   </project>
   <project name="five-or-more">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -486,6 +507,7 @@
     <dep>vala</dep>
   </project>
   <project name="four-in-a-row">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -499,6 +521,7 @@
     <dep>gtk-doc</dep>
   </project>
   <project name="gcr">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -520,6 +543,7 @@
   </project>
   <project name="gdm">
     <dep>GConf</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>libxklavier</dep>
@@ -527,6 +551,7 @@
     <dep>upower</dep>
   </project>
   <project name="gedit">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -556,6 +581,7 @@
     <dep>libsoup</dep>
   </project>
   <project name="ghex">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gjs">
@@ -574,6 +600,7 @@
     <release version="f19">3.14.*</release>
     <release version="f20">3.16.*</release>
     <release version="rawhide">3.16.*</release>
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
   </project>
@@ -605,12 +632,14 @@
   <project name="gnome-backgrounds">
   </project>
   <project name="gnome-bluetooth">
+    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
   </project>
   <project name="gnome-boxes">
     <dep>clutter-gtk</dep>
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -621,17 +650,20 @@
     <dep>yelp-tools</dep>
   </project>
   <project name="gnome-calculator">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>gtksourceview</dep>
     <dep>libsoup</dep>
   </project>
   <project name="gnome-chess">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
     <dep>vala</dep>
   </project>
   <project name="gnome-clocks">
+    <dep>desktop-file-utils</dep>
     <dep>geoclue2</dep>
     <dep>geocode-glib</dep>
     <dep>glib</dep>
@@ -642,6 +674,7 @@
     <dep>vala</dep>
   </project>
   <project name="gnome-color-manager">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gtk+</dep>
@@ -651,6 +684,7 @@
   </project>
   <project name="gnome-contacts">
     <dep>cheese</dep>
+    <dep>desktop-file-utils</dep>
     <dep>folks</dep>
     <dep>gnome-desktop</dep>
     <dep>gtk+</dep>
@@ -661,9 +695,11 @@
     <dep>yelp-tools</dep>
   </project>
   <project name="gnome-dictionary">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-disk-utility">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gnome-settings-daemon</dep>
@@ -672,6 +708,7 @@
     <dep>libsecret</dep>
   </project>
   <project name="gnome-documents">
+    <dep>desktop-file-utils</dep>
     <dep>evince</dep>
     <dep>gjs</dep>
     <dep>gnome-desktop</dep>
@@ -695,6 +732,7 @@
     <dep>totem</dep>
   </project>
   <project name="gnome-font-viewer">
+    <dep>desktop-file-utils</dep>
     <dep>gnome-desktop</dep>
     <dep>gtk+</dep>
   </project>
@@ -708,6 +746,7 @@
   <project name="gnome-initial-setup">
     <dep>NetworkManager</dep>
     <dep>cheese</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gdm</dep>
     <dep>geoclue2</dep>
     <dep>glib</dep>
@@ -729,15 +768,18 @@
     <dep>gtk-doc</dep>
   </project>
   <project name="gnome-klotski">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
   <project name="gnome-mahjongg">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
   <project name="gnome-maps">
+    <dep>desktop-file-utils</dep>
     <dep>gjs</dep>
   </project>
   <project name="gnome-menus">
@@ -745,17 +787,20 @@
     <dep>gobject-introspection</dep>
   </project>
   <project name="gnome-mines">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
   <project name="gnome-music">
+    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>grilo</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-nibbles">
     <dep>clutter-gtk</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -782,12 +827,14 @@
   <project name="gnome-packagekit">
     <dep>PackageKit</dep>
     <dep>cairo</dep>
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
   </project>
   <project name="gnome-photos" disabled="True">
     <dep>cairo</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gnome-desktop</dep>
@@ -800,11 +847,13 @@
   </project>
   <project name="gnome-power-manager">
     <dep>cairo</dep>
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>upower</dep>
   </project>
   <project name="gnome-robots">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -813,6 +862,7 @@
     <release version="f19">3.6.*</release>
     <release version="f20">3.6.*</release>
     <release version="rawhide">*</release>
+    <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
     <dep>gnome-desktop</dep>
     <dep>gsettings-desktop-schemas</dep>
@@ -821,13 +871,16 @@
     <dep>libxklavier</dep>
   </project>
   <project name="gnome-screenshot">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-search-tool">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-session">
     <dep>GConf</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
     <dep>gnome-desktop</dep>
     <dep>gnome-settings-daemon</dep>
@@ -842,6 +895,7 @@
     <dep>NetworkManager</dep>
     <dep>caribou</dep>
     <dep>clutter</dep>
+    <dep>desktop-file-utils</dep>
     <dep>evolution-data-server</dep>
     <dep>gcr</dep>
     <dep>gjs</dep>
@@ -864,6 +918,7 @@
   </project>
   <project name="gnome-software">
     <dep>PackageKit</dep>
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
@@ -871,13 +926,16 @@
     <dep>libsoup</dep>
   </project>
   <project name="gnome-sudoku">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>pygobject</dep>
   </project>
   <project name="gnome-system-log">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-system-monitor">
+    <dep>desktop-file-utils</dep>
     <dep>gnome-icon-theme</dep>
     <dep>gtk+</dep>
     <dep>gtkmm</dep>
@@ -888,6 +946,7 @@
   <project name="gnome-terminal">
     <dep>GConf</dep>
     <dep>dconf</dep>
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gsettings-desktop-schemas</dep>
@@ -896,6 +955,7 @@
     <dep>vte</dep>
   </project>
   <project name="gnome-tetravex">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -904,6 +964,7 @@
     <dep>librsvg</dep>
   </project>
   <project name="gnome-tweak-tool">
+    <dep>desktop-file-utils</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
@@ -912,6 +973,7 @@
     <dep>yelp-tools</dep>
   </project>
   <project name="gnome-user-share">
+    <dep>desktop-file-utils</dep>
     <dep>gnome-bluetooth</dep>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
@@ -924,6 +986,7 @@
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-weather">
+    <dep>desktop-file-utils</dep>
     <dep>gjs</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
@@ -986,6 +1049,7 @@
     <dep>tracker</dep>
   </project>
   <project name="gucharmap">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -1010,6 +1074,7 @@
     <dep>gobject-introspection</dep>
   </project>
   <project name="iagno">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
@@ -1076,6 +1141,7 @@
   <project name="libgnomekbd">
     <dep>GConf</dep>
     <dep>cairo</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>libxklavier</dep>
@@ -1197,6 +1263,7 @@
   </project>
   <project name="lightsoff">
     <dep>clutter-gtk</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="metacity">
@@ -1204,7 +1271,7 @@
     <release version="f19">2.34.*</release>
     <release version="f20">2.34.*</release>
     <release version="rawhide">*</release>
-    <dep>glade</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
     <dep>gnome-control-center</dep>
     <dep>gsettings-desktop-schemas</dep>
@@ -1220,6 +1287,7 @@
   </project>
   <project name="mutter">
     <dep>clutter</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
     <dep>gnome-desktop</dep>
     <dep>gobject-introspection</dep>
@@ -1232,6 +1300,7 @@
   </project>
   <project name="mutter-wayland">
     <dep>clutter</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
     <dep>gnome-desktop</dep>
     <dep>gobject-introspection</dep>
@@ -1243,6 +1312,7 @@
     <dep>zenity</dep>
   </project>
   <project name="nautilus">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-desktop</dep>
     <dep>gobject-introspection</dep>
@@ -1266,6 +1336,7 @@
     <release version="f20">0.9.*</release>
     <release version="rawhide">*</release>
     <dep>dconf</dep>
+    <dep>desktop-file-utils</dep>
     <dep>ghex</dep>
     <dep>glib</dep>
     <dep>glibmm</dep>
@@ -1287,6 +1358,7 @@
     <release version="f17">0.9.*</release>
     <release version="rawhide">*</release>
     <dep>NetworkManager</dep>
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-bluetooth</dep>
     <dep>gobject-introspection</dep>
@@ -1322,6 +1394,7 @@
   </project>
   <!-- we only use this in fallback mode -->
   <project name="polkit-gnome" autobuild="False" disabled="True">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -1341,6 +1414,7 @@
   </project>
   <project name="quadrapassel">
     <dep>clutter-gtk</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -1377,6 +1451,7 @@
     <release version="f19">0.18.*</release>
     <release version="f20">0.20.*</release>
     <release version="rawhide">*</release>
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>libgee</dep>
     <dep>libsoup</dep>
@@ -1384,6 +1459,7 @@
   </project>
   <project name="seahorse">
     <dep>GConf</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1393,6 +1469,7 @@
     <dep>libsoup</dep>
   </project>
   <project name="seahorse-nautilus">
+    <dep>desktop-file-utils</dep>
     <dep>gcr</dep>
     <dep>gnome-keyring</dep>
     <dep>gtk+</dep>
@@ -1402,6 +1479,7 @@
     <dep>nautilus</dep>
   </project>
   <project name="seahorse-sharing">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>libsoup</dep>
   </project>
@@ -1422,6 +1500,7 @@
   <project name="sound-juicer">
     <dep>GConf</dep>
     <dep>brasero</dep>
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gnome-doc-utils</dep>
@@ -1440,10 +1519,12 @@
   </project>
   <project name="swell-foop">
     <dep>clutter-gtk</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="tali">
+    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -1480,6 +1561,7 @@
     <dep>glib</dep>
   </project>
   <project name="vinagre">
+    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gnome-keyring</dep>
@@ -1506,6 +1588,7 @@
     <dep>gtk+</dep>
   </project>
   <project name="yelp">
+    <dep>desktop-file-utils</dep>
     <dep>folks</dep>
     <dep>gtk+</dep>
     <dep>libgee</dep>
