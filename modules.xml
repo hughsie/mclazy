@@ -25,10 +25,8 @@
 
 <projects>
 
-<!--
-  These are deps of the GNOME modules, and are not built directly by mclazy
--->
-  <project pkgname="PackageKit">
+  <!-- deps of the GNOME modules -->
+  <project name="PackageKit" autobuild="False">
     <dep>NetworkManager</dep>
     <dep>glib</dep>
     <dep>gnome-doc-utils</dep>
@@ -37,9 +35,9 @@
     <dep>gtk-doc</dep>
     <dep>pango</dep>
   </project>
-  <project pkgname="wayland"/>
-  <project pkgname="mozjs24"/>
-  <project pkgname="webkitgtk3">
+  <project name="wayland" autobuild="False"/>
+  <project name="mozjs24" autobuild="False"/>
+  <project name="webkitgtk3" autobuild="False">
     <dep>at-spi2-core</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -48,21 +46,21 @@
     <dep>libsecret</dep>
     <dep>libsoup</dep>
   </project>
-  <project pkgname="upower">
+  <project name="upower" autobuild="False">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project pkgname="geoclue2">
+  <project name="geoclue2" autobuild="False">
     <dep>NetworkManager</dep>
     <dep>glib</dep>
     <dep>json-glib</dep>
     <dep>libsoup</dep>
   </project>
-  <project pkgname="libmediaart">
+  <project name="libmediaart" autobuild="False">
     <dep>vala</dep>
   </project>
-  <project pkgname="tracker">
+  <project name="tracker" autobuild="False">
     <dep>NetworkManager</dep>
     <dep>gdk-pixbuf</dep>
     <dep>gobject-introspection</dep>
@@ -85,41 +83,20 @@
   </project>
 
   <!-- for cogl soname bump -->
-  <project pkgname="libmx">
+  <project name="libmx" autobuild="False">
     <dep>clutter</dep>
     <dep>gdk-pixbuf</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project pkgname="rhythmbox">
-    <dep>brasero</dep>
-    <dep>clutter</dep>
-    <dep>clutter-gst</dep>
-    <dep>clutter-gtk</dep>
-    <dep>gobject-introspection</dep>
-    <dep>grilo</dep>
-    <dep>gtk+</dep>
-    <dep>json-glib</dep>
-    <dep>libmx</dep>
-    <dep>libnotify</dep>
-    <dep>libpeas</dep>
-    <dep>libsecret</dep>
-    <dep>libsoup</dep>
-    <dep>pygobject</dep>
-    <dep>totem</dep>
-    <dep>totem-pl-parser</dep>
-    <dep>webkitgtk3</dep>
-    <dep>yelp</dep>
-    <dep>yelp-tools</dep>
-  </project>
-  <project pkgname="libmash">
+  <project name="libmash" autobuild="False">
     <dep>clutter</dep>
     <dep>glib</dep>
     <dep>gtk-doc</dep>
   </project>
 
   <!-- for PackageKit soname bump -->
-  <project pkgname="realmd">
+  <project name="realmd" autobuild="False">
     <dep>PackageKit</dep>
     <dep>glib</dep>
   </project>
@@ -449,7 +426,7 @@
     <dep>yelp-tools</dep>
   </project>
   <!-- NOTE: Milan Crha told us not to touch this -->
-  <project name="evolution" disabled="1">
+  <project name="evolution" autobuild="False">
     <dep>atk</dep>
     <dep>clutter</dep>
     <dep>clutter-gtk</dep>
@@ -470,7 +447,11 @@
     <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="evolution-data-server" disabled="1">
+  <project name="evolution-ews" autobuild="False">
+    <dep>evolution</dep>
+    <dep>evolution-data-server</dep>
+  </project>
+  <project name="evolution-data-server" autobuild="False">
     <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
@@ -735,7 +716,14 @@
     <dep>NetworkManager</dep>
     <dep>cheese</dep>
     <dep>gdm</dep>
+    <dep>geoclue2</dep>
+    <dep>glib</dep>
     <dep>gnome-common</dep>
+    <dep>gnome-desktop</dep>
+    <dep>gnome-online-accounts</dep>
+    <dep>gnome-shell</dep>
+    <dep>gtk+</dep>
+    <dep>libgweather</dep>
   </project>
   <project name="gnome-js-common">
     <release version="f18">0.1.*</release>
@@ -1152,7 +1140,7 @@
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
   </project>
-  <project name="libosinfo">
+  <project name="libosinfo" autobuild="False">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>libsoup</dep>
@@ -1306,7 +1294,7 @@
     <dep>yelp</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="NetworkManager" disabled="1">
+  <project name="NetworkManager" autobuild="False" disabled="True">
     <release version="f17">0.9.*</release>
     <release version="rawhide">0.9.*</release>
     <dep>glib</dep>
@@ -1315,11 +1303,12 @@
     <dep>libsoup</dep>
     <dep>vala</dep>
   </project>
-  <project name="network-manager-applet" disabled="1">
+  <project name="network-manager-applet" autobuild="False">
     <release version="f17">0.9.*</release>
     <release version="rawhide">*</release>
     <dep>NetworkManager</dep>
     <dep>glib</dep>
+    <dep>gnome-bluetooth</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
@@ -1351,7 +1340,7 @@
     <dep>pango</dep>
   </project>
   <!-- we only use this in fallback mode -->
-  <project name="polkit-gnome" disabled="1">
+  <project name="polkit-gnome" autobuild="False" disabled="True">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -1384,6 +1373,27 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
     <dep>libsoup</dep>
+  </project>
+  <project name="rhythmbox" autobuild="False">
+    <dep>brasero</dep>
+    <dep>clutter</dep>
+    <dep>clutter-gst</dep>
+    <dep>clutter-gtk</dep>
+    <dep>gobject-introspection</dep>
+    <dep>grilo</dep>
+    <dep>gtk+</dep>
+    <dep>json-glib</dep>
+    <dep>libmx</dep>
+    <dep>libnotify</dep>
+    <dep>libpeas</dep>
+    <dep>libsecret</dep>
+    <dep>libsoup</dep>
+    <dep>pygobject</dep>
+    <dep>totem</dep>
+    <dep>totem-pl-parser</dep>
+    <dep>webkitgtk3</dep>
+    <dep>yelp</dep>
+    <dep>yelp-tools</dep>
   </project>
   <project name="rygel">
     <release version="f18">0.16.*</release>

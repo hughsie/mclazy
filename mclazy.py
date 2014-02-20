@@ -157,14 +157,14 @@ def main():
             print_fail("Failed to depsolve")
             return
     for item in data.items:
-        if not item.name:
-            continue
         if item.disabled:
+            continue
+        if not item.autobuild:
             continue
         enabled = False
 
         # build just this
-        if args.buildone == item.pkgname:
+        if args.buildone == item.name:
             enabled = True
 
         # build this as it deps on the thing that's just bumped the soname
