@@ -832,7 +832,7 @@
     <dep>gtk+</dep>
     <dep>libnotify</dep>
   </project>
-  <project name="gnome-photos" disabled="True">
+  <project name="gnome-photos">
     <dep>cairo</dep>
     <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
