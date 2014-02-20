@@ -255,6 +255,17 @@
     <dep>libgtop</dep>
     <dep>vala</dep>
   </project>
+  <project name="bijiben">
+    <dep>clutter-gtk</dep>
+    <dep>desktop-file-utils</dep>
+    <dep>glib</dep>
+    <dep>gnome-online-accounts</dep>
+    <dep>gtk+</dep>
+    <dep>tracker</dep>
+    <dep>vala</dep>
+    <dep>webkitgtk3</dep>
+    <dep>yelp-tools</dep>
+  </project>
   <project name="brasero">
     <dep>GConf</dep>
     <dep>desktop-file-utils</dep>
