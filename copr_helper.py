@@ -72,7 +72,12 @@ class CoprHelper(object):
         """ Checks to see if a package has already been built successfully """
         url = 'http://copr-be.cloud.fedoraproject.org/results/rhughes/'
         url += self.copr_id
-        url += '/fedora-20-x86_64/'
+        if self.copr_id.startswith('f20'):
+            url += '/fedora-20-x86_64/'
+        elif self.copr_id.startswith('f19'):
+            url += '/fedora-19-x86_64/'
+        else:
+            return True
         url += pkg.get_nvr()
         url += '/success'
         try:
