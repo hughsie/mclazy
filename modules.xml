@@ -26,6 +26,11 @@
 <projects>
 
   <!-- deps of the GNOME modules -->
+  <project name="librepo" autobuild="False">
+    <dep>glib</dep>
+  </project>
+  <project name="hawkey" autobuild="False">
+  </project>
   <project name="PackageKit" autobuild="False">
     <dep>NetworkManager</dep>
     <dep>glib</dep>
@@ -33,6 +38,8 @@
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
+    <dep>hawkey</dep>
+    <dep>librepo</dep>
     <dep>pango</dep>
   </project>
   <project name="ModemManager" autobuild="False">
