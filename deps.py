@@ -50,6 +50,7 @@ def main():
                             break
                 else:
                     section = section.replace('NetworkManager-glib', 'NetworkManager')
+                    section = section.replace('ModemManager-glib', 'ModemManager')
                     section = section.replace('PackageKit-glib', 'PackageKit')
                     section = section.replace('libwayland-client-devel', 'wayland')
                     section = section.replace('cheese-libs-devel', 'cheese')

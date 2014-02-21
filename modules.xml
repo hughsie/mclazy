@@ -35,6 +35,12 @@
     <dep>gtk-doc</dep>
     <dep>pango</dep>
   </project>
+  <project name="ModemManager" autobuild="False">
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk-doc</dep>
+    <dep>vala</dep>
+  </project>
   <project name="wayland" autobuild="False"/>
   <project name="mozjs24" autobuild="False"/>
   <project name="webkitgtk3" pkgconfig="webkitgtk-3.0" autobuild="False">
@@ -53,6 +59,7 @@
     <dep>gtk-doc</dep>
   </project>
   <project name="geoclue2" pkgconfig="geoclue" autobuild="False">
+    <dep>ModemManager</dep>
     <dep>NetworkManager</dep>
     <dep>glib</dep>
     <dep>json-glib</dep>
@@ -161,6 +168,7 @@
     <dep>glib</dep>
   </project>
   <project name="gnome-control-center" pkgname="control-center">
+    <dep>ModemManager</dep>
     <dep>NetworkManager</dep>
     <dep>cheese</dep>
     <dep>clutter-gtk</dep>
@@ -1396,6 +1404,7 @@
   <project name="NetworkManager" autobuild="False" pkgconfig="libnm-glib" disabled="True">
     <release version="f17">0.9.*</release>
     <release version="rawhide">0.9.*</release>
+    <dep>ModemManager</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
