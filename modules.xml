@@ -563,6 +563,7 @@
   </project>
   <project name="gdm">
     <dep>GConf</dep>
+    <dep>dconf</dep>
     <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -580,6 +581,7 @@
     <dep>gtksourceview</dep>
     <dep>libpeas</dep>
     <dep>pygobject</dep>
+    <dep>vala</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="gedit-plugins">
