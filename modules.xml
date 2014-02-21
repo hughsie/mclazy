@@ -596,6 +596,16 @@
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
+  <project name="giggle">
+    <dep>desktop-file-utils</dep>
+    <dep>evolution-data-server</dep>
+    <dep>glib</dep>
+    <dep>gnome-common</dep>
+    <dep>gtk+</dep>
+    <dep>gtksourceview</dep>
+    <dep>vte</dep>
+    <dep>yelp-tools</dep>
+  </project>
   <project name="gjs">
     <release version="f18">1.34.*</release>
     <release version="f19">1.36.*</release>
@@ -615,6 +625,13 @@
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
+  </project>
+  <project name="glabels">
+    <dep>desktop-file-utils</dep>
+    <dep>evolution-data-server</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>librsvg</dep>
   </project>
   <project name="glibmm" pkgname="glibmm24">
     <release version="f18">2.34.*</release>
@@ -844,6 +861,15 @@
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
+  </project>
+  <project name="gnome-phone-manager">
+    <dep>GConf</dep>
+    <dep>desktop-file-utils</dep>
+    <dep>evolution</dep>
+    <dep>evolution-data-server</dep>
+    <dep>gnome-bluetooth</dep>
+    <dep>gnome-icon-theme</dep>
+    <dep>gtk+</dep>
   </project>
   <project name="gnome-photos">
     <dep>cairo</dep>
@@ -1424,6 +1450,13 @@
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
+  </project>
+  <project name="pinpoint">
+    <dep>cairo</dep>
+    <dep>clutter</dep>
+    <dep>gdk-pixbuf</dep>
+    <dep>glib</dep>
+    <dep>librsvg</dep>
   </project>
   <project name="pyatspi">
     <release version="f18">2.6.*</release>
