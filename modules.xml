@@ -1224,6 +1224,11 @@
     <dep>pygobject</dep>
     <dep>seed</dep>
   </project>
+  <project name="libquvi" autobuild="False">
+    <dep>glib</dep>
+    <dep>libquvi-scripts</dep>
+  </project>
+  <project name="libquvi-scripts" autobuild="False"/>
   <project name="librsvg" pkgname="librsvg2">
     <release version="f18">2.36.*</release>
     <release version="f19">2.38.*</release>
@@ -1571,6 +1576,7 @@
     <dep>glib</dep>
     <dep>gmime</dep>
     <dep>gobject-introspection</dep>
+    <dep>libquvi</dep>
     <dep>libsoup</dep>
   </project>
   <project name="vala">
