@@ -1163,7 +1163,7 @@
     <dep>libsoup</dep>
     <dep>vala</dep>
   </project>
-  <project name="libgfbgraph" pkgname="gfbgraph">
+  <project name="libgfbgraph" pkgname="gfbgraph" autobuild="False">
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gobject-introspection</dep>
@@ -1421,7 +1421,7 @@
     <dep>pyatspi</dep>
     <dep>pygobject</dep>
   </project>
-  <project name="p11-kit">
+  <project name="p11-kit" autobuild="False">
     <dep>gtk-doc</dep>
   </project>
   <project name="pango">
