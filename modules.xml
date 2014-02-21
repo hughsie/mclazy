@@ -55,6 +55,8 @@
     <dep>cairo</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
     <dep>libsecret</dep>
@@ -82,6 +84,8 @@
     <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>gobject-introspection</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
     <dep>gtk-doc</dep>
     <dep>libgee</dep>
     <dep>libgxps</dep>
@@ -126,6 +130,17 @@
     <release version="f20">2.38.*</release>
     <release version="rawhide">*</release>
     <dep>gtk-doc</dep>
+  </project>
+  <project name="gstreamer" pkgname="gstreamer1">
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk-doc</dep>
+  </project>
+  <project name="gstreamer-plugins-base" pkgname="gstreamer1-plugins-base">
+    <dep>gobject-introspection</dep>
+    <dep>gstreamer</dep>
+    <dep>gtk-doc</dep>
+    <dep>pango</dep>
   </project>
   <project name="gtk+" pkgname="gtk3" pkgconfig="gtk+-3.0" wait_repo="1">
     <release version="f18">3.6.*</release>
@@ -287,6 +302,8 @@
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
     <dep>libnotify</dep>
@@ -332,6 +349,8 @@
     <dep>evolution-data-server</dep>
     <dep>gnome-desktop</dep>
     <dep>gnome-video-effects</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
     <dep>vala</dep>
@@ -358,6 +377,8 @@
     <release version="rawhide">2.0.*</release>
     <dep>clutter</dep>
     <dep>gobject-introspection</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
   </project>
   <project name="clutter-gtk" pkgconfig="clutter-gtk-1.0">
     <release version="f18">1.4.*</release>
@@ -414,6 +435,7 @@
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gsettings-desktop-schemas</dep>
+    <dep>gstreamer</dep>
     <dep>gtk+</dep>
     <dep>libchamplain</dep>
     <dep>libgee</dep>
@@ -962,6 +984,7 @@
     <dep>gnome-keyring</dep>
     <dep>gnome-menus</dep>
     <dep>gobject-introspection</dep>
+    <dep>gstreamer</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
     <dep>json-glib</dep>
@@ -1510,6 +1533,8 @@
     <dep>clutter-gtk</dep>
     <dep>gobject-introspection</dep>
     <dep>grilo</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
     <dep>json-glib</dep>
     <dep>libmx</dep>
@@ -1528,6 +1553,8 @@
     <release version="f20">0.20.*</release>
     <release version="rawhide">*</release>
     <dep>desktop-file-utils</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
     <dep>libgee</dep>
     <dep>libsoup</dep>
@@ -1580,6 +1607,8 @@
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gnome-doc-utils</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
   </project>
   <project name="sushi">
@@ -1611,6 +1640,8 @@
     <dep>gnome-icon-theme</dep>
     <dep>grilo</dep>
     <dep>gsettings-desktop-schemas</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
     <dep>gtk-doc</dep>
     <dep>libgdata</dep>
     <dep>libpeas</dep>
