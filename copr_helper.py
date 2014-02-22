@@ -35,6 +35,7 @@ class CoprHelper(object):
     def __init__(self, copr_id):
         self.copr_id = copr_id
         self.builds_in_progress = []
+        self.release = copr_id.split('-')[0]
 
     def build(self, pkg):
         """ Build a new package into a given COPR """
@@ -70,11 +71,12 @@ class CoprHelper(object):
 
     def build_exists(self, pkg):
         """ Checks to see if a package has already been built successfully """
-        url = 'http://copr-be.cloud.fedoraproject.org/results/rhughes/'
+        baseurl = 'http://copr-be.cloud.fedoraproject.org/'
+        url = baseurl + 'results/rhughes/'
         url += self.copr_id
-        if self.copr_id.startswith('f20'):
+        if self.release == 'f20':
             url += '/fedora-20-x86_64/'
-        elif self.copr_id.startswith('f19'):
+        elif self.release == 'f19':
             url += '/fedora-19-x86_64/'
         else:
             return True

@@ -92,6 +92,11 @@ def main():
         if item.disabled:
             continue
 
+        # not for this release
+        if copr.release not in item.releases:
+            print_debug("Skipping %s as release only lists %s" % (item.name, ','.join(item.releases)))
+            continue
+
         # get the latest build from koji
         pkg = koji.get_newest_build(args.branch_source, item.pkgname)
         if not pkg:

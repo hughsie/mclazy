@@ -26,8 +26,14 @@
 <projects>
 
   <!-- deps of the GNOME modules -->
+  <project name="python-werkzeug" autobuild="False" releases="f19">
+  </project>
+  <project name="python-flask" autobuild="False" releases="f19">
+    <dep>python-werkzeug</dep>
+  </project>
   <project name="librepo" autobuild="False">
     <dep>glib</dep>
+    <dep>python-flask</dep>
   </project>
   <project name="hawkey" autobuild="False">
   </project>
@@ -46,6 +52,7 @@
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
+    <dep>libqmi</dep>
     <dep>vala</dep>
   </project>
   <project name="wayland" autobuild="False"/>
@@ -1289,6 +1296,9 @@
     <dep>gtk-doc</dep>
     <dep>pygobject</dep>
     <dep>seed</dep>
+  </project>
+  <project name="libqmi" autobuild="False" releases="f19">
+    <dep>glib</dep>
   </project>
   <project name="libquvi" autobuild="False">
     <dep>glib</dep>

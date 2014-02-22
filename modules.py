@@ -28,6 +28,7 @@ class ModulesItem(object):
         self.name = None
         self.pkgname = None
         self.pkgconfig = None
+        self.release = None
         self.wait_repo = False
         self.disabled = False
         self.autobuild = True
@@ -71,6 +72,13 @@ class ModulesXml(object):
                 elif data.tag == 'release':
                     version = data.get('version')
                     item.release_glob[version] = data.text
+            item.releases = []
+            if project.get('releases'):
+                for release in project.get('releases').split(','):
+                    item.releases.append(release)
+            else:
+                item.releases.append('f19')
+                item.releases.append('f20')
             self.items.append(item)
 
     def depsolve(self):
