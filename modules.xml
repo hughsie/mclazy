@@ -448,6 +448,7 @@
     <dep>libgee</dep>
     <dep>libnotify</dep>
     <dep>libsecret</dep>
+    <dep>telepathy-glib</dep>
     <dep>webkitgtk3</dep>
   </project>
   <project name="eog">
@@ -559,6 +560,7 @@
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>libgee</dep>
+    <dep>telepathy-glib</dep>
     <dep>vala</dep>
   </project>
   <project name="four-in-a-row">
@@ -890,6 +892,7 @@
     <dep>libsecret</dep>
     <dep>libsoup</dep>
     <dep>rest</dep>
+    <dep>telepathy-glib</dep>
     <dep>webkitgtk3</dep>
   </project>
   <project name="gnome-online-miners">
@@ -916,6 +919,7 @@
     <dep>gnome-bluetooth</dep>
     <dep>gnome-icon-theme</dep>
     <dep>gtk+</dep>
+    <dep>telepathy-glib</dep>
   </project>
   <project name="gnome-photos">
     <dep>cairo</dep>
@@ -1000,6 +1004,7 @@
     <dep>librsvg</dep>
     <dep>mutter</dep>
     <dep>mutter-wayland</dep>
+    <dep>telepathy-glib</dep>
     <dep>upower</dep>
   </project>
   <project name="gnome-shell-extensions">
@@ -1643,6 +1648,12 @@
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
+  <project name="telepathy-glib" autobuild="False">
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk-doc</dep>
+    <dep>vala</dep>
+  </project>
   <project name="totem">
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
@@ -1686,6 +1697,7 @@
     <dep>gtk+</dep>
     <dep>libgnome-keyring</dep>
     <dep>libsecret</dep>
+    <dep>telepathy-glib</dep>
     <dep>vala</dep>
     <dep>vte</dep>
   </project>
@@ -1696,6 +1708,7 @@
     <dep>libnotify</dep>
     <dep>libsecret</dep>
     <dep>libsoup</dep>
+    <dep>telepathy-glib</dep>
   </project>
   <project name="vte" pkgname="vte3">
     <release version="f18">0.34.*</release>
