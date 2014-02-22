@@ -81,10 +81,21 @@ class CoprHelper(object):
         url += pkg.get_nvr()
         url += '/success'
         try:
-            ret = urllib2.urlopen(url)
+            ret = urllib2.urlopen(url, None, 5)
             return ret.code == 200
-        except Exception, e:
-            pass
+        except urllib2.URLError, e:
+            # build does not exist, or did not succeed
+            if str(e).find('Not Found') > 0:
+                return False
+
+            # cloud is down
+            if str(e).find('No route to host') > 0:
+                print_fail("No route to host %s" % baseurl)
+            elif str(e).find('error timed out') > 0:
+                print_fail("Host %s timed out" % baseurl)
+            else:
+                print_fail(str(e))
+            return True
         return False
 
     def wait_for_builds(self):
