@@ -47,12 +47,17 @@
     <dep>gtk-doc</dep>
     <dep>hawkey</dep>
     <dep>librepo</dep>
+    <dep>libsolv</dep>
     <dep>pango</dep>
+  </project>
+  <project name="libmbim" autobuild="False" releases="f19">
+    <dep>glib</dep>
   </project>
   <project name="ModemManager" autobuild="False">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
+    <dep>libmbim</dep>
     <dep>libqmi</dep>
     <dep>vala</dep>
   </project>
