@@ -54,7 +54,9 @@ def main():
     # only build one module
     if args.buildone:
         for item in data.items:
-            if item.pkgname in args.buildone.split(','):
+            if item.name == args.buildone:
+                item.disabled = False
+            elif item.pkgname in args.buildone.split(','):
                 item.disabled = False
             else:
                 item.disabled = True
@@ -90,6 +92,8 @@ def main():
 
         # skip
         if item.disabled:
+            if not args.buildone:
+                print_debug("Skipping %s as disabled" % item.name)
             continue
 
         # not for this release
