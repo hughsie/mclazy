@@ -26,7 +26,7 @@ import argparse
 from log import print_debug, print_info, print_fail
 from modules import ModulesXml
 from koji_helper import KojiHelper
-from copr_helper import CoprHelper
+from copr_helper import CoprHelper, CoprBuildStatus, CoprException
 
 def main():
 
@@ -109,14 +109,25 @@ def main():
         print_debug("Latest version of %s in %s: %s" % (item.pkgname, args.branch_source, pkg.get_nvr()))
 
         # has this build been submitted?
-        if copr.build_exists(pkg):
+        try:
+            status = copr.get_pkg_status(pkg)
+        except CoprException, e:
+            print_fail(str(e))
+            continue
+        if status == CoprBuildStatus.ALREADY_BUILT:
             if not args.ignore_existing and not args.bump_soname:
                 print_debug("Already built in copr")
                 continue
-        else:
+        elif status == CoprBuildStatus.NOT_FOUND:
             if args.bump_soname and args.bump_soname != item.pkgname:
                 print_debug("Not building %s as not yet built in copr" % item.pkgname)
                 continue
+        elif status == CoprBuildStatus.IN_PROGRESS:
+            print_debug("Already building in copr")
+            continue
+        else:
+            print_fail("copr status unknown" % status)
+            continue
 
         # does this version already exist?
         pkg_stable = koji.get_newest_build(args.branch_destination, item.pkgname)

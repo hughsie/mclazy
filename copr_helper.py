@@ -29,6 +29,15 @@ import copr_cli.subcommands
 # internal
 from log import print_info, print_fail, print_debug
 
+class CoprBuildStatus:
+    ALREADY_BUILT = 1
+    FAILED_TO_BUILD = 2
+    NOT_FOUND = 3
+    IN_PROGRESS = 4
+
+class CoprException(Exception):
+    pass
+
 class CoprHelper(object):
     """ Helper object for COPRs """
 
@@ -69,7 +78,7 @@ class CoprHelper(object):
         self.builds_in_progress.append(pkg)
         return True
 
-    def build_exists(self, pkg):
+    def _url_exists(self, pkg, filename):
         """ Checks to see if a package has already been built successfully """
         baseurl = 'http://copr-be.cloud.fedoraproject.org/'
         url = baseurl + 'results/rhughes/'
@@ -81,7 +90,7 @@ class CoprHelper(object):
         else:
             return True
         url += pkg.get_nvr()
-        url += '/success'
+        url += '/' + filename
         try:
             ret = urllib2.urlopen(url, None, 5)
             return ret.code == 200
@@ -92,13 +101,25 @@ class CoprHelper(object):
 
             # cloud is down
             if str(e).find('No route to host') > 0:
-                print_fail("No route to host %s" % baseurl)
+                raise CoprException("No route to host %s" % baseurl)
             elif str(e).find('error timed out') > 0:
-                print_fail("Host %s timed out" % baseurl)
+                raise CoprException("Host %s timed out" % baseurl)
             else:
-                print_fail(str(e))
+                raise CoprException(str(e))
             return True
         return False
+
+    def get_pkg_status(self, pkg):
+        # check for success
+        if self._url_exists(pkg, 'success'):
+            return CoprBuildStatus.ALREADY_BUILT
+        # check for failure
+        if self._url_exists(pkg, 'fail'):
+            return CoprBuildStatus.FAILED_TO_BUILD
+        # check for in progress
+        if self._url_exists(pkg, 'build.log'):
+            return CoprBuildStatus.IN_PROGRESS
+        return CoprBuildStatus.NOT_FOUND
 
     def wait_for_builds(self):
         """ Waits for all submitted builds to finish """
