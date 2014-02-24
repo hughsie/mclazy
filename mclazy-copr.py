@@ -28,6 +28,75 @@ from modules import ModulesXml
 from koji_helper import KojiHelper
 from copr_helper import CoprHelper, CoprBuildStatus, CoprException
 
+def rebuild_srpm(pkg):
+    import shutil
+    import os
+    import urllib2
+    import subprocess
+
+    # create new /tmp/copr/pkgname
+    tmp_path = '/tmp/copr/' + pkg.name
+    if os.path.exists(tmp_path):
+        shutil.rmtree(tmp_path, True)
+    os.makedirs(tmp_path)
+
+    # download the package to /tmp
+    print_debug("Downloading SRPM from %s" % pkg.get_url())
+    response = urllib2.urlopen(pkg.get_url())
+    pkg_binary = response.read()
+    f = open(tmp_path + '/pkg.src.rpm', 'w')
+    f.write(pkg_binary)
+    f.close()
+
+    # explode the package with rpm2cpio
+    print_debug("Extracting SRPM to %s" % tmp_path)
+    p = subprocess.Popen(["rpm2cpio pkg.src.rpm | cpio --extract"],
+                         cwd=tmp_path, shell=True,
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE)
+    p.wait()
+    out, err = p.communicate()
+    if p.returncode != 0:
+        print_fail(err)
+        return False
+
+    # bump the release tag
+    print_debug("Bumping revision and adding comment")
+    specfile = tmp_path + '/' + pkg.name + '.spec'
+    p = subprocess.Popen(["rpmdev-bumpspec",
+                         "-c Built for COPR",
+                         '-r',
+                         specfile])
+    p.wait()
+
+    # rebuild the package with rpmbuild -bs
+    print_debug("Building local package " + pkg.get_nvr())
+    p = subprocess.Popen(['rpmbuild',
+                         "--define=_sourcedir /tmp/copr/gtk3",
+                         "--define=_srcrpmdir /tmp/copr/gtk3",
+                         '-bs', specfile],
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE)
+    p.wait()
+    out, err = p.communicate()
+    if p.returncode != 0:
+        print_fail(err)
+        return False
+    new_srpm = out.replace('\n', '').split(' ')[1]
+
+    # upload the package somewhere shared
+    upload_dir = 'rhughes@fedorapeople.org:/home/fedora/rhughes/public_html/copr/'
+    print_debug("Uploading local package to " + upload_dir)
+    p = subprocess.Popen(['scp', '-q', new_srpm, upload_dir])
+    p.wait()
+
+    # over-ride this from the koji one
+    pkg.url = "http://rhughes.fedorapeople.org/copr/" + os.path.basename(new_srpm)
+
+    # delete our temp space
+    shutil.rmtree(tmp_path, True)
+    return True
+
 def main():
 
     # read defaults from command line arguments
@@ -41,6 +110,7 @@ def main():
     parser.add_argument('--bump-soname', default=None, help='Build this package any any that dep on it')
     parser.add_argument('--ignore-existing', action='store_true', help='Build the module even if it already exists in COPR')
     parser.add_argument('--ignore-version', action='store_true', help='Build the module even if the same version exists in the destination')
+    parser.add_argument('--rebuild-srpm', action='store_true', help='Rebuild the package with a bumped release version')
     args = parser.parse_args()
 
     # parse the configuration file
@@ -135,6 +205,11 @@ def main():
             print_debug("Latest version in %s: %s" % (args.branch_destination, pkg_stable.get_nvr()))
             if not args.ignore_version and pkg.version == pkg_stable.version:
                 print_debug("Already exists same version")
+                continue
+
+        # this is expensive!
+        if args.rebuild_srpm:
+            if not rebuild_srpm(pkg):
                 continue
 
         # submit to copr
