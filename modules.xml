@@ -1375,6 +1375,9 @@
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
+  <project name="meld">
+    <dep>desktop-file-utils</dep>
+  </project>
   <project name="metacity">
     <release version="f18">2.34.*</release>
     <release version="f19">2.34.*</release>
