@@ -99,6 +99,7 @@
     <dep>gobject-introspection</dep>
     <dep>gstreamer</dep>
     <dep>gstreamer-plugins-base</dep>
+    <dep>gtk+</dep>
     <dep>gtk-doc</dep>
     <dep>libgee</dep>
     <dep>libgxps</dep>
@@ -1519,6 +1520,7 @@
   <project name="pinpoint">
     <dep>cairo</dep>
     <dep>clutter</dep>
+    <dep>clutter-gst</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>librsvg</dep>
