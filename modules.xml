@@ -150,10 +150,12 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
+  <project name="orc" releases="f19"/>
   <project name="gstreamer-plugins-base" pkgname="gstreamer1-plugins-base">
     <dep>gobject-introspection</dep>
     <dep>gstreamer</dep>
     <dep>gtk-doc</dep>
+    <dep>orc</dep>
     <dep>pango</dep>
   </project>
   <project name="gtk+" pkgname="gtk3" pkgconfig="gtk+-3.0" wait_repo="1">
@@ -1458,7 +1460,7 @@
     <dep>vte</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="NetworkManager" autobuild="False" pkgconfig="libnm-glib" disabled="True">
+  <project name="NetworkManager" autobuild="False" pkgconfig="libnm-glib">
     <release version="f17">0.9.*</release>
     <release version="rawhide">0.9.*</release>
     <dep>ModemManager</dep>
