@@ -303,6 +303,14 @@
     <dep>libgtop</dep>
     <dep>vala</dep>
   </project>
+  <project name="zeitgeist" releases="f19" autobuild="False">
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>json-glib</dep>
+    <dep>telepathy-glib</dep>
+    <dep>vala</dep>
+  </project>
   <project name="bijiben">
     <dep>clutter-gtk</dep>
     <dep>desktop-file-utils</dep>
@@ -313,6 +321,7 @@
     <dep>vala</dep>
     <dep>webkitgtk3</dep>
     <dep>yelp-tools</dep>
+    <dep>zeitgeist</dep>
   </project>
   <project name="brasero">
     <dep>GConf</dep>
@@ -573,6 +582,7 @@
     <dep>libgee</dep>
     <dep>telepathy-glib</dep>
     <dep>vala</dep>
+    <dep>zeitgeist</dep>
   </project>
   <project name="four-in-a-row">
     <dep>desktop-file-utils</dep>
@@ -632,6 +642,7 @@
     <dep>pygobject</dep>
     <dep>vala</dep>
     <dep>yelp-tools</dep>
+    <dep>zeitgeist</dep>
   </project>
   <project name="gedit-plugins">
     <dep>atk</dep>
@@ -1698,6 +1709,7 @@
     <dep>pygobject</dep>
     <dep>totem-pl-parser</dep>
     <dep>vala</dep>
+    <dep>zeitgeist</dep>
   </project>
   <project name="totem-pl-parser">
     <release version="f18">3.4.*</release>
