@@ -505,6 +505,11 @@
     <dep>libwnck</dep>
     <dep>webkitgtk3</dep>
   </project>
+  <project name="poppler" autobuild="False" releases="f19">
+    <dep>cairo</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+  </project>
   <project name="evince">
     <dep>desktop-file-utils</dep>
     <dep>glib</dep>
@@ -729,6 +734,9 @@
     <dep>vala</dep>
   </project>
   <project name="gnome-backgrounds">
+  </project>
+  <project name="bluez" autobuild="False" releases="f19">
+    <dep>glib</dep>
   </project>
   <project name="gnome-bluetooth">
     <dep>desktop-file-utils</dep>
