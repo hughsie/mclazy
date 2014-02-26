@@ -831,6 +831,13 @@
   </project>
   <project name="gnome-icon-theme-symbolic">
   </project>
+  <project name="gnome-logs">
+    <dep>desktop-file-utils</dep>
+    <dep>gnome-common</dep>
+    <dep>gtk+</dep>
+  </project>
+  <project name="gnome-sound-recorder" disabled="True">
+  </project>
   <project name="gnome-initial-setup">
     <dep>NetworkManager</dep>
     <dep>cheese</dep>

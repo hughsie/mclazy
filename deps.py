@@ -20,6 +20,9 @@
 
 """ Print dep information for a modules.xml file """
 
+import os
+import subprocess
+
 from modules import ModulesXml
 
 def main():
@@ -32,7 +35,15 @@ def main():
             print("  <project name=\"%s\">" % item.name)
         else:
             print("  <project name=\"%s\" pkgname=\"%s\">" % (item.name, item.pkgname))
-        f = open('/home/hughsie/Work/Fedora/' + item.pkgname + '/' + item.pkgname + '.spec', 'r')
+        specfile = '/home/hughsie/Work/Fedora/' + item.pkgname + '/' + item.pkgname + '.spec'
+        if not os.path.exists(specfile):
+            if item.disabled:
+                print("  </project>")
+                continue
+            p = subprocess.Popen(["fedpkg", "co", item.pkgname],
+                                 cwd='/home/hughsie/Work/Fedora/')
+            p.wait()
+        f = open(specfile, 'r')
         found = []
         for l in f.readlines():
             if not l.startswith('BuildRequires'):
