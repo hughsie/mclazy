@@ -80,7 +80,9 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
+  <project name="GeoIP" autobuild="False" releases="f19"/>
   <project name="geoclue2" pkgconfig="geoclue" autobuild="False">
+    <dep>GeoIP</dep>
     <dep>ModemManager</dep>
     <dep>NetworkManager</dep>
     <dep>glib</dep>
