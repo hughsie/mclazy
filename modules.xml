@@ -725,6 +725,11 @@
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
   </project>
+  <project name="libvirt-glib" pkgconfig="libvirt-gconfig-1.0" releases="f19">
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>vala</dep>
+  </project>
   <project name="gnome-boxes">
     <dep>clutter-gtk</dep>
     <dep>desktop-file-utils</dep>
@@ -733,6 +738,7 @@
     <dep>gtk+</dep>
     <dep>libosinfo</dep>
     <dep>libsoup</dep>
+    <dep>libvirt-glib</dep>
     <dep>tracker</dep>
     <dep>vala</dep>
     <dep>yelp-tools</dep>
@@ -1584,7 +1590,7 @@
     <dep>webkitgtk3</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="rygel">
+  <project name="rygel" releases="f20">
     <release version="f18">0.16.*</release>
     <release version="f19">0.18.*</release>
     <release version="f20">0.20.*</release>
