@@ -891,6 +891,7 @@
     <dep>gnome-shell</dep>
     <dep>gtk+</dep>
     <dep>libgweather</dep>
+    <dep>rest</dep>
   </project>
   <project name="gnome-js-common">
     <release version="f18">0.1.*</release>
