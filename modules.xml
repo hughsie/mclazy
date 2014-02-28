@@ -168,6 +168,7 @@
     <dep>at-spi2-atk</dep>
     <dep>atk</dep>
     <dep>cairo</dep>
+    <dep>colord</dep>
     <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
@@ -187,11 +188,13 @@
   </project>
   <project name="gnome-settings-daemon" wait_repo="1">
     <dep>PackageKit</dep>
+    <dep>colord</dep>
     <dep>geoclue2</dep>
     <dep>geocode-glib</dep>
     <dep>gnome-desktop</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
+    <dep>lcms2</dep>
     <dep>libgnomekbd</dep>
     <dep>libgweather</dep>
     <dep>libnotify</dep>
@@ -212,6 +215,7 @@
     <dep>NetworkManager</dep>
     <dep>cheese</dep>
     <dep>clutter-gtk</dep>
+    <dep>colord</dep>
     <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
@@ -480,6 +484,7 @@
     <dep>gobject-introspection</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
+    <dep>lcms2</dep>
     <dep>libpeas</dep>
     <dep>librsvg</dep>
   </project>
@@ -509,6 +514,7 @@
     <dep>cairo</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
+    <dep>lcms2</dep>
   </project>
   <project name="evince">
     <dep>desktop-file-utils</dep>
@@ -786,11 +792,21 @@
     <dep>libnotify</dep>
     <dep>vala</dep>
   </project>
+  <project name="lcms2" autobuild="False" releases="f20"/>
+  <project name="colord" autobuild="False" releases="f20">
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk-doc</dep>
+    <dep>lcms2</dep>
+    <dep>vala</dep>
+  </project>
   <project name="gnome-color-manager">
+    <dep>colord</dep>
     <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gtk+</dep>
+    <dep>lcms2</dep>
     <dep>vte</dep>
   </project>
   <project name="gnome-common">
@@ -973,6 +989,7 @@
     <dep>gnome-online-accounts</dep>
     <dep>grilo</dep>
     <dep>gtk+</dep>
+    <dep>lcms2</dep>
     <dep>libgfbgraph</dep>
     <dep>librsvg</dep>
     <dep>tracker</dep>
@@ -1316,6 +1333,7 @@
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
+    <dep>lcms2</dep>
   </project>
   <project name="libnotify">
     <release version="f18">0.7.*</release>
@@ -1659,6 +1677,7 @@
     <dep>webkitgtk3</dep>
   </project>
   <project name="simple-scan">
+    <dep>colord</dep>
     <dep>gtk+</dep>
     <dep>vala</dep>
   </project>
