@@ -152,8 +152,8 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project name="orc" releases="f19"/>
-  <project name="gstreamer-plugins-base" pkgname="gstreamer1-plugins-base">
+  <project name="orc" autobuild="false" releases="f19"/>
+  <project name="gstreamer-plugins-base" autobuild="false" pkgname="gstreamer1-plugins-base">
     <dep>gobject-introspection</dep>
     <dep>gstreamer</dep>
     <dep>gtk-doc</dep>
@@ -750,7 +750,7 @@
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project name="libvirt-glib" pkgconfig="libvirt-gconfig-1.0" releases="f19">
+  <project name="libvirt-glib" autobuild="false" pkgconfig="libvirt-gconfig-1.0" releases="f19">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
