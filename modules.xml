@@ -386,6 +386,7 @@
     <dep>librsvg</dep>
     <dep>vala</dep>
   </project>
+  <project name="libinput" autobuild="False"/>
   <project name="clutter">
     <release version="f18">1.12.*</release>
     <release version="f19">1.14.*</release>
@@ -398,6 +399,7 @@
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>json-glib</dep>
+    <dep>libinput</dep>
     <dep>pango</dep>
     <dep>wayland</dep>
   </project>
