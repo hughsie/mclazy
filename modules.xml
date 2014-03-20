@@ -675,6 +675,11 @@
     <dep>json-glib</dep>
     <dep>libsoup</dep>
   </project>
+  <project name="gexiv2" pkgname="libgexiv2" autobuild="False">
+    <dep>gobject-introspection</dep>
+    <dep>pygobject</dep>
+    <dep>vala</dep>
+  </project>
   <project name="ghex">
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
@@ -1683,6 +1688,22 @@
     <dep>colord</dep>
     <dep>gtk+</dep>
     <dep>vala</dep>
+  </project>
+  <project name="shotwell">
+    <release version="f19">0.14.*</release>
+    <release version="f20">0.15.*</release>
+    <release version="rawhide">*</release>
+    <dep>desktop-file-utils</dep>
+    <dep>gexiv2</dep>
+    <dep>glib</dep>
+    <dep>gnome-doc-utils</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
+    <dep>gtk+</dep>
+    <dep>json-glib</dep>
+    <dep>libgee</dep>
+    <dep>libsoup</dep>
+    <dep>webkitgtk3</dep>
   </project>
   <project name="sound-juicer">
     <dep>GConf</dep>
