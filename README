@@ -1,1 +1,10 @@
 A simple script to update GNOME packages in Fedora
+
+Building for the copr
+=====================
+1) Request permissions on http://copr.fedoraproject.org/coprs/rhughes/f20-gnome-3-12/permissions/
+2) Poke hughsie on IRC to approve them
+3) Go to http://copr.fedoraproject.org/api/ to get your personal API key, and save it in ~/.config/copr
+4) Edit the config file to read "username = rhughes" -- the f20-gnome-3-12 copr is in that namespace
+5) Run ./mclazy-copr.py, which syncs rawhide GNOME packages to the copr
+6) Profit!
