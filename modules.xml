@@ -94,7 +94,7 @@
     <dep>glib</dep>
     <dep>vala</dep>
   </project>
-  <project name="tracker" autobuild="False">
+  <project name="tracker">
     <dep>NetworkManager</dep>
     <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
