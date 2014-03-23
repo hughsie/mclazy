@@ -125,7 +125,7 @@ def main():
 
     # read defaults from command line arguments
     parser = argparse.ArgumentParser(description='Automatically build Fedora packages for a GNOME release')
-    parser.add_argument('--fedora-branch', default="f20", help='The fedora release to target (default: f20)')
+    parser.add_argument('--fedora-branch', default="rawhide", help='The fedora release to target (default: rawhide)')
     parser.add_argument('--simulate', action='store_true', help='Do not commit any changes')
     parser.add_argument('--check-installed', action='store_true', help='Check installed version against built version')
     parser.add_argument('--relax-version-checks', action='store_true', help='Relax checks on the version numbering')
