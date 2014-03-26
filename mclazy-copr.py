@@ -187,7 +187,8 @@ def main():
         if status == CoprBuildStatus.ALREADY_BUILT:
             if not args.ignore_existing and not args.bump_soname:
                 print_debug("Already built in copr")
-        if status == CoprBuildStatus.FAILED_TO_BUILD:
+                continue
+        elif status == CoprBuildStatus.FAILED_TO_BUILD:
             if not args.ignore_existing and not args.bump_soname:
                 print_fail("Previous build failed in copr")
                 continue
