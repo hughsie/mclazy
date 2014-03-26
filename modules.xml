@@ -512,6 +512,15 @@
     <dep>libwnck</dep>
     <dep>webkitgtk3</dep>
   </project>
+  <project name="polari">
+    <dep>desktop-file-utils</dep>
+    <dep>gjs</dep>
+    <dep>gnome-common</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>telepathy-glib</dep>
+  </project>
   <project name="poppler" autobuild="False" releases="f19">
     <dep>cairo</dep>
     <dep>gobject-introspection</dep>
@@ -884,7 +893,10 @@
     <dep>gnome-common</dep>
     <dep>gtk+</dep>
   </project>
-  <project name="gnome-sound-recorder" disabled="True">
+  <project name="gnome-sound-recorder">
+    <dep>desktop-file-utils</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
   </project>
   <project name="gnome-initial-setup">
     <dep>NetworkManager</dep>
