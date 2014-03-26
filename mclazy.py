@@ -258,7 +258,7 @@ def main():
                 success = True
                 break
             except IOError as e:
-                print_fail("Failed to get JSON on try", i, e)
+                print_fail("Failed to get JSON on try %i: %s" % (i, e))
         if not success:
             continue
 
