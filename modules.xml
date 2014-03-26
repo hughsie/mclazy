@@ -718,7 +718,7 @@
     <release version="f18">3.14.*</release>
     <release version="f19">3.14.*</release>
     <release version="f20">3.16.*</release>
-    <release version="rawhide">3.16.*</release>
+    <release version="rawhide">3.18.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
