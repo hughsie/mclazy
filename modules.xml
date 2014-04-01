@@ -621,6 +621,26 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
+  <project name="gthumb">
+    <release version="f18">3.2.*</release>
+    <release version="f19">3.2.*</release>
+    <release version="f20">3.2.*</release>
+    <release version="rawhide">3.2.*</release>
+    <dep>brasero</dep>
+    <dep>clutter-gtk</dep>
+    <dep>glib</dep>
+    <dep>gnome-common</dep>
+    <dep>gnome-doc-utils</dep>
+    <dep>gsettings-desktop-schemas</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
+    <dep>gtk+</dep>
+    <dep>libgnome-keyring</dep>
+    <dep>librsvg</dep>
+    <dep>libsecret</dep>
+    <dep>libsoup</dep>
+    <dep>webkitgtk3</dep>
+  </project>
   <project name="gcr">
     <dep>desktop-file-utils</dep>
     <dep>glib</dep>
