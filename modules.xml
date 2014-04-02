@@ -1397,7 +1397,7 @@
   <project name="libpeas">
     <release version="f18">1.6.*</release>
     <release version="f19">1.8.*</release>
-    <release version="f20">1.10.*</release>
+    <release version="f20">1.9.*</release>
     <release version="rawhide">*</release>
     <dep>glade</dep>
     <dep>gnome-common</dep>
