@@ -457,6 +457,7 @@
     <dep>gtk+</dep>
     <dep>webkitgtk3</dep>
   </project>
+  <project name="ekiga" autobuild="False"/>
   <project name="empathy">
     <dep>NetworkManager</dep>
     <dep>cheese</dep>
@@ -1767,6 +1768,7 @@
     <dep>gtk+</dep>
     <dep>yelp-tools</dep>
   </project>
+  <project name="syncevolution" autobuild="False"/>
   <project name="tali">
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
