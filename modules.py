@@ -40,6 +40,7 @@ class ModulesItem(object):
         self.release_glob['f18'] = "3.6.*"
         self.release_glob['f19'] = "3.8.*"
         self.release_glob['f20'] = "3.9.*,3.10.*,3.10"
+        self.release_glob['f20-gnome-3-12'] = "3.11.*,3.12.*,3.12"
         self.release_glob['rawhide'] = "*"
 
 class ModulesXml(object):
