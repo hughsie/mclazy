@@ -20,14 +20,26 @@
 
 """ A package with NVR data """
 
+import rpm
+import os
+
 class Package(object):
     """ A package with NVR data """
 
-    def __init__(self):
-        self.name = None
-        self.version = None
-        self.release = None
+    def __init__(self, filename=None):
         self.url = None
+        if filename:
+            fd = os.open(filename, os.O_RDONLY)
+            ts = rpm.TransactionSet()
+            h = ts.hdrFromFdno(fd)
+            os.close(fd)
+            self.name = h['name']
+            self.version = h['version']
+            self.release = h['release']
+        else:
+            self.name = None
+            self.version = None
+            self.release = None
 
     def get_url(self):
         """ Returns the full URL of the source package """
