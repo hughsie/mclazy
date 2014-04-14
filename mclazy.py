@@ -295,8 +295,16 @@ def main():
                 continue
 
             # upload the package somewhere shared
-            upload_dir = 'rhughes@fedorapeople.org:/home/fedora/rhughes/public_html/copr/'
-            upload_url = 'http://rhughes.fedorapeople.org/copr/'
+            if os.getenv('USERNAME') == 'hughsie':
+                upload_dir = 'rhughes@fedorapeople.org:/home/fedora/rhughes/public_html/copr/'
+                upload_url = 'http://rhughes.fedorapeople.org/copr/'
+            elif os.getenv('USERNAME') == 'kalev':
+                upload_dir = 'kalev@fedorapeople.org:/home/fedora/kalev/public_html/copr/'
+                upload_url = 'http://kalev.fedorapeople.org/copr/'
+            else:
+                print_fail ("USERNAME not valid, ping hughsie on irc")
+                continue
+
             print_debug("Uploading local package to " + upload_dir)
             p = subprocess.Popen(['scp', '-q', new_srpm, upload_dir])
             p.wait()
