@@ -72,34 +72,6 @@ def switch_branch_and_reset(pkg_cache, branch_name):
 
     return 0
 
-def sync_to_master_branch(pkg_cache, args):
-    rc = switch_branch_and_reset (pkg_cache, 'master')
-    if rc != 0:
-        print_fail("switch to 'master' branch")
-        return
-
-    # First try a fast-forward merge
-    rc = run_command (pkg_cache, ['git', 'merge', '--ff-only', args.fedora_branch])
-    if rc != 0:
-        print_info("No fast-forward merge possible")
-        # ... and if the ff merge fails, fall back to cherry-picking
-        rc = run_command (pkg_cache, ['git', 'cherry-pick', args.fedora_branch])
-        if rc != 0:
-            run_command (pkg_cache, ['git', 'cherry-pick', '--abort'])
-            print_fail("cherry-pick")
-            return
-
-    rc = run_command (pkg_cache, ['git', 'push'])
-    if rc != 0:
-        print_fail("push")
-        return
-
-    # Build the package
-    rc = run_command (pkg_cache, ['fedpkg', 'build', '--nowait'])
-    if rc != 0:
-        print_fail("build")
-        return
-
 # first two digits of version
 def majorminor(ver):
     v = ver.split('.')
@@ -117,7 +89,6 @@ def main():
     parser.add_argument('--check-installed', action='store_true', help='Check installed version against built version')
     parser.add_argument('--relax-version-checks', action='store_true', help='Relax checks on the version numbering')
     parser.add_argument('--no-build', action='store_true', help='Do not actually build, e.g. for rawhide')
-    parser.add_argument('--no-rawhide-sync', action='store_true', help='Do not push the same changes to git master branch')
     parser.add_argument('--cache', default="cache", help='The cache of checked out packages')
     parser.add_argument('--modules', default="modules.xml", help='The modules to search')
     parser.add_argument('--buildone', default=None, help='Only build one specific package')
@@ -362,11 +333,6 @@ def main():
         if rc != 0:
             print_fail("push")
             continue
-
-        # Try to push the same change to master branch
-        if not args.no_rawhide_sync and args.fedora_branch != 'rawhide':
-            sync_to_master_branch (pkg_cache, args)
-            run_command (pkg_cache, ['git', 'checkout', args.fedora_branch])
 
         # work out release tag
         if args.fedora_branch == "f18":
