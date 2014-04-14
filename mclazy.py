@@ -90,7 +90,6 @@ def main():
     parser.add_argument('--relax-version-checks', action='store_true', help='Relax checks on the version numbering')
     parser.add_argument('--no-build', action='store_true', help='Do not actually build, e.g. for rawhide')
     parser.add_argument('--cache', default="cache", help='The cache of checked out packages')
-    parser.add_argument('--modules', default="modules.xml", help='The modules to search')
     parser.add_argument('--buildone', default=None, help='Only build one specific package')
     parser.add_argument('--buildroot', default=None, help='Use a custom buildroot, e.g. f18-gnome')
     parser.add_argument('--bump-soname', default=None, help='Build any package that deps on this')
@@ -108,7 +107,7 @@ def main():
 
     # parse the configuration file
     modules = []
-    data = ModulesXml(args.modules)
+    data = ModulesXml('modules.xml')
     if not args.buildone:
         print_debug("Depsolving moduleset...")
         if not data.depsolve():
