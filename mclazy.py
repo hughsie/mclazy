@@ -56,10 +56,6 @@ def replace_spec_value(line, replace):
         return line.rsplit('\t', 1)[0] + '\t' + replace
     return line
 
-def unlock_file(lock_filename):
-    if os.path.exists(lock_filename):
-        os.unlink(lock_filename)
-
 def switch_branch_and_reset(pkg_cache, branch_name):
     rc = run_command (pkg_cache, ['git', 'clean', '-dfx'])
     if rc != 0:
@@ -113,7 +109,6 @@ def main():
 
     # use the main mirror
     gnome_ftp = 'http://ftp.gnome.org/pub/GNOME/sources'
-    lockfile = "mclazy.lock"
 
     # read defaults from command line arguments
     parser = argparse.ArgumentParser(description='Automatically build Fedora packages for a GNOME release')
@@ -178,30 +173,6 @@ def main():
         print_info("Loading %s" % module)
         print_debug("Package name: %s" % pkg)
         print_debug("Version glob: %s" % release_version[args.fedora_branch])
-
-        # ensure we've not locked this build in another instance
-        lock_filename = args.cache + "/" + pkg + "-" + lockfile
-        if os.path.exists(lock_filename):
-            # check this process is still running
-            is_still_running = False
-            with open(lock_filename, 'r') as f:
-                try:
-                    pid = int(f.read())
-                    if os.path.isdir("/proc/%i" % pid):
-                        is_still_running = True
-                except ValueError as e:
-                    # pid in file was not an integer
-                    pass
-
-            if is_still_running:
-                print_info("Ignoring as another process (PID %i) has this" % pid)
-                continue
-            else:
-                print_fail("Process with PID %i locked but did not release" % pid)
-
-        # create lockfile
-        with open(lock_filename, 'w') as f:
-            f.write("%s" % os.getpid())
 
         pkg_cache = os.path.join(args.cache, pkg)
 
@@ -314,7 +285,6 @@ def main():
         # nothing to do
         if new_version == None and not args.bump_soname:
             print_debug("No updates available")
-            unlock_file(lock_filename)
             continue
 
         # never update a major version number */
@@ -444,12 +414,6 @@ def main():
             if rc != 0:
                 print_fail("Wait for repo")
                 continue
-
-        # success!
-        print_info("Waited for build to complete")
-
-        # unlock build
-        unlock_file(lock_filename)
 
 if __name__ == "__main__":
     main()
