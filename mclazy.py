@@ -58,6 +58,7 @@ def main():
     parser.add_argument('--fedora-branch', default="rawhide", help='The fedora release to target (default: rawhide)')
     parser.add_argument('--simulate', action='store_true', help='Do not commit any changes')
     parser.add_argument('--check-installed', action='store_true', help='Check installed version against built version')
+    parser.add_argument('--force-build', action='store_true', help='Always build even when not newer')
     parser.add_argument('--relax-version-checks', action='store_true', help='Relax checks on the version numbering')
     parser.add_argument('--cache', default="cache", help='The cache of checked out packages')
     parser.add_argument('--buildone', default=None, help='Only build one specific package')
@@ -197,7 +198,7 @@ def main():
                         print_fail("check modules.xml is looking at the correct branch")
 
         # nothing to do
-        if new_version == None and not args.bump_soname:
+        if new_version == None and not args.bump_soname and not args.force_build:
             print_debug("No updates available")
             continue
 
@@ -249,12 +250,14 @@ def main():
             os.rename(item.spec_filename + ".tmp", item.spec_filename)
 
         # bump the spec file
+        comment = None
         if args.bump_soname:
             comment = "Rebuilt for %s soname bump" % args.bump_soname
-        else:
+        elif new_version:
             comment = "Update to " + new_version
-        cmd = ['rpmdev-bumpspec', "--comment=%s" % comment, "%s.spec" % item.pkgname]
-        item.run_command(cmd)
+        if comment:
+            cmd = ['rpmdev-bumpspec', "--comment=%s" % comment, "%s.spec" % item.pkgname]
+            item.run_command(cmd)
 
         # run prep, and make sure patches still apply
         if not args.simulate:
@@ -268,7 +271,7 @@ def main():
             continue
 
         # commit the changes
-        if not item.commit_and_push(comment):
+        if comment and not item.commit_and_push(comment):
             print_fail("push")
             continue
 
