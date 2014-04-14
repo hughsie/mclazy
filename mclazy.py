@@ -60,14 +60,6 @@ def unlock_file(lock_filename):
     if os.path.exists(lock_filename):
         os.unlink(lock_filename)
 
-def get_modules(modules_file):
-    """Read a list of modules we care about."""
-    with open(modules_file,'r') as f:
-        for line in f:
-            if line.startswith('#'):
-                continue
-            yield line.strip()
-
 def switch_branch_and_reset(pkg_cache, branch_name):
     rc = run_command (pkg_cache, ['git', 'clean', '-dfx'])
     if rc != 0:
