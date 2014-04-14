@@ -73,7 +73,7 @@ class CoprHelper(object):
             return False
         else:
             print_debug(output['message'])
-        pkg.build_id = output['id']
+        pkg.build_id = output['ids'][0]
         print_debug("Adding build " + str(pkg.build_id))
         self.builds_in_progress.append(pkg)
         return True
