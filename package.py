@@ -33,10 +33,10 @@ class Package(object):
         """ Returns the full URL of the source package """
         if self.url:
             return self.url
-        self.uri = 'http://kojipkgs.fedoraproject.org/packages/'
-        self.uri += "%s/%s/%s/src/" % (self.name, self.version, self.release)
-        self.uri += "%s-%s-%s.src.rpm" % (self.name, self.version, self.release)
-        return self.uri
+        self.url = 'http://kojipkgs.fedoraproject.org/packages/'
+        self.url += "%s/%s/%s/src/" % (self.name, self.version, self.release)
+        self.url += "%s-%s-%s.src.rpm" % (self.name, self.version, self.release)
+        return self.url
 
     def get_nvr(self):
         """ Returns the NVR of the package """
