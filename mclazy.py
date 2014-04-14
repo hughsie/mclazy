@@ -28,19 +28,13 @@ import re
 import rpm
 import argparse
 import fnmatch
+import glob
 
 # internal
 from modules import ModulesXml
+from package import Package
 from log import print_debug, print_info, print_fail
-
-def run_command(cwd, argv):
-    print_debug("Running %s" % " ".join(argv))
-    p = subprocess.Popen(argv, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    output, error = p.communicate()
-    if p.returncode != 0:
-        print(output)
-        print(error)
-    return p.returncode
+from copr_helper import CoprHelper, CoprBuildStatus, CoprException
 
 def replace_spec_value(line, replace):
     if line.find(' ') != -1:
@@ -48,22 +42,6 @@ def replace_spec_value(line, replace):
     if line.find('\t') != -1:
         return line.rsplit('\t', 1)[0] + '\t' + replace
     return line
-
-def switch_branch_and_reset(pkg_cache, branch_name):
-    rc = run_command (pkg_cache, ['git', 'clean', '-dfx'])
-    if rc != 0:
-        return rc
-    rc = run_command (pkg_cache, ['git', 'reset', '--hard', 'HEAD'])
-    if rc != 0:
-        return rc
-    rc = run_command (pkg_cache, ['git', 'checkout', branch_name])
-    if rc != 0:
-        return rc
-    rc = run_command (pkg_cache, ['git', 'reset', '--hard', "origin/%s" % branch_name])
-    if rc != 0:
-        return rc
-
-    return 0
 
 # first two digits of version
 def majorminor(ver):
@@ -81,12 +59,19 @@ def main():
     parser.add_argument('--simulate', action='store_true', help='Do not commit any changes')
     parser.add_argument('--check-installed', action='store_true', help='Check installed version against built version')
     parser.add_argument('--relax-version-checks', action='store_true', help='Relax checks on the version numbering')
-    parser.add_argument('--no-build', action='store_true', help='Do not actually build, e.g. for rawhide')
     parser.add_argument('--cache', default="cache", help='The cache of checked out packages')
     parser.add_argument('--buildone', default=None, help='Only build one specific package')
     parser.add_argument('--buildroot', default=None, help='Use a custom buildroot, e.g. f18-gnome')
     parser.add_argument('--bump-soname', default=None, help='Build any package that deps on this')
+    parser.add_argument('--copr-id', default="f20-gnome-3-12", help='The COPR to optionally use')
     args = parser.parse_args()
+
+    if args.copr_id:
+        copr = CoprHelper(args.copr_id)
+
+    # create the cache directory if it's not already existing
+    if not os.path.isdir(args.cache):
+        os.mkdir(args.cache)
 
     # use rpm to check the installed version
     installed_pkgs = {}
@@ -107,80 +92,46 @@ def main():
             print_fail("Failed to depsolve")
             return
     for item in data.items:
+
+        # ignore just this one module
         if item.disabled:
             continue
+
+        # build just one module
+        if args.buildone:
+            if args.buildone != item.name:
+                continue
+
+        # just things that have this as a dep
+        if args.bump_soname:
+            if args.bump_soname not in item.deps:
+                continue
+
+        # things we can't autobuild as we don't have upstream data files
         if not item.autobuild:
             continue
-        enabled = False
 
-        # build just this
-        if args.buildone == item.name:
-            enabled = True
-
-        # build this as it deps on the thing that's just bumped the soname
-        if args.bump_soname in item.deps:
-            enabled = True
-
-        # build everything
-        if args.buildone == None and args.bump_soname == None:
-            enabled = True
-        if enabled:
-            modules.append((item.name, item.pkgname, item.release_glob, item.wait_repo))
-
-    # create the cache directory if it's not already existing
-    if not os.path.isdir(args.cache):
-        os.mkdir(args.cache)
-
-    # loop these
-    for module, pkg, release_version, wait_repo in modules:
-        print_info("Loading %s" % module)
-        print_debug("Package name: %s" % pkg)
-        print_debug("Version glob: %s" % release_version[args.fedora_branch])
-
-        pkg_cache = os.path.join(args.cache, pkg)
+        # get started
+        print_info("Loading %s" % item.name)
+        if item.pkgname != item.name:
+            print_debug("Package name: %s" % item.pkgname)
+        print_debug("Version glob: %s" % item.release_glob[args.fedora_branch])
 
         # ensure package is checked out
-        if not os.path.isdir(args.cache + "/" + pkg):
-            rc = run_command(args.cache, ["fedpkg", "co", pkg])
-            if rc != 0:
-                print_fail("Checkout %s" % pkg)
-                continue
-        else:
-            rc = run_command (pkg_cache, ['git', 'fetch'])
-            if rc != 0:
-                print_fail("Update repo %s" % pkg)
-                continue
-
-        if args.fedora_branch == 'rawhide':
-            rc = switch_branch_and_reset (pkg_cache, 'master')
-        else:
-            rc = switch_branch_and_reset (pkg_cache, args.fedora_branch)
-
-        if rc != 0:
-            print_fail("Switch branch")
+        if not item.setup_pkgdir(args.cache, args.fedora_branch):
             continue
 
-        # get the current version
-        version = 0
-        spec_filename = "%s/%s/%s.spec" % (args.cache, pkg, pkg)
-        if not os.path.exists(spec_filename):
-            print_fail("No spec file")
+        # get the current version from the spec file
+        if not item.parse_spec():
             continue
 
-        # open spec file
-        try:
-            spec = rpm.spec(spec_filename)
-            version = spec.sourceHeader["version"]
-        except ValueError as e:
-            print_fail("Can't parse spec file")
-            continue
-        print_debug("Current version is %s" % version)
+        print_debug("Current version is %s" % item.version)
 
         # check for newer version on GNOME.org
         success = False
         for i in range (1, 20):
             try:
-                urllib.urlretrieve ("%s/%s/cache.json" % (gnome_ftp, module), "%s/%s/cache.json" % (args.cache, pkg))
+                urllib.urlretrieve ("%s/%s/cache.json" % (gnome_ftp, item.name), "%s/%s/cache.json" % (args.cache, item.pkgname))
                 success = True
                 break
             except IOError as e:
@@ -189,8 +140,8 @@ def main():
             continue
 
         new_version = None
-        gnome_branch = release_version[args.fedora_branch]
-        local_json_file = "%s/%s/cache.json" % (args.cache, pkg)
+        gnome_branch = item.release_glob[args.fedora_branch]
+        local_json_file = "%s/%s/cache.json" % (args.cache, item.pkgname)
         with open(local_json_file, 'r') as f:
 
             # the format of the json file is as follows:
@@ -208,7 +159,7 @@ def main():
 
             # find the newest version
             newest_remote_version = '0'
-            for remote_ver in j[2][module]:
+            for remote_ver in j[2][item.name]:
                 version_valid = False
                 for b in gnome_branch.split(','):
                     if fnmatch.fnmatch(remote_ver, b):
@@ -220,22 +171,22 @@ def main():
                 if rc > 0:
                     newest_remote_version = remote_ver
         if newest_remote_version == '0':
-            print_fail("No remote versions matching the gnome branch", gnome_branch)
+            print_fail("No remote versions matching the gnome branch %s" % gnome_branch)
             print_fail("Check modules.xml is looking at the correct branch")
             continue
 
         print_debug("Newest remote version is: %s" % newest_remote_version)
 
         # is this newer than the rpm spec file version
-        rc = rpm.labelCompare((None, newest_remote_version, None), (None, version, None))
+        rc = rpm.labelCompare((None, newest_remote_version, None), (None, item.version, None))
         new_version = None
         if rc > 0:
             new_version = newest_remote_version
 
         # check the installed version
         if args.check_installed:
-            if pkg in installed_pkgs:
-                installed_ver = installed_pkgs[pkg]
+            if item.pkgname in installed_pkgs:
+                installed_ver = installed_pkgs[item.pkgname]
                 if installed_ver == newest_remote_version:
                     print_debug("installed version is up to date")
                 else:
@@ -254,61 +205,61 @@ def main():
         if new_version:
             if args.relax_version_checks:
                 print_debug("Updating major version number, but ignoring")
-            elif new_version.split('.')[0] != version.split('.')[0]:
+            elif new_version.split('.')[0] != item.version.split('.')[0]:
                 print_fail("Cannot update major version numbers")
                 continue
 
         # we need to update the package
         if new_version:
-            print_debug("Need to update from %s to %s" %(version, new_version))
+            print_debug("Need to update from %s to %s" %(item.version, new_version))
 
         # download the tarball if it doesn't exist
         if new_version:
-            tarball = j[1][module][new_version]['tar.xz']
+            tarball = j[1][item.name][new_version]['tar.xz']
             dest_tarball = tarball.split('/')[1]
-            if os.path.exists(pkg + "/" + dest_tarball):
+            if os.path.exists(item.pkgname + "/" + dest_tarball):
                 print_debug("Source %s already exists" % dest_tarball)
             else:
-                tarball_url = gnome_ftp + "/" + module + "/" + tarball
+                tarball_url = gnome_ftp + "/" + item.name + "/" + tarball
                 print_debug("Download %s" % tarball_url)
                 if not args.simulate:
                     try:
-                        urllib.urlretrieve (tarball_url, args.cache + "/" + pkg + "/" + dest_tarball)
+                        urllib.urlretrieve (tarball_url, args.cache + "/" + item.pkgname + "/" + dest_tarball)
                     except IOError as e:
                         print_fail("Failed to get tarball", e)
                         continue
+
                     # add the new source
-                    run_command (pkg_cache, ['fedpkg', 'new-sources', dest_tarball])
+                    item.new_tarball(dest_tarball)
 
         # prep the spec file for rpmdev-bumpspec
         if new_version:
-            with open(spec_filename, 'r') as f:
-                with open(spec_filename+".tmp", "w") as tmp_spec:
+            with open(item.spec_filename, 'r') as f:
+                with open(item.spec_filename+".tmp", "w") as tmp_spec:
                     for line in f:
                         if line.startswith('Version:'):
                             line = replace_spec_value(line, new_version + '\n')
                         elif line.startswith('Release:'):
                             line = replace_spec_value(line, '0%{?dist}\n')
                         elif line.startswith(('Source:', 'Source0:')):
-                            line = re.sub("/" + majorminor(version) + "/",
+                            line = re.sub("/" + majorminor(item.version) + "/",
                                           "/" + majorminor(new_version) + "/",
                                           line)
                         tmp_spec.write(line)
-            os.rename(spec_filename + ".tmp", spec_filename)
+            os.rename(item.spec_filename + ".tmp", item.spec_filename)
 
         # bump the spec file
         if args.bump_soname:
             comment = "Rebuilt for %s soname bump" % args.bump_soname
         else:
             comment = "Update to " + new_version
-        cmd = ['rpmdev-bumpspec', "--comment=%s" % comment, "%s.spec" % pkg]
-        run_command (pkg_cache, cmd)
+        cmd = ['rpmdev-bumpspec', "--comment=%s" % comment, "%s.spec" % item.pkgname]
+        item.run_command(cmd)
 
         # run prep, and make sure patches still apply
         if not args.simulate:
-            rc = run_command (pkg_cache, ['fedpkg', 'prep'])
-            if rc != 0:
-                print_fail("to build %s as patches did not apply" % pkg)
+            if not item.check_patches():
+                print_fail("to build %s as patches did not apply" % item.pkgname)
                 continue
 
         # push the changes
@@ -317,13 +268,43 @@ def main():
             continue
 
         # commit the changes
-        rc = run_command (pkg_cache, ['git', 'commit', '-a', "--message=%s" % comment])
-        if rc != 0:
-            print_fail("commit")
-            continue
-        rc = run_command (pkg_cache, ['git', 'push'])
-        if rc != 0:
+        if not item.commit_and_push(comment):
             print_fail("push")
+            continue
+
+        # COPR, so build srpm, upload and build
+        if item.is_copr:
+            if not item.run_command(['fedpkg', "--dist=%s" % item.dist, 'srpm']):
+                print_fail("to build srpm")
+                continue
+
+            # extract the nevr from the package
+            new_srpm = glob.glob(args.cache + "/" + item.pkgname + '/*.src.rpm')[0]
+            pkg = Package(new_srpm)
+
+            # check if it already exists
+            status = copr.get_pkg_status(pkg)
+            if status == CoprBuildStatus.ALREADY_BUILT:
+                print_debug ("Already built in COPR")
+                continue
+            elif status == CoprBuildStatus.IN_PROGRESS:
+                print_debug ("Already building in COPR")
+                continue
+
+            # upload the package somewhere shared
+            upload_dir = 'rhughes@fedorapeople.org:/home/fedora/rhughes/public_html/copr/'
+            upload_url = 'http://rhughes.fedorapeople.org/copr/'
+            print_debug("Uploading local package to " + upload_dir)
+            p = subprocess.Popen(['scp', '-q', new_srpm, upload_dir])
+            p.wait()
+            pkg.url = upload_url + os.path.basename(new_srpm)
+
+            if not copr.build(pkg):
+                print_fail("COPR build")
+                break
+            rc = copr.wait_for_builds()
+            if not rc:
+                print_fail("waiting")
             continue
 
         # work out release tag
@@ -340,18 +321,17 @@ def main():
             continue
 
         # build package
-        if not args.no_build:
-            if new_version:
-                print_info("Building %s-%s-1.%s" % (pkg, new_version, pkg_release_tag))
-            else:
-                print_info("Building %s-%s-1.%s" % (pkg, version, pkg_release_tag))
-            if args.buildroot:
-                rc = run_command (pkg_cache, ['fedpkg', 'build', '--target', args.buildroot])
-            else:
-                rc = run_command (pkg_cache, ['fedpkg', 'build'])
-            if rc != 0:
-                print_fail("Build")
-                continue
+        if new_version:
+            print_info("Building %s-%s-1.%s" % (item.pkgname, new_version, pkg_release_tag))
+        else:
+            print_info("Building %s-%s-1.%s" % (item.pkgname, item.version, pkg_release_tag))
+        if args.buildroot:
+            rc = item.run_command(['fedpkg', 'build', '--target', args.buildroot])
+        else:
+            rc = item.run_command(['fedpkg', 'build'])
+        if not rc:
+            print_fail("Build")
+            continue
 
         # work out repo branch
         if args.fedora_branch == "f18":
@@ -367,9 +347,9 @@ def main():
             continue
 
         # wait for repo to sync
-        if wait_repo and args.fedora_branch == "rawhide":
-            rc = run_command (pkg_cache, ['koji', 'wait-repo', pkg_branch_name, '--build', "%s-%s-1.%s" % (pkg, new_version, pkg_release_tag)])
-            if rc != 0:
+        if item.wait_repo and args.fedora_branch == "rawhide":
+            rc = item.run_command(['koji', 'wait-repo', pkg_branch_name, '--build', "%s-%s-1.%s" % (item.pkgname, new_version, pkg_release_tag)])
+            if not ret:
                 print_fail("Wait for repo")
                 continue
 
