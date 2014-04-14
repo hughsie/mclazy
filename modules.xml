@@ -100,6 +100,7 @@
     <dep>vala</dep>
   </project>
   <project name="tracker">
+    <release version="f20-gnome-3-12">0.16.*</release>
     <dep>NetworkManager</dep>
     <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
@@ -154,6 +155,9 @@
     <dep>gtk-doc</dep>
   </project>
   <project name="gstreamer" pkgname="gstreamer1">
+    <release version="f20">1.2.*</release>
+    <release version="f20-gnome-3-12">1.2.*</release>
+    <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
@@ -673,7 +677,7 @@
     <release version="f18">2.26.*</release>
     <release version="f19">2.28.*</release>
     <release version="f20">2.30.*</release>
-    <release version="f20-gnome-3-12">2.32.*</release>
+    <release version="f20-gnome-3-12">2.30.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -732,10 +736,12 @@
     <dep>vala</dep>
   </project>
   <project name="ghex">
+    <release version="f20-gnome-3-12">3.10.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="giggle">
+    <release version="f20-gnome-3-12">0.*</release>
     <dep>desktop-file-utils</dep>
     <dep>evolution-data-server</dep>
     <dep>glib</dep>
@@ -768,6 +774,7 @@
     <dep>pygobject</dep>
   </project>
   <project name="glabels">
+    <release version="f20-gnome-3-12">3.2.*</release>
     <dep>desktop-file-utils</dep>
     <dep>evolution-data-server</dep>
     <dep>gtk+</dep>
@@ -887,6 +894,7 @@
     <dep>yelp-tools</dep>
   </project>
   <project name="gnome-dictionary">
+    <release version="f20-gnome-3-12">3.10.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
@@ -990,6 +998,7 @@
     <dep>gjs</dep>
   </project>
   <project name="gnome-menus">
+    <release version="f20-gnome-3-12">3.10.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
   </project>
@@ -1041,6 +1050,7 @@
     <dep>libnotify</dep>
   </project>
   <project name="gnome-phone-manager">
+    <release version="f20-gnome-3-12">0.*</release>
     <dep>GConf</dep>
     <dep>desktop-file-utils</dep>
     <dep>evolution</dep>
@@ -1095,6 +1105,7 @@
     <dep>gtk+</dep>
   </project>
   <project name="gnome-search-tool">
+    <release version="f20-gnome-3-12">3.6.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
@@ -1158,6 +1169,7 @@
     <dep>pygobject</dep>
   </project>
   <project name="gnome-system-log">
+    <release version="f20-gnome-3-12">3.9.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
@@ -1201,6 +1213,7 @@
     <dep>yelp-tools</dep>
   </project>
   <project name="gnome-user-share">
+    <release version="f20-gnome-3-12">3.10.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gnome-bluetooth</dep>
     <dep>gtk+</dep>
@@ -1260,6 +1273,7 @@
     <dep>gtk+</dep>
   </project>
   <project name="grilo" pkgconfig="grilo-0.2">
+    <release version="f20-gnome-3-12">0.2.*</release>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -1270,6 +1284,7 @@
     <dep>vala</dep>
   </project>
   <project name="grilo-plugins">
+    <release version="f20-gnome-3-12">0.2.*</release>
     <dep>glib</dep>
     <dep>gmime</dep>
     <dep>grilo</dep>
@@ -1333,6 +1348,7 @@
     <dep>glib</dep>
   </project>
   <project name="libcryptui">
+    <release version="f20-gnome-3-12">3.10.*</release>
     <dep>gnome-doc-utils</dep>
     <dep>gnome-keyring</dep>
     <dep>gobject-introspection</dep>
@@ -1376,6 +1392,7 @@
     <dep>vala</dep>
   </project>
   <project name="libgnomekbd">
+    <release version="f20-gnome-3-12">3.6.*</release>
     <dep>GConf</dep>
     <dep>cairo</dep>
     <dep>desktop-file-utils</dep>
@@ -1477,7 +1494,7 @@
     <release version="f18">0.12.*</release>
     <release version="f19">0.15.*</release>
     <release version="f20">0.16.*</release>
-    <release version="f20-gnome-3-12">0.18.*</release>
+    <release version="f20-gnome-3-12">0.16.*</release>
     <release version="rawhide">*</release>
     <dep>gcr</dep>
     <dep>glib</dep>
@@ -1510,8 +1527,8 @@
   <project name="libxklavier">
     <release version="f18">5.3.*</release>
     <release version="f19">5.3.*</release>
-    <release version="f20">5.3.*</release>
-    <release version="f20-gnome-3-12">5.3.*</release>
+    <release version="f20">5.*</release>
+    <release version="f20-gnome-3-12">5.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1668,6 +1685,7 @@
     <dep>gtk-doc</dep>
   </project>
   <project name="pinpoint">
+    <release version="f20-gnome-3-12">0.1.*</release>
     <dep>cairo</dep>
     <dep>clutter</dep>
     <dep>clutter-gst</dep>
@@ -1761,6 +1779,7 @@
     <dep>nautilus</dep>
   </project>
   <project name="seahorse-sharing">
+    <release version="f20-gnome-3-12">3.8.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>libsoup</dep>
@@ -1777,6 +1796,7 @@
     <dep>webkitgtk3</dep>
   </project>
   <project name="simple-scan">
+    <release version="f20-gnome-3-12">3.10.*</release>
     <dep>colord</dep>
     <dep>gtk+</dep>
     <dep>vala</dep>
@@ -1859,7 +1879,7 @@
     <release version="f18">3.4.*</release>
     <release version="f19">3.4.*</release>
     <release version="f20">3.10.*</release>
-    <release version="f20-gnome-3-12">3.12.*</release>
+    <release version="f20-gnome-3-12">3.10.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gmime</dep>
@@ -1919,6 +1939,7 @@
   <project name="yelp-xsl">
   </project>
   <project name="zenity">
+    <release version="f20-gnome-3-12">3.8.*</release>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
   </project>
