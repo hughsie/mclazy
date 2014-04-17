@@ -587,11 +587,18 @@
   <project name="evolution-ews" autobuild="False">
     <dep>evolution</dep>
     <dep>evolution-data-server</dep>
+    <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>libsoup</dep>
   </project>
+  <project name="evolution-rss" autobuild="False">
+    <dep>GConf</dep>
+    <dep>evolution</dep>
+    <dep>evolution-data-server</dep>
+    <dep>gnome-common</dep>
+    <dep>webkitgtk3</dep>
+  </project>
   <project name="evolution-data-server" autobuild="False">
-    <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gtk+</dep>
@@ -1845,7 +1852,16 @@
     <dep>gtk+</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="syncevolution" autobuild="False"/>
+  <project name="syncevolution" autobuild="False">
+    <dep>desktop-file-utils</dep>
+    <dep>evolution-data-server</dep>
+    <dep>glib</dep>
+    <dep>gnome-online-accounts</dep>
+    <dep>gtk+</dep>
+    <dep>libgnome-keyring</dep>
+    <dep>libnotify</dep>
+    <dep>libsoup</dep>
+  </project>
   <project name="tali">
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
