@@ -477,7 +477,14 @@
     <dep>gtk+</dep>
     <dep>webkitgtk3</dep>
   </project>
-  <project name="ekiga" autobuild="False"/>
+  <project name="ekiga" autobuild="False">
+    <dep>GConf</dep>
+    <dep>desktop-file-utils</dep>
+    <dep>evolution-data-server</dep>
+    <dep>gnome-doc-utils</dep>
+    <dep>gnome-icon-theme</dep>
+    <dep>libnotify</dep>
+  </project>
   <project name="empathy">
     <dep>NetworkManager</dep>
     <dep>cheese</dep>
