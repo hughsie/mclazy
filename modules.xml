@@ -1544,6 +1544,7 @@
     <dep>clutter-gtk</dep>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
+    <dep>vala</dep>
   </project>
   <project name="meld">
     <dep>desktop-file-utils</dep>
@@ -1850,6 +1851,7 @@
     <dep>clutter-gtk</dep>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
+    <dep>vala</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="syncevolution" autobuild="False">
