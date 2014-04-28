@@ -64,7 +64,7 @@ def main():
     parser.add_argument('--buildone', default=None, help='Only build one specific package')
     parser.add_argument('--buildroot', default=None, help='Use a custom buildroot, e.g. f18-gnome')
     parser.add_argument('--bump-soname', default=None, help='Build any package that deps on this')
-    parser.add_argument('--copr-id', default="f20-gnome-3-12", help='The COPR to optionally use')
+    parser.add_argument('--copr-id', default=None, help='The COPR to optionally use')
     args = parser.parse_args()
 
     if args.copr_id:
