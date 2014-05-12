@@ -351,6 +351,8 @@
   <project name="bijiben">
     <dep>clutter-gtk</dep>
     <dep>desktop-file-utils</dep>
+    <dep>evolution</dep>
+    <dep>evolution-data-server</dep>
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gtk+</dep>
@@ -1325,6 +1327,7 @@
     <dep>json-glib</dep>
     <dep>libgdata</dep>
     <dep>libsoup</dep>
+    <dep>rest</dep>
     <dep>totem-pl-parser</dep>
     <dep>tracker</dep>
   </project>
@@ -1367,6 +1370,7 @@
     <release version="f20">0.12.*</release>
     <release version="f20-gnome-3-12">0.12.*</release>
     <release version="rawhide">*</release>
+    <dep>clutter</dep>
     <dep>clutter-gtk</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
@@ -1398,10 +1402,10 @@
     <release version="rawhide">*</release>
     <dep>gcr</dep>
     <dep>glib</dep>
-    <dep>gnome-keyring</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
+    <dep>json-glib</dep>
     <dep>libgnome-keyring</dep>
     <dep>libsoup</dep>
     <dep>vala</dep>
@@ -1674,7 +1678,6 @@
     <dep>NetworkManager</dep>
     <dep>desktop-file-utils</dep>
     <dep>glib</dep>
-    <dep>gnome-bluetooth</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
@@ -1806,7 +1809,6 @@
   <project name="seahorse-nautilus">
     <dep>desktop-file-utils</dep>
     <dep>gcr</dep>
-    <dep>gnome-keyring</dep>
     <dep>gtk+</dep>
     <dep>libcryptui</dep>
     <dep>libgnome-keyring</dep>
@@ -1957,6 +1959,7 @@
   </project>
   <project name="vino">
     <dep>NetworkManager</dep>
+    <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
@@ -1968,6 +1971,7 @@
     <release version="rawhide">*</release>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
+    <dep>vala</dep>
   </project>
   <project name="vte" pkgname="vte3">
     <release version="f18">0.34.*</release>
@@ -1977,6 +1981,7 @@
     <release version="rawhide">0.36.*</release>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
+    <dep>vala</dep>
   </project>
   <project name="yelp">
     <dep>desktop-file-utils</dep>
