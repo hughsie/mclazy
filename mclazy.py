@@ -109,7 +109,7 @@ def main():
                 continue
 
         # things we can't autobuild as we don't have upstream data files
-        if not item.autobuild and not args.copr_id:
+        if not item.autobuild:
             continue
 
         # get started
