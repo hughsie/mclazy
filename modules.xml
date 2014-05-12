@@ -163,6 +163,23 @@
     <dep>gtk-doc</dep>
   </project>
   <project name="orc" autobuild="False" releases="f19"/>
+  <project name="gstreamer-plugins-good" autobuild="False" pkgname="gstreamer1-plugins-good">
+    <dep>gdk-pixbuf</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
+    <dep>gtk-doc</dep>
+    <dep>libsoup</dep>
+    <dep>orc</dep>
+  </project>
+  <project name="gstreamer-plugins-bad" autobuild="False" pkgname="gstreamer1-plugins-bad-free">
+    <dep>gobject-introspection</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
+    <dep>gtk-doc</dep>
+    <dep>librsvg</dep>
+    <dep>orc</dep>
+    <dep>wayland</dep>
+  </project>
   <project name="gstreamer-plugins-base" autobuild="False" pkgname="gstreamer1-plugins-base">
     <dep>gobject-introspection</dep>
     <dep>gstreamer</dep>
@@ -399,6 +416,7 @@
     <dep>gnome-desktop</dep>
     <dep>gnome-video-effects</dep>
     <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-bad</dep>
     <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
@@ -453,6 +471,8 @@
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
     <dep>gtk-doc</dep>
     <dep>pango</dep>
     <dep>wayland</dep>
@@ -1841,6 +1861,7 @@
     <dep>gnome-doc-utils</dep>
     <dep>gstreamer</dep>
     <dep>gstreamer-plugins-base</dep>
+    <dep>gstreamer-plugins-good</dep>
     <dep>gtk+</dep>
   </project>
   <project name="sushi">
@@ -1890,7 +1911,9 @@
     <dep>grilo</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-bad</dep>
     <dep>gstreamer-plugins-base</dep>
+    <dep>gstreamer-plugins-good</dep>
     <dep>gtk-doc</dep>
     <dep>libgdata</dep>
     <dep>libpeas</dep>
