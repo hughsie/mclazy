@@ -1202,7 +1202,8 @@
   <project name="gnome-sudoku">
     <dep>desktop-file-utils</dep>
     <dep>glib</dep>
-    <dep>pygobject</dep>
+    <dep>gtk+</dep>
+    <dep>libgee</dep>
   </project>
   <project name="gnome-system-log">
     <release version="f20-gnome-3-12">3.9.*</release>
@@ -1228,6 +1229,7 @@
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
     <dep>nautilus</dep>
+    <dep>vala</dep>
     <dep>vte</dep>
   </project>
   <project name="gnome-tetravex">
@@ -1805,6 +1807,7 @@
     <dep>libnotify</dep>
     <dep>libsecret</dep>
     <dep>libsoup</dep>
+    <dep>vala</dep>
   </project>
   <project name="seahorse-nautilus">
     <dep>desktop-file-utils</dep>
@@ -1861,6 +1864,7 @@
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gnome-doc-utils</dep>
+    <dep>gsettings-desktop-schemas</dep>
     <dep>gstreamer</dep>
     <dep>gstreamer-plugins-base</dep>
     <dep>gstreamer-plugins-good</dep>
