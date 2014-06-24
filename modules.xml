@@ -154,6 +154,7 @@
     <release version="rawhide">*</release>
     <dep>gtk-doc</dep>
   </project>
+  <project name="adwaita-icon-theme"/>
   <project name="gstreamer" pkgname="gstreamer1">
     <release version="f20">1.2.*</release>
     <release version="f20-gnome-3-12">1.2.*</release>
@@ -193,6 +194,7 @@
     <release version="f20">3.10.*</release>
     <release version="f20-gnome-3-12">3.12.*</release>
     <release version="rawhide">*</release>
+    <dep>adwaita-icon-theme</dep>
     <dep>at-spi2-atk</dep>
     <dep>atk</dep>
     <dep>cairo</dep>
