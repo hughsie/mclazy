@@ -50,7 +50,7 @@ class ModulesItem(object):
         self.release = None
         self.wait_repo = False
         self.disabled = False
-        self.autobuild = True
+        self.ftpadmin = True
         self.release_glob = {}
         self.deps = []
         self.depsolve_level = 0
@@ -174,8 +174,8 @@ class ModulesXml(object):
                 item.pkgconfig = item.name
             if project.get('wait_repo') == "1":
                 item.wait_repo = True
-            if project.get('autobuild') == "False":
-                item.autobuild = False
+            if project.get('ftpadmin') == "False":
+                item.ftpadmin = False
             if project.get('disabled') == "True":
                 item.disabled = True
             for data in project:

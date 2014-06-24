@@ -28,19 +28,19 @@
 <projects>
 
   <!-- deps of the GNOME modules -->
-  <project name="python-werkzeug" autobuild="False" releases="f19"/>
-  <project name="python-flask" autobuild="False" releases="f19">
+  <project name="python-werkzeug" ftpadmin="False" releases="f19"/>
+  <project name="python-flask" ftpadmin="False" releases="f19">
     <dep>python-werkzeug</dep>
   </project>
-  <project name="libsolv" autobuild="False" releases="f19"/>
-  <project name="librepo" autobuild="False">
+  <project name="libsolv" ftpadmin="False" releases="f19"/>
+  <project name="librepo" ftpadmin="False">
     <dep>glib</dep>
     <dep>python-flask</dep>
   </project>
-  <project name="hawkey" autobuild="False">
+  <project name="hawkey" ftpadmin="False">
     <dep>libsolv</dep>
   </project>
-  <project name="PackageKit" autobuild="False">
+  <project name="PackageKit" ftpadmin="False">
     <dep>NetworkManager</dep>
     <dep>glib</dep>
     <dep>gnome-doc-utils</dep>
@@ -54,10 +54,10 @@
     <dep>libsolv</dep>
     <dep>pango</dep>
   </project>
-  <project name="libmbim" autobuild="False" releases="f19">
+  <project name="libmbim" ftpadmin="False" releases="f19">
     <dep>glib</dep>
   </project>
-  <project name="ModemManager" autobuild="False">
+  <project name="ModemManager" ftpadmin="False">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
@@ -65,9 +65,9 @@
     <dep>libqmi</dep>
     <dep>vala</dep>
   </project>
-  <project name="wayland" autobuild="False"/>
-  <project name="mozjs24" autobuild="False"/>
-  <project name="webkitgtk3" pkgconfig="webkitgtk-3.0" autobuild="False">
+  <project name="wayland" ftpadmin="False"/>
+  <project name="mozjs24" ftpadmin="False"/>
+  <project name="webkitgtk3" pkgconfig="webkitgtk-3.0" ftpadmin="False">
     <dep>at-spi2-core</dep>
     <dep>cairo</dep>
     <dep>geoclue2</dep>
@@ -80,13 +80,13 @@
     <dep>libsecret</dep>
     <dep>libsoup</dep>
   </project>
-  <project name="upower" autobuild="False">
+  <project name="upower" ftpadmin="False">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project name="GeoIP" autobuild="False" releases="f19"/>
-  <project name="geoclue2" pkgconfig="geoclue" autobuild="False">
+  <project name="GeoIP" ftpadmin="False" releases="f19"/>
+  <project name="geoclue2" pkgconfig="geoclue" ftpadmin="False">
     <dep>GeoIP</dep>
     <dep>ModemManager</dep>
     <dep>NetworkManager</dep>
@@ -94,7 +94,7 @@
     <dep>json-glib</dep>
     <dep>libsoup</dep>
   </project>
-  <project name="libmediaart" autobuild="False">
+  <project name="libmediaart" ftpadmin="False">
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>vala</dep>
@@ -124,20 +124,20 @@
   </project>
 
   <!-- for cogl soname bump -->
-  <project name="libmx" autobuild="False">
+  <project name="libmx" ftpadmin="False">
     <dep>clutter</dep>
     <dep>gdk-pixbuf</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project name="libmash" autobuild="False">
+  <project name="libmash" ftpadmin="False">
     <dep>clutter</dep>
     <dep>glib</dep>
     <dep>gtk-doc</dep>
   </project>
 
   <!-- for PackageKit soname bump -->
-  <project name="realmd" autobuild="False">
+  <project name="realmd" ftpadmin="False">
     <dep>PackageKit</dep>
     <dep>glib</dep>
   </project>
@@ -162,8 +162,8 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project name="orc" autobuild="False" releases="f19"/>
-  <project name="gstreamer-plugins-good" autobuild="False" pkgname="gstreamer1-plugins-good">
+  <project name="orc" ftpadmin="False" releases="f19"/>
+  <project name="gstreamer-plugins-good" ftpadmin="False" pkgname="gstreamer1-plugins-good">
     <dep>gdk-pixbuf</dep>
     <dep>gstreamer</dep>
     <dep>gstreamer-plugins-base</dep>
@@ -171,7 +171,7 @@
     <dep>libsoup</dep>
     <dep>orc</dep>
   </project>
-  <project name="gstreamer-plugins-bad" autobuild="False" pkgname="gstreamer1-plugins-bad-free">
+  <project name="gstreamer-plugins-bad" ftpadmin="False" pkgname="gstreamer1-plugins-bad-free">
     <dep>gobject-introspection</dep>
     <dep>gstreamer</dep>
     <dep>gstreamer-plugins-base</dep>
@@ -180,7 +180,7 @@
     <dep>orc</dep>
     <dep>wayland</dep>
   </project>
-  <project name="gstreamer-plugins-base" autobuild="False" pkgname="gstreamer1-plugins-base">
+  <project name="gstreamer-plugins-base" ftpadmin="False" pkgname="gstreamer1-plugins-base">
     <dep>gobject-introspection</dep>
     <dep>gstreamer</dep>
     <dep>gtk-doc</dep>
@@ -340,7 +340,7 @@
     <dep>libgtop</dep>
     <dep>vala</dep>
   </project>
-  <project name="zeitgeist" releases="f19" autobuild="False">
+  <project name="zeitgeist" releases="f19" ftpadmin="False">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -378,7 +378,7 @@
     <dep>tracker</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="cairo" autobuild="False">
+  <project name="cairo" ftpadmin="False">
     <dep>glib</dep>
     <!-- librsvg also depends on cairo...
     <dep>librsvg</dep>
@@ -424,7 +424,7 @@
     <dep>librsvg</dep>
     <dep>vala</dep>
   </project>
-  <project name="libinput" autobuild="False"/>
+  <project name="libinput" ftpadmin="False"/>
   <project name="clutter">
     <release version="f18">1.12.*</release>
     <release version="f19">1.14.*</release>
@@ -490,7 +490,7 @@
     <dep>gtk-doc</dep>
     <dep>vala</dep>
   </project>
-  <project name="desktop-file-utils" autobuild="False">
+  <project name="desktop-file-utils" ftpadmin="False">
     <dep>glib</dep>
   </project>
   <project name="devhelp">
@@ -499,7 +499,7 @@
     <dep>gtk+</dep>
     <dep>webkitgtk3</dep>
   </project>
-  <project name="ekiga" autobuild="False">
+  <project name="ekiga" ftpadmin="False">
     <dep>GConf</dep>
     <dep>desktop-file-utils</dep>
     <dep>evolution-data-server</dep>
@@ -574,7 +574,7 @@
     <dep>gtk-doc</dep>
     <dep>telepathy-glib</dep>
   </project>
-  <project name="poppler" autobuild="False" releases="f19">
+  <project name="poppler" ftpadmin="False" releases="f19">
     <dep>cairo</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -594,7 +594,7 @@
     <dep>yelp-tools</dep>
   </project>
   <!-- NOTE: Milan Crha told us not to touch this -->
-  <project name="evolution" autobuild="False">
+  <project name="evolution" ftpadmin="False">
     <dep>atk</dep>
     <dep>desktop-file-utils</dep>
     <dep>evolution-data-server</dep>
@@ -613,21 +613,21 @@
     <dep>webkitgtk3</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="evolution-ews" autobuild="False">
+  <project name="evolution-ews" ftpadmin="False">
     <dep>evolution</dep>
     <dep>evolution-data-server</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>libsoup</dep>
   </project>
-  <project name="evolution-rss" autobuild="False">
+  <project name="evolution-rss" ftpadmin="False">
     <dep>GConf</dep>
     <dep>evolution</dep>
     <dep>evolution-data-server</dep>
     <dep>gnome-common</dep>
     <dep>webkitgtk3</dep>
   </project>
-  <project name="evolution-data-server" autobuild="False">
+  <project name="evolution-data-server" ftpadmin="False">
     <dep>gnome-common</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gtk+</dep>
@@ -766,7 +766,7 @@
     <dep>json-glib</dep>
     <dep>libsoup</dep>
   </project>
-  <project name="gexiv2" pkgname="libgexiv2" autobuild="False">
+  <project name="gexiv2" pkgname="libgexiv2" ftpadmin="False">
     <dep>gobject-introspection</dep>
     <dep>pygobject</dep>
     <dep>vala</dep>
@@ -847,7 +847,7 @@
   </project>
   <project name="gnome-backgrounds">
   </project>
-  <project name="bluez" autobuild="False" releases="f19">
+  <project name="bluez" ftpadmin="False" releases="f19">
     <dep>glib</dep>
   </project>
   <project name="gnome-bluetooth">
@@ -856,7 +856,7 @@
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project name="libvirt-glib" autobuild="False" pkgconfig="libvirt-gconfig-1.0" releases="f19">
+  <project name="libvirt-glib" ftpadmin="False" pkgconfig="libvirt-gconfig-1.0" releases="f19">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
@@ -898,8 +898,8 @@
     <dep>libnotify</dep>
     <dep>vala</dep>
   </project>
-  <project name="lcms2" autobuild="False" releases="f20"/>
-  <project name="colord" autobuild="False" releases="f20">
+  <project name="lcms2" ftpadmin="False" releases="f20"/>
+  <project name="colord" ftpadmin="False" releases="f20">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
@@ -1410,7 +1410,7 @@
     <dep>libsoup</dep>
     <dep>vala</dep>
   </project>
-  <project name="libgfbgraph" pkgname="gfbgraph" autobuild="False">
+  <project name="libgfbgraph" pkgname="gfbgraph" ftpadmin="False">
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gobject-introspection</dep>
@@ -1485,7 +1485,7 @@
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
   </project>
-  <project name="libosinfo" pkgconfig="libosinfo-1.0" autobuild="False">
+  <project name="libosinfo" pkgconfig="libosinfo-1.0" ftpadmin="False">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>libsoup</dep>
@@ -1504,14 +1504,14 @@
     <dep>pygobject</dep>
     <dep>seed</dep>
   </project>
-  <project name="libqmi" autobuild="False" releases="f19">
+  <project name="libqmi" ftpadmin="False" releases="f19">
     <dep>glib</dep>
   </project>
-  <project name="libquvi" autobuild="False">
+  <project name="libquvi" ftpadmin="False">
     <dep>glib</dep>
     <dep>libquvi-scripts</dep>
   </project>
-  <project name="libquvi-scripts" autobuild="False"/>
+  <project name="libquvi-scripts" ftpadmin="False"/>
   <project name="librsvg" pkgname="librsvg2">
     <release version="f18">2.36.*</release>
     <release version="f19">2.38.*</release>
@@ -1662,7 +1662,7 @@
     <dep>vte</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="NetworkManager" autobuild="False" pkgconfig="libnm-glib">
+  <project name="NetworkManager" ftpadmin="False" pkgconfig="libnm-glib">
     <release version="f17">0.9.*</release>
     <release version="rawhide">0.9.*</release>
     <dep>ModemManager</dep>
@@ -1672,7 +1672,7 @@
     <dep>libsoup</dep>
     <dep>vala</dep>
   </project>
-  <project name="network-manager-applet" autobuild="False">
+  <project name="network-manager-applet" ftpadmin="False">
     <release version="f17">0.9.*</release>
     <release version="rawhide">*</release>
     <dep>NetworkManager</dep>
@@ -1690,7 +1690,7 @@
     <dep>pyatspi</dep>
     <dep>pygobject</dep>
   </project>
-  <project name="p11-kit" autobuild="False">
+  <project name="p11-kit" ftpadmin="False">
     <dep>gtk-doc</dep>
   </project>
   <project name="pango">
@@ -1715,7 +1715,7 @@
     <dep>pango</dep>
   </project>
   <!-- we only use this in fallback mode -->
-  <project name="polkit-gnome" autobuild="False" disabled="True">
+  <project name="polkit-gnome" ftpadmin="False" disabled="True">
     <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1761,7 +1761,7 @@
     <dep>gtk-doc</dep>
     <dep>libsoup</dep>
   </project>
-  <project name="rhythmbox" autobuild="False">
+  <project name="rhythmbox" ftpadmin="False">
     <dep>brasero</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
@@ -1884,7 +1884,7 @@
     <dep>vala</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="syncevolution" autobuild="False">
+  <project name="syncevolution" ftpadmin="False">
     <dep>desktop-file-utils</dep>
     <dep>evolution-data-server</dep>
     <dep>glib</dep>
@@ -1899,7 +1899,7 @@
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
-  <project name="telepathy-glib" autobuild="False">
+  <project name="telepathy-glib" ftpadmin="False">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
