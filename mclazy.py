@@ -360,7 +360,7 @@ def main():
         # wait for repo to sync
         if item.wait_repo and args.fedora_branch == "rawhide":
             rc = item.run_command(['koji', 'wait-repo', pkg_branch_name, '--build', "%s-%s-1.%s" % (item.pkgname, new_version, pkg_release_tag)])
-            if not ret:
+            if not rc:
                 print_fail("Wait for repo")
                 continue
 
