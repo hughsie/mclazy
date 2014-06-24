@@ -105,7 +105,7 @@ def main():
     parser.add_argument('--branch-destination', default="f20", help='The branch to use as a destination (default: f20)')
     parser.add_argument('--simulate', action='store_true', help='Do not commit any changes')
     parser.add_argument('--modules', default="modules.xml", help='The modules to search')
-    parser.add_argument('--copr-id', default="f20-gnome-3-12", help='The COPR to use')
+    parser.add_argument('--copr-id', default="f20-gnome-3-14", help='The COPR to use')
     parser.add_argument('--buildone', default=None, help='Only build one specific package')
     parser.add_argument('--bump-soname', default=None, help='Build this package any any that dep on it')
     parser.add_argument('--ignore-existing', action='store_true', help='Build the module even if it already exists in COPR')
