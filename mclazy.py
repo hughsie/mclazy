@@ -112,6 +112,11 @@ def main():
         if not item.ftpadmin:
             continue
 
+        # things that are obsolete in later versions
+        if args.copr_id:
+            if not args.copr_id[10:] in item.branches:
+                continue
+
         # get started
         print_info("Loading %s" % item.name)
         if item.pkgname != item.name:

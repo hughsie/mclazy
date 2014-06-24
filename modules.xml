@@ -1613,7 +1613,7 @@
     <dep>upower</dep>
     <dep>zenity</dep>
   </project>
-  <project name="mutter-wayland">
+  <project name="mutter-wayland" branches="3-12">
     <dep>clutter</dep>
     <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>

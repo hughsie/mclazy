@@ -191,6 +191,13 @@ class ModulesXml(object):
             else:
                 item.releases.append('f19')
                 item.releases.append('f20')
+            item.branches = []
+            if project.get('branches'):
+                for branch in project.get('branches').split(','):
+                    item.branches.append(branch)
+            else:
+                item.branches.append('3-12')
+                item.branches.append('3-14')
             self.items.append(item)
 
     def depsolve(self):
