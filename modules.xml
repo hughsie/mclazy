@@ -40,6 +40,10 @@
   <project name="hawkey" ftpadmin="False">
     <dep>libsolv</dep>
   </project>
+  <project name="libhif" ftpadmin="False">
+    <dep>hawkey</dep>
+    <dep>librepo</dep>
+  </project>
   <project name="PackageKit" ftpadmin="False">
     <dep>NetworkManager</dep>
     <dep>glib</dep>
@@ -49,9 +53,7 @@
     <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
-    <dep>hawkey</dep>
-    <dep>librepo</dep>
-    <dep>libsolv</dep>
+    <dep>libhif</dep>
     <dep>pango</dep>
   </project>
   <project name="libmbim" ftpadmin="False" releases="f19">
@@ -1666,6 +1668,7 @@
     <dep>vte</dep>
     <dep>yelp-tools</dep>
   </project>
+  <project name="ppp" ftpadmin="False"/>
   <project name="NetworkManager" ftpadmin="False" pkgconfig="libnm-glib">
     <release version="f17">0.9.*</release>
     <release version="rawhide">0.9.*</release>
@@ -1674,6 +1677,7 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
     <dep>libsoup</dep>
+    <dep>ppp</dep>
     <dep>vala</dep>
   </project>
   <project name="network-manager-applet" ftpadmin="False">
