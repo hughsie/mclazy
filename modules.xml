@@ -1193,6 +1193,15 @@
     <dep>desktop-file-utils</dep>
     <dep>gnome-desktop</dep>
   </project>
+  <project name="libappstream-glib" ftpadmin="False">
+    <dep>gdk-pixbuf</dep>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>libsoup</dep>
+    <dep>pango</dep>
+  </project>
   <project name="gnome-software">
     <dep>PackageKit</dep>
     <dep>desktop-file-utils</dep>
@@ -1200,6 +1209,7 @@
     <dep>gnome-desktop</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
+    <dep>libappstream-glib</dep>
     <dep>libnotify</dep>
     <dep>libsoup</dep>
   </project>
