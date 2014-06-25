@@ -585,6 +585,7 @@
     <dep>lcms2</dep>
   </project>
   <project name="evince">
+    <dep>adwaita-icon-theme</dep>
     <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
