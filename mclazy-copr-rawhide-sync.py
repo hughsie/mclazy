@@ -131,6 +131,15 @@ def main():
             else:
                 item.disabled = True
     else:
+
+        # disable before depsolve
+        for item in data.items:
+            if copr.release not in item.releases:
+                # not for this release
+                print_debug("Skipping %s as release only lists %s" % (item.name, ','.join(item.releases)))
+                item.disabled = True
+                continue
+
         print_info("Depsolving moduleset")
         if not data.depsolve():
             print_fail("Failed to depsolve")
@@ -164,11 +173,6 @@ def main():
         if item.disabled:
             if not args.buildone:
                 print_debug("Skipping %s as disabled" % item.name)
-            continue
-
-        # not for this release
-        if copr.release not in item.releases:
-            print_debug("Skipping %s as release only lists %s" % (item.name, ','.join(item.releases)))
             continue
 
         # get the latest build from koji
