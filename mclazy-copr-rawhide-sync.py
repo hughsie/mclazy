@@ -72,8 +72,8 @@ def rebuild_srpm(pkg):
     # rebuild the package with rpmbuild -bs
     print_debug("Building local package " + pkg.get_nvr())
     p = subprocess.Popen(['rpmbuild',
-                         "--define=_sourcedir /tmp/copr/gtk3",
-                         "--define=_srcrpmdir /tmp/copr/gtk3",
+                         "--define=_sourcedir /tmp/copr/" + pkg.name,
+                         "--define=_srcrpmdir /tmp/copr/" + pkg.name,
                          '-bs', specfile],
                          stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
