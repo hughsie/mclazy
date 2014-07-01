@@ -599,6 +599,14 @@
     <dep>yelp-tools</dep>
   </project>
   <!-- NOTE: Milan Crha told us not to touch this -->
+  <project name="gtkhtml" pkgname="gtkhtml3" pkgconfig="libgtkhtml-4.0" ftpadmin="False">
+    <dep>cairo</dep>
+    <dep>gnome-common</dep>
+    <dep>gsettings-desktop-schemas</dep>
+    <dep>gtk+</dep>
+    <dep>libsoup</dep>
+  </project>
+  <!-- NOTE: Milan Crha told us not to touch this -->
   <project name="evolution" ftpadmin="False">
     <dep>atk</dep>
     <dep>desktop-file-utils</dep>
@@ -611,6 +619,7 @@
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
+    <dep>gtkhtml</dep>
     <dep>libgdata</dep>
     <dep>libgweather</dep>
     <dep>libnotify</dep>
@@ -632,7 +641,7 @@
     <dep>gnome-common</dep>
     <dep>webkitgtk3</dep>
   </project>
-  <project name="evolution-data-server" ftpadmin="False">
+  <project name="evolution-data-server" pkgconfig="libedataserver-1.2" ftpadmin="False">
     <dep>gnome-common</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gtk+</dep>
