@@ -212,7 +212,9 @@
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
+    <dep>json-glib</dep>
     <dep>pango</dep>
+    <dep>rest</dep>
     <dep>wayland</dep>
   </project>
   <project name="gnome-desktop" pkgname="gnome-desktop3" pkgconfig="gnome-desktop-3.0" wait_repo="1">
