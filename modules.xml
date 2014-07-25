@@ -1462,6 +1462,13 @@
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
   </project>
+  <project name="libgit2-glib" pkgconfig="libgit2-glib-1.0">
+    <release version="f20">0.0.6</release>
+    <release version="rawhide">*</release>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>vala</dep>
+  </project>
   <project name="libgnomekbd">
     <release version="f20-gnome-3-12">3.6.*</release>
     <dep>GConf</dep>
