@@ -15,6 +15,7 @@
     f19     = 3.8.*
     f20     = 3.10.*
     f20-gnome-3-12 = 3.12.*
+    f20-gnome-3-14 = 3.14.*
     rawhide = * (the newest upsream version)
 
   If the package name differs from the upstream tarball name, then do
@@ -103,6 +104,7 @@
   </project>
   <project name="tracker">
     <release version="f20-gnome-3-12">1.0.*</release>
+    <release version="f20-gnome-3-14">1.0.*</release>
     <!-- Stay with 1.0.* for now. Tracker also has a new 1.1.0 unstable
          release, but upstream wasn't sure if they manage to get a 1.2 stable
          release out in time for GNOME 3.14 -->
@@ -158,6 +160,7 @@
     <release version="f19">2.36.*</release>
     <release version="f20">2.38.*</release>
     <release version="f20-gnome-3-12">2.40.*</release>
+    <release version="f20-gnome-3-14">2.40.*</release>
     <release version="rawhide">*</release>
     <dep>gtk-doc</dep>
   </project>
@@ -165,6 +168,7 @@
   <project name="gstreamer" pkgname="gstreamer1">
     <release version="f20">1.2.*</release>
     <release version="f20-gnome-3-12">1.2.*</release>
+    <release version="f20-gnome-3-14">1.2.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -200,6 +204,7 @@
     <release version="f19">3.8.*</release>
     <release version="f20">3.10.*</release>
     <release version="f20-gnome-3-12">3.12.*</release>
+    <release version="f20-gnome-3-14">3.13.*,3.14.*</release>
     <release version="rawhide">*</release>
     <dep>adwaita-icon-theme</dep>
     <dep>at-spi2-atk</dep>
@@ -247,6 +252,7 @@
     <release version="f19">*</release>
     <release version="f20">*</release>
     <release version="f20-gnome-3-12">*</release>
+    <release version="f20-gnome-3-14">*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
   </project>
@@ -309,6 +315,7 @@
     <release version="f19">2.8.*</release>
     <release version="f20">2.10.*</release>
     <release version="f20-gnome-3-12">2.12.*</release>
+    <release version="f20-gnome-3-14">2.13.*,2.14.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gnome-common</dep>
@@ -321,6 +328,7 @@
     <release version="f19">2.22.*</release>
     <release version="f20">2.22.*</release>
     <release version="f20-gnome-3-12">2.22.*</release>
+    <release version="f20-gnome-3-14">2.22.*</release>
     <release version="rawhide">*</release>
     <dep>atk</dep>
     <dep>glibmm</dep>
@@ -330,6 +338,7 @@
     <release version="f19">2.8.*</release>
     <release version="f20">2.10.*</release>
     <release version="f20-gnome-3-12">2.12.*</release>
+    <release version="f20-gnome-3-14">2.13.*,2.14.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -339,6 +348,7 @@
     <release version="f19">2.8.*</release>
     <release version="f20">2.10.*</release>
     <release version="f20-gnome-3-12">2.12.*</release>
+    <release version="f20-gnome-3-14">2.13.*,2.14.*</release>
     <release version="rawhide">*</release>
     <dep>at-spi2-core</dep>
     <dep>atk</dep>
@@ -400,6 +410,7 @@
     <release version="f19">0.0.*</release>
     <release version="f20">0.0.*</release>
     <release version="f20-gnome-3-12">0.0.*</release>
+    <release version="f20-gnome-3-14">0.0.*</release>
     <release version="rawhide">0.0.*</release>
   </project>
   <project name="caribou">
@@ -407,6 +418,7 @@
     <release version="f19">0.4.*</release>
     <release version="f20">0.4.*</release>
     <release version="f20-gnome-3-12">0.4.*</release>
+    <release version="f20-gnome-3-14">0.4.*</release>
     <release version="rawhide">0.4.*</release>
     <dep>at-spi2-core</dep>
     <dep>clutter</dep>
@@ -441,6 +453,7 @@
     <release version="f19">1.14.*</release>
     <release version="f20">1.16.*</release>
     <release version="f20-gnome-3-12">1.18.*</release>
+    <release version="f20-gnome-3-14">1.19.*,1.20.*</release>
     <release version="rawhide">*</release>
     <dep>atk</dep>
     <dep>cogl</dep>
@@ -458,6 +471,7 @@
     <release version="f19">2.0.*</release>
     <release version="f20">2.0.*</release>
     <release version="f20-gnome-3-12">2.0.*</release>
+    <release version="f20-gnome-3-14">2.0.*</release>
     <release version="rawhide">2.0.*</release>
     <dep>clutter</dep>
     <dep>gobject-introspection</dep>
@@ -469,6 +483,7 @@
     <release version="f19">1.4.*</release>
     <release version="f20">1.4.*</release>
     <release version="f20-gnome-3-12">1.4.*</release>
+    <release version="f20-gnome-3-14">1.4.*</release>
     <release version="rawhide">*</release>
     <dep>clutter</dep>
     <dep>gobject-introspection</dep>
@@ -479,6 +494,7 @@
     <release version="f19">1.14.*</release>
     <release version="f20">1.16.*</release>
     <release version="f20-gnome-3-12">1.18.*</release>
+    <release version="f20-gnome-3-14">1.20.*</release>
     <release version="rawhide">*</release>
     <dep>cairo</dep>
     <dep>gdk-pixbuf</dep>
@@ -495,6 +511,7 @@
     <release version="f19">0.16.*</release>
     <release version="f20">0.18.*</release>
     <release version="f20-gnome-3-12">0.20.*</release>
+    <release version="f20-gnome-3-14">0.21.*,0.22.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gtk+</dep>
@@ -676,6 +693,7 @@
     <release version="f19">0.9.*</release>
     <release version="f20">0.9.*</release>
     <release version="f20-gnome-3-12">0.9.*</release>
+    <release version="f20-gnome-3-14">0.9.*</release>
     <release version="rawhide">*</release>
     <dep>GConf</dep>
     <dep>evolution-data-server</dep>
@@ -696,6 +714,7 @@
     <release version="f19">3.2.*</release>
     <release version="f20">3.2.*</release>
     <release version="f20-gnome-3-12">3.2.*</release>
+    <release version="f20-gnome-3-14">3.2.*</release>
     <release version="rawhide">3.2.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -706,6 +725,7 @@
     <release version="f19">3.2.*</release>
     <release version="f20">3.2.*</release>
     <release version="f20-gnome-3-12">3.2.*</release>
+    <release version="f20-gnome-3-14">3.2.*</release>
     <release version="rawhide">3.2.*</release>
     <dep>brasero</dep>
     <dep>clutter-gtk</dep>
@@ -735,6 +755,7 @@
     <release version="f19">2.28.*</release>
     <release version="f20">2.30.*</release>
     <release version="f20-gnome-3-12">2.30.*</release>
+    <release version="f20-gnome-3-14">2.31.*,2.32.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -794,11 +815,13 @@
   </project>
   <project name="ghex">
     <release version="f20-gnome-3-12">3.10.*</release>
+    <release version="f20-gnome-3-14">3.10.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="giggle">
     <release version="f20-gnome-3-12">0.*</release>
+    <release version="f20-gnome-3-14">0.*</release>
     <dep>desktop-file-utils</dep>
     <dep>evolution-data-server</dep>
     <dep>glib</dep>
@@ -813,6 +836,7 @@
     <release version="f19">1.36.*</release>
     <release version="f20">1.38.*</release>
     <release version="f20-gnome-3-12">1.40.*</release>
+    <release version="f20-gnome-3-14">1.41.*,1.42.*</release>
     <release version="rawhide">*</release>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -825,6 +849,7 @@
     <release version="f19">3.14.*</release>
     <release version="f20">3.16.*</release>
     <release version="f20-gnome-3-12">3.18.*</release>
+    <release version="f20-gnome-3-14">3.19.*,3.20.*</release>
     <release version="rawhide">*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
@@ -832,6 +857,7 @@
   </project>
   <project name="glabels">
     <release version="f20-gnome-3-12">3.2.*</release>
+    <release version="f20-gnome-3-14">3.2.*</release>
     <dep>desktop-file-utils</dep>
     <dep>evolution-data-server</dep>
     <dep>gtk+</dep>
@@ -843,6 +869,7 @@
     <release version="f19">2.36.*</release>
     <release version="f20">2.38.*</release>
     <release version="f20-gnome-3-12">2.40.*</release>
+    <release version="f20-gnome-3-13">2.41.*,2.42.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
   </project>
@@ -851,6 +878,7 @@
     <release version="f19">2.36.*</release>
     <release version="f20">2.38.*</release>
     <release version="f20-gnome-3-12">2.40.*</release>
+    <release version="f20-gnome-3-14">2.41.*,2.42.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gsettings-desktop-schemas</dep>
@@ -860,6 +888,7 @@
     <release version="f19">2.6.*</release>
     <release version="f20">2.6.*</release>
     <release version="f20-gnome-3-12">2.6.*</release>
+    <release version="f20-gnome-3-14">2.6.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -952,6 +981,7 @@
   </project>
   <project name="gnome-dictionary">
     <release version="f20-gnome-3-12">3.10.*</release>
+    <release version="f20-gnome-3-14">3.10.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
@@ -979,6 +1009,7 @@
     <release version="f19">0.20.*</release>
     <release version="f20">0.20.*</release>
     <release version="f20-gnome-3-12">0.20.*</release>
+    <release version="f20-gnome-3-14">0.20.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-dvb-daemon">
@@ -986,6 +1017,7 @@
     <release version="f19">0.2.*</release>
     <release version="f20">0.2.*</release>
     <release version="f20-gnome-3-12">0.2.*</release>
+    <release version="f20-gnome-3-14">0.2.*</release>
     <release version="rawhide">*</release>
     <dep>pygobject</dep>
     <dep>totem</dep>
@@ -1031,6 +1063,7 @@
     <release version="f19">0.1.*</release>
     <release version="f20">0.1.*</release>
     <release version="f20-gnome-3-12">0.1.*</release>
+    <release version="f20-gnome-3-14">0.1.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-keyring">
@@ -1056,6 +1089,7 @@
   </project>
   <project name="gnome-menus">
     <release version="f20-gnome-3-12">3.10.*</release>
+    <release version="f20-gnome-3-14">3.10.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
   </project>
@@ -1108,6 +1142,7 @@
   </project>
   <project name="gnome-phone-manager">
     <release version="f20-gnome-3-12">0.*</release>
+    <release version="f20-gnome-3-14">0.*</release>
     <dep>GConf</dep>
     <dep>desktop-file-utils</dep>
     <dep>evolution</dep>
@@ -1148,6 +1183,7 @@
     <release version="f19">3.6.*</release>
     <release version="f20">3.6.*</release>
     <release version="f20-gnome-3-12">3.6.*</release>
+    <release version="f20-gnome-3-14">3.6.*</release>
     <release version="rawhide">*</release>
     <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
@@ -1163,6 +1199,7 @@
   </project>
   <project name="gnome-search-tool">
     <release version="f20-gnome-3-12">3.6.*</release>
+    <release version="f20-gnome-3-14">3.6.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
@@ -1238,6 +1275,7 @@
   </project>
   <project name="gnome-system-log">
     <release version="f20-gnome-3-12">3.9.*</release>
+    <release version="f20-gnome-3-14">3.9.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
@@ -1283,6 +1321,7 @@
   </project>
   <project name="gnome-user-share">
     <release version="f20-gnome-3-12">3.10.*</release>
+    <release version="f20-gnome-3-14">3.10.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gnome-bluetooth</dep>
     <dep>gtk+</dep>
@@ -1294,6 +1333,7 @@
     <release version="f19">0.4.*</release>
     <release version="f20">0.4.*</release>
     <release version="f20-gnome-3-12">0.4.*</release>
+    <release version="f20-gnome-3-14">0.4.*</release>
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-weather">
@@ -1310,6 +1350,7 @@
     <release version="f19">1.36.*</release>
     <release version="f20">1.38.*</release>
     <release version="f20-gnome-3-12">1.40.*</release>
+    <release version="f20-gnome-3-12">1.41.*,1.42.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gnome-common</dep>
@@ -1320,6 +1361,7 @@
     <release version="f19">1.*</release>
     <release version="f20">1.*</release>
     <release version="f20-gnome-3-12">1.*</release>
+    <release version="f20-gnome-3-14">1.*</release>
     <release version="rawhide">*</release>
     <dep>gnome-doc-utils</dep>
     <dep>yelp-tools</dep>
@@ -1343,6 +1385,7 @@
   </project>
   <project name="grilo" pkgconfig="grilo-0.2">
     <release version="f20-gnome-3-12">0.2.*</release>
+    <release version="f20-gnome-3-14">0.2.*</release>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -1354,6 +1397,7 @@
   </project>
   <project name="grilo-plugins">
     <release version="f20-gnome-3-12">0.2.*</release>
+    <release version="f20-gnome-3-14">0.2.*</release>
     <dep>glib</dep>
     <dep>gmime</dep>
     <dep>grilo</dep>
@@ -1375,6 +1419,7 @@
     <release version="f19">1.16.*</release>
     <release version="f20">1.18.*</release>
     <release version="f20-gnome-3-12">1.20.*</release>
+    <release version="f20-gnome-3-14">1.21.*,1.22.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
@@ -1387,6 +1432,7 @@
     <release version="f19">0.16.*</release>
     <release version="f20">0.16.*</release>
     <release version="f20-gnome-3-12">1.0.*</release>
+    <release version="f20-gnome-3-14">1.0.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1402,6 +1448,7 @@
     <release version="f19">0.12.*</release>
     <release version="f20">0.12.*</release>
     <release version="f20-gnome-3-12">0.12.*</release>
+    <release version="f20-gnome-3-14">0.12.*</release>
     <release version="rawhide">*</release>
     <dep>clutter</dep>
     <dep>clutter-gtk</dep>
@@ -1415,11 +1462,13 @@
     <release version="f19">0.6.*</release>
     <release version="f20">0.6.*</release>
     <release version="f20-gnome-3-12">0.6.*</release>
+    <release version="f20-gnome-3-14">0.6.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
   </project>
   <project name="libcryptui">
     <release version="f20-gnome-3-12">3.10.*</release>
+    <release version="f20-gnome-3-14">3.10.*</release>
     <dep>gnome-doc-utils</dep>
     <dep>gnome-keyring</dep>
     <dep>gobject-introspection</dep>
@@ -1432,6 +1481,7 @@
     <release version="f19">0.13.*</release>
     <release version="f20">0.14.*</release>
     <release version="f20-gnome-3-12">0.14.*</release>
+    <release version="f20-gnome-3-14">0.14.*</release>
     <release version="rawhide">*</release>
     <dep>gcr</dep>
     <dep>glib</dep>
@@ -1457,6 +1507,7 @@
     <release version="f19">0.10.*</release>
     <release version="f20">0.12.*</release>
     <release version="f20-gnome-3-12">0.14.*</release>
+    <release version="f20-gnome-3-14">0.15.*,0.16.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1471,6 +1522,7 @@
   </project>
   <project name="libgnomekbd">
     <release version="f20-gnome-3-12">3.6.*</release>
+    <release version="f20-gnome-3-14">3.6.*</release>
     <dep>GConf</dep>
     <dep>cairo</dep>
     <dep>desktop-file-utils</dep>
@@ -1488,6 +1540,7 @@
     <release version="f19">2.28.*</release>
     <release version="f20">2.28.*</release>
     <release version="f20-gnome-3-12">2.28.*</release>
+    <release version="f20-gnome-3-14">2.28.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1506,6 +1559,7 @@
     <release version="f19">0.2.*</release>
     <release version="f20">0.2.*</release>
     <release version="f20-gnome-3-12">0.2.*</release>
+    <release version="f20-gnome-3-14">0.2.*</release>
     <release version="rawhide">0.2.*</release>
     <dep>cairo</dep>
     <dep>glib</dep>
@@ -1519,6 +1573,7 @@
     <release version="f19">0.7.*</release>
     <release version="f20">0.7.*</release>
     <release version="f20-gnome-3-12">0.7.*</release>
+    <release version="f20-gnome-3-14">0.7.*</release>
     <release version="rawhide">*</release>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
@@ -1536,6 +1591,7 @@
     <release version="f19">1.8.*</release>
     <release version="f20">1.9.*</release>
     <release version="f20-gnome-3-12">1.10.*</release>
+    <release version="f20-gnome-3-14">1.11.*</release>
     <release version="rawhide">*</release>
     <dep>glade</dep>
     <dep>gnome-common</dep>
@@ -1557,6 +1613,7 @@
     <release version="f19">2.38.*</release>
     <release version="f20">2.40.*</release>
     <release version="f20-gnome-3-12">2.40.*</release>
+    <release version="f20-gnome-3-14">2.41.*,2.42.*</release>
     <release version="rawhide">*</release>
     <dep>cairo</dep>
     <dep>gdk-pixbuf</dep>
@@ -1573,6 +1630,7 @@
     <release version="f19">0.15.*</release>
     <release version="f20">0.16.*</release>
     <release version="f20-gnome-3-12">0.16.*</release>
+    <release version="f20-gnome-3-14">0.16.*</release>
     <release version="rawhide">*</release>
     <dep>gcr</dep>
     <dep>glib</dep>
@@ -1585,6 +1643,7 @@
     <release version="f19">2.42.*</release>
     <release version="f20">2.44.*</release>
     <release version="f20-gnome-3-12">2.46.*</release>
+    <release version="f20-gnome-3-14">2.47.*,2.48.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>glib-networking</dep>
@@ -1595,6 +1654,7 @@
     <release version="f19">3.4.*</release>
     <release version="f20">3.4.*</release>
     <release version="f20-gnome-3-12">3.4.*</release>
+    <release version="f20-gnome-3-14">3.4.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gnome-common</dep>
@@ -1607,6 +1667,7 @@
     <release version="f19">5.3.*</release>
     <release version="f20">5.*</release>
     <release version="f20-gnome-3-12">5.*</release>
+    <release version="f20-gnome-3-14">5.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1625,6 +1686,7 @@
     <release version="f19">2.34.*</release>
     <release version="f20">2.34.*</release>
     <release version="f20-gnome-3-12">2.34.*</release>
+    <release version="f20-gnome-3-14">2.34.*</release>
     <release version="rawhide">*</release>
     <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
@@ -1682,6 +1744,7 @@
     <release version="f19">3.8.*</release>
     <release version="f20">3.8.*</release>
     <release version="f20-gnome-3-12">3.8.*</release>
+    <release version="f20-gnome-3-14">3.8.*</release>
     <release version="rawhide">*</release>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -1691,6 +1754,7 @@
     <release version="f19">0.9.*</release>
     <release version="f20">0.9.*</release>
     <release version="f20-gnome-3-12">0.9.*</release>
+    <release version="f20-gnome-3-14">0.9.*</release>
     <release version="rawhide">*</release>
     <dep>dconf</dep>
     <dep>desktop-file-utils</dep>
@@ -1742,6 +1806,7 @@
     <release version="f19">1.34.*</release>
     <release version="f20">1.36.*</release>
     <release version="f20-gnome-3-12">1.36.*</release>
+    <release version="f20-gnome-3-12">1.37.*,1.38.*</release>
     <release version="rawhide">*</release>
     <dep>cairo</dep>
     <dep>glib</dep>
@@ -1754,6 +1819,7 @@
     <release version="f19">2.34.*</release>
     <release version="f20">2.34.*</release>
     <release version="f20-gnome-3-12">2.34.*</release>
+    <release version="f20-gnome-3-14">2.34.*</release>
     <release version="rawhide">*</release>
     <dep>glibmm</dep>
     <dep>pango</dep>
@@ -1768,6 +1834,7 @@
   </project>
   <project name="pinpoint">
     <release version="f20-gnome-3-12">0.1.*</release>
+    <release version="f20-gnome-3-14">0.1.*</release>
     <dep>cairo</dep>
     <dep>clutter</dep>
     <dep>clutter-gst</dep>
@@ -1780,6 +1847,7 @@
     <release version="f19">2.8.*</release>
     <release version="f20">2.10.*</release>
     <release version="f20-gnome-3-12">2.12.*</release>
+    <release version="f20-gnome-3-14">2.13.*,2.14.*</release>
     <release version="rawhide">*</release>
     <dep>pygobject</dep>
   </project>
@@ -1799,6 +1867,7 @@
     <release version="f19">0.7.*</release>
     <release version="f20">0.7.*</release>
     <release version="f20-gnome-3-12">0.7.*</release>
+    <release version="f20-gnome-3-14">0.7.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1830,6 +1899,7 @@
     <release version="f19">0.18.*</release>
     <release version="f20">0.20.*</release>
     <release version="f20-gnome-3-12">0.22.*</release>
+    <release version="f20-gnome-3-14">0.23.*,0.24.*</release>
     <release version="rawhide">*</release>
     <dep>desktop-file-utils</dep>
     <dep>gstreamer</dep>
@@ -1862,6 +1932,7 @@
   </project>
   <project name="seahorse-sharing">
     <release version="f20-gnome-3-12">3.8.*</release>
+    <release version="f20-gnome-3-14">3.8.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>libsoup</dep>
@@ -1871,6 +1942,7 @@
     <release version="f19">3.8.*</release>
     <release version="f20">3.8.*</release>
     <release version="f20-gnome-3-12">3.8.*</release>
+    <release version="f20-gnome-3-14">3.8.*</release>
     <release version="rawhide">*</release>
     <dep>gnome-js-common</dep>
     <dep>gobject-introspection</dep>
@@ -1879,6 +1951,7 @@
   </project>
   <project name="simple-scan">
     <release version="f20-gnome-3-12">3.10.*</release>
+    <release version="f20-gnome-3-14">3.10.*</release>
     <dep>colord</dep>
     <dep>gtk+</dep>
     <dep>vala</dep>
@@ -1887,6 +1960,7 @@
     <release version="f19">0.14.*</release>
     <release version="f20">0.15.*</release>
     <release version="f20-gnome-3-12">0.18.*</release>
+    <release version="f20-gnome-3-14">0.18.*</release>
     <release version="rawhide">*</release>
     <dep>atk</dep>
     <dep>desktop-file-utils</dep>
@@ -1976,6 +2050,7 @@
     <release version="f19">3.4.*</release>
     <release version="f20">3.10.*</release>
     <release version="f20-gnome-3-12">3.10.*</release>
+    <release version="f20-gnome-3-14">3.10.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gmime</dep>
@@ -1988,6 +2063,7 @@
     <release version="f19">0.20.*</release>
     <release version="f20">0.22.*</release>
     <release version="f20-gnome-3-12">0.24.*</release>
+    <release version="f20-gnome-3-14">0.24.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
   </project>
@@ -2024,6 +2100,7 @@
     <release version="f19">0.34.*</release>
     <release version="f20">0.34.*</release>
     <release version="f20-gnome-3-12">0.36.*</release>
+    <release version="f20-gnome-3-14">0.36.*</release>
     <release version="rawhide">0.36.*</release>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -2044,6 +2121,7 @@
   </project>
   <project name="zenity">
     <release version="f20-gnome-3-12">3.8.*</release>
+    <release version="f20-gnome-3-14">3.8.*</release>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
   </project>

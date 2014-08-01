@@ -61,6 +61,7 @@ class ModulesItem(object):
         self.release_glob['f19'] = "3.8.*"
         self.release_glob['f20'] = "3.9.*,3.10.*,3.10"
         self.release_glob['f20-gnome-3-12'] = "3.11.*,3.12.*,3.12"
+        self.release_glob['f20-gnome-3-14'] = "3.13.*,3.14.*,3.14"
         self.release_glob['rawhide'] = "*"
 
     def setup_pkgdir(self, cachedir, fedora_branch):
@@ -71,6 +72,9 @@ class ModulesItem(object):
             self.is_copr = True
             # not strictly true, but we want this to be a higher version than
             # the rebuilt f20 packages without using an epoch
+            self.dist = 'f21'
+        elif self.fedora_branch == 'f20-gnome-3-14':
+            self.is_copr = True
             self.dist = 'f21'
         elif self.fedora_branch == 'rawhide':
             self.dist = 'master'
