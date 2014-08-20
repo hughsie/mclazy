@@ -62,6 +62,7 @@ class ModulesItem(object):
         self.release_glob['f20'] = "3.9.*,3.10.*,3.10"
         self.release_glob['f20-gnome-3-12'] = "3.11.*,3.12.*,3.12"
         self.release_glob['f20-gnome-3-14'] = "3.13.*,3.14.*,3.14"
+        self.release_glob['f21'] = "3.13.*,3.14.*,3.14"
         self.release_glob['rawhide'] = "*"
 
     def setup_pkgdir(self, cachedir, fedora_branch):
@@ -195,6 +196,7 @@ class ModulesXml(object):
             else:
                 item.releases.append('f19')
                 item.releases.append('f20')
+                item.releases.append('f21')
             item.branches = []
             if project.get('branches'):
                 for branch in project.get('branches').split(','):
