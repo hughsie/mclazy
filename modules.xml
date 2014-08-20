@@ -1240,7 +1240,6 @@
     <dep>libgnome-keyring</dep>
     <dep>librsvg</dep>
     <dep>mutter</dep>
-    <dep>mutter-wayland</dep>
     <dep>telepathy-glib</dep>
     <dep>upower</dep>
   </project>
@@ -1705,19 +1704,6 @@
     <dep>gtk+</dep>
   </project>
   <project name="mutter">
-    <dep>clutter</dep>
-    <dep>desktop-file-utils</dep>
-    <dep>gnome-common</dep>
-    <dep>gnome-desktop</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gsettings-desktop-schemas</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>pango</dep>
-    <dep>upower</dep>
-    <dep>zenity</dep>
-  </project>
-  <project name="mutter-wayland" branches="3-12">
     <dep>clutter</dep>
     <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
