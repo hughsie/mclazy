@@ -831,6 +831,7 @@
     <dep>vte</dep>
     <dep>yelp-tools</dep>
   </project>
+  <project name="gitg"/>
   <project name="gjs">
     <release version="f18">1.34.*</release>
     <release version="f19">1.36.*</release>
@@ -1427,6 +1428,7 @@
     <dep>libsecret</dep>
     <dep>libsoup</dep>
   </project>
+  <project name="hitori"/>
   <project name="json-glib">
     <release version="f18">0.15.*</release>
     <release version="f19">0.16.*</release>
