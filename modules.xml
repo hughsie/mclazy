@@ -1780,6 +1780,13 @@
     <dep>libnotify</dep>
     <dep>libsecret</dep>
   </project>
+  <project name="moserial">
+    <dep>GConf</dep>
+    <dep>desktop-file-utils</dep>
+    <dep>gnome-doc-utils</dep>
+    <dep>gtk+</dep>
+    <dep>vala</dep>
+  </project>
   <project name="orca">
     <dep>at-spi2-core</dep>
     <dep>gtk+</dep>
