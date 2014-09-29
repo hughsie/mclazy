@@ -1427,7 +1427,10 @@
     <dep>libsecret</dep>
     <dep>libsoup</dep>
   </project>
-  <project name="hitori"/>
+  <project name="hitori">
+    <dep>desktop-file-utils</dep>
+    <dep>gtk+</dep>
+  </project>
   <project name="json-glib">
     <release version="f18">0.15.*</release>
     <release version="f19">0.16.*</release>
