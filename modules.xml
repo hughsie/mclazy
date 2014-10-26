@@ -1490,6 +1490,7 @@
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
+  <project name="krb5-auth-dialog"/>
   <project name="libchamplain">
     <release version="f18">0.12.*</release>
     <release version="f19">0.12.*</release>
