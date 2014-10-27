@@ -452,7 +452,10 @@
     <dep>librsvg</dep>
     <dep>vala</dep>
   </project>
-  <project name="libinput" ftpadmin="False"/>
+  <project name="libevdev" ftpadmin="False"/>
+  <project name="libinput" ftpadmin="False">
+    <dep>libevdev</dep>
+  </project>
   <project name="clutter">
     <release version="f18">1.12.*</release>
     <release version="f19">1.14.*</release>
