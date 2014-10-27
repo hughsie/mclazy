@@ -1490,7 +1490,12 @@
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
-  <project name="krb5-auth-dialog"/>
+  <project name="krb5-auth-dialog">
+    <dep>NetworkManager</dep>
+    <dep>gnome-doc-utils</dep>
+    <dep>gtk+</dep>
+    <dep>libnotify</dep>
+  </project>
   <project name="libchamplain">
     <release version="f18">0.12.*</release>
     <release version="f19">0.12.*</release>
