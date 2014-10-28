@@ -1072,6 +1072,7 @@
     <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
     <dep>gtk+</dep>
+    <dep>libappstream-glib</dep>
   </project>
   <project name="gnome-sound-recorder">
     <dep>desktop-file-utils</dep>
