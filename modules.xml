@@ -137,11 +137,6 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project name="libmash" ftpadmin="False">
-    <dep>clutter</dep>
-    <dep>glib</dep>
-    <dep>gtk-doc</dep>
-  </project>
 
   <!-- for PackageKit soname bump -->
   <project name="realmd" ftpadmin="False">
