@@ -197,6 +197,7 @@ class ModulesXml(object):
                 item.releases.append('f19')
                 item.releases.append('f20')
                 item.releases.append('f21')
+                item.releases.append('el7')
             item.branches = []
             if project.get('branches'):
                 for branch in project.get('branches').split(','):

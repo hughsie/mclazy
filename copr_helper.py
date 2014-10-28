@@ -87,6 +87,8 @@ class CoprHelper(object):
             url += '/fedora-20-x86_64/'
         elif self.release == 'f19':
             url += '/fedora-19-x86_64/'
+        elif self.release == 'el7':
+            url += '/epel-7-x86_64/'
         else:
             return True
         url += pkg.get_nvr()
