@@ -852,7 +852,10 @@
     <dep>vte</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="gitg"/>
+  <project name="gitg">
+    <dep>gtk+</dep>
+    <dep>gtksourceview</dep>
+  </project>
   <project name="gjs">
     <release version="f18">1.34.*</release>
     <release version="f19">1.36.*</release>
