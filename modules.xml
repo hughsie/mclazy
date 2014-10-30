@@ -30,11 +30,11 @@
 
   <!-- deps of the GNOME modules -->
   <project name="python-werkzeug" ftpadmin="False" releases="f19"/>
-  <project name="python-flask" ftpadmin="False" releases="f19,el7">
+  <project name="python-flask" ftpadmin="False" releases="f19">
     <dep>python-werkzeug</dep>
   </project>
-  <project name="libsolv" ftpadmin="False" releases="f19,el7"/>
-  <project name="python-sphinx" ftpadmin="False" releases="f19,el7"/>
+  <project name="libsolv" ftpadmin="False" releases="f19"/>
+  <project name="python-sphinx" ftpadmin="False" releases="f19"/>
   <project name="librepo" ftpadmin="False">
     <dep>glib</dep>
     <dep>python-flask</dep>
@@ -63,7 +63,7 @@
     <dep>libhif</dep>
     <dep>pango</dep>
   </project>
-  <project name="libmbim" ftpadmin="False" releases="f19,el7">
+  <project name="libmbim" ftpadmin="False" releases="f19">
     <dep>glib</dep>
   </project>
   <project name="ModemManager" ftpadmin="False">
@@ -106,7 +106,7 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project name="GeoIP" ftpadmin="False" releases="f19,el7"/>
+  <project name="GeoIP" ftpadmin="False" releases="f19"/>
   <project name="geoclue2" pkgconfig="geoclue" ftpadmin="False">
     <dep>GeoIP</dep>
     <dep>ModemManager</dep>
@@ -184,7 +184,7 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project name="orc" ftpadmin="False" releases="f19,el7"/>
+  <project name="orc" ftpadmin="False" releases="f19"/>
   <project name="gstreamer-plugins-good" ftpadmin="False" pkgname="gstreamer1-plugins-good">
     <dep>gdk-pixbuf</dep>
     <dep>gstreamer</dep>
@@ -378,7 +378,7 @@
     <dep>libgtop</dep>
     <dep>vala</dep>
   </project>
-  <project name="zeitgeist" releases="f19,el7" ftpadmin="False">
+  <project name="zeitgeist" releases="f19" ftpadmin="False">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -631,7 +631,7 @@
     <dep>gtk-doc</dep>
     <dep>telepathy-glib</dep>
   </project>
-  <project name="poppler" ftpadmin="False" releases="f19,el7">
+  <project name="poppler" ftpadmin="False" releases="f19">
     <dep>cairo</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -949,7 +949,7 @@
   </project>
   <project name="gnome-backgrounds">
   </project>
-  <project name="bluez" ftpadmin="False" releases="f19,el7">
+  <project name="bluez" ftpadmin="False" releases="f19">
     <dep>glib</dep>
   </project>
   <project name="gnome-bluetooth">
@@ -958,7 +958,7 @@
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
   </project>
-  <project name="libvirt-glib" ftpadmin="False" pkgconfig="libvirt-gconfig-1.0" releases="f19,el7">
+  <project name="libvirt-glib" ftpadmin="False" pkgconfig="libvirt-gconfig-1.0" releases="f19">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
@@ -1000,8 +1000,8 @@
     <dep>libnotify</dep>
     <dep>vala</dep>
   </project>
-  <project name="lcms2" ftpadmin="False" releases="f20,el7"/>
-  <project name="colord" ftpadmin="False" releases="f20,el7">
+  <project name="lcms2" ftpadmin="False" releases="f20"/>
+  <project name="colord" ftpadmin="False" releases="f20">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
@@ -1693,7 +1693,7 @@
     <dep>pygobject</dep>
     <dep>seed</dep>
   </project>
-  <project name="libqmi" ftpadmin="False" releases="f19,el7">
+  <project name="libqmi" ftpadmin="False" releases="f19">
     <dep>glib</dep>
   </project>
   <project name="libquvi" ftpadmin="False">
@@ -1994,7 +1994,7 @@
     <dep>webkitgtk3</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="rygel" releases="f20,el7">
+  <project name="rygel" releases="f20">
     <release version="f18">0.16.*</release>
     <release version="f19">0.18.*</release>
     <release version="f20">0.20.*</release>
