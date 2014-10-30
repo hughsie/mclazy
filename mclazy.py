@@ -232,7 +232,7 @@ def main():
                     try:
                         urllib.urlretrieve (tarball_url, args.cache + "/" + item.pkgname + "/" + dest_tarball)
                     except IOError as e:
-                        print_fail("Failed to get tarball", e)
+                        print_fail("Failed to get tarball: %s" % e)
                         continue
 
                     # add the new source
@@ -333,7 +333,7 @@ def main():
         elif args.fedora_branch == "rawhide":
             pkg_release_tag = 'fc21'
         else:
-            print_fail("Failed to get release tag for", args.fedora_branch)
+            print_fail("Failed to get release tag for %s" % args.fedora_branch)
             continue
 
         # build package
