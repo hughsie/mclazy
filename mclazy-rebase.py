@@ -20,6 +20,7 @@
 
 import os
 import sys
+import rpm
 import argparse
 
 from log import print_debug, print_info, print_fail
@@ -32,7 +33,7 @@ def main():
     parser = argparse.ArgumentParser(description='Build a list of packages')
     parser.add_argument('--branch-source', default="f21", help='The branch to use as a source')
     parser.add_argument('--copr-id', default="el7-gnome-3-14-minimal", help='The COPR to use')
-    parser.add_argument('--packages', default="./el7-gnome-3-14.txt", help='the list if packages to build')
+    parser.add_argument('--packages', default="./data/el7-gnome-3-14.txt", help='the list if packages to build')
     args = parser.parse_args()
 
     copr = CoprHelper(args.copr_id)
@@ -59,6 +60,15 @@ def main():
             if not pkg:
                 print_fail("package %s does not exists in koji" % pkgname)
                 continue
+            pkg2 = koji.get_newest_build(args.branch_source + '-updates-candidate', pkgname)
+            if not pkg2:
+                print_fail("package %s does not exists in koji" % pkgname)
+                continue
+
+            # use the newest package
+            if pkg.get_nvr() != pkg2.get_nvr():
+                if rpm.labelCompare(pkg.get_evr(), pkg2.get_evr()) < 0:
+                    pkg = pkg2;
         else:
             pkg = Package()
             nvr = os.path.basename(custom_package_url).rsplit('-', 2)
