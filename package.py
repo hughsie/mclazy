@@ -28,6 +28,7 @@ class Package(object):
 
     def __init__(self, filename=None):
         self.url = None
+        self.epoch = None
         if filename:
             fd = os.open(filename, os.O_RDONLY)
             ts = rpm.TransactionSet()
@@ -53,3 +54,6 @@ class Package(object):
     def get_nvr(self):
         """ Returns the NVR of the package """
         return "%s-%s-%s" % (self.name, self.version, self.release)
+    def get_evr(self):
+        """ Returns the NVR of the package """
+        return (self.epoch, self.version, self.release)
