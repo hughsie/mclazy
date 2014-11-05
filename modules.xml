@@ -51,6 +51,9 @@
     <dep>librepo</dep>
     <dep>libsolv</dep>
   </project>
+  <project name="appstream-data" ftpadmin="False">
+    <dep>libappstream-glib</dep>
+  </project>
   <project name="PackageKit" ftpadmin="False">
     <dep>NetworkManager</dep>
     <dep>glib</dep>
@@ -270,6 +273,7 @@
     <dep>cheese</dep>
     <dep>clutter-gtk</dep>
     <dep>colord</dep>
+    <dep>colord-gtk</dep>
     <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
@@ -570,6 +574,7 @@
     <dep>libnotify</dep>
     <dep>libsecret</dep>
     <dep>telepathy-glib</dep>
+    <dep>telepathy-mission-control</dep>
     <dep>webkitgtk3</dep>
   </project>
   <project name="eog">
@@ -982,8 +987,18 @@
     <dep>lcms2</dep>
     <dep>vala</dep>
   </project>
+  <project name="colord-gtk" ftpadmin="False">
+    <dep>colord</dep>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>lcms2</dep>
+    <dep>vala</dep>
+  </project>
   <project name="gnome-color-manager">
     <dep>colord</dep>
+    <dep>colord-gtk</dep>
     <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
@@ -1876,6 +1891,12 @@
     <dep>glib</dep>
     <dep>librsvg</dep>
   </project>
+  <project name="pulseaudio" ftpadmin="False">
+    <dep>GConf</dep>
+    <dep>bluez</dep>
+    <dep>glib</dep>
+    <dep>orc</dep>
+  </project>
   <project name="pyatspi">
     <release version="f18">2.6.*</release>
     <release version="f19">2.8.*</release>
@@ -2058,6 +2079,12 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
     <dep>vala</dep>
+  </project>
+  <project name="telepathy-mission-control" ftpadmin="False">
+    <dep>NetworkManager</dep>
+    <dep>glib</dep>
+    <dep>gtk-doc</dep>
+    <dep>telepathy-glib</dep>
   </project>
   <project name="totem">
     <dep>clutter-gst</dep>
