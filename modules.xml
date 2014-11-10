@@ -177,8 +177,10 @@
     <release version="rawhide">*</release>
     <dep>gtk-doc</dep>
   </project>
+  <project name="gnome-themes-standard"/>
   <project name="adwaita-icon-theme">
     <dep>librsvg</dep>
+    <dep>gnome-themes-standard</dep> <!-- artificial, to fix dep errors -->
   </project>
   <project name="gstreamer" ftpadmin="False" pkgname="gstreamer1">
     <dep>glib</dep>
