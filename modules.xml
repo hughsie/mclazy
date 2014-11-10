@@ -1757,6 +1757,7 @@
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
   </project>
+  <project name="libxkbcommon" ftpadmin="False"/>
   <project name="mutter">
     <dep>clutter</dep>
     <dep>desktop-file-utils</dep>
@@ -1766,6 +1767,7 @@
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
+    <dep>libxkbcommon</dep>
     <dep>pango</dep>
     <dep>upower</dep>
     <dep>zenity</dep>
