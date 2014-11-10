@@ -30,8 +30,10 @@
 
   <!-- deps of the GNOME modules -->
   <project name="python-werkzeug" ftpadmin="False" releases="f19"/>
+  <project name="python-itsdangerous" ftpadmin="False" releases="f19"/>
   <project name="python-flask" ftpadmin="False" releases="f19">
     <dep>python-werkzeug</dep>
+    <dep>python-itsdangerous</dep>
   </project>
   <project name="libsolv" ftpadmin="False" releases="f19"/>
   <project name="python-sphinx" ftpadmin="False" releases="f19"/>
