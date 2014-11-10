@@ -47,7 +47,7 @@ class ModulesItem(object):
         self.pkg_cache = None
         self.fedora_branch = None   # f20, rawhide, f20-gnome-3-12
         self.dist = None            # f20, master,  f20
-        self.release = None
+        self.releases = None
         self.wait_repo = False
         self.disabled = False
         self.ftpadmin = True
@@ -197,7 +197,6 @@ class ModulesXml(object):
                 item.releases.append('f19')
                 item.releases.append('f20')
                 item.releases.append('f21')
-                item.releases.append('el7')
             item.branches = []
             if project.get('branches'):
                 for branch in project.get('branches').split(','):
