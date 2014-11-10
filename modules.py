@@ -238,8 +238,12 @@ class ModulesXml(object):
                 return False
             changes = False
             for item in self.items:
+                if item.disabled:
+                    continue
                 for dep in item.deps:
                     item_dep = self._get_item_by_name(dep)
+                    if item_dep.disabled:
+                        continue
                     if not item_dep:
                         print "failed to find dep", dep
                         return False
