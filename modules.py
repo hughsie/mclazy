@@ -266,3 +266,9 @@ class ModulesXml(object):
             if item.name == name:
                 return item
         return None
+
+    def _get_item_by_pkgname(self, name):
+        for item in self.items:
+            if item.pkgname == name:
+                return item
+        return None
