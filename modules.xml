@@ -2154,7 +2154,7 @@
     <dep>telepathy-glib</dep>
   </project>
   <project name="vte" pkgname="vte291">
-    <release version="f21">0.36.*</release>
+    <release version="f21">0.38.*</release>
     <release version="rawhide">*</release>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
