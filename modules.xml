@@ -747,8 +747,8 @@
     <release version="f19">3.2.*</release>
     <release version="f20">3.2.*</release>
     <release version="f20-gnome-3-12">3.2.*</release>
-    <release version="f21">3.3.*</release>
-    <release version="rawhide">*</release>
+    <release version="f21">3.2.*</release>
+    <release version="rawhide">3.2.*</release>
     <dep>brasero</dep>
     <dep>clutter-gtk</dep>
     <dep>glib</dep>
