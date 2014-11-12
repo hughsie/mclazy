@@ -1029,7 +1029,6 @@
     <dep>gtk+</dep>
   </project>
   <project name="gnome-disk-utility">
-    <release version="f21">3.12.*</release>
     <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
