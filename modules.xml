@@ -1367,6 +1367,9 @@
     <dep>gtk+</dep>
     <dep>pygobject</dep>
   </project>
+  <project name="gnome-getting-started-docs">
+    <dep>yelp-tools</dep>
+  </project>
   <project name="gnome-user-docs">
     <dep>yelp-tools</dep>
   </project>
