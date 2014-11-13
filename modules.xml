@@ -1265,6 +1265,10 @@
     <dep>pango</dep>
     <dep>upower</dep>
   </project>
+  <project name="libgsystem">
+    <dep>gobject-introspection</dep>
+    <dep>gtk-doc</dep>
+  </project>
   <project name="gnome-shell">
     <dep>NetworkManager</dep>
     <dep>caribou</dep>
@@ -1286,6 +1290,7 @@
     <dep>json-glib</dep>
     <dep>libcroco</dep>
     <dep>libgnome-keyring</dep>
+    <dep>libgsystem</dep>
     <dep>librsvg</dep>
     <dep>mutter</dep>
     <dep>telepathy-glib</dep>
