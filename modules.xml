@@ -2087,6 +2087,9 @@
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
+  <project name="telepathy-idle" ftpadmin="False">
+    <dep>telepathy-glib</dep>
+  </project>
   <project name="telepathy-glib" ftpadmin="False">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
