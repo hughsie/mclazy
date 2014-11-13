@@ -29,6 +29,7 @@
 <projects>
 
   <!-- deps of the GNOME modules -->
+  <project name="libXi" ftpadmin="False" releases="f19"/>
   <project name="python-werkzeug" ftpadmin="False" releases="f19"/>
   <project name="python-itsdangerous" ftpadmin="False" releases="f19"/>
   <project name="python-flask" ftpadmin="False" releases="f19">
@@ -235,6 +236,8 @@
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
     <dep>json-glib</dep>
+    <dep>libXi</dep>
+    <dep>libxkbcommon</dep>
     <dep>pango</dep>
     <dep>rest</dep>
     <dep>wayland</dep>
@@ -257,6 +260,7 @@
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
     <dep>lcms2</dep>
+    <dep>libXi</dep>
     <dep>libgnomekbd</dep>
     <dep>libgweather</dep>
     <dep>libnotify</dep>
@@ -2115,6 +2119,7 @@
     <dep>gstreamer-plugins-bad</dep>
     <dep>gstreamer-plugins-base</dep>
     <dep>gstreamer-plugins-good</dep>
+    <dep>libXi</dep>
     <dep>libgdata</dep>
     <dep>libpeas</dep>
     <dep>nautilus</dep>
