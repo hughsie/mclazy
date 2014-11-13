@@ -34,6 +34,9 @@ def main():
         if not '3-14' in item.branches:
             continue
 
+        if item.pkgname.startswith('compat-'):
+            continue
+
         if item.pkgname == item.name:
             print("  <project name=\"%s\">" % item.name)
         else:
