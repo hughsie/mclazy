@@ -1457,11 +1457,16 @@
     <dep>totem-pl-parser</dep>
     <dep>vala</dep>
   </project>
+  <project name="gom">
+    <dep>gdk-pixbuf</dep>
+    <dep>gobject-introspection</dep>
+  </project>
   <project name="grilo-plugins">
     <release version="f20-gnome-3-12">0.2.*</release>
     <release version="f21">0.2.*</release>
     <dep>glib</dep>
     <dep>gmime</dep>
+    <dep>gom</dep>
     <dep>grilo</dep>
     <dep>json-glib</dep>
     <dep>libgdata</dep>
