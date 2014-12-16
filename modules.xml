@@ -825,6 +825,7 @@
     <dep>vala</dep>
     <dep>yelp-tools</dep>
   </project>
+  <project name="gedit-code-assistance"/>
   <project name="gedit-plugins">
     <dep>atk</dep>
     <dep>cairo</dep>
