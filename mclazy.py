@@ -356,8 +356,10 @@ def main():
             pkg_branch_name = 'f19-build'
         elif args.fedora_branch == "f20":
             pkg_branch_name = 'f20-build'
-        elif args.fedora_branch == "rawhide":
+        elif args.fedora_branch == "f21":
             pkg_branch_name = 'f21-build'
+        elif args.fedora_branch == "rawhide":
+            pkg_branch_name = 'f22-build'
         else:
             print_fail("Failed to get repo branch tag for" + args.fedora_branch)
             continue
