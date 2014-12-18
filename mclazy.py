@@ -330,8 +330,10 @@ def main():
             pkg_release_tag = 'fc19'
         elif args.fedora_branch == "f20":
             pkg_release_tag = 'fc20'
-        elif args.fedora_branch == "rawhide":
+        elif args.fedora_branch == "f21":
             pkg_release_tag = 'fc21'
+        elif args.fedora_branch == "rawhide":
+            pkg_release_tag = 'fc22'
         else:
             print_fail("Failed to get release tag for %s" % args.fedora_branch)
             continue
