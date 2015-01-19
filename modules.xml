@@ -1169,6 +1169,11 @@
     <dep>grilo</dep>
     <dep>gtk+</dep>
   </project>
+  <project name="gnome-multi-writer">
+    <dep>desktop-file-utils</dep>
+    <dep>glib</dep>
+    <dep>gtk+</dep>
+  </project>
   <project name="gnome-nibbles">
     <dep>clutter-gtk</dep>
     <dep>desktop-file-utils</dep>
