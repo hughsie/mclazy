@@ -180,10 +180,6 @@
     <release version="rawhide">*</release>
     <dep>gtk-doc</dep>
   </project>
-  <project name="gnome-themes-standard">
-    <dep>gtk+</dep>
-    <dep>librsvg</dep>
-  </project>
   <project name="adwaita-icon-theme">
     <dep>librsvg</dep>
     <dep>gnome-themes-standard</dep> <!-- artificial, to fix dep errors -->
