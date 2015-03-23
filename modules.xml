@@ -331,6 +331,7 @@
     <dep>vala</dep>
     <dep>vte</dep>
   </project>
+  <project name="atomix"/>
   <project name="atk">
     <release version="f18">2.6.*</release>
     <release version="f19">2.8.*</release>
@@ -503,6 +504,13 @@
     <dep>gstreamer</dep>
     <dep>gstreamer-plugins-base</dep>
   </project>
+  <project name="clutter-gst" pkgname="clutter-gst3">
+    <release version="rawhide">3.*</release>
+    <dep>clutter</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
+  </project>
   <project name="clutter-gtk" pkgconfig="clutter-gtk-1.0">
     <release version="f18">1.4.*</release>
     <release version="f19">1.4.*</release>
@@ -543,6 +551,7 @@
     <dep>gtk-doc</dep>
     <dep>vala</dep>
   </project>
+  <project name="dconf-editor"/>
   <project name="desktop-file-utils" ftpadmin="False">
     <dep>glib</dep>
   </project>
@@ -971,6 +980,7 @@
     <dep>vala</dep>
     <dep>yelp-tools</dep>
   </project>
+  <project name="gnome-builder"/>
   <project name="gnome-calculator">
     <dep>desktop-file-utils</dep>
     <dep>glib</dep>
@@ -978,6 +988,8 @@
     <dep>gtksourceview</dep>
     <dep>libsoup</dep>
   </project>
+  <project name="gnome-calendar"/>
+  <project name="gnome-characters"/>
   <project name="gnome-chess">
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
