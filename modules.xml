@@ -989,6 +989,7 @@
   <project name="bluez" ftpadmin="False" releases="f19">
     <dep>glib</dep>
   </project>
+  <project name="gnome-2048"/>
   <project name="gnome-bluetooth">
     <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
@@ -1436,6 +1437,7 @@
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
+  <project name="gnome-todo"/>
   <project name="gnome-tweak-tool">
     <dep>desktop-file-utils</dep>
     <dep>gsettings-desktop-schemas</dep>
