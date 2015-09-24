@@ -585,7 +585,6 @@
     <dep>desktop-file-utils</dep>
     <dep>evolution-data-server</dep>
     <dep>gnome-doc-utils</dep>
-    <dep>gnome-icon-theme</dep>
     <dep>libnotify</dep>
   </project>
   <project name="empathy">
@@ -1131,19 +1130,6 @@
     <dep>gnome-desktop</dep>
     <dep>gtk+</dep>
   </project>
-  <project name="gnome-icon-theme">
-    <release version="f21">3.12.*</release>
-    <release version="f22">3.12.*</release>
-    <dep>librsvg</dep>
-  </project>
-  <project name="gnome-icon-theme-extras">
-    <release version="f21">3.12.*</release>
-    <release version="f22">3.12.*</release>
-  </project>
-  <project name="gnome-icon-theme-symbolic">
-    <release version="f21">3.12.*</release>
-    <release version="f22">3.12.*</release>
-  </project>
   <project name="gnome-logs">
     <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
@@ -1168,15 +1154,6 @@
     <dep>libgweather</dep>
     <dep>libsecret</dep>
     <dep>rest</dep>
-  </project>
-  <project name="gnome-js-common">
-    <release version="f18">0.1.*</release>
-    <release version="f19">0.1.*</release>
-    <release version="f20">0.1.*</release>
-    <release version="f20-gnome-3-12">0.1.*</release>
-    <release version="f21">0.1.*</release>
-    <release version="f22">0.1.*</release>
-    <release version="rawhide">*</release>
   </project>
   <project name="gnome-keyring">
     <dep>gcr</dep>
@@ -1268,7 +1245,6 @@
     <dep>evolution</dep>
     <dep>evolution-data-server</dep>
     <dep>gnome-bluetooth</dep>
-    <dep>gnome-icon-theme</dep>
     <dep>gtk+</dep>
     <dep>telepathy-glib</dep>
   </project>
@@ -1298,22 +1274,6 @@
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
-  </project>
-  <project name="gnome-screensaver">
-    <release version="f18">3.6.*</release>
-    <release version="f19">3.6.*</release>
-    <release version="f20">3.6.*</release>
-    <release version="f20-gnome-3-12">3.6.*</release>
-    <release version="f21">3.6.*</release>
-    <release version="f22">3.6.*</release>
-    <release version="rawhide">*</release>
-    <dep>desktop-file-utils</dep>
-    <dep>gnome-common</dep>
-    <dep>gnome-desktop</dep>
-    <dep>gsettings-desktop-schemas</dep>
-    <dep>gtk+</dep>
-    <dep>libgnomekbd</dep>
-    <dep>libxklavier</dep>
   </project>
   <project name="gnome-screenshot">
     <dep>desktop-file-utils</dep>
@@ -1855,20 +1815,6 @@
     <release version="f22">3.13.*</release>
     <dep>desktop-file-utils</dep>
   </project>
-  <project name="metacity">
-    <release version="f18">2.34.*</release>
-    <release version="f19">2.34.*</release>
-    <release version="f20">2.34.*</release>
-    <release version="f20-gnome-3-12">2.34.*</release>
-    <release version="rawhide">*</release>
-    <dep>desktop-file-utils</dep>
-    <dep>gnome-common</dep>
-    <dep>gnome-control-center</dep>
-    <dep>gsettings-desktop-schemas</dep>
-    <dep>pango</dep>
-    <dep>yelp-tools</dep>
-    <dep>zenity</dep>
-  </project>
   <project name="mousetweaks">
     <release version="f21">3.12.*</release>
     <release version="f22">3.12.*</release>
@@ -2135,7 +2081,6 @@
     <release version="f21">3.8.*</release>
     <release version="f22">3.8.*</release>
     <release version="rawhide">*</release>
-    <dep>gnome-js-common</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
     <dep>webkitgtk3</dep>
