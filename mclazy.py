@@ -34,7 +34,7 @@ import glob
 from modules import ModulesXml
 from package import Package
 from log import print_debug, print_info, print_fail
-from copr_helper import CoprHelper, CoprBuildStatus, CoprException
+#from copr_helper import CoprHelper, CoprBuildStatus, CoprException
 
 def replace_spec_value(line, replace):
     if line.find(' ') != -1:

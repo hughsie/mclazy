@@ -1380,6 +1380,7 @@
     <dep>gtk-doc</dep>
     <dep>libsoup</dep>
     <dep>pango</dep>
+    <dep>json-glib</dep>
   </project>
   <project name="gnome-software">
     <dep>PackageKit</dep>
@@ -1390,6 +1391,7 @@
     <dep>gtk+</dep>
     <dep>libappstream-glib</dep>
     <dep>libsoup</dep>
+    <dep>json-glib</dep>
   </project>
   <project name="gnome-sudoku">
     <dep>desktop-file-utils</dep>
