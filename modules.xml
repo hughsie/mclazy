@@ -2190,6 +2190,9 @@
     <dep>gstreamer</dep>
     <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
+    <dep>gupnp</dep>
+    <dep>gupnp-av</dep>
+    <dep>gupnp-dlna</dep>
     <dep>libgee</dep>
     <dep>libmediaart</dep>
     <dep>libsoup</dep>
@@ -2436,4 +2439,69 @@
     <dep>gtk+</dep>
     <dep>libnotify</dep>
   </project>
+
+  <project name="gssdp">
+    <release version="f24">0.14.*</release>
+    <release version="rawhide">0.14.*</release>
+    <dep>GConf</dep>
+    <dep>NetworkManager</dep>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>libsoup</dep>
+    <dep>vala</dep>
+  </project>
+  <project name="gupnp">
+    <release version="f24">0.20.*</release>
+    <release version="rawhide">0.20.*</release>
+    <dep>NetworkManager</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gssdp</dep>
+    <dep>gtk-doc</dep>
+    <dep>libsoup</dep>
+    <dep>vala</dep>
+  </project>
+  <project name="gupnp-av">
+    <release version="f24">0.12.*</release>
+    <release version="rawhide">0.12.*</release>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gssdp</dep>
+    <dep>gtk-doc</dep>
+    <dep>gupnp</dep>
+    <dep>libsoup</dep>
+    <dep>vala</dep>
+  </project>
+  <project name="gupnp-dlna">
+    <release version="f24">0.10.*</release>
+    <release version="rawhide">0.10.*</release>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gssdp</dep>
+    <dep>gstreamer</dep>
+    <dep>gstreamer-plugins-base</dep>
+    <dep>gtk-doc</dep>
+    <dep>gupnp</dep>
+    <dep>gupnp-av</dep>
+    <dep>vala</dep>
+  </project>
+  <project name="gupnp-igd">
+    <release version="f24">0.2.*</release>
+    <release version="rawhide">0.2.*</release>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gupnp</dep>
+  </project>
+  <project name="gupnp-tools">
+    <release version="f24">0.8.*</release>
+    <release version="rawhide">0.8.*</release>
+    <dep>desktop-file-utils</dep>
+    <dep>gssdp</dep>
+    <dep>gtk+</dep>
+    <dep>gupnp</dep>
+    <dep>gupnp-av</dep>
+    <dep>libsoup</dep>
+  </project>
+
 </projects>
