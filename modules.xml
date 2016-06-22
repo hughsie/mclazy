@@ -16,6 +16,9 @@
     f20     = 3.10.*
     f20-gnome-3-12 = 3.12.*
     f21     = 3.14.*
+    f22     = 3.16.*
+    f23     = 3.18.*
+    f24     = 3.20.*
     rawhide = * (the newest upsream version)
 
   If the package name differs from the upstream tarball name, then do
