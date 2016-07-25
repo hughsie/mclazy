@@ -33,7 +33,7 @@
 
   <!-- deps of the GNOME modules -->
   <project name="libXi" ftpadmin="False" releases="f19"/>
-  <project name="python-werkzeug">
+  <project name="python-werkzeug" ftpadmin="False" releases="f19">
     <dep>python-sphinx</dep>
   </project>
   <project name="python-itsdangerous" ftpadmin="False" releases="f19"/>
