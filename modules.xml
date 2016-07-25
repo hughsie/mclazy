@@ -332,6 +332,7 @@
     <dep>upower</dep>
   </project>
   <project name="accerciser">
+    <release version="f24">3.14.*</release>
     <dep>at-spi2-core</dep>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
@@ -591,7 +592,7 @@
     <release version="f21">1.6.*</release>
     <release version="f22">1.6.*</release>
     <release version="f23">1.6.*</release>
-    <release version="f24">1.6.*</release>
+    <release version="f24">1.8.*</release>
     <release version="rawhide">*</release>
     <dep>clutter</dep>
     <dep>gobject-introspection</dep>
@@ -698,6 +699,7 @@
     <dep>librsvg</dep>
   </project>
   <project name="eog-plugins">
+    <release version="f24">3.16.*</release>
     <dep>clutter-gtk</dep>
     <dep>eog</dep>
     <dep>gsettings-desktop-schemas</dep>
@@ -939,6 +941,7 @@
     <dep>yelp-tools</dep>
   </project>
   <project name="gedit-code-assistance">
+    <release version="f24">3.16.*</release>
     <dep>atk</dep>
     <dep>cairo</dep>
     <dep>gedit</dep>
@@ -981,6 +984,7 @@
     <release version="f20-gnome-3-12">3.10.*</release>
     <release version="f21">3.10.*</release>
     <release version="f22">3.10.*</release>
+    <release version="f24">3.18.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
@@ -1046,7 +1050,7 @@
     <release version="f21">3.2.*</release>
     <release version="f22">3.2.*</release>
     <release version="f23">3.2.*</release>
-    <release version="f24">3.2.*</release>
+    <release version="f24">3.4.*</release>
     <dep>desktop-file-utils</dep>
     <dep>evolution-data-server</dep>
     <dep>gtk+</dep>
@@ -1200,6 +1204,7 @@
     <dep>vte</dep>
   </project>
   <project name="gnome-common">
+    <release version="f24">3.18.*</release>
   </project>
   <project name="gnome-contacts">
     <dep>cheese</dep>
@@ -1588,6 +1593,7 @@
   </project>
   <project name="gnome-user-share">
     <release version="f20-gnome-3-12">3.10.*</release>
+    <release version="f24">3.18.*</release>
     <dep>desktop-file-utils</dep>
     <dep>gnome-bluetooth</dep>
     <dep>gtk+</dep>
@@ -1666,7 +1672,7 @@
     <release version="f21">0.2.*</release>
     <release version="f22">0.2.*</release>
     <release version="f23">0.2.*</release>
-    <release version="f24">0.2.*</release>
+    <release version="f24">0.3.*</release>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -1687,7 +1693,7 @@
     <release version="f21">0.2.*</release>
     <release version="f22">0.2.*</release>
     <release version="f23">0.2.*</release>
-    <release version="f24">0.2.*</release>
+    <release version="f24">0.3.*</release>
     <dep>glib</dep>
     <dep>gmime</dep>
     <dep>gnome-online-accounts</dep>
@@ -1702,6 +1708,7 @@
     <dep>tracker</dep>
   </project>
   <project name="gucharmap">
+    <release version="f24">3.18.*</release>
     <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1737,7 +1744,7 @@
     <release version="f21">1.0.*</release>
     <release version="f22">1.0.*</release>
     <release version="f23">1.0.*</release>
-    <release version="f24">1.0.*</release>
+    <release version="f24">1.2.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -2056,6 +2063,7 @@
     <release version="f21">3.12.*</release>
     <release version="f22">3.13.*</release>
     <release version="f23">3.14.*</release>
+    <release version="f24">3.16.*</release>
     <dep>desktop-file-utils</dep>
     <dep>libappstream-glib</dep>
   </project>
@@ -2266,7 +2274,7 @@
     <release version="f21">0.7.*</release>
     <release version="f22">0.7.*,0.8.*</release>
     <release version="f23">0.7.*,0.8.*</release>
-    <release version="f24">0.7.*,0.8.*</release>
+    <release version="f24">0.8.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -2550,6 +2558,7 @@
     <dep>yelp-xsl</dep>
   </project>
   <project name="yelp-tools">
+    <release version="f24">3.18.*</release>
     <dep>yelp-xsl</dep>
   </project>
   <project name="yelp-xsl">

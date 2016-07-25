@@ -336,7 +336,7 @@ def main():
             pkg_release_tag = 'fc22'
         elif args.fedora_branch == "f23":
             pkg_release_tag = 'fc23'
-        elif args.fedora_branch == "fc24":
+        elif args.fedora_branch == "f24":
             pkg_release_tag = 'fc24'
         elif args.fedora_branch == "rawhide":
             pkg_release_tag = 'fc25'
