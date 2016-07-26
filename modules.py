@@ -98,6 +98,8 @@ class ModulesItem(object):
             return False
         if not run_command(self.pkg_cache, ['git', 'reset', '--hard', 'HEAD']):
             return False
+        if not run_command(self.pkg_cache, ['git', 'fetch']):
+            return False
 
         # private COPR branch
         do_pull = True
@@ -117,7 +119,7 @@ class ModulesItem(object):
             return False
 
         # ensure package is updated
-        if do_pull and not run_command(self.pkg_cache, ['git', 'pull']):
+        if do_pull and not run_command(self.pkg_cache, ['git', 'reset', '--hard', "origin/%s" % self.dist]):
             print_fail("Update repo %s" % self.pkgname)
             return False
 
