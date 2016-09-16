@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
   This is a list of the GNOME module names. If the GNOME standard
   release numbering scheme is not used, then do something like:
@@ -28,134 +27,30 @@
   </project>
 
 -->
-
 <projects>
-
-  <project name="libmediaart">
-    <release version="f21">0.7.*</release>
-    <release version="f22">1.9.*</release>
-    <release version="f23">1.9.*</release>
-    <release version="f24">1.9.*</release>
-    <dep>gdk-pixbuf</dep>
-    <dep>glib</dep>
-    <dep>vala</dep>
-  </project>
-  <project name="tracker">
-    <release version="f20-gnome-3-12">1.0.*</release>
-    <release version="f21">1.2.*</release>
-    <release version="f22">1.4.*</release>
-    <release version="f23">1.6.*</release>
-    <release version="f24">1.8.*</release>
-    <release version="rawhide">*</release>
-    <dep>gdk-pixbuf</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>libgee</dep>
-    <dep>libgxps</dep>
-    <dep>libmediaart</dep>
-    <dep>libsecret</dep>
-    <dep>rest</dep>
-    <dep>totem-pl-parser</dep>
-    <dep>vala</dep>
-  </project>
-
-  <project name="gsettings-desktop-schemas" wait_repo="1">
+  <project name="GConf" pkgname="GConf2">
+    <release version="f18">3.2.*</release>
+    <release version="f19">3.2.*</release>
+    <release version="f20">3.2.*</release>
+    <release version="f20-gnome-3-12">3.2.*</release>
+    <release version="f21">3.2.*</release>
+    <release version="f22">3.2.*</release>
+    <release version="f23">3.2.*</release>
+    <release version="f24">3.2.*</release>
+    <release version="rawhide">3.2.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
-  </project>
-  <project name="glib" pkgname="glib2" pkgconfig="glib-2.0" wait_repo="1">
-    <release version="f18">2.34.*</release>
-    <release version="f19">2.36.*</release>
-    <release version="f20">2.38.*</release>
-    <release version="f20-gnome-3-12">2.40.*</release>
-    <release version="f21">2.42.*</release>
-    <release version="f22">2.44.*</release>
-    <release version="f23">2.46.*</release>
-    <release version="f24">2.48.*</release>
-    <release version="rawhide">*</release>
     <dep>gtk-doc</dep>
-  </project>
-  <project name="adwaita-icon-theme">
-    <dep>librsvg</dep>
-    <dep>gnome-themes-standard</dep> <!-- artificial, to fix dep errors -->
-  </project>
-  <project name="gtk+" pkgname="gtk3" pkgconfig="gtk+-3.0" wait_repo="1">
-    <release version="f18">3.6.*</release>
-    <release version="f19">3.8.*</release>
-    <release version="f20">3.10.*</release>
-    <release version="f20-gnome-3-12">3.12.*</release>
-    <release version="f21">3.14.*</release>
-    <release version="f22">3.16.*</release>
-    <release version="f22">3.18.*</release>
-    <release version="rawhide">*</release>
-    <dep>at-spi2-atk</dep>
-    <dep>atk</dep>
-    <dep>gdk-pixbuf</dep>
-    <dep>glib</dep>
-    <dep>gnome-common</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk-doc</dep>
-    <dep>json-glib</dep>
-    <dep>pango</dep>
-    <dep>rest</dep>
-  </project>
-  <project name="gnome-desktop" pkgname="gnome-desktop3" pkgconfig="gnome-desktop-3.0" wait_repo="1">
-    <dep>gdk-pixbuf</dep>
-    <dep>gnome-common</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gsettings-desktop-schemas</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-  </project>
-  <project name="gnome-settings-daemon" wait_repo="1">
-    <dep>geocode-glib</dep>
-    <dep>gnome-desktop</dep>
-    <dep>gsettings-desktop-schemas</dep>
-    <dep>gtk+</dep>
-    <dep>libgnomekbd</dep>
-    <dep>libgweather</dep>
-    <dep>libnotify</dep>
-    <dep>librsvg</dep>
-    <dep>libwacom</dep>
-    <dep>libxklavier</dep>
-  </project>
-  <project name="libwacom" wait_repo="1">
-    <release version="f18">*</release>
-    <release version="f19">*</release>
-    <release version="f20">*</release>
-    <release version="f20-gnome-3-12">*</release>
-    <release version="f21">*</release>
-    <release version="f22">*</release>
-    <release version="f23">*</release>
-    <release version="f24">*</release>
-    <release version="rawhide">*</release>
-    <dep>glib</dep>
-  </project>
-  <project name="gnome-control-center" pkgname="control-center">
-    <dep>cheese</dep>
-    <dep>clutter-gtk</dep>
-    <dep>gdk-pixbuf</dep>
-    <dep>glib</dep>
-    <dep>gnome-bluetooth</dep>
-    <dep>gnome-common</dep>
-    <dep>gnome-desktop</dep>
-    <dep>gnome-online-accounts</dep>
-    <dep>gnome-settings-daemon</dep>
-    <dep>grilo</dep>
-    <dep>gsettings-desktop-schemas</dep>
-    <dep>gtk+</dep>
-    <dep>libgtop</dep>
-    <dep>libnotify</dep>
-    <dep>librsvg</dep>
-    <dep>libsoup</dep>
-    <dep>libwacom</dep>
   </project>
   <project name="accerciser">
     <release version="f24">3.14.*</release>
     <dep>at-spi2-core</dep>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
+  </project>
+  <project name="adwaita-icon-theme">
+    <dep>librsvg</dep>
+    <dep>gnome-themes-standard</dep> <!-- artificial, to fix dep errors -->
   </project>
   <project name="aisleriot">
     <dep>GConf</dep>
@@ -181,8 +76,32 @@
     <dep>vala</dep>
     <dep>vte</dep>
   </project>
-  <project name="atomix">
-    <dep>gtk+</dep>
+  <project name="at-spi2-atk">
+    <release version="f18">2.6.*</release>
+    <release version="f19">2.8.*</release>
+    <release version="f20">2.10.*</release>
+    <release version="f20-gnome-3-12">2.12.*</release>
+    <release version="f21">2.14.*</release>
+    <release version="f22">2.16.*</release>
+    <release version="f23">2.18.*</release>
+    <release version="f24">2.20.*</release>
+    <release version="rawhide">*</release>
+    <dep>at-spi2-core</dep>
+    <dep>atk</dep>
+    <dep>glib</dep>
+  </project>
+  <project name="at-spi2-core">
+    <release version="f18">2.6.*</release>
+    <release version="f19">2.8.*</release>
+    <release version="f20">2.10.*</release>
+    <release version="f20-gnome-3-12">2.12.*</release>
+    <release version="f21">2.14.*</release>
+    <release version="f22">2.16.*</release>
+    <release version="f23">2.18.*</release>
+    <release version="f24">2.20.*</release>
+    <release version="rawhide">*</release>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
   </project>
   <project name="atk">
     <release version="f18">2.6.*</release>
@@ -213,32 +132,8 @@
     <dep>atk</dep>
     <dep>glibmm</dep>
   </project>
-  <project name="at-spi2-core">
-    <release version="f18">2.6.*</release>
-    <release version="f19">2.8.*</release>
-    <release version="f20">2.10.*</release>
-    <release version="f20-gnome-3-12">2.12.*</release>
-    <release version="f21">2.14.*</release>
-    <release version="f22">2.16.*</release>
-    <release version="f23">2.18.*</release>
-    <release version="f24">2.20.*</release>
-    <release version="rawhide">*</release>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-  </project>
-  <project name="at-spi2-atk">
-    <release version="f18">2.6.*</release>
-    <release version="f19">2.8.*</release>
-    <release version="f20">2.10.*</release>
-    <release version="f20-gnome-3-12">2.12.*</release>
-    <release version="f21">2.14.*</release>
-    <release version="f22">2.16.*</release>
-    <release version="f23">2.18.*</release>
-    <release version="f24">2.20.*</release>
-    <release version="rawhide">*</release>
-    <dep>at-spi2-core</dep>
-    <dep>atk</dep>
-    <dep>glib</dep>
+  <project name="atomix">
+    <dep>gtk+</dep>
   </project>
   <project name="baobab">
     <dep>gobject-introspection</dep>
@@ -461,14 +356,6 @@
     <dep>libsoup</dep>
     <dep>libwnck</dep>
   </project>
-  <project name="polari">
-    <dep>gjs</dep>
-    <dep>glib</dep>
-    <dep>gnome-common</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-  </project>
   <project name="evince">
     <dep>adwaita-icon-theme</dep>
     <dep>glib</dep>
@@ -512,42 +399,6 @@
   <project name="four-in-a-row">
     <dep>gtk+</dep>
     <dep>librsvg</dep>
-  </project>
-  <project name="GConf" pkgname="GConf2">
-    <release version="f18">3.2.*</release>
-    <release version="f19">3.2.*</release>
-    <release version="f20">3.2.*</release>
-    <release version="f20-gnome-3-12">3.2.*</release>
-    <release version="f21">3.2.*</release>
-    <release version="f22">3.2.*</release>
-    <release version="f23">3.2.*</release>
-    <release version="f24">3.2.*</release>
-    <release version="rawhide">3.2.*</release>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk-doc</dep>
-  </project>
-  <project name="gthumb">
-    <release version="f18">3.2.*</release>
-    <release version="f19">3.2.*</release>
-    <release version="f20">3.2.*</release>
-    <release version="f20-gnome-3-12">3.2.*</release>
-    <release version="f21">3.2.*</release>
-    <release version="f22">3.4.*</release>
-    <release version="f23">3.4.*</release>
-    <release version="f24">3.4.*</release>
-    <release version="rawhide">3.4.*</release>
-    <dep>brasero</dep>
-    <dep>clutter-gtk</dep>
-    <dep>glib</dep>
-    <dep>gnome-common</dep>
-    <dep>gnome-doc-utils</dep>
-    <dep>gsettings-desktop-schemas</dep>
-    <dep>gtk+</dep>
-    <dep>libgnome-keyring</dep>
-    <dep>librsvg</dep>
-    <dep>libsecret</dep>
-    <dep>libsoup</dep>
   </project>
   <project name="gcr">
     <dep>glib</dep>
@@ -676,6 +527,16 @@
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
   </project>
+  <project name="glabels">
+    <release version="f20-gnome-3-12">3.2.*</release>
+    <release version="f21">3.2.*</release>
+    <release version="f22">3.2.*</release>
+    <release version="f23">3.2.*</release>
+    <release version="f24">3.4.*</release>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>librsvg</dep>
+  </project>
   <project name="glade">
     <release version="f18">3.14.*</release>
     <release version="f19">3.14.*</release>
@@ -689,28 +550,17 @@
     <dep>gtk+</dep>
     <dep>pygobject</dep>
   </project>
-  <project name="glabels">
-    <release version="f20-gnome-3-12">3.2.*</release>
-    <release version="f21">3.2.*</release>
-    <release version="f22">3.2.*</release>
-    <release version="f23">3.2.*</release>
-    <release version="f24">3.4.*</release>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>librsvg</dep>
-  </project>
-  <project name="glibmm" pkgname="glibmm24">
+  <project name="glib" pkgname="glib2" pkgconfig="glib-2.0" wait_repo="1">
     <release version="f18">2.34.*</release>
     <release version="f19">2.36.*</release>
     <release version="f20">2.38.*</release>
     <release version="f20-gnome-3-12">2.40.*</release>
-    <release version="f20-gnome-3-13">2.41.*,2.42.*</release>
     <release version="f21">2.42.*</release>
     <release version="f22">2.44.*</release>
     <release version="f23">2.46.*</release>
     <release version="f24">2.48.*</release>
     <release version="rawhide">*</release>
-    <dep>glib</dep>
+    <dep>gtk-doc</dep>
   </project>
   <project name="glib-networking">
     <release version="f18">2.34.*</release>
@@ -724,6 +574,19 @@
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gsettings-desktop-schemas</dep>
+  </project>
+  <project name="glibmm" pkgname="glibmm24">
+    <release version="f18">2.34.*</release>
+    <release version="f19">2.36.*</release>
+    <release version="f20">2.38.*</release>
+    <release version="f20-gnome-3-12">2.40.*</release>
+    <release version="f20-gnome-3-13">2.41.*,2.42.*</release>
+    <release version="f21">2.42.*</release>
+    <release version="f22">2.44.*</release>
+    <release version="f23">2.46.*</release>
+    <release version="f24">2.48.*</release>
+    <release version="rawhide">*</release>
+    <dep>glib</dep>
   </project>
   <project name="gmime">
     <release version="f18">2.6.*</release>
@@ -740,8 +603,6 @@
     <dep>gtk-doc</dep>
     <dep>vala</dep>
   </project>
-  <project name="gnome-backgrounds">
-  </project>
   <project name="gnome-2048">
     <dep>clutter-gtk</dep>
     <dep>gtk+</dep>
@@ -750,6 +611,8 @@
   <project name="gnome-autoar">
     <release version="f25">0.1.*</release>
     <release version="rawhide">*</release>
+  </project>
+  <project name="gnome-backgrounds">
   </project>
   <project name="gnome-bluetooth">
     <dep>gobject-introspection</dep>
@@ -819,6 +682,33 @@
     <dep>libgee</dep>
     <dep>vala</dep>
   </project>
+  <project name="gnome-control-center" pkgname="control-center">
+    <dep>cheese</dep>
+    <dep>clutter-gtk</dep>
+    <dep>gdk-pixbuf</dep>
+    <dep>glib</dep>
+    <dep>gnome-bluetooth</dep>
+    <dep>gnome-common</dep>
+    <dep>gnome-desktop</dep>
+    <dep>gnome-online-accounts</dep>
+    <dep>gnome-settings-daemon</dep>
+    <dep>grilo</dep>
+    <dep>gsettings-desktop-schemas</dep>
+    <dep>gtk+</dep>
+    <dep>libgtop</dep>
+    <dep>libnotify</dep>
+    <dep>librsvg</dep>
+    <dep>libsoup</dep>
+    <dep>libwacom</dep>
+  </project>
+  <project name="gnome-desktop" pkgname="gnome-desktop3" pkgconfig="gnome-desktop-3.0" wait_repo="1">
+    <dep>gdk-pixbuf</dep>
+    <dep>gnome-common</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gsettings-desktop-schemas</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+  </project>
   <project name="gnome-devel-docs">
     <dep>yelp-tools</dep>
   </project>
@@ -835,16 +725,6 @@
     <dep>libnotify</dep>
     <dep>libsecret</dep>
   </project>
-  <project name="gnome-documents">
-    <dep>evince</dep>
-    <dep>gjs</dep>
-    <dep>gnome-desktop</dep>
-    <dep>gnome-online-accounts</dep>
-    <dep>gtk+</dep>
-    <dep>libgdata</dep>
-    <dep>libsoup</dep>
-    <dep>tracker</dep>
-  </project>
   <project name="gnome-doc-utils">
     <release version="f18">0.20.*</release>
     <release version="f19">0.20.*</release>
@@ -855,6 +735,16 @@
     <release version="f23">0.20.*</release>
     <release version="f24">0.20.*</release>
     <release version="rawhide">*</release>
+  </project>
+  <project name="gnome-documents">
+    <dep>evince</dep>
+    <dep>gjs</dep>
+    <dep>gnome-desktop</dep>
+    <dep>gnome-online-accounts</dep>
+    <dep>gtk+</dep>
+    <dep>libgdata</dep>
+    <dep>libsoup</dep>
+    <dep>tracker</dep>
   </project>
   <project name="gnome-dvb-daemon">
     <release version="f18">0.2.*</release>
@@ -874,13 +764,8 @@
     <dep>gnome-desktop</dep>
     <dep>gtk+</dep>
   </project>
-  <project name="gnome-logs">
-    <dep>gnome-common</dep>
-    <dep>gtk+</dep>
-  </project>
-  <project name="gnome-sound-recorder">
-    <dep>gobject-introspection</dep>
-    <dep>gtk+</dep>
+  <project name="gnome-getting-started-docs">
+    <dep>yelp-tools</dep>
   </project>
   <project name="gnome-initial-setup">
     <dep>cheese</dep>
@@ -903,6 +788,10 @@
     <dep>gtk+</dep>
     <dep>libgee</dep>
     <dep>librsvg</dep>
+  </project>
+  <project name="gnome-logs">
+    <dep>gnome-common</dep>
+    <dep>gtk+</dep>
   </project>
   <project name="gnome-mahjongg">
     <dep>glib</dep>
@@ -928,13 +817,13 @@
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
+  <project name="gnome-multi-writer">
+    <dep>glib</dep>
+    <dep>gtk+</dep>
+  </project>
   <project name="gnome-music">
     <dep>gobject-introspection</dep>
     <dep>grilo</dep>
-    <dep>gtk+</dep>
-  </project>
-  <project name="gnome-multi-writer">
-    <dep>glib</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-nibbles">
@@ -1022,6 +911,18 @@
     <dep>librsvg</dep>
     <dep>pango</dep>
   </project>
+  <project name="gnome-settings-daemon" wait_repo="1">
+    <dep>geocode-glib</dep>
+    <dep>gnome-desktop</dep>
+    <dep>gsettings-desktop-schemas</dep>
+    <dep>gtk+</dep>
+    <dep>libgnomekbd</dep>
+    <dep>libgweather</dep>
+    <dep>libnotify</dep>
+    <dep>librsvg</dep>
+    <dep>libwacom</dep>
+    <dep>libxklavier</dep>
+  </project>
   <project name="gnome-shell">
     <dep>caribou</dep>
     <dep>clutter</dep>
@@ -1052,6 +953,10 @@
     <dep>gtk+</dep>
     <dep>json-glib</dep>
     <dep>libsoup</dep>
+  </project>
+  <project name="gnome-sound-recorder">
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
   </project>
   <project name="gnome-sudoku">
     <dep>glib</dep>
@@ -1107,9 +1012,6 @@
     <dep>gtk+</dep>
     <dep>pygobject</dep>
   </project>
-  <project name="gnome-getting-started-docs">
-    <dep>yelp-tools</dep>
-  </project>
   <project name="gnome-user-docs">
     <dep>yelp-tools</dep>
   </project>
@@ -1154,6 +1056,103 @@
     <dep>gnome-common</dep>
     <dep>gtk-doc</dep>
   </project>
+  <project name="gom">
+    <release version="f23">0.3.*</release>
+    <release version="f24">0.3.*</release>
+    <dep>gdk-pixbuf</dep>
+    <dep>gobject-introspection</dep>
+  </project>
+  <project name="grilo" pkgconfig="grilo-0.2">
+    <release version="f20-gnome-3-12">0.2.*</release>
+    <release version="f21">0.2.*</release>
+    <release version="f22">0.2.*</release>
+    <release version="f23">0.2.*</release>
+    <release version="f24">0.3.*</release>
+    <dep>glib</dep>
+    <dep>gnome-common</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>libsoup</dep>
+    <dep>totem-pl-parser</dep>
+    <dep>vala</dep>
+  </project>
+  <project name="grilo-plugins">
+    <release version="f20-gnome-3-12">0.2.*</release>
+    <release version="f21">0.2.*</release>
+    <release version="f22">0.2.*</release>
+    <release version="f23">0.2.*</release>
+    <release version="f24">0.3.*</release>
+    <dep>glib</dep>
+    <dep>gmime</dep>
+    <dep>gnome-online-accounts</dep>
+    <dep>gom</dep>
+    <dep>grilo</dep>
+    <dep>json-glib</dep>
+    <dep>libgdata</dep>
+    <dep>libmediaart</dep>
+    <dep>libsoup</dep>
+    <dep>rest</dep>
+    <dep>totem-pl-parser</dep>
+    <dep>tracker</dep>
+  </project>
+  <project name="gsettings-desktop-schemas" wait_repo="1">
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+  </project>
+  <project name="gssdp">
+    <release version="f24">0.14.*</release>
+    <release version="rawhide">0.14.*</release>
+    <dep>GConf</dep>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>libsoup</dep>
+    <dep>vala</dep>
+  </project>
+  <project name="gthumb">
+    <release version="f18">3.2.*</release>
+    <release version="f19">3.2.*</release>
+    <release version="f20">3.2.*</release>
+    <release version="f20-gnome-3-12">3.2.*</release>
+    <release version="f21">3.2.*</release>
+    <release version="f22">3.4.*</release>
+    <release version="f23">3.4.*</release>
+    <release version="f24">3.4.*</release>
+    <release version="rawhide">3.4.*</release>
+    <dep>brasero</dep>
+    <dep>clutter-gtk</dep>
+    <dep>glib</dep>
+    <dep>gnome-common</dep>
+    <dep>gnome-doc-utils</dep>
+    <dep>gsettings-desktop-schemas</dep>
+    <dep>gtk+</dep>
+    <dep>libgnome-keyring</dep>
+    <dep>librsvg</dep>
+    <dep>libsecret</dep>
+    <dep>libsoup</dep>
+  </project>
+  <project name="gtk+" pkgname="gtk3" pkgconfig="gtk+-3.0" wait_repo="1">
+    <release version="f18">3.6.*</release>
+    <release version="f19">3.8.*</release>
+    <release version="f20">3.10.*</release>
+    <release version="f20-gnome-3-12">3.12.*</release>
+    <release version="f21">3.14.*</release>
+    <release version="f22">3.16.*</release>
+    <release version="f22">3.18.*</release>
+    <release version="rawhide">*</release>
+    <dep>at-spi2-atk</dep>
+    <dep>atk</dep>
+    <dep>gdk-pixbuf</dep>
+    <dep>glib</dep>
+    <dep>gnome-common</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk-doc</dep>
+    <dep>json-glib</dep>
+    <dep>pango</dep>
+    <dep>rest</dep>
+  </project>
   <project name="gtk-doc">
     <release version="f18">1.*</release>
     <release version="f19">1.*</release>
@@ -1181,51 +1180,58 @@
     <dep>pango</dep>
     <dep>vala</dep>
   </project>
-  <project name="grilo" pkgconfig="grilo-0.2">
-    <release version="f20-gnome-3-12">0.2.*</release>
-    <release version="f21">0.2.*</release>
-    <release version="f22">0.2.*</release>
-    <release version="f23">0.2.*</release>
-    <release version="f24">0.3.*</release>
-    <dep>glib</dep>
-    <dep>gnome-common</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>libsoup</dep>
-    <dep>totem-pl-parser</dep>
-    <dep>vala</dep>
-  </project>
-  <project name="gom">
-    <release version="f23">0.3.*</release>
-    <release version="f24">0.3.*</release>
-    <dep>gdk-pixbuf</dep>
-    <dep>gobject-introspection</dep>
-  </project>
-  <project name="grilo-plugins">
-    <release version="f20-gnome-3-12">0.2.*</release>
-    <release version="f21">0.2.*</release>
-    <release version="f22">0.2.*</release>
-    <release version="f23">0.2.*</release>
-    <release version="f24">0.3.*</release>
-    <dep>glib</dep>
-    <dep>gmime</dep>
-    <dep>gnome-online-accounts</dep>
-    <dep>gom</dep>
-    <dep>grilo</dep>
-    <dep>json-glib</dep>
-    <dep>libgdata</dep>
-    <dep>libmediaart</dep>
-    <dep>libsoup</dep>
-    <dep>rest</dep>
-    <dep>totem-pl-parser</dep>
-    <dep>tracker</dep>
-  </project>
   <project name="gucharmap">
     <release version="f24">3.18.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
+  </project>
+  <project name="gupnp">
+    <release version="f24">0.20.*</release>
+    <release version="rawhide">0.20.*</release>
+    <dep>gobject-introspection</dep>
+    <dep>gssdp</dep>
+    <dep>gtk-doc</dep>
+    <dep>libsoup</dep>
+    <dep>vala</dep>
+  </project>
+  <project name="gupnp-av">
+    <release version="f24">0.12.*</release>
+    <release version="rawhide">0.12.*</release>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gssdp</dep>
+    <dep>gtk-doc</dep>
+    <dep>gupnp</dep>
+    <dep>libsoup</dep>
+    <dep>vala</dep>
+  </project>
+  <project name="gupnp-dlna">
+    <release version="f24">0.10.*</release>
+    <release version="rawhide">0.10.*</release>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gssdp</dep>
+    <dep>gtk-doc</dep>
+    <dep>gupnp</dep>
+    <dep>gupnp-av</dep>
+    <dep>vala</dep>
+  </project>
+  <project name="gupnp-igd">
+    <release version="f24">0.2.*</release>
+    <release version="rawhide">0.2.*</release>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gupnp</dep>
+  </project>
+  <project name="gupnp-tools">
+    <release version="f24">0.8.*</release>
+    <release version="rawhide">0.8.*</release>
+    <dep>gssdp</dep>
+    <dep>gtk+</dep>
+    <dep>gupnp</dep>
+    <dep>gupnp-av</dep>
+    <dep>libsoup</dep>
   </project>
   <project name="gvfs">
     <release version="f18">1.14.*</release>
@@ -1248,6 +1254,11 @@
   <project name="hitori">
     <dep>gtk+</dep>
   </project>
+  <project name="iagno">
+    <dep>glib</dep>
+    <dep>gtk+</dep>
+    <dep>librsvg</dep>
+  </project>
   <project name="json-glib">
     <release version="f18">0.15.*</release>
     <release version="f19">0.16.*</release>
@@ -1260,11 +1271,6 @@
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
-  </project>
-  <project name="iagno">
-    <dep>glib</dep>
-    <dep>gtk+</dep>
-    <dep>librsvg</dep>
   </project>
   <project name="krb5-auth-dialog">
     <dep>gnome-doc-utils</dep>
@@ -1337,10 +1343,6 @@
     <dep>libsoup</dep>
     <dep>vala</dep>
   </project>
-  <project name="libgepub">
-    <release version="f25">0.4,0.4.*</release>
-    <release version="rawhide">*</release>
-  </project>
   <project name="libgee" pkgconfig="gee-0.8">
     <release version="f18">0.8.*</release>
     <release version="f19">0.10.*</release>
@@ -1354,6 +1356,10 @@
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
+  </project>
+  <project name="libgepub">
+    <release version="f25">0.4,0.4.*</release>
+    <release version="rawhide">*</release>
   </project>
   <project name="libgit2-glib" pkgconfig="libgit2-glib-1.0">
     <release version="f20">0.0.6</release>
@@ -1370,6 +1376,15 @@
     <release version="f25">1.1.*,1.2.*</release>
     <release version="rawhide">*</release>
   </project>
+  <project name="libgnome-keyring">
+    <release version="f21">3.12.*</release>
+    <release version="f22">3.12.*</release>
+    <release version="f23">3.12.*</release>
+    <release version="f24">3.12.*</release>
+    <dep>glib</dep>
+    <dep>gobject-introspection</dep>
+    <dep>vala</dep>
+  </project>
   <project name="libgnomekbd">
     <release version="f20-gnome-3-12">3.6.*</release>
     <release version="f21">3.6.*</release>
@@ -1380,15 +1395,6 @@
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>libxklavier</dep>
-  </project>
-  <project name="libgnome-keyring">
-    <release version="f21">3.12.*</release>
-    <release version="f22">3.12.*</release>
-    <release version="f23">3.12.*</release>
-    <release version="f24">3.12.*</release>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>vala</dep>
   </project>
   <project name="libgtop" pkgname="libgtop2">
     <release version="f18">2.28.*</release>
@@ -1427,6 +1433,15 @@
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
+  </project>
+  <project name="libmediaart">
+    <release version="f21">0.7.*</release>
+    <release version="f22">1.9.*</release>
+    <release version="f23">1.9.*</release>
+    <release version="f24">1.9.*</release>
+    <dep>gdk-pixbuf</dep>
+    <dep>glib</dep>
+    <dep>vala</dep>
   </project>
   <project name="libnotify">
     <release version="f18">0.7.*</release>
@@ -1510,6 +1525,18 @@
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
   </project>
+  <project name="libwacom" wait_repo="1">
+    <release version="f18">*</release>
+    <release version="f19">*</release>
+    <release version="f20">*</release>
+    <release version="f20-gnome-3-12">*</release>
+    <release version="f21">*</release>
+    <release version="f22">*</release>
+    <release version="f23">*</release>
+    <release version="f24">*</release>
+    <release version="rawhide">*</release>
+    <dep>glib</dep>
+  </project>
   <project name="libwnck" pkgname="libwnck3">
     <release version="f18">3.4.*</release>
     <release version="f19">3.4.*</release>
@@ -1550,6 +1577,16 @@
     <release version="f22">3.13.*</release>
     <release version="f23">3.14.*</release>
     <release version="f24">3.16.*</release>
+  </project>
+  <project name="moserial">
+    <release version="f21">3.0.*</release>
+    <release version="f22">3.0.*</release>
+    <release version="f23">3.0.*</release>
+    <release version="f24">3.0.*</release>
+    <dep>GConf</dep>
+    <dep>gnome-doc-utils</dep>
+    <dep>gtk+</dep>
+    <dep>vala</dep>
   </project>
   <project name="mousetweaks">
     <release version="f21">3.12.*</release>
@@ -1615,16 +1652,6 @@
     <dep>vte</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="moserial">
-    <release version="f21">3.0.*</release>
-    <release version="f22">3.0.*</release>
-    <release version="f23">3.0.*</release>
-    <release version="f24">3.0.*</release>
-    <dep>GConf</dep>
-    <dep>gnome-doc-utils</dep>
-    <dep>gtk+</dep>
-    <dep>vala</dep>
-  </project>
   <project name="orca">
     <dep>at-spi2-core</dep>
     <dep>gtk+</dep>
@@ -1670,6 +1697,14 @@
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>librsvg</dep>
+  </project>
+  <project name="polari">
+    <dep>gjs</dep>
+    <dep>glib</dep>
+    <dep>gnome-common</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
   </project>
   <project name="pyatspi">
     <release version="f18">2.6.*</release>
@@ -1847,6 +1882,25 @@
     <dep>gobject-introspection</dep>
     <dep>libsoup</dep>
   </project>
+  <project name="tracker">
+    <release version="f20-gnome-3-12">1.0.*</release>
+    <release version="f21">1.2.*</release>
+    <release version="f22">1.4.*</release>
+    <release version="f23">1.6.*</release>
+    <release version="f24">1.8.*</release>
+    <release version="rawhide">*</release>
+    <dep>gdk-pixbuf</dep>
+    <dep>gobject-introspection</dep>
+    <dep>gtk+</dep>
+    <dep>gtk-doc</dep>
+    <dep>libgee</dep>
+    <dep>libgxps</dep>
+    <dep>libmediaart</dep>
+    <dep>libsecret</dep>
+    <dep>rest</dep>
+    <dep>totem-pl-parser</dep>
+    <dep>vala</dep>
+  </project>
   <project name="vala">
     <release version="f18">0.18.*</release>
     <release version="f19">0.20.*</release>
@@ -1913,64 +1967,4 @@
     <dep>gtk+</dep>
     <dep>libnotify</dep>
   </project>
-
-  <project name="gssdp">
-    <release version="f24">0.14.*</release>
-    <release version="rawhide">0.14.*</release>
-    <dep>GConf</dep>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>libsoup</dep>
-    <dep>vala</dep>
-  </project>
-  <project name="gupnp">
-    <release version="f24">0.20.*</release>
-    <release version="rawhide">0.20.*</release>
-    <dep>gobject-introspection</dep>
-    <dep>gssdp</dep>
-    <dep>gtk-doc</dep>
-    <dep>libsoup</dep>
-    <dep>vala</dep>
-  </project>
-  <project name="gupnp-av">
-    <release version="f24">0.12.*</release>
-    <release version="rawhide">0.12.*</release>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gssdp</dep>
-    <dep>gtk-doc</dep>
-    <dep>gupnp</dep>
-    <dep>libsoup</dep>
-    <dep>vala</dep>
-  </project>
-  <project name="gupnp-dlna">
-    <release version="f24">0.10.*</release>
-    <release version="rawhide">0.10.*</release>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gssdp</dep>
-    <dep>gtk-doc</dep>
-    <dep>gupnp</dep>
-    <dep>gupnp-av</dep>
-    <dep>vala</dep>
-  </project>
-  <project name="gupnp-igd">
-    <release version="f24">0.2.*</release>
-    <release version="rawhide">0.2.*</release>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gupnp</dep>
-  </project>
-  <project name="gupnp-tools">
-    <release version="f24">0.8.*</release>
-    <release version="rawhide">0.8.*</release>
-    <dep>gssdp</dep>
-    <dep>gtk+</dep>
-    <dep>gupnp</dep>
-    <dep>gupnp-av</dep>
-    <dep>libsoup</dep>
-  </project>
-
 </projects>
