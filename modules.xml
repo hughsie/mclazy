@@ -31,111 +31,6 @@
 
 <projects>
 
-  <!-- deps of the GNOME modules -->
-  <project name="libXi" ftpadmin="False" releases="f19"/>
-  <project name="python-werkzeug" ftpadmin="False" releases="f19">
-    <dep>python-sphinx</dep>
-  </project>
-  <project name="python-itsdangerous" ftpadmin="False" releases="f19"/>
-  <project name="python-flask" ftpadmin="False" releases="f19">
-    <dep>python-werkzeug</dep>
-    <dep>python-itsdangerous</dep>
-    <dep>python-sphinx</dep>
-    <dep>python-werkzeug</dep>
-  </project>
-  <project name="libsolv" ftpadmin="False" releases="f19"/>
-  <project name="python-sphinx" ftpadmin="False" releases="f19"/>
-  <project name="librepo" ftpadmin="False">
-    <dep>glib</dep>
-    <dep>python-flask</dep>
-    <dep>python-sphinx</dep>
-  </project>
-  <project name="hawkey" ftpadmin="False">
-    <dep>libsolv</dep>
-    <dep>python-sphinx</dep>
-  </project>
-  <project name="libhif" ftpadmin="False">
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk-doc</dep>
-    <dep>hawkey</dep>
-    <dep>librepo</dep>
-    <dep>libsolv</dep>
-  </project>
-  <project name="appstream-data" ftpadmin="False">
-    <dep>libappstream-glib</dep>
-  </project>
-  <project name="PackageKit" ftpadmin="False">
-    <dep>NetworkManager</dep>
-    <dep>glib</dep>
-    <dep>gnome-doc-utils</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>libappstream-glib</dep>
-    <dep>libhif</dep>
-    <dep>pango</dep>
-    <dep>vala</dep>
-  </project>
-  <project name="libmbim" ftpadmin="False" releases="f19">
-    <dep>glib</dep>
-  </project>
-  <project name="ModemManager" ftpadmin="False">
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk-doc</dep>
-    <dep>libmbim</dep>
-    <dep>libqmi</dep>
-    <dep>vala</dep>
-  </project>
-  <project name="wayland" ftpadmin="False"/>
-  <project name="mozjs24" ftpadmin="False"/>
-  <project name="webkitgtk3" pkgconfig="webkitgtk-3.0" ftpadmin="False">
-    <dep>at-spi2-core</dep>
-    <dep>cairo</dep>
-    <dep>geoclue2</dep>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>libsecret</dep>
-    <dep>libsoup</dep>
-  </project>
-  <project name="webkitgtk4" pkgconfig="webkitgtk-4.0" ftpadmin="False">
-    <dep>at-spi2-core</dep>
-    <dep>cairo</dep>
-    <dep>geoclue2</dep>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>libnotify</dep>
-    <dep>libsecret</dep>
-    <dep>libsoup</dep>
-    <dep>wayland</dep>
-  </project>
-  <project name="upower" ftpadmin="False">
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk-doc</dep>
-  </project>
-  <project name="GeoIP" ftpadmin="False" releases="f19"/>
-  <project name="geoclue2" pkgconfig="geoclue" ftpadmin="False">
-    <dep>GeoIP</dep>
-    <dep>ModemManager</dep>
-    <dep>NetworkManager</dep>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>json-glib</dep>
-    <dep>libnotify</dep>
-    <dep>libsoup</dep>
-  </project>
   <project name="libmediaart">
     <release version="f21">0.7.*</release>
     <release version="f22">1.9.*</release>
@@ -152,41 +47,17 @@
     <release version="f23">1.6.*</release>
     <release version="f24">1.8.*</release>
     <release version="rawhide">*</release>
-    <dep>NetworkManager</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>gobject-introspection</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
-    <dep>libappstream-glib</dep>
     <dep>libgee</dep>
     <dep>libgxps</dep>
     <dep>libmediaart</dep>
-    <dep>libosinfo</dep>
     <dep>libsecret</dep>
-    <!-- circular dep
-    <dep>nautilus</dep>
-    -->
     <dep>rest</dep>
     <dep>totem-pl-parser</dep>
-    <dep>upower</dep>
     <dep>vala</dep>
-  </project>
-
-  <!-- for cogl soname bump -->
-  <project name="libmx" ftpadmin="False">
-    <dep>clutter</dep>
-    <dep>gdk-pixbuf</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk-doc</dep>
-  </project>
-
-  <!-- for PackageKit soname bump -->
-  <project name="realmd" ftpadmin="False">
-    <dep>PackageKit</dep>
-    <dep>glib</dep>
   </project>
 
   <project name="gsettings-desktop-schemas" wait_repo="1">
@@ -209,37 +80,6 @@
     <dep>librsvg</dep>
     <dep>gnome-themes-standard</dep> <!-- artificial, to fix dep errors -->
   </project>
-  <project name="gstreamer" ftpadmin="False" pkgname="gstreamer1">
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk-doc</dep>
-  </project>
-  <project name="orc" ftpadmin="False" releases="f19"/>
-  <project name="gstreamer-plugins-good" ftpadmin="False" pkgname="gstreamer1-plugins-good">
-    <dep>gdk-pixbuf</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
-    <dep>gtk-doc</dep>
-    <dep>libsoup</dep>
-    <dep>orc</dep>
-  </project>
-  <project name="gstreamer-plugins-bad" ftpadmin="False" pkgname="gstreamer1-plugins-bad-free">
-    <dep>gobject-introspection</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>librsvg</dep>
-    <dep>orc</dep>
-    <dep>wayland</dep>
-  </project>
-  <project name="gstreamer-plugins-base" ftpadmin="False" pkgname="gstreamer1-plugins-base">
-    <dep>gobject-introspection</dep>
-    <dep>gstreamer</dep>
-    <dep>gtk-doc</dep>
-    <dep>orc</dep>
-    <dep>pango</dep>
-  </project>
   <project name="gtk+" pkgname="gtk3" pkgconfig="gtk+-3.0" wait_repo="1">
     <release version="f18">3.6.*</release>
     <release version="f19">3.8.*</release>
@@ -251,20 +91,14 @@
     <release version="rawhide">*</release>
     <dep>at-spi2-atk</dep>
     <dep>atk</dep>
-    <dep>cairo</dep>
-    <dep>colord</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
     <dep>json-glib</dep>
-    <dep>libXi</dep>
-    <dep>libxkbcommon</dep>
     <dep>pango</dep>
     <dep>rest</dep>
-    <dep>wayland</dep>
   </project>
   <project name="gnome-desktop" pkgname="gnome-desktop3" pkgconfig="gnome-desktop-3.0" wait_repo="1">
     <dep>gdk-pixbuf</dep>
@@ -275,24 +109,16 @@
     <dep>gtk-doc</dep>
   </project>
   <project name="gnome-settings-daemon" wait_repo="1">
-    <dep>NetworkManager</dep>
-    <dep>PackageKit</dep>
-    <dep>colord</dep>
-    <dep>geoclue2</dep>
     <dep>geocode-glib</dep>
     <dep>gnome-desktop</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
-    <dep>lcms2</dep>
-    <dep>libXi</dep>
     <dep>libgnomekbd</dep>
     <dep>libgweather</dep>
     <dep>libnotify</dep>
     <dep>librsvg</dep>
     <dep>libwacom</dep>
     <dep>libxklavier</dep>
-    <dep>upower</dep>
-    <dep>wayland</dep>
   </project>
   <project name="libwacom" wait_repo="1">
     <release version="f18">*</release>
@@ -307,13 +133,8 @@
     <dep>glib</dep>
   </project>
   <project name="gnome-control-center" pkgname="control-center">
-    <dep>ModemManager</dep>
-    <dep>NetworkManager</dep>
     <dep>cheese</dep>
     <dep>clutter-gtk</dep>
-    <dep>colord</dep>
-    <dep>colord-gtk</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gnome-bluetooth</dep>
@@ -329,21 +150,17 @@
     <dep>librsvg</dep>
     <dep>libsoup</dep>
     <dep>libwacom</dep>
-    <dep>upower</dep>
   </project>
   <project name="accerciser">
     <release version="f24">3.14.*</release>
     <dep>at-spi2-core</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
   </project>
   <project name="aisleriot">
     <dep>GConf</dep>
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
     <dep>librsvg</dep>
     <dep>yelp-tools</dep>
   </project>
@@ -352,23 +169,19 @@
     <release version="f22">3.11.*</release>
     <release version="f23">3.11.*</release>
     <release version="f24">3.11.*</release>
-    <dep>desktop-file-utils</dep>
     <dep>gnome-menus</dep>
     <dep>pygobject</dep>
   </project>
   <project name="anjuta">
-    <dep>desktop-file-utils</dep>
     <dep>devhelp</dep>
     <dep>gdl</dep>
     <dep>glade</dep>
     <dep>gobject-introspection</dep>
     <dep>gtksourceview</dep>
-    <dep>libappstream-glib</dep>
     <dep>vala</dep>
     <dep>vte</dep>
   </project>
   <project name="atomix">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="atk">
@@ -412,7 +225,6 @@
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
-    <dep>libXi</dep>
   </project>
   <project name="at-spi2-atk">
     <release version="f18">2.6.*</release>
@@ -429,34 +241,19 @@
     <dep>glib</dep>
   </project>
   <project name="baobab">
-    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>libgtop</dep>
     <dep>vala</dep>
   </project>
-  <project name="zeitgeist" releases="f19" ftpadmin="False">
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk+</dep>
-    <dep>json-glib</dep>
-    <dep>telepathy-glib</dep>
-    <dep>vala</dep>
-  </project>
   <project name="bijiben">
     <dep>clutter-gtk</dep>
-    <dep>desktop-file-utils</dep>
-    <dep>evolution</dep>
-    <dep>evolution-data-server</dep>
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
     <dep>tracker</dep>
     <dep>vala</dep>
-    <dep>webkitgtk3</dep>
     <dep>yelp-tools</dep>
-    <dep>zeitgeist</dep>
   </project>
   <project name="brasero">
     <release version="f21">3.12.*</release>
@@ -464,26 +261,16 @@
     <release version="f23">3.12.*</release>
     <release version="f24">3.12.*</release>
     <dep>GConf</dep>
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
-    <dep>libappstream-glib</dep>
     <dep>libnotify</dep>
     <dep>nautilus</dep>
     <dep>totem-pl-parser</dep>
     <dep>tracker</dep>
     <dep>yelp-tools</dep>
-  </project>
-  <project name="cairo" ftpadmin="False">
-    <dep>glib</dep>
-    <!-- librsvg also depends on cairo...
-    <dep>librsvg</dep>
-    -->
   </project>
   <project name="cantarell-fonts" pkgname="abattis-cantarell-fonts">
     <release version="f18">0.0.*</release>
@@ -508,7 +295,6 @@
     <release version="rawhide">0.4.*</release>
     <dep>at-spi2-core</dep>
     <dep>clutter</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -518,25 +304,14 @@
     <dep>vala</dep>
   </project>
   <project name="cheese">
-    <dep>cairo</dep>
     <dep>clutter</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
-    <dep>desktop-file-utils</dep>
-    <dep>evolution-data-server</dep>
     <dep>gnome-desktop</dep>
     <dep>gnome-video-effects</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-bad</dep>
-    <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
     <dep>vala</dep>
-  </project>
-  <project name="libevdev" ftpadmin="False"/>
-  <project name="libinput" ftpadmin="False">
-    <dep>libevdev</dep>
-    <dep>libwacom</dep>
   </project>
   <project name="clutter">
     <release version="f18">1.12.*</release>
@@ -555,9 +330,7 @@
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>json-glib</dep>
-    <dep>libinput</dep>
     <dep>pango</dep>
-    <dep>wayland</dep>
   </project>
   <project name="clutter-gst" pkgname="clutter-gst2">
     <release version="f18">2.0.*</release>
@@ -571,8 +344,6 @@
     <release version="rawhide">2.0.*</release>
     <dep>clutter</dep>
     <dep>gobject-introspection</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
   </project>
   <project name="clutter-gst" pkgname="clutter-gst3">
     <release version="f22">3.0.*</release>
@@ -581,8 +352,6 @@
     <release version="rawhide">3.*</release>
     <dep>clutter</dep>
     <dep>gobject-introspection</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
   </project>
   <project name="clutter-gtk" pkgconfig="clutter-gtk-1.0">
     <release version="f18">1.4.*</release>
@@ -608,16 +377,11 @@
     <release version="f23">1.22.*</release>
     <release version="f24">1.22.*</release>
     <release version="rawhide">*</release>
-    <dep>cairo</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
     <dep>gtk-doc</dep>
-    <dep>libxkbcommon</dep>
     <dep>pango</dep>
-    <dep>wayland</dep>
   </project>
   <project name="dconf">
     <release version="f18">0.14.*</release>
@@ -636,65 +400,42 @@
   </project>
   <project name="dconf-editor">
     <dep>dconf</dep>
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>vala</dep>
   </project>
-  <project name="desktop-file-utils" ftpadmin="False">
-    <dep>glib</dep>
-  </project>
   <project name="devhelp">
     <dep>GConf</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
-    <dep>webkitgtk4</dep>
-  </project>
-  <project name="ekiga" ftpadmin="False">
-    <dep>GConf</dep>
-    <dep>desktop-file-utils</dep>
-    <dep>evolution-data-server</dep>
-    <dep>gnome-doc-utils</dep>
-    <dep>libnotify</dep>
   </project>
   <project name="empathy">
     <release version="f21">3.12.*</release>
     <release version="f22">3.12.*</release>
     <release version="f23">3.12.*</release>
     <release version="f24">3.12.*</release>
-    <dep>NetworkManager</dep>
     <dep>cheese</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
     <dep>cogl</dep>
-    <dep>desktop-file-utils</dep>
     <dep>folks</dep>
     <dep>gcr</dep>
-    <dep>geoclue2</dep>
     <dep>geocode-glib</dep>
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gsettings-desktop-schemas</dep>
-    <dep>gstreamer</dep>
     <dep>gtk+</dep>
     <dep>libchamplain</dep>
     <dep>libgee</dep>
     <dep>libnotify</dep>
     <dep>libsecret</dep>
-    <dep>telepathy-glib</dep>
-    <dep>telepathy-mission-control</dep>
-    <dep>webkitgtk3</dep>
   </project>
   <project name="eog">
-    <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gnome-desktop</dep>
     <dep>gobject-introspection</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
-    <dep>lcms2</dep>
     <dep>libpeas</dep>
     <dep>librsvg</dep>
   </project>
@@ -708,7 +449,6 @@
     <dep>libpeas</dep>
   </project>
   <project name="epiphany">
-    <dep>desktop-file-utils</dep>
     <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
@@ -716,105 +456,32 @@
     <dep>gobject-introspection</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
     <dep>libnotify</dep>
     <dep>libsecret</dep>
     <dep>libsoup</dep>
     <dep>libwnck</dep>
-    <dep>webkitgtk4</dep>
   </project>
   <project name="polari">
-    <dep>desktop-file-utils</dep>
     <dep>gjs</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
-    <dep>telepathy-glib</dep>
-  </project>
-  <project name="poppler" ftpadmin="False" releases="f19">
-    <dep>cairo</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk+</dep>
-    <dep>lcms2</dep>
   </project>
   <project name="evince">
     <dep>adwaita-icon-theme</dep>
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
-    <dep>libappstream-glib</dep>
     <dep>libgxps</dep>
     <dep>libsecret</dep>
     <dep>nautilus</dep>
     <dep>yelp-tools</dep>
   </project>
-  <!-- NOTE: Milan Crha told us not to touch this -->
-  <project name="gtkhtml" pkgname="gtkhtml3" pkgconfig="libgtkhtml-4.0" ftpadmin="False">
-    <dep>cairo</dep>
-    <dep>gnome-common</dep>
-    <dep>gsettings-desktop-schemas</dep>
-    <dep>gtk+</dep>
-    <dep>libsoup</dep>
-  </project>
-  <!-- NOTE: Milan Crha told us not to touch this -->
-  <project name="evolution" ftpadmin="False">
-    <dep>atk</dep>
-    <dep>desktop-file-utils</dep>
-    <dep>evolution-data-server</dep>
-    <dep>gdk-pixbuf</dep>
-    <dep>gnome-common</dep>
-    <dep>gnome-desktop</dep>
-    <dep>gnome-doc-utils</dep>
-    <dep>gsettings-desktop-schemas</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>gtkhtml</dep>
-    <dep>libgdata</dep>
-    <dep>libgweather</dep>
-    <dep>libnotify</dep>
-    <dep>libsoup</dep>
-    <dep>webkitgtk3</dep>
-    <dep>yelp-tools</dep>
-  </project>
-  <project name="evolution-mapi" ftpadmin="False">
-    <dep>evolution</dep>
-    <dep>evolution-data-server</dep>
-    <dep>glib</dep>
-    <dep>gnome-common</dep>
-    <dep>gtk+</dep>
-  </project>
-  <project name="evolution-ews" ftpadmin="False">
-    <dep>evolution</dep>
-    <dep>evolution-data-server</dep>
-    <dep>glib</dep>
-    <dep>gtk+</dep>
-    <dep>libsoup</dep>
-  </project>
-  <project name="evolution-rss" ftpadmin="False">
-    <dep>GConf</dep>
-    <dep>evolution</dep>
-    <dep>evolution-data-server</dep>
-    <dep>gnome-common</dep>
-    <dep>webkitgtk3</dep>
-  </project>
-  <project name="evolution-data-server" pkgconfig="libedataserver-1.2" ftpadmin="False">
-    <dep>gnome-common</dep>
-    <dep>gnome-online-accounts</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>libgdata</dep>
-    <dep>libgweather</dep>
-    <dep>libsoup</dep>
-    <dep>vala</dep>
-    <dep>webkitgtk3</dep>
-  </project>
   <project name="file-roller">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>json-glib</dep>
@@ -823,7 +490,6 @@
     <dep>pango</dep>
   </project>
   <project name="five-or-more">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -838,16 +504,12 @@
     <release version="f24">0.11.*</release>
     <release version="rawhide">*</release>
     <dep>GConf</dep>
-    <dep>evolution-data-server</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>libgee</dep>
-    <dep>telepathy-glib</dep>
     <dep>vala</dep>
-    <dep>zeitgeist</dep>
   </project>
   <project name="four-in-a-row">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -881,22 +543,16 @@
     <dep>gnome-common</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gsettings-desktop-schemas</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
-    <dep>lcms2</dep>
     <dep>libgnome-keyring</dep>
     <dep>librsvg</dep>
     <dep>libsecret</dep>
     <dep>libsoup</dep>
-    <dep>webkitgtk4</dep>
   </project>
   <project name="gcr">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
-    <dep>p11-kit</dep>
     <dep>vala</dep>
   </project>
   <project name="gdk-pixbuf" pkgname="gdk-pixbuf2" pkgconfig="gdk-pixbuf-2.0">
@@ -920,15 +576,12 @@
   </project>
   <project name="gdm">
     <dep>dconf</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>libxklavier</dep>
     <dep>pango</dep>
-    <dep>upower</dep>
   </project>
   <project name="gedit">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -943,7 +596,6 @@
   <project name="gedit-code-assistance">
     <release version="f24">3.16.*</release>
     <dep>atk</dep>
-    <dep>cairo</dep>
     <dep>gedit</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
@@ -952,7 +604,6 @@
   </project>
   <project name="gedit-plugins">
     <dep>atk</dep>
-    <dep>cairo</dep>
     <dep>gedit</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gucharmap</dep>
@@ -962,7 +613,6 @@
     <dep>vala</dep>
     <dep>vte</dep>
     <dep>yelp-tools</dep>
-    <dep>zeitgeist</dep>
   </project>
   <project name="geocode-glib">
     <release version="f20">3.10.*</release>
@@ -985,7 +635,6 @@
     <release version="f21">3.10.*</release>
     <release version="f22">3.10.*</release>
     <release version="f24">3.18.*</release>
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="giggle">
@@ -994,8 +643,6 @@
     <release version="f22">0.*</release>
     <release version="f23">0.*</release>
     <release version="f24">0.*</release>
-    <dep>desktop-file-utils</dep>
-    <dep>evolution-data-server</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gtk+</dep>
@@ -1004,7 +651,6 @@
     <dep>yelp-tools</dep>
   </project>
   <project name="gitg">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gsettings-desktop-schemas</dep>
@@ -1029,7 +675,6 @@
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
-    <dep>mozjs24</dep>
   </project>
   <project name="glade">
     <release version="f18">3.14.*</release>
@@ -1041,7 +686,6 @@
     <release version="f23">3.19.*</release>
     <release version="f24">3.20.*</release>
     <release version="rawhide">*</release>
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
   </project>
@@ -1051,8 +695,6 @@
     <release version="f22">3.2.*</release>
     <release version="f23">3.2.*</release>
     <release version="f24">3.4.*</release>
-    <dep>desktop-file-utils</dep>
-    <dep>evolution-data-server</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
     <dep>librsvg</dep>
@@ -1100,12 +742,8 @@
   </project>
   <project name="gnome-backgrounds">
   </project>
-  <project name="bluez" ftpadmin="False" releases="f19">
-    <dep>glib</dep>
-  </project>
   <project name="gnome-2048">
     <dep>clutter-gtk</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>libgee</dep>
   </project>
@@ -1114,32 +752,22 @@
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-bluetooth">
-    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
     <dep>libnotify</dep>
   </project>
-  <project name="libvirt-glib" ftpadmin="False" pkgconfig="libvirt-gconfig-1.0" releases="f19">
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>vala</dep>
-  </project>
   <project name="gnome-boxes">
     <dep>clutter-gtk</dep>
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
-    <dep>libosinfo</dep>
     <dep>libsoup</dep>
-    <dep>libvirt-glib</dep>
     <dep>tracker</dep>
     <dep>vala</dep>
     <dep>yelp-tools</dep>
   </project>
   <project name="gnome-builder">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
     <dep>libgit2-glib</dep>
@@ -1147,64 +775,35 @@
     <dep>vala</dep>
   </project>
   <project name="gnome-calculator">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>gtksourceview</dep>
     <dep>libsoup</dep>
   </project>
   <project name="gnome-calendar">
-    <dep>desktop-file-utils</dep>
-    <dep>evolution-data-server</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-characters">
-    <dep>desktop-file-utils</dep>
     <dep>gjs</dep>
     <dep>gobject-introspection</dep>
   </project>
   <project name="gnome-chess">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
     <dep>vala</dep>
   </project>
   <project name="gnome-clocks">
-    <dep>desktop-file-utils</dep>
-    <dep>geoclue2</dep>
     <dep>geocode-glib</dep>
     <dep>glib</dep>
     <dep>gnome-desktop</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
     <dep>libgweather</dep>
     <dep>vala</dep>
   </project>
-  <project name="lcms2" ftpadmin="False" releases="f20"/>
-  <project name="colord" ftpadmin="False" releases="f20">
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk-doc</dep>
-    <dep>lcms2</dep>
-    <dep>vala</dep>
-  </project>
-  <project name="colord-gtk" ftpadmin="False">
-    <dep>colord</dep>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>lcms2</dep>
-    <dep>vala</dep>
-  </project>
   <project name="gnome-color-manager">
-    <dep>colord</dep>
-    <dep>colord-gtk</dep>
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
-    <dep>lcms2</dep>
     <dep>vte</dep>
   </project>
   <project name="gnome-common">
@@ -1213,7 +812,6 @@
   <project name="gnome-contacts">
     <dep>cheese</dep>
     <dep>clutter-gtk</dep>
-    <dep>desktop-file-utils</dep>
     <dep>folks</dep>
     <dep>gnome-desktop</dep>
     <dep>gnome-online-accounts</dep>
@@ -1226,12 +824,10 @@
   </project>
   <project name="gnome-dictionary">
     <release version="f20-gnome-3-12">3.10.*</release>
-    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-disk-utility">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gnome-settings-daemon</dep>
@@ -1240,7 +836,6 @@
     <dep>libsecret</dep>
   </project>
   <project name="gnome-documents">
-    <dep>desktop-file-utils</dep>
     <dep>evince</dep>
     <dep>gjs</dep>
     <dep>gnome-desktop</dep>
@@ -1249,7 +844,6 @@
     <dep>libgdata</dep>
     <dep>libsoup</dep>
     <dep>tracker</dep>
-    <dep>webkitgtk3</dep>
   </project>
   <project name="gnome-doc-utils">
     <release version="f18">0.20.*</release>
@@ -1272,33 +866,24 @@
     <release version="f23">0.2.*</release>
     <release version="f24">0.2.*</release>
     <release version="rawhide">*</release>
-    <dep>gstreamer-plugins-bad</dep>
-    <dep>gstreamer-plugins-base</dep>
     <dep>libgee</dep>
     <dep>pygobject</dep>
     <dep>totem</dep>
   </project>
   <project name="gnome-font-viewer">
-    <dep>desktop-file-utils</dep>
     <dep>gnome-desktop</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
   </project>
   <project name="gnome-logs">
-    <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
   </project>
   <project name="gnome-sound-recorder">
-    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-initial-setup">
-    <dep>NetworkManager</dep>
     <dep>cheese</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gdm</dep>
     <dep>glib</dep>
     <dep>gnome-desktop</dep>
@@ -1313,22 +898,18 @@
     <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gtk-doc</dep>
-    <dep>p11-kit</dep>
   </project>
   <project name="gnome-klotski">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>libgee</dep>
     <dep>librsvg</dep>
   </project>
   <project name="gnome-mahjongg">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
   <project name="gnome-maps">
-    <dep>desktop-file-utils</dep>
     <dep>folks</dep>
     <dep>gjs</dep>
     <dep>libgee</dep>
@@ -1343,26 +924,21 @@
     <dep>gobject-introspection</dep>
   </project>
   <project name="gnome-mines">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
   <project name="gnome-music">
-    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>grilo</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-multi-writer">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
   </project>
   <project name="gnome-nibbles">
     <dep>clutter-gtk</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>libgee</dep>
     <dep>librsvg</dep>
@@ -1377,8 +953,6 @@
     <dep>libsecret</dep>
     <dep>libsoup</dep>
     <dep>rest</dep>
-    <dep>telepathy-glib</dep>
-    <dep>webkitgtk4</dep>
   </project>
   <project name="gnome-online-miners">
     <release version="f22">3.14.*</release>
@@ -1389,16 +963,11 @@
     <dep>gnome-online-accounts</dep>
     <dep>grilo</dep>
     <dep>libgdata</dep>
-    <dep>libgfbgraph</dep>
     <dep>tracker</dep>
   </project>
   <project name="gnome-packagekit">
-    <dep>PackageKit</dep>
-    <dep>cairo</dep>
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
     <dep>libnotify</dep>
   </project>
   <project name="gnome-phone-manager">
@@ -1408,16 +977,10 @@
     <release version="f23">0.*</release>
     <release version="f24">0.*</release>
     <dep>GConf</dep>
-    <dep>desktop-file-utils</dep>
-    <dep>evolution</dep>
-    <dep>evolution-data-server</dep>
     <dep>gnome-bluetooth</dep>
     <dep>gtk+</dep>
-    <dep>telepathy-glib</dep>
   </project>
   <project name="gnome-photos">
-    <dep>cairo</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gdk-pixbuf</dep>
     <dep>gexiv2</dep>
     <dep>glib</dep>
@@ -1425,28 +988,20 @@
     <dep>gnome-online-accounts</dep>
     <dep>grilo</dep>
     <dep>gtk+</dep>
-    <dep>lcms2</dep>
     <dep>libgdata</dep>
-    <dep>libgfbgraph</dep>
     <dep>librsvg</dep>
     <dep>tracker</dep>
   </project>
   <project name="gnome-power-manager">
-    <dep>cairo</dep>
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
-    <dep>upower</dep>
   </project>
   <project name="gnome-robots">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
   <project name="gnome-screenshot">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
   </project>
   <project name="gnome-search-tool">
     <release version="f20-gnome-3-12">3.6.*</release>
@@ -1454,12 +1009,10 @@
     <release version="f22">3.6.*</release>
     <release version="f23">3.6.*</release>
     <release version="f24">3.6.*</release>
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-session">
     <dep>GConf</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
     <dep>gnome-desktop</dep>
     <dep>gnome-settings-daemon</dep>
@@ -1468,14 +1021,10 @@
     <dep>libnotify</dep>
     <dep>librsvg</dep>
     <dep>pango</dep>
-    <dep>upower</dep>
   </project>
   <project name="gnome-shell">
-    <dep>NetworkManager</dep>
     <dep>caribou</dep>
     <dep>clutter</dep>
-    <dep>desktop-file-utils</dep>
-    <dep>evolution-data-server</dep>
     <dep>gcr</dep>
     <dep>gjs</dep>
     <dep>glib</dep>
@@ -1485,7 +1034,6 @@
     <dep>gnome-keyring</dep>
     <dep>gnome-menus</dep>
     <dep>gobject-introspection</dep>
-    <dep>gstreamer</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
     <dep>json-glib</dep>
@@ -1493,36 +1041,19 @@
     <dep>libgnome-keyring</dep>
     <dep>librsvg</dep>
     <dep>mutter</dep>
-    <dep>telepathy-glib</dep>
-    <dep>upower</dep>
   </project>
   <project name="gnome-shell-extensions">
-    <dep>desktop-file-utils</dep>
     <dep>gnome-desktop</dep>
   </project>
-  <project name="libappstream-glib" ftpadmin="False">
-    <dep>gdk-pixbuf</dep>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>json-glib</dep>
-    <dep>libsoup</dep>
-    <dep>pango</dep>
-  </project>
   <project name="gnome-software">
-    <dep>PackageKit</dep>
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-desktop</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
     <dep>json-glib</dep>
-    <dep>libappstream-glib</dep>
     <dep>libsoup</dep>
   </project>
   <project name="gnome-sudoku">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>libgee</dep>
@@ -1533,11 +1064,9 @@
     <release version="f22">3.9.*</release>
     <release version="f23">3.9.*</release>
     <release version="f24">3.9.*</release>
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-system-monitor">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>gtkmm</dep>
     <dep>libgtop</dep>
@@ -1545,14 +1074,12 @@
     <dep>libwnck</dep>
   </project>
   <project name="gnome-taquin">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-terminal">
     <dep>GConf</dep>
     <dep>dconf</dep>
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gnome-shell</dep>
@@ -1563,7 +1090,6 @@
     <dep>vte</dep>
   </project>
   <project name="gnome-tetravex">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -1572,16 +1098,13 @@
     <dep>librsvg</dep>
   </project>
   <project name="gnome-todo">
-    <dep>evolution-data-server</dep>
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-tweak-tool">
-    <dep>desktop-file-utils</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
     <dep>pygobject</dep>
   </project>
   <project name="gnome-getting-started-docs">
@@ -1593,7 +1116,6 @@
   <project name="gnome-user-share">
     <release version="f20-gnome-3-12">3.10.*</release>
     <release version="f24">3.18.*</release>
-    <dep>desktop-file-utils</dep>
     <dep>gnome-bluetooth</dep>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
@@ -1611,7 +1133,6 @@
     <release version="rawhide">*</release>
   </project>
   <project name="gnome-weather">
-    <dep>desktop-file-utils</dep>
     <dep>gjs</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
@@ -1646,12 +1167,6 @@
     <dep>gnome-doc-utils</dep>
     <dep>yelp-tools</dep>
   </project>
-<!--
-  <project name="gtk-engines">
-    <release version="f17">2.20.*</release>
-    <release version="rawhide">2.20.*</release>
-  </project>
--->
   <project name="gtkmm" pkgname="gtkmm30">
     <dep>atkmm</dep>
     <dep>glibmm</dep>
@@ -1708,7 +1223,6 @@
   </project>
   <project name="gucharmap">
     <release version="f24">3.18.*</release>
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -1732,7 +1246,6 @@
     <dep>libsoup</dep>
   </project>
   <project name="hitori">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
   </project>
   <project name="json-glib">
@@ -1749,20 +1262,16 @@
     <dep>gobject-introspection</dep>
   </project>
   <project name="iagno">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
     <dep>librsvg</dep>
   </project>
   <project name="krb5-auth-dialog">
-    <dep>NetworkManager</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
   </project>
   <project name="latexila">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
@@ -1832,15 +1341,6 @@
     <release version="f25">0.4,0.4.*</release>
     <release version="rawhide">*</release>
   </project>
-  <project name="libgfbgraph" pkgname="gfbgraph" ftpadmin="False">
-    <dep>glib</dep>
-    <dep>gnome-online-accounts</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk-doc</dep>
-    <dep>json-glib</dep>
-    <dep>libsoup</dep>
-    <dep>rest</dep>
-  </project>
   <project name="libgee" pkgconfig="gee-0.8">
     <release version="f18">0.8.*</release>
     <release version="f19">0.10.*</release>
@@ -1877,8 +1377,6 @@
     <release version="f23">3.6.*</release>
     <release version="f24">3.6.*</release>
     <dep>GConf</dep>
-    <dep>cairo</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>libxklavier</dep>
@@ -1925,12 +1423,10 @@
     <release version="f23">0.2.*</release>
     <release version="f24">0.2.*</release>
     <release version="rawhide">0.2.*</release>
-    <dep>cairo</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
-    <dep>lcms2</dep>
   </project>
   <project name="libnotify">
     <release version="f18">0.7.*</release>
@@ -1946,12 +1442,6 @@
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
-  </project>
-  <project name="libosinfo" pkgconfig="libosinfo-1.0" ftpadmin="False">
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>libsoup</dep>
-    <dep>vala</dep>
   </project>
   <project name="libpeas">
     <release version="f18">1.6.*</release>
@@ -1971,14 +1461,6 @@
     <dep>pygobject</dep>
     <dep>seed</dep>
   </project>
-  <project name="libqmi" ftpadmin="False" releases="f19">
-    <dep>glib</dep>
-  </project>
-  <project name="libquvi" ftpadmin="False">
-    <dep>glib</dep>
-    <dep>libquvi-scripts</dep>
-  </project>
-  <project name="libquvi-scripts" ftpadmin="False"/>
   <project name="librsvg" pkgname="librsvg2">
     <release version="f18">2.36.*</release>
     <release version="f19">2.38.*</release>
@@ -1989,7 +1471,6 @@
     <release version="f23">2.40.*</release>
     <release version="f24">2.40.*</release>
     <release version="rawhide">*</release>
-    <dep>cairo</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -2057,11 +1538,9 @@
     <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
-    <dep>libXi</dep>
   </project>
   <project name="lightsoff">
     <dep>clutter-gtk</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
     <dep>vala</dep>
@@ -2071,8 +1550,6 @@
     <release version="f22">3.13.*</release>
     <release version="f23">3.14.*</release>
     <release version="f24">3.16.*</release>
-    <dep>desktop-file-utils</dep>
-    <dep>libappstream-glib</dep>
   </project>
   <project name="mousetweaks">
     <release version="f21">3.12.*</release>
@@ -2084,23 +1561,18 @@
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
   </project>
-  <project name="libxkbcommon" ftpadmin="False"/>
   <project name="mutter">
     <dep>clutter</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
     <dep>gnome-desktop</dep>
     <dep>gobject-introspection</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
-    <dep>libxkbcommon</dep>
     <dep>pango</dep>
-    <dep>upower</dep>
     <dep>zenity</dep>
   </project>
   <project name="nautilus">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-desktop</dep>
     <dep>gobject-introspection</dep>
@@ -2134,7 +1606,6 @@
     <release version="f24">0.9.*</release>
     <release version="rawhide">*</release>
     <dep>dconf</dep>
-    <dep>desktop-file-utils</dep>
     <dep>ghex</dep>
     <dep>glib</dep>
     <dep>glibmm</dep>
@@ -2144,40 +1615,12 @@
     <dep>vte</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="ppp" ftpadmin="False">
-    <dep>glib</dep>
-  </project>
-  <project name="NetworkManager" ftpadmin="False" pkgconfig="libnm-glib">
-    <release version="f17">0.9.*</release>
-    <release version="rawhide">0.9.*</release>
-    <dep>ModemManager</dep>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk-doc</dep>
-    <dep>libsoup</dep>
-    <dep>ppp</dep>
-    <dep>vala</dep>
-  </project>
-  <project name="network-manager-applet" ftpadmin="False">
-    <release version="f17">0.9.*</release>
-    <release version="rawhide">*</release>
-    <dep>ModemManager</dep>
-    <dep>NetworkManager</dep>
-    <dep>desktop-file-utils</dep>
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-    <dep>libnotify</dep>
-    <dep>libsecret</dep>
-  </project>
   <project name="moserial">
     <release version="f21">3.0.*</release>
     <release version="f22">3.0.*</release>
     <release version="f23">3.0.*</release>
     <release version="f24">3.0.*</release>
     <dep>GConf</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gtk+</dep>
     <dep>vala</dep>
@@ -2186,9 +1629,6 @@
     <dep>at-spi2-core</dep>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
-  </project>
-  <project name="p11-kit" ftpadmin="False">
-    <dep>gtk-doc</dep>
   </project>
   <project name="pango">
     <release version="f18">1.32.*</release>
@@ -2200,7 +1640,6 @@
     <release version="f23">1.38.*</release>
     <release version="f24">1.40.*</release>
     <release version="rawhide">*</release>
-    <dep>cairo</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -2219,35 +1658,18 @@
     <dep>glibmm</dep>
     <dep>pango</dep>
   </project>
-  <!-- we only use this in fallback mode -->
-  <project name="polkit-gnome" ftpadmin="False" disabled="True">
-    <dep>desktop-file-utils</dep>
-    <dep>glib</dep>
-    <dep>gnome-common</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk+</dep>
-    <dep>gtk-doc</dep>
-  </project>
   <project name="pinpoint">
     <release version="f20-gnome-3-12">0.1.*</release>
     <release version="f21">0.1.*</release>
     <release version="f22">0.1.*</release>
     <release version="f23">0.1.*</release>
     <release version="f24">0.1.*</release>
-    <dep>cairo</dep>
     <dep>clutter</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>librsvg</dep>
-  </project>
-  <project name="pulseaudio" ftpadmin="False">
-    <dep>GConf</dep>
-    <dep>bluez</dep>
-    <dep>glib</dep>
-    <dep>libXi</dep>
-    <dep>orc</dep>
   </project>
   <project name="pyatspi">
     <release version="f18">2.6.*</release>
@@ -2268,9 +1690,7 @@
   </project>
   <project name="quadrapassel">
     <dep>clutter-gtk</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
     <dep>librsvg</dep>
   </project>
   <project name="rest">
@@ -2288,27 +1708,6 @@
     <dep>gtk-doc</dep>
     <dep>libsoup</dep>
   </project>
-  <project name="rhythmbox" ftpadmin="False">
-    <dep>brasero</dep>
-    <dep>clutter-gst</dep>
-    <dep>clutter-gtk</dep>
-    <dep>gnome-common</dep>
-    <dep>gobject-introspection</dep>
-    <dep>grilo</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
-    <dep>gtk+</dep>
-    <dep>json-glib</dep>
-    <dep>libmx</dep>
-    <dep>libnotify</dep>
-    <dep>libpeas</dep>
-    <dep>libsecret</dep>
-    <dep>libsoup</dep>
-    <dep>pygobject</dep>
-    <dep>totem-pl-parser</dep>
-    <dep>webkitgtk3</dep>
-    <dep>yelp-tools</dep>
-  </project>
   <project name="rygel" releases="f20">
     <release version="f18">0.16.*</release>
     <release version="f19">0.18.*</release>
@@ -2319,10 +1718,7 @@
     <release version="f23">0.28.*</release>
     <release version="f24">0.30.*</release>
     <release version="rawhide">*</release>
-    <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
     <dep>gtk+</dep>
     <dep>gupnp</dep>
     <dep>gupnp-av</dep>
@@ -2333,7 +1729,6 @@
     <dep>tracker</dep>
   </project>
   <project name="seahorse">
-    <dep>desktop-file-utils</dep>
     <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -2348,7 +1743,6 @@
     <release version="f22">3.11.*</release>
     <release version="f23">3.11.*</release>
     <release version="f24">3.11.*</release>
-    <dep>desktop-file-utils</dep>
     <dep>gcr</dep>
     <dep>gtk+</dep>
     <dep>libcryptui</dep>
@@ -2362,7 +1756,6 @@
     <release version="f22">3.8.*</release>
     <release version="f23">3.8.*</release>
     <release version="f24">3.8.*</release>
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>libsoup</dep>
   </project>
@@ -2378,12 +1771,6 @@
     <release version="rawhide">*</release>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
-    <dep>webkitgtk3</dep>
-  </project>
-  <project name="simple-scan" ftpadmin="False">
-    <dep>colord</dep>
-    <dep>gtk+</dep>
-    <dep>vala</dep>
   </project>
   <project name="shotwell">
     <release version="f19">0.14.*</release>
@@ -2395,27 +1782,20 @@
     <release version="f24">0.22.*</release>
     <release version="rawhide">*</release>
     <dep>atk</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gexiv2</dep>
     <dep>glib</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gtk+</dep>
-    <dep>libappstream-glib</dep>
     <dep>libgee</dep>
     <dep>libsoup</dep>
     <dep>vala</dep>
-    <dep>webkitgtk3</dep>
   </project>
   <project name="sound-juicer">
     <dep>GConf</dep>
     <dep>brasero</dep>
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gsettings-desktop-schemas</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
-    <dep>gstreamer-plugins-good</dep>
     <dep>gtk+</dep>
   </project>
   <project name="sushi">
@@ -2428,44 +1808,16 @@
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>gtksourceview</dep>
-    <dep>webkitgtk3</dep>
   </project>
   <project name="swell-foop">
     <dep>clutter-gtk</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>vala</dep>
     <dep>yelp-tools</dep>
   </project>
-  <project name="syncevolution" ftpadmin="False">
-    <dep>desktop-file-utils</dep>
-    <dep>evolution-data-server</dep>
-    <dep>glib</dep>
-    <dep>gnome-online-accounts</dep>
-    <dep>gtk+</dep>
-    <dep>libgnome-keyring</dep>
-    <dep>libnotify</dep>
-    <dep>libsoup</dep>
-  </project>
   <project name="tali">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
-  </project>
-  <project name="telepathy-idle" ftpadmin="False">
-    <dep>telepathy-glib</dep>
-  </project>
-  <project name="telepathy-glib" ftpadmin="False">
-    <dep>glib</dep>
-    <dep>gobject-introspection</dep>
-    <dep>gtk-doc</dep>
-    <dep>vala</dep>
-  </project>
-  <project name="telepathy-mission-control" ftpadmin="False">
-    <dep>NetworkManager</dep>
-    <dep>glib</dep>
-    <dep>gtk-doc</dep>
-    <dep>telepathy-glib</dep>
   </project>
   <project name="totem">
     <dep>clutter-gst</dep>
@@ -2473,18 +1825,12 @@
     <dep>gnome-desktop</dep>
     <dep>grilo</dep>
     <dep>gsettings-desktop-schemas</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-bad</dep>
-    <dep>gstreamer-plugins-base</dep>
-    <dep>gstreamer-plugins-good</dep>
-    <dep>libXi</dep>
     <dep>libgdata</dep>
     <dep>libpeas</dep>
     <dep>nautilus</dep>
     <dep>pygobject</dep>
     <dep>totem-pl-parser</dep>
     <dep>vala</dep>
-    <dep>zeitgeist</dep>
   </project>
   <project name="totem-pl-parser">
     <release version="f18">3.4.*</release>
@@ -2499,7 +1845,6 @@
     <dep>glib</dep>
     <dep>gmime</dep>
     <dep>gobject-introspection</dep>
-    <dep>libquvi</dep>
     <dep>libsoup</dep>
   </project>
   <project name="vala">
@@ -2515,25 +1860,20 @@
     <dep>glib</dep>
   </project>
   <project name="vinagre">
-    <dep>desktop-file-utils</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gtk+</dep>
     <dep>libgnome-keyring</dep>
     <dep>libsecret</dep>
-    <dep>telepathy-glib</dep>
     <dep>vala</dep>
     <dep>vte</dep>
   </project>
   <project name="vino">
-    <dep>NetworkManager</dep>
-    <dep>desktop-file-utils</dep>
     <dep>gnome-common</dep>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
     <dep>libsecret</dep>
     <dep>libsoup</dep>
-    <dep>telepathy-glib</dep>
   </project>
   <project name="vte" pkgname="vte291">
     <release version="f21">0.38.*</release>
@@ -2559,9 +1899,7 @@
     <dep>gtk+</dep>
   </project>
   <project name="yelp">
-    <dep>desktop-file-utils</dep>
     <dep>gtk+</dep>
-    <dep>webkitgtk3</dep>
     <dep>yelp-xsl</dep>
   </project>
   <project name="yelp-tools">
@@ -2580,7 +1918,6 @@
     <release version="f24">0.14.*</release>
     <release version="rawhide">0.14.*</release>
     <dep>GConf</dep>
-    <dep>NetworkManager</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -2591,7 +1928,6 @@
   <project name="gupnp">
     <release version="f24">0.20.*</release>
     <release version="rawhide">0.20.*</release>
-    <dep>NetworkManager</dep>
     <dep>gobject-introspection</dep>
     <dep>gssdp</dep>
     <dep>gtk-doc</dep>
@@ -2615,8 +1951,6 @@
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gssdp</dep>
-    <dep>gstreamer</dep>
-    <dep>gstreamer-plugins-base</dep>
     <dep>gtk-doc</dep>
     <dep>gupnp</dep>
     <dep>gupnp-av</dep>
@@ -2632,7 +1966,6 @@
   <project name="gupnp-tools">
     <release version="f24">0.8.*</release>
     <release version="rawhide">0.8.*</release>
-    <dep>desktop-file-utils</dep>
     <dep>gssdp</dep>
     <dep>gtk+</dep>
     <dep>gupnp</dep>
