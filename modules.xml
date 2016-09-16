@@ -1109,6 +1109,10 @@
     <dep>gtk+</dep>
     <dep>libgee</dep>
   </project>
+  <project name="gnome-autoar">
+    <release version="f25">0.1.*</release>
+    <release version="rawhide">*</release>
+  </project>
   <project name="gnome-bluetooth">
     <dep>desktop-file-utils</dep>
     <dep>gobject-introspection</dep>
@@ -1824,6 +1828,10 @@
     <dep>libsoup</dep>
     <dep>vala</dep>
   </project>
+  <project name="libgepub">
+    <release version="f25">0.4,0.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
   <project name="libgfbgraph" pkgname="gfbgraph" ftpadmin="False">
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
@@ -1857,6 +1865,10 @@
     <dep>glib</dep>
     <dep>pygobject</dep>
     <dep>vala</dep>
+  </project>
+  <project name="libgnome-games-support">
+    <release version="f25">1.1.*,1.2.*</release>
+    <release version="rawhide">*</release>
   </project>
   <project name="libgnomekbd">
     <release version="f20-gnome-3-12">3.6.*</release>
