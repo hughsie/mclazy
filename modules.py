@@ -57,13 +57,6 @@ class ModulesItem(object):
         self.is_copr = False
 
         # add the default gnome release numbers
-        self.release_glob['f18'] = "3.6.*"
-        self.release_glob['f19'] = "3.8.*"
-        self.release_glob['f20'] = "3.9.*,3.10.*,3.10"
-        self.release_glob['f20-gnome-3-12'] = "3.11.*,3.12.*,3.12"
-        self.release_glob['f20-gnome-3-14'] = "3.13.*,3.14.*,3.14"
-        self.release_glob['f21'] = "3.13.*,3.14.*,3.14"
-        self.release_glob['f22'] = "3.15.*,3.16.*,3.16"
         self.release_glob['f23'] = "3.17.*,3.18.*,3.18"
         self.release_glob['f24'] = "3.19.*,3.20.*,3.20"
         self.release_glob['f25'] = "*"
@@ -200,10 +193,6 @@ class ModulesXml(object):
                 for release in project.get('releases').split(','):
                     item.releases.append(release)
             else:
-                item.releases.append('f19')
-                item.releases.append('f20')
-                item.releases.append('f21')
-                item.releases.append('f22')
                 item.releases.append('f23')
                 item.releases.append('f24')
                 item.releases.append('f25')

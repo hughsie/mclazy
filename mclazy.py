@@ -324,16 +324,6 @@ def main():
             continue
 
         # work out release tag
-        if args.fedora_branch == "f18":
-            pkg_release_tag = 'fc18'
-        elif args.fedora_branch == "f19":
-            pkg_release_tag = 'fc19'
-        elif args.fedora_branch == "f20":
-            pkg_release_tag = 'fc20'
-        elif args.fedora_branch == "f21":
-            pkg_release_tag = 'fc21'
-        elif args.fedora_branch == "f22":
-            pkg_release_tag = 'fc22'
         elif args.fedora_branch == "f23":
             pkg_release_tag = 'fc23'
         elif args.fedora_branch == "f24":
@@ -360,16 +350,6 @@ def main():
             continue
 
         # work out repo branch
-        if args.fedora_branch == "f18":
-            pkg_branch_name = 'f18-build'
-        elif args.fedora_branch == "f19":
-            pkg_branch_name = 'f19-build'
-        elif args.fedora_branch == "f20":
-            pkg_branch_name = 'f20-build'
-        elif args.fedora_branch == "f21":
-            pkg_branch_name = 'f21-build'
-        elif args.fedora_branch == "f22":
-            pkg_branch_name = 'f22-build'
         elif args.fedora_branch == "f23":
             pkg_branch_name = 'f23-build'
         elif args.fedora_branch == "f24":
