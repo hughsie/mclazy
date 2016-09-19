@@ -553,7 +553,6 @@
     <dep>libnotify</dep>
     <dep>librsvg</dep>
     <dep>libsoup</dep>
-    <dep>libwacom</dep>
   </project>
   <project name="gnome-desktop" pkgname="gnome-desktop3" pkgconfig="gnome-desktop-3.0" wait_repo="1">
     <dep>gdk-pixbuf</dep>
@@ -751,7 +750,6 @@
     <dep>libgweather</dep>
     <dep>libnotify</dep>
     <dep>librsvg</dep>
-    <dep>libwacom</dep>
     <dep>libxklavier</dep>
   </project>
   <project name="gnome-shell">
@@ -1229,12 +1227,6 @@
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
   </project>
-  <project name="libwacom" wait_repo="1">
-    <release version="f23">*</release>
-    <release version="f24">*</release>
-    <release version="rawhide">*</release>
-    <dep>glib</dep>
-  </project>
   <project name="libwnck" pkgname="libwnck3">
     <release version="f23">3.14.*</release>
     <release version="f24">3.14.*</release>
@@ -1257,10 +1249,6 @@
     <dep>gtk+</dep>
     <dep>librsvg</dep>
     <dep>vala</dep>
-  </project>
-  <project name="meld" releases="f21">
-    <release version="f23">3.14.*</release>
-    <release version="f24">3.16.*</release>
   </project>
   <project name="moserial">
     <release version="f23">3.0.*</release>
