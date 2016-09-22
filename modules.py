@@ -59,7 +59,7 @@ class ModulesItem(object):
         # add the default gnome release numbers
         self.release_glob['f23'] = "3.17.*,3.18.*,3.18"
         self.release_glob['f24'] = "3.19.*,3.20.*,3.20"
-        self.release_glob['f25'] = "*"
+        self.release_glob['f25'] = "3.21.*,3.22.*,3.22"
         self.release_glob['rawhide'] = "*"
 
     def setup_pkgdir(self, cachedir, fedora_branch):
