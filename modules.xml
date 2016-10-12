@@ -34,7 +34,6 @@
   </project>
   <project name="accerciser">
     <release version="f24">3.14.*</release>
-    <release version="f25">3.14.*</release>
     <dep>at-spi2-core</dep>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
