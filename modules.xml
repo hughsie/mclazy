@@ -1269,7 +1269,7 @@
     <release version="f23">2.40.*</release>
     <release version="f24">2.40.*</release>
     <release version="f25">2.40.*</release>
-    <release version="rawhide">*</release>
+    <release version="rawhide">2.40.*</release>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
