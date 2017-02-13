@@ -97,7 +97,7 @@
     <release version="f23">2.24.*</release>
     <release version="f24">2.24.*</release>
     <release version="f25">2.24.*</release>
-    <release version="rawhide">*</release>
+    <release version="rawhide">2.24.*</release>
     <dep>atk</dep>
     <dep>glibmm</dep>
   </project>
@@ -475,7 +475,7 @@
     <release version="f23">2.46.*</release>
     <release version="f24">2.48.*</release>
     <release version="f25">2.50.*</release>
-    <release version="rawhide">*</release>
+    <release version="rawhide">2.50.*</release>
     <dep>glib</dep>
   </project>
   <project name="gmime">
@@ -1006,6 +1006,7 @@
     <dep>yelp-tools</dep>
   </project>
   <project name="gtkmm" pkgname="gtkmm30">
+    <release version="rawhide">3.22.*</release>
     <dep>atkmm</dep>
     <dep>glibmm</dep>
     <dep>gtk+</dep>
@@ -1403,7 +1404,7 @@
     <release version="f23">2.38.*</release>
     <release version="f24">2.40.*</release>
     <release version="f25">2.40.*</release>
-    <release version="rawhide">*</release>
+    <release version="rawhide">2.40.*</release>
     <dep>glibmm</dep>
     <dep>pango</dep>
   </project>
