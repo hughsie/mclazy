@@ -985,7 +985,7 @@
     <dep>libsoup</dep>
   </project>
   <project name="gtk+" pkgname="gtk3" pkgconfig="gtk+-3.0" wait_repo="1">
-    <release version="rawhide">*</release>
+    <release version="rawhide">3.22.*</release>
     <dep>at-spi2-atk</dep>
     <dep>atk</dep>
     <dep>gdk-pixbuf</dep>
