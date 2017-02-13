@@ -1013,6 +1013,7 @@
     <dep>pangomm</dep>
   </project>
   <project name="gtksourceview" pkgname="gtksourceview3">
+    <release version="rawhide">3.23.*</release>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
