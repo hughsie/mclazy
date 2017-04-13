@@ -1630,6 +1630,7 @@
     <dep>gtk+</dep>
     <dep>gtksourceview</dep>
   </project>
+  <project name="sysprof"/>
   <project name="swell-foop">
     <dep>clutter-gtk</dep>
     <dep>gtk+</dep>
