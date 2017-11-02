@@ -468,19 +468,6 @@
     <release version="f27">3.18.*</release>
     <dep>gtk+</dep>
   </project>
-  <project name="giggle">
-    <release version="f23">0.*</release>
-    <release version="f24">0.*</release>
-    <release version="f25">0.*</release>
-    <release version="f26">0.*</release>
-    <release version="f27">0.*</release>
-    <dep>glib</dep>
-    <dep>gnome-common</dep>
-    <dep>gtk+</dep>
-    <dep>gtksourceview</dep>
-    <dep>vte</dep>
-    <dep>yelp-tools</dep>
-  </project>
   <project name="gitg">
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -558,11 +545,15 @@
     <release version="f25">2.6.*</release>
     <release version="f26">2.6.*</release>
     <release version="f27">2.6.*</release>
-    <release version="rawhide">*</release>
+    <release version="rawhide">2.6.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
     <dep>vala</dep>
+  </project>
+  <project name="gmime" pkgname="gmime30">
+    <release version="f27">3.0.*</release>
+    <release version="rawhide">3.*</release>
   </project>
   <project name="gnome-2048">
     <dep>clutter-gtk</dep>
@@ -1442,7 +1433,6 @@
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
     <dep>pygobject</dep>
-    <dep>seed</dep>
   </project>
   <project name="librsvg" pkgname="librsvg2">
     <release version="f23">2.40.*</release>
@@ -1483,6 +1473,15 @@
     <dep>glib-networking</dep>
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
+  </project>
+  <project name="libxml++">
+    <release version="f26">2.40.*</release>
+    <release version="f27">2.40.*</release>
+    <release version="rawhide">2.40.*</release>
+  </project>
+  <project name="libxml++" pkgname="libxml++30">
+    <release version="f27">3.0.*</release>
+    <release version="rawhide">3.*</release>
   </project>
   <project name="libwnck" pkgname="libwnck3">
     <release version="f23">3.14.*</release>
@@ -1664,6 +1663,11 @@
     <dep>gtk-doc</dep>
     <dep>libsoup</dep>
   </project>
+  <project name="rhythmbox">
+    <release version="f26">3.4.*</release>
+    <release version="f27">3.4.*</release>
+    <release version="rawhide">*</release>
+  </project>
   <project name="rygel">
     <release version="f23">0.28.*</release>
     <release version="f24">0.30.*</release>
@@ -1715,16 +1719,6 @@
     <dep>gtk+</dep>
     <dep>libsoup</dep>
   </project>
-  <project name="seed">
-    <release version="f23">3.8.*</release>
-    <release version="f24">3.8.*</release>
-    <release version="f25">3.8.*</release>
-    <release version="f26">3.8.*</release>
-    <release version="f27">3.8.*</release>
-    <release version="rawhide">*</release>
-    <dep>gobject-introspection</dep>
-    <dep>gtk-doc</dep>
-  </project>
   <project name="shotwell">
     <release version="f23">0.22.*</release>
     <release version="f24">0.22.*</release>
@@ -1741,6 +1735,7 @@
     <dep>libsoup</dep>
     <dep>vala</dep>
   </project>
+  <project name="simple-scan"/>
   <project name="sound-juicer">
     <release version="f27">3.24.*</release>
     <dep>GConf</dep>
@@ -1771,6 +1766,12 @@
   <project name="tali">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <dep>gtk+</dep>
+    <dep>librsvg</dep>
+  </project>
+  <project name="tepl">
+    <release version="f27">3.0.*</release>
+    <release version="rawhide">3.*</release>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -1817,6 +1818,10 @@
     <dep>rest</dep>
     <dep>totem-pl-parser</dep>
     <dep>vala</dep>
+  </project>
+  <project name="tracker-miners">
+    <release version="f27">2.0.*</release>
+    <release version="rawhide">*</release>
   </project>
   <project name="vala">
     <release version="f23">0.30.*</release>
