@@ -15,6 +15,7 @@
     f25     = 3.22.*
     f26     = 3.24.*
     f27     = 3.26.*
+    f28     = 3.28.*
     rawhide = * (the newest upsream version)
 
   If the package name differs from the upstream tarball name, then do
