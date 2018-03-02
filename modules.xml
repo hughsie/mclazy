@@ -1251,7 +1251,6 @@
   </project>
   <project name="krb5-auth-dialog">
     <release version="f26">3.20.*</release>
-    <release version="f27">3.20.*</release>
     <dep>gnome-doc-utils</dep>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
@@ -1889,7 +1888,6 @@
     <release version="f27">3.20.*</release>
   </project>
   <project name="zenity">
-    <release version="f27">3.24.*</release>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
   </project>
