@@ -32,6 +32,7 @@
     <release version="f25">3.2.*</release>
     <release version="f26">3.2.*</release>
     <release version="f27">3.2.*</release>
+    <release version="f28">3.2.*</release>
     <release version="rawhide">3.2.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -41,6 +42,7 @@
     <release version="f24">3.14.*</release>
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <dep>at-spi2-core</dep>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
@@ -52,6 +54,7 @@
   <project name="aisleriot">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <dep>GConf</dep>
     <dep>glib</dep>
     <dep>gtk+</dep>
@@ -64,6 +67,7 @@
     <release version="f25">3.11.*</release>
     <release version="f26">3.11.*</release>
     <release version="f27">3.11.*</release>
+    <release version="f28">3.11.*</release>
     <dep>gnome-menus</dep>
     <dep>pygobject</dep>
   </project>
@@ -82,7 +86,7 @@
     <release version="f25">2.22.*</release>
     <release version="f26">2.24.*</release>
     <release version="f27">2.26.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">2.28.*</release>
     <dep>at-spi2-core</dep>
     <dep>atk</dep>
     <dep>glib</dep>
@@ -93,7 +97,7 @@
     <release version="f25">2.22.*</release>
     <release version="f26">2.24.*</release>
     <release version="f27">2.26.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">2.28.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
   </project>
@@ -103,7 +107,7 @@
     <release version="f25">2.22.*</release>
     <release version="f26">2.24.*</release>
     <release version="f27">2.26.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">2.28.*</release>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gnome-doc-utils</dep>
@@ -116,6 +120,7 @@
     <release version="f25">2.24.*</release>
     <release version="f26">2.24.*</release>
     <release version="f27">2.24.*</release>
+    <release version="f28">2.24.*</release>
     <release version="rawhide">2.24.*</release>
     <dep>atk</dep>
     <dep>glibmm</dep>
@@ -123,6 +128,7 @@
   <project name="atomix">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <dep>gtk+</dep>
   </project>
   <project name="baobab">
@@ -146,6 +152,7 @@
     <release version="f25">3.12.*</release>
     <release version="f26">3.12.*</release>
     <release version="f27">3.12.*</release>
+    <release version="f28">3.12.*</release>
     <dep>GConf</dep>
     <dep>glib</dep>
     <dep>gnome-common</dep>
@@ -164,7 +171,8 @@
     <release version="f25">0.0.*</release>
     <release version="f26">0.0.*</release>
     <release version="f27">0.0.*</release>
-    <release version="rawhide">0.0.*</release>
+    <release version="f28">0.*</release>
+    <release version="rawhide">0.*</release>
   </project>
   <project name="caribou">
     <release version="f23">0.4.*</release>
@@ -172,6 +180,7 @@
     <release version="f25">0.4.*</release>
     <release version="f26">0.4.*</release>
     <release version="f27">0.4.*</release>
+    <release version="f28">0.4.*</release>
     <release version="rawhide">0.4.*</release>
     <dep>at-spi2-core</dep>
     <dep>clutter</dep>
@@ -199,7 +208,7 @@
     <release version="f25">1.26.*</release>
     <release version="f26">1.26.*</release>
     <release version="f27">1.26.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">1.26.*</release>
     <dep>atk</dep>
     <dep>cogl</dep>
     <dep>gdk-pixbuf</dep>
@@ -215,6 +224,7 @@
     <release version="f25">2.0.*</release>
     <release version="f26">2.0.*</release>
     <release version="f27">2.0.*</release>
+    <release version="f28">2.0.*</release>
     <release version="rawhide">2.0.*</release>
     <dep>clutter</dep>
     <dep>gobject-introspection</dep>
@@ -225,7 +235,8 @@
     <release version="f25">3.0.*</release>
     <release version="f26">3.0.*</release>
     <release version="f27">3.0.*</release>
-    <release version="rawhide">3.*</release>
+    <release version="f28">3.0.*</release>
+    <release version="rawhide">3.0.*</release>
     <dep>clutter</dep>
     <dep>gobject-introspection</dep>
   </project>
@@ -235,7 +246,7 @@
     <release version="f25">1.8.*</release>
     <release version="f26">1.8.*</release>
     <release version="f27">1.8.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">1.8.*</release>
     <dep>clutter</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -246,7 +257,7 @@
     <release version="f25">1.22.*</release>
     <release version="f26">1.22.*</release>
     <release version="f27">1.22.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">1.22.*</release>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -259,7 +270,7 @@
     <release version="f25">0.26.*</release>
     <release version="f26">0.26.*</release>
     <release version="f27">0.26.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.28.*</release>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
@@ -281,6 +292,7 @@
     <release version="f25">3.12.*</release>
     <release version="f26">3.12.*</release>
     <release version="f27">3.12.*</release>
+    <release version="f28">3.12.*</release>
     <release version="rawhide">3.12.*</release>
     <dep>cheese</dep>
     <dep>clutter-gst</dep>
@@ -362,7 +374,7 @@
     <release version="f25">0.11.*</release>
     <release version="f26">0.11.*</release>
     <release version="f27">0.11.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.11.*</release>
     <dep>GConf</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -389,7 +401,7 @@
     <release version="f25">2.36.*</release>
     <release version="f26">2.36.*</release>
     <release version="f27">2.36.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">2.36.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
@@ -425,6 +437,7 @@
     <release version="f25">3.16.*</release>
     <release version="f26">3.16.*</release>
     <release version="f27">3.16.*</release>
+    <release version="f28">3.16.*</release>
     <dep>atk</dep>
     <dep>gedit</dep>
     <dep>glib</dep>
@@ -447,7 +460,6 @@
     <dep>yelp-tools</dep>
   </project>
   <project name="geocode-glib">
-    <release version="rawhide">*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>json-glib</dep>
@@ -459,6 +471,7 @@
     <release version="f25">0.10.*</release>
     <release version="f26">0.10.*</release>
     <release version="f27">0.10.*</release>
+    <release version="f28">0.10.*</release>
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
   </project>
@@ -467,6 +480,7 @@
     <release version="f25">3.18.*</release>
     <release version="f26">3.18.*</release>
     <release version="f27">3.18.*</release>
+    <release version="f28">3.18.*</release>
     <dep>gtk+</dep>
   </project>
   <project name="gitg">
@@ -486,7 +500,7 @@
     <release version="f25">1.46.*</release>
     <release version="f26">1.48.*</release>
     <release version="f27">1.50.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">1.52.*</release>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -498,6 +512,7 @@
     <release version="f25">3.4.*</release>
     <release version="f26">3.4.*</release>
     <release version="f27">3.4.*</release>
+    <release version="f28">3.4.*</release>
     <dep>gtk+</dep>
     <dep>gtk-doc</dep>
     <dep>librsvg</dep>
@@ -508,7 +523,7 @@
     <release version="f25">3.20.*</release>
     <release version="f26">3.20.*</release>
     <release version="f27">3.20.*</release>
-    <release version="rawhide">*</release>
+    <release version="f27">3.20.*</release>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
   </project>
@@ -518,7 +533,7 @@
     <release version="f25">2.50.*</release>
     <release version="f26">2.52.*</release>
     <release version="f27">2.54.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">2.56.*</release>
     <dep>gtk-doc</dep>
   </project>
   <project name="glib-networking">
@@ -527,7 +542,7 @@
     <release version="f25">2.50.*</release>
     <release version="f26">2.52.*</release>
     <release version="f27">2.54.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">2.56.*</release>
     <dep>glib</dep>
     <dep>gsettings-desktop-schemas</dep>
   </project>
@@ -537,6 +552,7 @@
     <release version="f25">2.50.*</release>
     <release version="f26">2.52.*</release>
     <release version="f27">2.54.*</release>
+    <release version="f28">2.54.*</release>
     <release version="rawhide">2.54.*</release>
     <dep>glib</dep>
   </project>
@@ -546,6 +562,7 @@
     <release version="f25">2.6.*</release>
     <release version="f26">2.6.*</release>
     <release version="f27">2.6.*</release>
+    <release version="f28">2.6.*</release>
     <release version="rawhide">2.6.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -554,6 +571,7 @@
   </project>
   <project name="gmime" pkgname="gmime30">
     <release version="f27">3.0.*</release>
+    <release version="f28">3.2.*</release>
     <release version="rawhide">3.*</release>
   </project>
   <project name="gnome-2048">
@@ -565,7 +583,7 @@
     <release version="f25">0.1.*</release>
     <release version="f26">0.2.*</release>
     <release version="f27">0.2.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.2.*</release>
   </project>
   <project name="gnome-backgrounds">
   </project>
@@ -629,6 +647,7 @@
     <release version="f25">3.18.*</release>
     <release version="f26">3.18.*</release>
     <release version="f27">3.18.*</release>
+    <release version="f28">3.18.*</release>
   </project>
   <project name="gnome-contacts">
     <dep>cheese</dep>
@@ -687,7 +706,7 @@
     <release version="f25">0.20.*</release>
     <release version="f26">0.20.*</release>
     <release version="f27">0.20.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.20.*</release>
   </project>
   <project name="gnome-documents">
     <dep>evince</dep>
@@ -705,7 +724,7 @@
     <release version="f25">0.2.*</release>
     <release version="f26">0.2.*</release>
     <release version="f27">0.2.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.2.*</release>
     <dep>libgee</dep>
     <dep>pygobject</dep>
     <dep>totem</dep>
@@ -739,6 +758,7 @@
   <project name="gnome-klotski">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <dep>gtk+</dep>
     <dep>libgee</dep>
     <dep>librsvg</dep>
@@ -750,6 +770,7 @@
   <project name="gnome-mahjongg">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <dep>glib</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
@@ -765,6 +786,7 @@
     <release version="f25">3.13.*,3.14.*</release>
     <release version="f26">3.13.*,3.14.*</release>
     <release version="f27">3.13.*,3.14.*</release>
+    <release version="f28">3.13.*,3.14.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
   </project>
@@ -784,6 +806,7 @@
   </project>
   <project name="gnome-nibbles">
     <release version="f27">3.24.*</release>
+    <release version="f28">3.24.*</release>
     <dep>clutter-gtk</dep>
     <dep>gtk+</dep>
     <dep>libgee</dep>
@@ -821,6 +844,7 @@
     <release version="f25">0.*</release>
     <release version="f26">0.*</release>
     <release version="f27">0.*</release>
+    <release version="f28">0.*</release>
     <dep>GConf</dep>
     <dep>gnome-bluetooth</dep>
     <dep>gtk+</dep>
@@ -844,6 +868,7 @@
   <project name="gnome-robots">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -856,6 +881,7 @@
     <release version="f25">3.6.*</release>
     <release version="f26">3.6.*</release>
     <release version="f27">3.6.*</release>
+    <release version="f28">3.6.*</release>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-session">
@@ -927,6 +953,7 @@
     <release version="f25">3.9.*</release>
     <release version="f26">3.9.*</release>
     <release version="f27">3.9.*</release>
+    <release version="f28">3.9.*</release>
     <dep>gtk+</dep>
   </project>
   <project name="gnome-system-monitor">
@@ -955,6 +982,7 @@
   <project name="gnome-tetravex">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -993,7 +1021,7 @@
     <release version="f25">0.4.*</release>
     <release version="f26">0.4.*</release>
     <release version="f27">0.4.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.4.*</release>
   </project>
   <project name="gnome-weather">
     <dep>gjs</dep>
@@ -1010,7 +1038,7 @@
     <release version="f25">1.50.*</release>
     <release version="f26">1.52.*</release>
     <release version="f27">1.54.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">1.56.*</release>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gtk-doc</dep>
@@ -1021,6 +1049,7 @@
     <release version="f25">0.3.*</release>
     <release version="f26">0.3.*</release>
     <release version="f27">0.3.*</release>
+    <release version="f28">0.3.*</release>
     <dep>gdk-pixbuf</dep>
     <dep>gobject-introspection</dep>
   </project>
@@ -1030,6 +1059,7 @@
     <release version="f25">0.3.*</release>
     <release version="f26">0.3.*</release>
     <release version="f27">0.3.*</release>
+    <release version="f28">0.3.*</release>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -1045,6 +1075,7 @@
     <release version="f25">0.3.*</release>
     <release version="f26">0.3.*</release>
     <release version="f27">0.3.*</release>
+    <release version="f28">0.3.*</release>
     <dep>glib</dep>
     <dep>gmime</dep>
     <dep>gnome-online-accounts</dep>
@@ -1067,12 +1098,14 @@
     <release version="f25">1.2.*</release>
     <release version="f26">1.4.*</release>
     <release version="f27">1.6.*</release>
+    <release version="f28">1.6.*</release>
   </project>
   <project name="gssdp">
     <release version="f24">0.14.*</release>
     <release version="f25">1.0.*</release>
     <release version="f26">1.0.*</release>
     <release version="f27">1.0.*</release>
+    <release version="f28">1.0.*</release>
     <release version="rawhide">1.0.*</release>
     <dep>GConf</dep>
     <dep>glib</dep>
@@ -1087,8 +1120,9 @@
     <release version="f24">3.4.*</release>
     <release version="f25">3.4.*</release>
     <release version="f26">3.4.*</release>
-    <release version="f27">3.4.*</release>
-    <release version="rawhide">3.4.*</release>
+    <release version="f27">3.6.*</release>
+    <release version="f28">3.6.*</release>
+    <release version="rawhide">3.6.*</release>
     <dep>brasero</dep>
     <dep>clutter-gtk</dep>
     <dep>glib</dep>
@@ -1104,6 +1138,7 @@
   <project name="gtk+" pkgname="gtk3" pkgconfig="gtk+-3.0" wait_repo="1">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <release version="rawhide">3.22.*</release>
     <dep>at-spi2-atk</dep>
     <dep>atk</dep>
@@ -1122,6 +1157,7 @@
     <release version="f25">1.*</release>
     <release version="f26">1.*</release>
     <release version="f27">1.*</release>
+    <release version="f28">1.*</release>
     <release version="rawhide">*</release>
     <dep>gnome-doc-utils</dep>
     <dep>yelp-tools</dep>
@@ -1129,6 +1165,7 @@
   <project name="gtkmm" pkgname="gtkmm30">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <release version="rawhide">3.22.*</release>
     <dep>atkmm</dep>
     <dep>glibmm</dep>
@@ -1137,6 +1174,7 @@
   </project>
   <project name="gtksourceview" pkgname="gtksourceview3">
     <release version="f27">3.24.*</release>
+    <release version="f28">3.24.*</release>
     <release version="rawhide">3.24.*</release>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
@@ -1150,6 +1188,7 @@
     <release version="f25">9.0.*</release>
     <release version="f26">10.0.*</release>
     <release version="f27">10.0.*</release>
+    <release version="f28">10.0.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -1159,6 +1198,7 @@
     <release version="f25">1.0.*</release>
     <release version="f26">1.0.*</release>
     <release version="f27">1.0.*</release>
+    <release version="f28">1.0.*</release>
     <release version="rawhide">1.0.*</release>
     <dep>gobject-introspection</dep>
     <dep>gssdp</dep>
@@ -1171,6 +1211,7 @@
     <release version="f25">0.12.*</release>
     <release version="f26">0.12.*</release>
     <release version="f27">0.12.*</release>
+    <release version="f28">0.12.*</release>
     <release version="rawhide">0.12.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1185,6 +1226,7 @@
     <release version="f25">0.10.*</release>
     <release version="f26">0.10.*</release>
     <release version="f27">0.10.*</release>
+    <release version="f28">0.10.*</release>
     <release version="rawhide">0.10.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1199,6 +1241,7 @@
     <release version="f25">0.2.*</release>
     <release version="f26">0.2.*</release>
     <release version="f27">0.2.*</release>
+    <release version="f28">0.2.*</release>
     <release version="rawhide">0.2.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1209,6 +1252,7 @@
     <release version="f25">0.8.*</release>
     <release version="f26">0.8.*</release>
     <release version="f27">0.8.*</release>
+    <release version="f28">0.8.*</release>
     <release version="rawhide">0.8.*</release>
     <dep>gssdp</dep>
     <dep>gtk+</dep>
@@ -1222,7 +1266,7 @@
     <release version="f25">1.30.*</release>
     <release version="f26">1.32.*</release>
     <release version="f27">1.34.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">1.36.*</release>
     <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
@@ -1233,6 +1277,7 @@
   </project>
   <project name="hitori">
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <dep>gtk+</dep>
   </project>
   <project name="iagno">
@@ -1246,7 +1291,7 @@
     <release version="f25">1.2.*</release>
     <release version="f26">1.2.*</release>
     <release version="f27">1.4.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">1.4.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
   </project>
@@ -1270,7 +1315,7 @@
     <release version="f25">0.12.*</release>
     <release version="f26">0.12.*</release>
     <release version="f27">0.12.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.12.*</release>
     <dep>clutter</dep>
     <dep>clutter-gtk</dep>
     <dep>gtk+</dep>
@@ -1283,7 +1328,7 @@
     <release version="f25">0.6.*</release>
     <release version="f26">0.6.*</release>
     <release version="f27">0.6.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.6.*</release>
     <dep>glib</dep>
   </project>
   <project name="libcryptui">
@@ -1292,6 +1337,7 @@
     <release version="f25">3.12.*</release>
     <release version="f26">3.12.*</release>
     <release version="f27">3.12.*</release>
+    <release version="f28">3.12.*</release>
     <dep>gnome-doc-utils</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -1304,7 +1350,7 @@
     <release version="f25">0.17.*</release>
     <release version="f26">0.17.*</release>
     <release version="f27">0.17.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.17.*</release>
     <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gnome-online-accounts</dep>
@@ -1320,7 +1366,7 @@
     <release version="f25">0.18.*</release>
     <release version="f26">0.20.*</release>
     <release version="f27">0.20.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.20.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
@@ -1329,7 +1375,7 @@
     <release version="f25">0.4,0.4.*</release>
     <release version="f26">0.4,0.4.*</release>
     <release version="f27">0.5.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.5.*</release>
   </project>
   <project name="libgit2-glib" pkgconfig="libgit2-glib-1.0">
     <release version="f23">0.23.*</release>
@@ -1337,7 +1383,7 @@
     <release version="f25">0.24.*</release>
     <release version="f26">0.25.*</release>
     <release version="f27">0.26.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.26.*</release>
     <dep>glib</dep>
     <dep>pygobject</dep>
     <dep>vala</dep>
@@ -1346,7 +1392,7 @@
     <release version="f25">1.2.*</release>
     <release version="f26">1.2.*</release>
     <release version="f27">1.2.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">1.4.*</release>
   </project>
   <project name="libgnome-keyring">
     <release version="f23">3.12.*</release>
@@ -1354,6 +1400,7 @@
     <release version="f25">3.12.*</release>
     <release version="f26">3.12.*</release>
     <release version="f27">3.12.*</release>
+    <release version="f28">3.12.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>vala</dep>
@@ -1372,7 +1419,7 @@
     <release version="f25">2.34.*</release>
     <release version="f26">2.36.*</release>
     <release version="f27">2.38.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">2.38.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
   </project>
@@ -1392,7 +1439,8 @@
     <release version="f25">0.2.*</release>
     <release version="f26">0.2.*</release>
     <release version="f27">0.3.*</release>
-    <release version="rawhide">0.2.*</release>
+    <release version="f28">0.3.*</release>
+    <release version="rawhide">0.3.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -1404,6 +1452,7 @@
     <release version="f25">1.9.*</release>
     <release version="f26">1.9.*</release>
     <release version="f27">1.9.*</release>
+    <release version="f28">1.9.*</release>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>vala</dep>
@@ -1414,7 +1463,7 @@
     <release version="f25">0.7.*</release>
     <release version="f26">0.7.*</release>
     <release version="f27">0.7.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.7.*</release>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1426,7 +1475,7 @@
     <release version="f25">1.20.*</release>
     <release version="f26">1.20.*</release>
     <release version="f27">1.22.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">1.22.*</release>
     <dep>gjs</dep>
     <dep>glade</dep>
     <dep>gnome-common</dep>
@@ -1440,7 +1489,8 @@
     <release version="f25">2.40.*</release>
     <release version="f26">2.40.*</release>
     <release version="f27">2.40.*</release>
-    <release version="rawhide">2.40.*</release>
+    <release version="f28">2.42.*</release>
+    <release version="rawhide">2.42.*</release>
     <dep>gdk-pixbuf</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1455,7 +1505,7 @@
     <release version="f25">0.18.*</release>
     <release version="f26">0.18.*</release>
     <release version="f27">0.18.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.18.*</release>
     <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1468,7 +1518,7 @@
     <release version="f25">2.56.*</release>
     <release version="f26">2.58.*</release>
     <release version="f27">2.60.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">2.62.*</release>
     <dep>glib</dep>
     <dep>glib-networking</dep>
     <dep>gobject-introspection</dep>
@@ -1477,10 +1527,12 @@
   <project name="libxml++">
     <release version="f26">2.40.*</release>
     <release version="f27">2.40.*</release>
+    <release version="f28">2.40.*</release>
     <release version="rawhide">2.40.*</release>
   </project>
   <project name="libxml++" pkgname="libxml++30">
     <release version="f27">3.0.*</release>
+    <release version="f28">3.0.*</release>
     <release version="rawhide">3.*</release>
   </project>
   <project name="libwnck" pkgname="libwnck3">
@@ -1489,7 +1541,7 @@
     <release version="f25">3.20.*</release>
     <release version="f26">3.20.*</release>
     <release version="f27">3.24.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">3.24.*</release>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -1502,7 +1554,7 @@
     <release version="f25">5.*</release>
     <release version="f26">5.*</release>
     <release version="f27">5.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">5.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
   </project>
@@ -1518,6 +1570,7 @@
     <release version="f25">3.0.*</release>
     <release version="f26">3.0.*</release>
     <release version="f27">3.0.*</release>
+    <release version="f28">3.0.*</release>
     <dep>GConf</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gtk+</dep>
@@ -1529,6 +1582,7 @@
     <release version="f25">3.12.*</release>
     <release version="f26">3.12.*</release>
     <release version="f27">3.12.*</release>
+    <release version="f28">3.12.*</release>
     <dep>GConf</dep>
     <dep>gnome-doc-utils</dep>
     <dep>gsettings-desktop-schemas</dep>
@@ -1561,7 +1615,7 @@
     <release version="f25">3.8.*</release>
     <release version="f26">3.8.*</release>
     <release version="f27">3.8.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">3.8.*</release>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
   </project>
@@ -1571,7 +1625,7 @@
     <release version="f25">0.9.*</release>
     <release version="f26">0.9.*</release>
     <release version="f27">0.9.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.9.*</release>
     <dep>dconf</dep>
     <dep>ghex</dep>
     <dep>glib</dep>
@@ -1593,7 +1647,7 @@
     <release version="f25">1.40.*</release>
     <release version="f26">1.40.*</release>
     <release version="f27">1.40.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">1.41.*,1.42.*</release>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gobject-introspection</dep>
@@ -1605,6 +1659,7 @@
     <release version="f25">2.40.*</release>
     <release version="f26">2.40.*</release>
     <release version="f27">2.40.*</release>
+    <release version="f28">2.40.*</release>
     <release version="rawhide">2.40.*</release>
     <dep>glibmm</dep>
     <dep>pango</dep>
@@ -1615,6 +1670,7 @@
     <release version="f25">0.1.*</release>
     <release version="f26">0.1.*</release>
     <release version="f27">0.1.*</release>
+    <release version="f28">0.1.*</release>
     <dep>clutter</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
@@ -1636,7 +1692,7 @@
     <release version="f25">2.22.*</release>
     <release version="f26">2.24.*</release>
     <release version="f27">2.26.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">2.28.*</release>
     <dep>pygobject</dep>
   </project>
   <project name="pygobject" pkgname="pygobject3" pkgconfig="pygobject-3.0">
@@ -1647,6 +1703,7 @@
   <project name="quadrapassel">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <dep>clutter-gtk</dep>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
@@ -1657,7 +1714,7 @@
     <release version="f25">0.8.*</release>
     <release version="f26">0.8.*</release>
     <release version="f27">0.8.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.8.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk-doc</dep>
@@ -1666,7 +1723,7 @@
   <project name="rhythmbox">
     <release version="f26">3.4.*</release>
     <release version="f27">3.4.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">3.4.*</release>
   </project>
   <project name="rygel">
     <release version="f23">0.28.*</release>
@@ -1674,7 +1731,7 @@
     <release version="f25">0.32.*</release>
     <release version="f26">0.34.*</release>
     <release version="f27">0.36.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.36.*</release>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>gupnp</dep>
@@ -1688,6 +1745,7 @@
   <project name="seahorse">
     <release version="f26">3.20.*</release>
     <release version="f27">3.20.*</release>
+    <release version="f28">3.20.*</release>
     <dep>gcr</dep>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
@@ -1703,6 +1761,7 @@
     <release version="f25">3.11.*</release>
     <release version="f26">3.11.*</release>
     <release version="f27">3.11.*</release>
+    <release version="f28">3.11.*</release>
     <dep>gcr</dep>
     <dep>gtk+</dep>
     <dep>libcryptui</dep>
@@ -1716,6 +1775,7 @@
     <release version="f25">3.8.*</release>
     <release version="f26">3.8.*</release>
     <release version="f27">3.8.*</release>
+    <release version="f28">3.8.*</release>
     <dep>gtk+</dep>
     <dep>libsoup</dep>
   </project>
@@ -1724,8 +1784,8 @@
     <release version="f24">0.22.*</release>
     <release version="f25">0.24.*</release>
     <release version="f26">0.26.*</release>
-    <release version="f27">0.26.*</release>
-    <release version="rawhide">*</release>
+    <release version="f27">0.28.*</release>
+    <release version="f28">0.28.*</release>
     <dep>atk</dep>
     <dep>gexiv2</dep>
     <dep>glib</dep>
@@ -1738,6 +1798,7 @@
   <project name="simple-scan"/>
   <project name="sound-juicer">
     <release version="f27">3.24.*</release>
+    <release version="f28">3.24.*</release>
     <dep>GConf</dep>
     <dep>brasero</dep>
     <dep>glib</dep>
@@ -1747,6 +1808,7 @@
   </project>
   <project name="sushi">
     <release version="f27">3.24.*</release>
+    <release version="f28">3.24.*</release>
     <dep>clutter</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
@@ -1766,12 +1828,14 @@
   <project name="tali">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
   <project name="tepl">
     <release version="f27">3.0.*</release>
-    <release version="rawhide">3.*</release>
+    <release version="f28">3.0.*</release>
+    <release version="rawhide">3.0.*</release>
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
@@ -1794,7 +1858,7 @@
     <release version="f25">3.10.*</release>
     <release version="f26">3.10.*</release>
     <release version="f27">3.26.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">3.26.*</release>
     <dep>glib</dep>
     <dep>gmime</dep>
     <dep>gobject-introspection</dep>
@@ -1806,7 +1870,7 @@
     <release version="f25">1.10.*</release>
     <release version="f26">1.12.*</release>
     <release version="f27">2.0.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">2.0.*</release>
     <dep>gdk-pixbuf</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -1821,7 +1885,7 @@
   </project>
   <project name="tracker-miners">
     <release version="f27">2.0.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">2.0.*</release>
   </project>
   <project name="vala">
     <release version="f23">0.30.*</release>
@@ -1829,12 +1893,14 @@
     <release version="f25">0.34.*</release>
     <release version="f26">0.36.*</release>
     <release version="f27">0.38.*</release>
+    <release version="f28">0.40.*</release>
     <release version="rawhide">*</release>
     <dep>glib</dep>
   </project>
   <project name="vinagre">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <dep>glib</dep>
     <dep>gnome-common</dep>
     <dep>gtk+</dep>
@@ -1846,6 +1912,7 @@
   <project name="vino">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
+    <release version="f28">3.22.*</release>
     <dep>gnome-common</dep>
     <dep>gtk+</dep>
     <dep>libnotify</dep>
@@ -1858,7 +1925,7 @@
     <release version="f25">0.46.*</release>
     <release version="f26">0.48.*</release>
     <release version="f27">0.50.*</release>
-    <release version="rawhide">*</release>
+    <release version="f28">0.52.*</release>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
     <dep>vala</dep>
@@ -1869,6 +1936,7 @@
     <release version="f25">0.36.*</release>
     <release version="f26">0.36.*</release>
     <release version="f27">0.36.*</release>
+    <release version="f28">0.36.*</release>
     <release version="rawhide">0.36.*</release>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
