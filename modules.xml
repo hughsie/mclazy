@@ -86,7 +86,7 @@
     <release version="f25">2.22.*</release>
     <release version="f26">2.24.*</release>
     <release version="f27">2.26.*</release>
-    <release version="f28">2.28.*</release>
+    <release version="f28">2.26.*</release>
     <dep>at-spi2-core</dep>
     <dep>atk</dep>
     <dep>glib</dep>
@@ -324,6 +324,7 @@
     <release version="f24">3.16.*</release>
     <release version="f25">3.16.*</release>
     <release version="f26">3.16.*</release>
+    <release version="f28">3.26.*</release>
     <dep>clutter-gtk</dep>
     <dep>eog</dep>
     <dep>gsettings-desktop-schemas</dep>
@@ -523,7 +524,7 @@
     <release version="f25">3.20.*</release>
     <release version="f26">3.20.*</release>
     <release version="f27">3.20.*</release>
-    <release version="f27">3.20.*</release>
+    <release version="f28">3.22.*</release>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
   </project>
@@ -1002,6 +1003,7 @@
     <dep>gtk+</dep>
     <dep>pygobject</dep>
   </project>
+  <project name="gnome-usage"/>
   <project name="gnome-user-docs">
     <dep>yelp-tools</dep>
   </project>
@@ -1295,6 +1297,7 @@
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
   </project>
+  <project name="jsonrpc-glib"/>
   <project name="krb5-auth-dialog">
     <release version="f26">3.20.*</release>
     <dep>gnome-doc-utils</dep>
@@ -1346,6 +1349,7 @@
     <dep>libgnome-keyring</dep>
     <dep>libnotify</dep>
   </project>
+  <project name="libdazzle"/>
   <project name="libgdata">
     <release version="f23">0.17.*</release>
     <release version="f24">0.17.*</release>
@@ -1834,6 +1838,7 @@
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
+  <project name="template-glib"/>
   <project name="tepl">
     <release version="f27">3.0.*</release>
     <release version="f28">3.0.*</release>
