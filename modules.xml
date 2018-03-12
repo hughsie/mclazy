@@ -1302,6 +1302,8 @@
     <dep>libnotify</dep>
   </project>
   <project name="latexila">
+    <release version="f28">3.26.*</release>
+    <release version="rawhide">3.26.*</release>
     <dep>glib</dep>
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
