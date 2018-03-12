@@ -51,7 +51,7 @@ def majorminor(ver):
 def main():
 
     # use the main mirror
-    gnome_ftp = 'http://ftp.gnome.org/pub/GNOME/sources'
+    gnome_ftp = 'https://download.gnome.org/sources'
 
     # read defaults from command line arguments
     parser = argparse.ArgumentParser(description='Automatically build Fedora packages for a GNOME release')
