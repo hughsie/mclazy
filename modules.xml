@@ -171,7 +171,7 @@
     <release version="f25">0.0.*</release>
     <release version="f26">0.0.*</release>
     <release version="f27">0.0.*</release>
-    <release version="f28">0.*</release>
+    <release version="f28">0.0.*</release>
     <release version="rawhide">0.*</release>
   </project>
   <project name="caribou">
