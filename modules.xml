@@ -660,7 +660,7 @@
     <dep>libgee</dep>
     <dep>vala</dep>
   </project>
-  <project name="gnome-control-center" pkgname="control-center">
+  <project name="gnome-control-center">
     <dep>cheese</dep>
     <dep>clutter-gtk</dep>
     <dep>gdk-pixbuf</dep>
@@ -987,7 +987,7 @@
     <dep>gtk+</dep>
     <dep>librsvg</dep>
   </project>
-  <project name="gnome-themes-standard">
+  <project name="gnome-themes-extra">
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
     <dep>gtk+</dep>
@@ -998,7 +998,7 @@
     <dep>gnome-online-accounts</dep>
     <dep>gtk+</dep>
   </project>
-  <project name="gnome-tweak-tool">
+  <project name="gnome-tweaks">
     <dep>gsettings-desktop-schemas</dep>
     <dep>gtk+</dep>
     <dep>pygobject</dep>
