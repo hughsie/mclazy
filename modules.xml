@@ -49,7 +49,6 @@
   </project>
   <project name="adwaita-icon-theme">
     <dep>librsvg</dep>
-    <dep>gnome-themes-standard</dep> <!-- artificial, to fix dep errors -->
   </project>
   <project name="aisleriot">
     <release version="f26">3.22.*</release>
@@ -1814,7 +1813,6 @@
   </project>
   <project name="sushi">
     <release version="f27">3.24.*</release>
-    <release version="f28">3.24.*</release>
     <dep>clutter</dep>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
