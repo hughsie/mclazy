@@ -460,6 +460,7 @@
     <dep>yelp-tools</dep>
   </project>
   <project name="geocode-glib">
+    <release version="f28">3.26.*</release>
     <dep>glib</dep>
     <dep>gobject-introspection</dep>
     <dep>json-glib</dep>
@@ -1099,7 +1100,7 @@
     <release version="f25">1.2.*</release>
     <release version="f26">1.4.*</release>
     <release version="f27">1.6.*</release>
-    <release version="f28">1.6.*</release>
+    <release version="f28">1.8.*</release>
   </project>
   <project name="gssdp">
     <release version="f24">0.14.*</release>
@@ -1140,7 +1141,7 @@
     <release version="f26">3.22.*</release>
     <release version="f27">3.22.*</release>
     <release version="f28">3.22.*</release>
-    <release version="rawhide">3.22.*</release>
+    <release version="rawhide">3.24.*</release>
     <dep>at-spi2-atk</dep>
     <dep>atk</dep>
     <dep>gdk-pixbuf</dep>
@@ -1845,6 +1846,7 @@
     <dep>librsvg</dep>
   </project>
   <project name="totem">
+    <release version="f28">3.26.*</release>
     <dep>clutter-gst</dep>
     <dep>clutter-gtk</dep>
     <dep>gnome-desktop</dep>
@@ -1875,7 +1877,7 @@
     <release version="f25">1.10.*</release>
     <release version="f26">1.12.*</release>
     <release version="f27">2.0.*</release>
-    <release version="f28">2.0.*</release>
+    <release version="f28">2.1.*</release>
     <dep>gdk-pixbuf</dep>
     <dep>gobject-introspection</dep>
     <dep>gtk+</dep>
@@ -1890,7 +1892,7 @@
   </project>
   <project name="tracker-miners">
     <release version="f27">2.0.*</release>
-    <release version="f28">2.0.*</release>
+    <release version="f28">2.1.*</release>
   </project>
   <project name="vala">
     <release version="f23">0.30.*</release>
