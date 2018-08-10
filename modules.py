@@ -88,7 +88,6 @@ class ModulesItem(object):
             if not run_command(cachedir, ["fedpkg", "co", self.pkgname]):
                 print_fail("Checkout %s" % self.pkgname)
                 return False
-            return True
 
         # clean
         if not run_command(self.pkg_cache, ['git', 'clean', '-dfx']):
