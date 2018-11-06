@@ -74,6 +74,9 @@
     <dep>gnome-menus</dep>
     <dep>pygobject</dep>
   </project>
+  <project name="amtk">
+    <release version="f29">5.0.*</release>
+  </project>
   <project name="anjuta">
     <dep>devhelp</dep>
     <dep>gdl</dep>
@@ -269,6 +272,10 @@
   <project name="devhelp">
     <dep>GConf</dep>
     <dep>gtk+</dep>
+  </project>
+  <project name="d-feet">
+    <release version="f28">0.3.*</release>
+    <release version="f29">0.3.*</release>
   </project>
   <project name="empathy">
     <release version="f23">3.12.*</release>
@@ -1208,6 +1215,9 @@
     <dep>pango</dep>
     <dep>vala</dep>
   </project>
+  <project name="gtksourceview" pkgname="gtksourceview4">
+    <release version="f29">4.0.*</release>
+  </project>
   <project name="gucharmap">
     <release version="f24">3.18.*</release>
     <release version="f25">9.0.*</release>
@@ -1654,6 +1664,10 @@
     <dep>libnotify</dep>
     <dep>pango</dep>
     <dep>tracker</dep>
+  </project>
+  <project name="nautilus-python">
+    <release version="f28">1.1.*</release>
+    <release version="f29">1.2.*</release>
   </project>
   <project name="nautilus-sendto">
     <release version="f23">3.8.*</release>
